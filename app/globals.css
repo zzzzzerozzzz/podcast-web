@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius: var(--radius);
+}
+
+:root {
+  /* Brand: Zero to Growth */
+  /* Organic/Cream/Olive Theme */
+
+  --background: #FAFAF5;
+  /* Warm Cream */
+  --foreground: #2D3748;
+  /* Slate Charcoal */
+
+  --card: #FFFFFF;
+  --card-foreground: #2D3748;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #2D3748;
+
+  --primary: #6B8E23;
+  /* Olive Green */
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #E8E8E0;
+  /* Darker Cream */
+  --secondary-foreground: #2D3748;
+
+  --muted: #F0F0EB;
+  --muted-foreground: #64748B;
+
+  --accent: #8FBC8F;
+  /* Dark Sea Green */
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #E53935;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #E2E2D5;
+  --input: #E2E2D5;
+  --ring: #6B8E23;
+
+  --radius: 1.5rem;
+  /* Extra Rounded */
+
+  /* Chart colors (optional) */
+  --chart-1: #6B8E23;
+  --chart-2: #556B2F;
+  --chart-3: #8FBC8F;
+  --chart-4: #F4A460;
+  --chart-5: #D2691E;
+}
+
+.dark {
+  /* Dark mode - Deep Forest */
+  --background: #1A202C;
+  --foreground: #FAFAF5;
+
+  --card: #2D3748;
+  --card-foreground: #FAFAF5;
+
+  --popover: #2D3748;
+  --popover-foreground: #FAFAF5;
+
+  --primary: #8FBC8F;
+  /* Lighter Green for dark mode */
+  --primary-foreground: #1A202C;
+
+  --secondary: #4A5568;
+  --secondary-foreground: #FAFAF5;
+
+  --muted: #4A5568;
+  --muted-foreground: #A0AEC0;
+
+  --accent: #556B2F;
+  --accent-foreground: #FAFAF5;
+
+  --destructive: #FC8181;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #4A5568;
+  --input: #4A5568;
+  --ring: #8FBC8F;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
