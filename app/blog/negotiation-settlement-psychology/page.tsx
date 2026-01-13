@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { ArrowLeft, Clock, Calendar, Tag, MessageCircle, HeartHandshake, Scales, BrainCircuit, Timer } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, Tag, MessageCircle, HeartHandshake, Scale, BrainCircuit, Timer, TrendingUp } from "lucide-react";
 
 export default function ArticlePage() {
     return (
@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="/founder-handshake.png"
+                                src="https://images.unsplash.com/photo-1577415124269-fc1140a69e91?auto=format&fit=crop&q=80&w=2070"
                                 alt="談判與和解技巧"
                                 fill
                                 className="object-cover"
@@ -123,7 +123,7 @@ export default function ArticlePage() {
 
                         <div className="grid md:grid-cols-3 gap-4 my-8">
                             <div className="border border-slate-200 p-4 rounded-xl text-center">
-                                <Scales className="w-8 h-8 text-slate-400 mx-auto mb-3" />
+                                <Scale className="w-8 h-8 text-slate-400 mx-auto mb-3" />
                                 <h4 className="font-bold text-slate-800">錨定效應</h4>
                                 <p className="text-sm text-slate-600">先提出一個較低的方案（例如 2 萬），並詳細解釋計算邏輯。</p>
                             </div>

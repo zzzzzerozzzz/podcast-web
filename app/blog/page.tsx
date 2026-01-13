@@ -16,7 +16,7 @@ const articles = [
         category: "Zero專欄",
         readTime: "9 分鐘",
         date: "2026-01-13",
-        image: "/founder-handshake.png",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2070",
         featured: true,
     },
     {
@@ -27,7 +27,7 @@ const articles = [
         category: "Zero專欄",
         readTime: "8 分鐘",
         date: "2026-01-13",
-        image: "/founder-handshake.png",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=2070",
         featured: true,
     },
     {
@@ -38,7 +38,7 @@ const articles = [
         category: "Zero專欄",
         readTime: "10 分鐘",
         date: "2026-01-13",
-        image: "/founder-handshake.png",
+        image: "https://images.unsplash.com/photo-1577415124269-fc1140a69e91?auto=format&fit=crop&q=80&w=2070",
         featured: true,
     },
     {
@@ -49,7 +49,7 @@ const articles = [
         category: "Zero專欄",
         readTime: "12 分鐘",
         date: "2026-01-13",
-        image: "/founder-handshake.png",
+        image: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&q=80&w=2070",
         featured: true,
     },
     {
@@ -60,7 +60,7 @@ const articles = [
         category: "Zero專欄",
         readTime: "8 分鐘",
         date: "2026-01-13",
-        image: "/founder-handshake.png",
+        image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=2070",
         featured: true,
     },
     {
