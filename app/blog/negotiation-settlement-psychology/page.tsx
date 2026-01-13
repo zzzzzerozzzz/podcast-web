@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="https://images.unsplash.com/photo-1577415124269-fc1140a69e91?auto=format&fit=crop&q=80&w=2070"
+                                src="/blog-negotiation.jpg"
                                 alt="談判與和解技巧"
                                 fill
                                 className="object-cover"

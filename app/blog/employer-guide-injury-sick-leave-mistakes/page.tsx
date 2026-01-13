@@ -53,7 +53,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2070"
+                                src="/blog-injury.jpg"
                                 alt="工傷與病假管理"
                                 fill
                                 className="object-cover"

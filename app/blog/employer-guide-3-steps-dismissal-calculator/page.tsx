@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=2070"
+                                src="/blog-dismissal-steps.png"
                                 alt="解僱賠償計算"
                                 fill
                                 className="object-cover"

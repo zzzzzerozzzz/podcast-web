@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="/founder-handshake.png"
+                                src="/blog-dismissal-law-new.png"
                                 alt="解僱員工法律風險"
                                 fill
                                 className="object-cover"

@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&q=80&w=2070"
+                                src="/blog-mpf.png"
                                 alt="MPF Offset Abolition"
                                 fill
                                 className="object-cover"

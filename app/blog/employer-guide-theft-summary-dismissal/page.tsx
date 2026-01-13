@@ -52,7 +52,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=2070"
+                                src="/blog-theft.jpg"
                                 alt="員工偷竊處理"
                                 fill
                                 className="object-cover"
