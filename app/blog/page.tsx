@@ -9,6 +9,17 @@ import { ArrowRight, Calendar, Clock, Tag } from "lucide-react";
 // SEO優化文章數據
 const articles = [
     {
+        id: 99,
+        slug: "employer-guide-dismissal-laws-2026",
+        title: "【Zero 專欄】僱主必讀：解僱員工只是「補錢」這麼簡單？25年營運總監教你合法避險",
+        excerpt: "【Zero的提醒】25年營運總監親自拆解解僱員工的最新法律紅線。詳解2026最新賠償清單、強積金對沖取消影響及NLP預期管理心法。",
+        category: "Zero專欄",
+        readTime: "10 分鐘",
+        date: "2026-01-13",
+        image: "/founder-handshake.png",
+        featured: true,
+    },
+    {
         id: 1,
         slug: "hong-kong-foreign-labor-application-guide-2024",
         title: "【2024最新】香港外勞申請完整攻略：流程、費用、時間一次看懂",
@@ -113,8 +124,8 @@ export default function BlogPage() {
                             <button
                                 key={category}
                                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${category === "全部"
-                                        ? "bg-brand-blue text-white"
-                                        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                                    ? "bg-brand-blue text-white"
+                                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                                     }`}
                             >
                                 {category}
