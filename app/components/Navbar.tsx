@@ -18,6 +18,7 @@ export default function Navbar() {
 
     const navLinks = [
         { label: '核心服務', href: '/services' },
+        { label: '文章', href: '/blog' },
         { label: '關於我們', href: '/about' },
         { label: '聯繫我們', href: '/contact' }
     ];

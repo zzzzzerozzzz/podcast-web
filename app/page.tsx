@@ -168,6 +168,149 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Founder / Consultant Introduction Section */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-gold/5 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-brand-blue/5 to-transparent rounded-full blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left: Profile Image & Stats */}
+            <div className="relative group">
+              {/* Decorative Frame */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-brand-gold/20 via-brand-blue/10 to-brand-gold/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
+
+              <div className="relative">
+                {/* Main Image Container */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <div className="aspect-[4/5] relative">
+                    {/* Partnership Image */}
+                    <Image
+                      src="/founder-handshake.png"
+                      alt="專業合作夥伴 - 粵港外勞事務所"
+                      fill
+                      className="object-cover object-center"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/80 via-transparent to-transparent"></div>
+                    {/* Bottom Info */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <p className="text-lg font-semibold">Zero Wong</p>
+                      <p className="text-sm text-white/80">創辦人 & 首席顧問</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Stats Cards */}
+                <div className="absolute -right-6 top-8 bg-white rounded-xl shadow-lg p-4 border border-slate-100 transform hover:scale-105 transition-transform">
+                  <div className="text-3xl font-bold text-brand-gold">25<span className="text-lg">+</span></div>
+                  <div className="text-xs text-slate-500 font-medium">年營運管理</div>
+                </div>
+
+                <div className="absolute -left-6 bottom-24 bg-white rounded-xl shadow-lg p-4 border border-slate-100 transform hover:scale-105 transition-transform">
+                  <div className="text-3xl font-bold text-brand-blue">20<span className="text-lg">+</span></div>
+                  <div className="text-xs text-slate-500 font-medium">合作品牌</div>
+                </div>
+
+                <div className="absolute -right-4 bottom-8 bg-gradient-to-r from-brand-blue to-brand-navy rounded-xl shadow-lg p-4 transform hover:scale-105 transition-transform">
+                  <div className="text-sm font-bold text-white">NLP 高級執行師</div>
+                  <div className="text-xs text-white/70">認證資質</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="space-y-8">
+              {/* Section Label */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-sm font-semibold tracking-wide">
+                <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
+                關於創辦人
+              </div>
+
+              {/* Main Headline */}
+              <h2 className="text-3xl lg:text-4xl font-bold text-brand-blue leading-tight">
+                25 年營運總監轉身：<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">
+                  解決餐飲與零售業的「人才荒」
+                </span>
+              </h2>
+
+              {/* Personal Story */}
+              <div className="space-y-4 text-slate-600 leading-relaxed">
+                <p className="text-lg">
+                  我是 <span className="font-semibold text-brand-blue">Zero Wong</span>，在餐飲產業深耕 <span className="font-semibold">25 年</span>，從基層侍應一路做到管理逾 <span className="font-semibold">200 人團隊</span>的營運總監。
+                </p>
+                <p className="text-lg italic border-l-4 border-brand-gold pl-4 py-2 bg-slate-50 rounded-r-lg">
+                  「我深刻體會過『有生意沒人做』的焦慮，也經歷過無數次人力短缺對營運帶來的衝擊——因為我曾在那個位置，整整 25 年。」
+                </p>
+                <p>
+                  憑藉在內地深厚的管理與招聘經驗，加上 <span className="font-semibold text-brand-blue">NLP 高級執行師</span>的心理洞察力，我創辦了粵港外勞事務所。過去曾為超過 <span className="font-semibold">20 個知名品牌</span>提供人力資源解決方案。
+                </p>
+              </div>
+
+              {/* Core Competencies */}
+              <div className="space-y-4 pt-4">
+                <h3 className="text-lg font-bold text-slate-800">我不只是幫你輸入勞工，我更懂如何：</h3>
+
+                <div className="grid gap-4">
+                  {/* Competency 1 */}
+                  <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-gold/50 hover:bg-brand-gold/5 transition-all group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center group-hover:bg-brand-blue group-hover:text-white transition-all">
+                      <svg className="w-6 h-6 text-brand-blue group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800">精準篩選</h4>
+                      <p className="text-sm text-slate-600">用管理者的眼光，為你挑選最能落地的實戰人才，確保人崗匹配。</p>
+                    </div>
+                  </div>
+
+                  {/* Competency 2 */}
+                  <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-gold/50 hover:bg-brand-gold/5 transition-all group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center group-hover:bg-brand-gold group-hover:text-white transition-all">
+                      <svg className="w-6 h-6 text-brand-gold group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800">穩定留人</h4>
+                      <p className="text-sm text-slate-600">利用 NLP 溝通心法與管理體系，全方位心理輔導，大幅降低外勞流失率。</p>
+                    </div>
+                  </div>
+
+                  {/* Competency 3 */}
+                  <div className="flex gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-brand-gold/50 hover:bg-brand-gold/5 transition-all group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center group-hover:bg-brand-blue group-hover:text-white transition-all">
+                      <svg className="w-6 h-6 text-brand-blue group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800">合規管理</h4>
+                      <p className="text-sm text-slate-600">結合內地與香港的文化差異，建立和諧的勞資關係，規避法律風險。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Closing Statement */}
+              <div className="pt-6 border-t border-slate-200">
+                <p className="text-xl font-semibold text-brand-blue">
+                  我不只是中介，<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">
+                    我是你最懂營運的人力資源戰略夥伴。
+                  </span>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Service Grid */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
