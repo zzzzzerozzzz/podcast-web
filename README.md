@@ -154,6 +154,7 @@ web/
 3. 透明邊框按鈕無法看見
 
 **根本原因：**
+
 * 使用了自定義 Tailwind 顏色變量 `brand-navy` 和 `brand-blue`
 * 這些變量可能未在 Tailwind 配置中正確定義，或 CSS 變量載入順序問題
 * `bg-gradient-to-br from-brand-navy to-brand-blue` 無法正確渲染
@@ -170,6 +171,7 @@ web/
 ```
 
 **受影響文件：**
+
 * `app/blog/foreign-labor-interview-tips/page.tsx`
 * `app/blog/labor-law-compliance-guide/page.tsx`
 * `app/blog/restaurant-industry-labor-shortage-solution/page.tsx`
@@ -184,6 +186,7 @@ CTA 按鈕點擊無效或樣式異常。
 
 **根本原因：**
 Next.js 的 `<Link>` 組件內部嵌套了 `<button>` 標籤，這在某些情況下會導致：
+
 * Hydration Error
 * 點擊事件無法正確觸發
 * 樣式無法正確應用
@@ -205,6 +208,47 @@ Next.js 的 `<Link>` 組件內部嵌套了 `<button>` 標籤，這在某些情�
   預約諮詢
 </Link>
 ```
+
+---
+
+### 2026-01-14：部落格文章圖片優化
+
+**更新描述：**
+為 4 篇「Zero 專家課」系列文章替換為專業的主題圖片，提升視覺質感與內容相關性。
+
+**執行內容：**
+
+1. **圖片生成**：使用 DALL-E 3 為以下文章生成專業圖片：
+   * `foreign-labor-cost-analysis`：成本分析主題（計算機、港幣、報表、香港天際線）
+   * `restaurant-industry-labor-shortage-solution`：餐飲業人手荒（現代餐廳廚房、多元團隊）
+   * `foreign-labor-interview-tips`：面試技巧（面試場景結合 NLP 抽象元素）
+   * `labor-law-compliance-guide`：法規合規（法律天平、保護盾牌、合約文件）
+
+2. **文件管理**：
+   * 將生成的圖片複製到 `public/` 目錄
+   * 重新命名為語義化檔名：
+     * `blog-cost-analysis-2026.png`
+     * `blog-restaurant-labor.png`
+     * `blog-interview-nlp.png`
+     * `blog-law-compliance.png`
+
+3. **代碼更新**：
+   * 修改 `app/blog/page.tsx` 中對應文章的 `image` 屬性
+   * 更新圖片路徑指向新檔案
+
+**部署狀態：**
+
+* ✅ 代碼已提交：`git commit -m "feat: 更新部落格文章圖片與內容優化"`
+* ✅ 已推送至遠端：`git push origin main`
+* 🚀 Vercel 自動部署中（預計 2-5 分鐘完成）
+
+**受影響文件：**
+
+* `app/blog/page.tsx` (更新文章數據)
+* `public/blog-cost-analysis-2026.png` (新增)
+* `public/blog-restaurant-labor.png` (新增)
+* `public/blog-interview-nlp.png` (新增)
+* `public/blog-law-compliance.png` (新增)
 
 ---
 
@@ -235,17 +279,19 @@ Next.js 的 `<Link>` 組件內部嵌套了 `<button>` 標籤，這在某些情�
 
 ### 注意事項
 
-- ⚠️ 避免使用 `brand-navy`, `brand-blue` 等自定義顏色變量於關鍵可視區塊
+* ⚠️ 避免使用 `brand-navy`, `brand-blue` 等自定義顏色變量於關鍵可視區塊
+
 * ⚠️ Next.js Link 組件內不要嵌套 button 標籤
 * ✅ 優先使用 Tailwind 內建顏色（如 `slate-900`, `blue-600`）
 * ✅ 文章圖片統一放在 `public/` 目錄，以 `blog-*.jpg/png` 命名
 
 ### 當前待辦（如有）
 
-- [ ] 考慮將文章系統升級為 MDX
+* [ ] 考慮將文章系統升級為 MDX
+
 * [ ] 優化圖片為 WebP 格式以提升載入速度
 * [ ] 新增更多行業專題文章
 
 ---
 
-*最後更新時間：2026-01-13 15:48*
+*最後更新時間：2026-01-14 09:11*
