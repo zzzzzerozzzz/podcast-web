@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="/service_interview.png" // 暫時使用舊圖，等待新圖
+                                src="/blog-restaurant-labor.png"
                                 alt="餐飲業人手解決方案"
                                 fill
                                 className="object-cover"

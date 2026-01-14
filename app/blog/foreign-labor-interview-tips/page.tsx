@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="/hero.png" // 暫時使用舊圖，等待新圖
+                                src="/blog-interview-nlp.png"
                                 alt="外勞面試與 NLP 識人"
                                 fill
                                 className="object-cover"

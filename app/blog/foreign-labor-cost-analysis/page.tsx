@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
                         <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                             <Image
-                                src="/hero.png" // 暫時使用 Hero 圖片，稍後替換
+                                src="/blog-cost-analysis-2026.png"
                                 alt="外勞成本分析"
                                 fill
                                 className="object-cover"

@@ -104,7 +104,7 @@ const articles = [
         category: "Zero專欄",
         readTime: "10 分鐘",
         date: "2026-01-13",
-        image: "/hero.png",
+        image: "/blog-cost-analysis-2026.png",
         featured: false,
     },
     {
@@ -115,7 +115,7 @@ const articles = [
         category: "行業專題",
         readTime: "8 分鐘",
         date: "2026-01-13",
-        image: "/service_interview.png",
+        image: "/blog-restaurant-labor.png",
         featured: false,
     },
     {
@@ -126,7 +126,7 @@ const articles = [
         category: "招聘技巧",
         readTime: "7 分鐘",
         date: "2026-01-13",
-        image: "/hero.png",
+        image: "/blog-interview-nlp.png",
         featured: false,
     },
     {
@@ -137,7 +137,7 @@ const articles = [
         category: "法規合規",
         readTime: "12 分鐘",
         date: "2026-01-13",
-        image: "/service_interview.png",
+        image: "/blog-law-compliance.png",
         featured: false,
     },
 ];
