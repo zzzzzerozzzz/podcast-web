@@ -5,6 +5,11 @@ import Image from "next/image";
 import { UserButton, SignInButton, SignedOut, SignedIn } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
+// Check if Clerk is configured (client-side check)
+const isClerkConfigured = typeof window !== 'undefined'
+    ? !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+    : !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 export function Navbar() {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
@@ -54,29 +59,33 @@ export function Navbar() {
                 <div className="flex items-center gap-4">
                     {/* Mobile only: minimal */}
 
-                    {/* Desktop & Mobile Auth */}
-                    <SignedOut>
-                        <SignInButton mode="modal">
-                            <Button variant="ghost" className="font-bold text-primary hover:bg-primary/5">
-                                登入
-                            </Button>
-                        </SignInButton>
-                        <SignInButton mode="modal">
-                            <Button className="rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20">
-                                加入會員
-                            </Button>
-                        </SignInButton>
-                    </SignedOut>
+                    {/* Desktop & Mobile Auth - Only render if Clerk is configured */}
+                    {isClerkConfigured && (
+                        <>
+                            <SignedOut>
+                                <SignInButton mode="modal">
+                                    <Button variant="ghost" className="font-bold text-primary hover:bg-primary/5">
+                                        登入
+                                    </Button>
+                                </SignInButton>
+                                <SignInButton mode="modal">
+                                    <Button className="rounded-full bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20">
+                                        加入會員
+                                    </Button>
+                                </SignInButton>
+                            </SignedOut>
 
-                    <SignedIn>
-                        <UserButton
-                            appearance={{
-                                elements: {
-                                    avatarBox: "w-10 h-10 border-2 border-primary/20",
-                                }
-                            }}
-                        />
-                    </SignedIn>
+                            <SignedIn>
+                                <UserButton
+                                    appearance={{
+                                        elements: {
+                                            avatarBox: "w-10 h-10 border-2 border-primary/20",
+                                        }
+                                    }}
+                                />
+                            </SignedIn>
+                        </>
+                    )}
                 </div>
             </div>
         </nav>

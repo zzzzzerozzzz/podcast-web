@@ -209,6 +209,44 @@ git push origin main
 - **部署平台**：Vercel（與 GitHub 自動整合，支援 Preview Deployments）
 - **大型媒體檔案**：未來如需大量圖片/音訊，建議使用 Cloudinary 等外部儲存
 
+### 6. 開發伺服器問題排查
+
+#### 問題：重啟電腦後網頁無法開啟
+
+**症狀：**
+
+- 執行 `npm run dev` 後，終端機顯示「✓ Ready」
+- 但瀏覽器訪問 `localhost:3005` 時顯示 `ERR_CONNECTION_REFUSED`
+- 終端機一直卡在「○ Compiling / ...」永遠不會完成
+
+**原因：**
+
+- `.next` 快取資料夾在重啟電腦後可能損壞
+- Turbopack 編譯器在讀取損壞的快取時會無限期卡住
+
+**解決方案：**
+
+```powershell
+# 1. 停止現有的 dev server (Ctrl+C)
+
+# 2. 刪除 .next 快取資料夾
+Remove-Item -Recurse -Force .next
+
+# 3. 重新啟動 dev server
+npm run dev -- -p 3005
+```
+
+**預防措施：**
+
+- 如果經常遇到此問題，可以在 `package.json` 中添加一個清理腳本：
+
+  ```json
+  "scripts": {
+    "clean": "rimraf .next",
+    "dev:clean": "npm run clean && npm run dev"
+  }
+  ```
+
 ---
 
 ## 📋 已建立的斜線指令

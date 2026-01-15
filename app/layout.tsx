@@ -33,31 +33,39 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+// Check if Clerk is configured
+const isClerkConfigured = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ClerkProvider>
-      <html lang="zh-TW" suppressHydrationWarning>
-        <body
-          suppressHydrationWarning
-          className={`${outfit.variable} ${lora.variable} antialiased font-sans bg-background text-foreground pb-24 md:pb-0`}
-        >
-          <AudioProvider>
-            <Navbar />
-            <div className="pt-16 md:pt-20">
-              {children}
-            </div>
-            <MiniPlayer />
-            <InstallPrompt />
-            <div className="md:hidden">
-              <BottomNav />
-            </div>
-          </AudioProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+  const content = (
+    <html lang="zh-TW" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`${outfit.variable} ${lora.variable} antialiased font-sans bg-background text-foreground pb-24 md:pb-0`}
+      >
+        <AudioProvider>
+          <Navbar />
+          <div className="pt-16 md:pt-20">
+            {children}
+          </div>
+          <MiniPlayer />
+          <InstallPrompt />
+          <div className="md:hidden">
+            <BottomNav />
+          </div>
+        </AudioProvider>
+      </body>
+    </html>
   );
+
+  // Only wrap with ClerkProvider if configured
+  if (isClerkConfigured) {
+    return <ClerkProvider>{content}</ClerkProvider>;
+  }
+
+  return content;
 }
