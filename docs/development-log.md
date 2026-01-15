@@ -123,6 +123,94 @@
 
 ---
 
+## [2026-01-15] 視覺優化與 Git 部署
+
+**Focus:** 為各頁面補齊 AI 生成插圖、優化文章列表體驗、解決 Git 衝突並成功推送至 GitHub。
+
+### 1. 新功能交付
+
+- **Blog 文章內頁圖片**：
+  - 修改 `app/blog/[slug]/page.tsx`，新增 `getCategoryImage()` helper function。
+  - 根據文章分類（AI 增長引擎、數位生活、日常習慣、思維心法、Zero 隨手記）自動顯示對應的特色圖片。
+  - 移除原本的「Main Article Image」placeholder。
+
+- **文章列表「瀏覽更多」功能**：
+  - 修改 `components/Blog/BlogList.tsx`，新增 `visibleCount` 狀態管理。
+  - 預設只顯示 6 篇文章（2x3 網格），保持視覺平衡。
+  - 當文章數超過 6 篇時，顯示「瀏覽更多文章」按鈕，點擊後展開更多。
+
+- **Podcast 頁面專屬插圖**：
+  - 使用 AI 生成「耳機與植物共生」插畫 (`/images/podcast-construction.png`)。
+  - 修改 `app/listen/page.tsx` 替換原本的 `hero-abstract.png`。
+
+- **會員頁面專屬插圖**：
+  - 使用 AI 生成「鑰匙與鎖與藤蔓」插畫 (`/images/member-construction.png`)。
+  - 修改 `app/profile/page.tsx` 替換原本的 `hero-abstract.png`。
+
+- **Hero 與 AI 區塊動畫**：
+  - 在 `app/globals.css` 新增 `@keyframes float` 動畫。
+  - 為首頁 Hero 圖片和 AI 增長引擎區塊圖片添加 `animate-float` 懸浮效果。
+
+### 2. 技術問題與解決方案
+
+| 問題 | 原因 | 解決方案 |
+|------|------|----------|
+| **visibleCount 未定義** | 新增 `.slice(0, visibleCount)` 但忘記宣告 state | 在 `BlogList.tsx` 新增 `const [visibleCount, setVisibleCount] = useState(6)` |
+| **Git Push 被拒絕** | 遠端有本地沒有的 commit | 執行 `git pull origin main --rebase`，但發生衝突 |
+| **Git Rebase 衝突** | 多個檔案同時被本地和遠端修改 | 執行 `git rebase --abort` 中止，改用 merge 策略 |
+| **Unrelated Histories 錯誤** | 遠端 repo 的 Git 歷史與本地完全不同 | 使用 `git pull origin main --allow-unrelated-histories` 允許合併不相關的歷史 |
+| **多檔案衝突** | .gitignore, README, page.tsx 等 8 個檔案衝突 | 執行 `git checkout --ours [files]` 保留本地版本，再 `git add .` 和 `git commit` |
+
+### 3. Git 操作流程記錄
+
+```bash
+# 1. 嘗試推送
+git push origin main
+# 結果：rejected (遠端有新 commit)
+
+# 2. 嘗試 rebase
+git pull origin main --rebase
+# 結果：衝突
+
+# 3. 中止 rebase
+git rebase --abort
+
+# 4. 使用 merge 策略並允許不相關歷史
+git pull origin main --allow-unrelated-histories
+# 結果：8 個檔案衝突
+
+# 5. 保留本地版本解決衝突
+git checkout --ours .gitignore README.md app/blog/page.tsx app/globals.css app/layout.tsx app/page.tsx package-lock.json package.json
+
+# 6. 完成合併
+git add .
+git commit -m "Merge remote-tracking branch - resolved conflicts keeping local version"
+git push origin main
+# 結果：成功 ✅
+```
+
+### 4. 新增/修改檔案清單
+
+| 檔案 | 動作 | 說明 |
+|------|------|------|
+| `app/blog/[slug]/page.tsx` | 修改 | 新增動態分類圖片 |
+| `components/Blog/BlogList.tsx` | 修改 | 新增 Load More 功能 |
+| `app/listen/page.tsx` | 修改 | 使用新 Podcast 插圖 |
+| `app/profile/page.tsx` | 修改 | 使用新會員插圖 |
+| `app/globals.css` | 修改 | 新增 float 動畫 keyframes |
+| `public/images/podcast-construction.png` | 新增 | Podcast 頁面專屬插圖 |
+| `public/images/member-construction.png` | 新增 | 會員頁面專屬插圖 |
+
+### 5. 部署建議
+
+**推薦技術棧：**
+
+- **版本控制 & 備份**：GitHub（只記錄差異，不佔大量空間）
+- **部署平台**：Vercel（與 GitHub 自動整合，支援 Preview Deployments）
+- **大型媒體檔案**：未來如需大量圖片/音訊，建議使用 Cloudinary 等外部儲存
+
+---
+
 ## 📋 已建立的斜線指令
 
 | 指令 | 功能 | 檔案位置 |
