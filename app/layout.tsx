@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Lora } from "next/font/google"; // Organic/Humanist fonts
+import { Outfit, Lora } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+
+import { BottomNav } from "@/components/AppShell/BottomNav";
+import { InstallPrompt } from "@/components/PWA/InstallPrompt";
+import { Navbar } from "@/components/AppShell/Navbar";
+import { AudioProvider } from "@/lib/audio-context";
+import { MiniPlayer } from "@/components/Audio/MiniPlayer";
 
 const outfit = Outfit({
   variable: "--font-sans",
@@ -27,11 +33,6 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
-import { BottomNav } from "@/components/AppShell/BottomNav";
-import { InstallPrompt } from "@/components/PWA/InstallPrompt";
-
-// ... existing imports
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,13 +40,22 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="zh-TW">
+      <html lang="zh-TW" suppressHydrationWarning>
         <body
+          suppressHydrationWarning
           className={`${outfit.variable} ${lora.variable} antialiased font-sans bg-background text-foreground pb-24 md:pb-0`}
         >
-          {children}
-          <InstallPrompt />
-          <BottomNav />
+          <AudioProvider>
+            <Navbar />
+            <div className="pt-16 md:pt-20">
+              {children}
+            </div>
+            <MiniPlayer />
+            <InstallPrompt />
+            <div className="md:hidden">
+              <BottomNav />
+            </div>
+          </AudioProvider>
         </body>
       </html>
     </ClerkProvider>
