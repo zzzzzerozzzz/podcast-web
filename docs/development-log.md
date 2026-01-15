@@ -247,6 +247,51 @@ npm run dev -- -p 3005
   }
   ```
 
+### 7. Vercel 部署與環境變數排查
+
+#### 問題 A：Vercel Build 失敗 (缺少 Clerk 鑰匙)
+
+**症狀：**
+
+- Vercel 部署時報錯 `Command "npm run build" exited with 1`
+- 錯誤日誌顯示缺少 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+
+**原因：**
+
+- Next.js 在編譯時如果程式碼中有用到 `@clerk/nextjs`，會檢查環境變數
+- 如果 Vercel 後台尚未設定這些變數，會導致編譯直接中斷
+
+**解決方案：**
+
+1. **程式碼優化 (優雅降級)**：修改 `layout.tsx` 和 `Navbar.tsx`，增加 `isClerkConfigured` 判斷。如果環境變數缺失，則不加載 ClerkProvider，並隱藏登入按鈕，確保網站能成功編譯。
+2. **手動設定**：在 Vercel 專案的 `Settings > Environment Variables` 填入 Clerk 提供的兩把鑰匙。
+3. **重新部署 (Redeploy)**：設定完變數後必須手動點擊 Redeploy 才能生效。
+
+#### 問題 B：多個專案覆蓋 (Repository Overlap)
+
+**症狀：**
+
+- 更新 Podcast 網站後，原本顯示勞工公司（www.hk-labor.company）的網站變成了 Podcast 的內容
+
+**原因：**
+
+- 兩個不同的 Vercel 專案（勞工網站 & Podcast 網站）不小心連接到了同一個 GitHub 倉庫 (`zzzzzerozzzz/secondsight-web`)
+- 每次推送代碼到 main 分支時，兩個網站都會同時更新為最新的代碼
+
+**解決方案 (已執行)：**
+
+1. **恢復舊網站**：進入舊網站本地資料夾 (`c:\Users\usera\Downloads\SecondSight\web`)，執行 `git push origin main --force` 把原本勞工網站的代碼推回倉庫，恢復線上運作。
+2. **建立新倉庫**：為 Podcast 網站單獨建立一個 GitHub 倉庫 (`zzzzzerozzzz/podcast-web`)。
+3. **切換遠端**：
+
+   ```powershell
+   git remote remove origin
+   git remote add origin https://github.com/zzzzzerozzzz/podcast-web.git
+   git push -u origin main
+   ```
+
+4. **Vercel 重連**：在 Vercel 建立一個新專案，連接到全新的 `podcast-web` 倉庫。
+
 ---
 
 ## 📋 已建立的斜線指令

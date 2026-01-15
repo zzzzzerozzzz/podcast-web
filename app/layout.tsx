@@ -33,14 +33,15 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
-// Check if Clerk is configured
-const isClerkConfigured = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Check if Clerk is configured
+  const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  const isClerkConfigured = !!publishableKey;
+
   const content = (
     <html lang="zh-TW" suppressHydrationWarning>
       <body
@@ -57,6 +58,8 @@ export default function RootLayout({
           <div className="md:hidden">
             <BottomNav />
           </div>
+          {/* Debug tag to check if env vars are present (hidden) */}
+          <div id="clerk-debug" style={{ display: 'none' }} data-configured={isClerkConfigured}></div>
         </AudioProvider>
       </body>
     </html>
@@ -64,7 +67,7 @@ export default function RootLayout({
 
   // Only wrap with ClerkProvider if configured
   if (isClerkConfigured) {
-    return <ClerkProvider>{content}</ClerkProvider>;
+    return <ClerkProvider publishableKey={publishableKey}>{content}</ClerkProvider>;
   }
 
   return content;

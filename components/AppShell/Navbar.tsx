@@ -5,12 +5,10 @@ import Image from "next/image";
 import { UserButton, SignInButton, SignedOut, SignedIn } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
-// Check if Clerk is configured (client-side check)
-const isClerkConfigured = typeof window !== 'undefined'
-    ? !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-    : !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
 export function Navbar() {
+    // Check if Clerk is configured (client-side check)
+    const isClerkConfigured = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
             <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
