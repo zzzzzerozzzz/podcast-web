@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-// import { UserButton, SignInButton, SignedOut, SignedIn } from "@clerk/nextjs";
-// import { Button } from "@/components/ui/button";
+import { UserButton, SignInButton, SignedOut, SignedIn } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 export function Navbar() {
     return (
@@ -54,8 +54,7 @@ export function Navbar() {
                 <div className="flex items-center gap-4">
                     {/* Mobile only: minimal */}
 
-                    {/* Desktop & Mobile Auth - Temporarily Disabled */}
-                    {/* 
+                    {/* Desktop & Mobile Auth */}
                     <SignedOut>
                         <SignInButton mode="modal">
                             <Button variant="ghost" className="font-bold text-primary hover:bg-primary/5">
@@ -78,7 +77,6 @@ export function Navbar() {
                             }}
                         />
                     </SignedIn>
-                    */}
                 </div>
             </div>
         </nav>
