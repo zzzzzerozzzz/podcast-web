@@ -15,6 +15,7 @@ export interface PostData {
     readTime: string;
     excerpt: string;
     featured?: boolean;
+    image?: string;
     contentHtml?: string;
     content?: string;
 }
@@ -42,7 +43,7 @@ export function getAllPosts(): PostData[] {
         return {
             id,
             slug,
-            ...(matterResult.data as { date: string; title: string; category: string; excerpt: string; readTime: string; featured?: boolean }),
+            ...(matterResult.data as { date: string; title: string; category: string; excerpt: string; readTime: string; featured?: boolean; image?: string }),
         };
     });
 
@@ -78,6 +79,11 @@ export async function getPostData(slug: string) {
         id: slug,
         slug,
         contentHtml,
-        ...(matterResult.data as { date: string; title: string; category: string; excerpt: string; readTime: string; featured?: boolean }),
+        ...(matterResult.data as { date: string; title: string; category: string; excerpt: string; readTime: string; featured?: boolean; image?: string }),
     };
+}
+
+export async function getPostsByCategory(category: string): Promise<PostData[]> {
+    const allPosts = getAllPosts();
+    return allPosts.filter(post => post.category === category);
 }

@@ -223,14 +223,14 @@ export default async function Home() {
 
               <div className="prose prose-lg prose-stone font-serif text-muted-foreground leading-relaxed max-w-2xl">
                 <p>
-                  我們不談冰冷的技術，我們談<strong>實戰的應用</strong>。透過將 AI 工具無縫融入餐飲營運、團隊管理與個人生產力，我們將原本的「線性成長」轉化為「指數級爆發」。
+                  我們不談冰冷的技術，我們談<strong>實戰的 AI 工作流</strong>。透過將 AI 工具無縫融入你的每日決策、資料處理與產出系統，我們將原本的「低效勤奮」轉化為「指數級增長」。
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
-                <Link href="/blog?category=AI 增長引擎">
-                  <Button className="rounded-full bg-stone-900 hover:bg-stone-800 text-white px-10 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105">
-                    探索 AI 實戰專科
+                <Link href="/ai-engine">
+                  <Button className="rounded-full bg-stone-900 hover:bg-stone-800 text-white px-10 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105 active:scale-95">
+                    進入 AI 增長引擎
                   </Button>
                 </Link>
                 <div className="flex -space-x-3 items-center ml-2">

@@ -33,7 +33,7 @@ export function Navbar() {
                         { href: "/", label: "首頁" },
                         { href: "/listen", label: "Podcast 試聽" },
                         { href: "/blog", label: "專欄文章" },
-                        { href: "/blog?category=AI 增長引擎", label: "AI 增長引擎" }
+                        { href: "/ai-engine", label: "AI 增長引擎" }
                     ].map((link) => (
                         <Link
                             key={link.href}

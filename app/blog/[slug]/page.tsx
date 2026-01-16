@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     <div className="absolute inset-0 bg-primary/5 blur-3xl -z-10" />
 
                     <Image
-                        src={getCategoryImage(articleData.category)}
+                        src={articleData.image || getCategoryImage(articleData.category)}
                         alt={articleData.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
