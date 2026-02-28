@@ -4,8 +4,13 @@ import { Headphones, Timer, Sparkles, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { subscribeToWaitlist } from "@/app/actions/subscribe";
 
 export default function ListenPage() {
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSubscribed, setIsSubscribed] = useState(false);
+
     return (
         <main className="min-h-[80vh] flex items-center justify-center px-6 py-20">
             <div className="max-w-2xl w-full text-center space-y-12 relative">
@@ -50,22 +55,64 @@ export default function ListenPage() {
                 </div>
 
                 {/* Status Card */}
-                <div className="bg-stone-50 rounded-[2rem] p-8 border border-stone-100 max-w-sm mx-auto shadow-sm">
-                    <div className="flex items-center justify-center gap-4 text-stone-600 mb-4">
-                        <Timer className="w-5 h-5 text-primary" />
-                        <span className="font-bold">製作進度：85%</span>
-                    </div>
-                    <div className="w-full h-2 bg-stone-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-primary w-[85%] rounded-full shadow-[0_0_10px_rgba(107,142,35,0.3)]" />
-                    </div>
+                {/* Action Card */}
+                <div className="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 border border-border/50 max-w-md mx-auto shadow-sm text-left relative overflow-hidden">
+                    {isSubscribed ? (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/95 backdrop-blur-md p-6 text-center animate-in fade-in zoom-in duration-300">
+                            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                <Sparkles className="w-8 h-8 text-primary" />
+                            </div>
+                            <h3 className="text-xl font-bold text-primary mb-2">訂閱成功！</h3>
+                            <p className="text-muted-foreground">
+                                感謝您的支持。<br />
+                                節目上線時，您將是第一批收到的聽眾。
+                            </p>
+                        </div>
+                    ) : (
+                        <>
+                            <h3 className="font-bold text-lg mb-2">第一時間收到通知</h3>
+                            <p className="text-sm text-muted-foreground mb-6">
+                                留下您的 Email，我們將在節目上線時立即通知您，並發送首集專屬講義。
+                            </p>
+                            
+                            <form 
+                                className="flex flex-col gap-3" 
+                                onSubmit={async (e) => {
+                                    e.preventDefault();
+                                    setIsLoading(true);
+                                    const formData = new FormData(e.currentTarget);
+                                    await subscribeToWaitlist(formData);
+                                    setIsLoading(false);
+                                    setIsSubscribed(true);
+                                }}
+                            >
+                                <input 
+                                    name="email"
+                                    type="email" 
+                                    required
+                                    placeholder="name@example.com" 
+                                    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                                />
+                                <Button 
+                                    disabled={isLoading}
+                                    className="w-full rounded-xl font-bold py-6 text-base shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
+                                >
+                                    {isLoading ? "處理中..." : "訂閱上線通知"}
+                                </Button>
+                            </form>
+                            <p className="text-xs text-muted-foreground mt-4">
+                                我們承諾不發送垃圾郵件，您可以隨時取消訂閱。
+                            </p>
+                        </>
+                    )}
                 </div>
 
-                {/* Action */}
-                <div className="pt-8">
+                {/* Back Link */}
+                <div className="pt-4">
                     <Link href="/">
-                        <Button variant="ghost" className="rounded-full group hover:bg-primary/5 text-stone-600 font-bold">
+                        <Button variant="ghost" className="rounded-full group hover:bg-muted text-muted-foreground">
                             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-                            回到首頁探索其他內容
+                            回到首頁
                         </Button>
                     </Link>
                 </div>

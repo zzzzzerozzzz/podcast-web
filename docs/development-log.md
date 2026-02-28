@@ -294,6 +294,16 @@ npm run dev -- -p 3005
 
 ---
 
+## [2026-02-28] AI Memory Persistence Setup
+
+**Focus:** 解決 IDE 中 AI 聊天視窗關閉後「喪失對話記憶」的痛點。
+
+### 1. New Features Delivered
+- **對話實體化 (System Prompt Injection)**: 
+  - 建立 `.agent/skills/memory-persistence.md`：強制未來的 AI Chat 助理將重要的討論內容主動備份為本地檔案。
+  - 將深度架構討論和 Prompt 過程輸出為 Markdown 檔案，集中儲存於 `.agent/knowledge/` 資料夾，隨 Git 歷史紀錄保存。
+  - 確保未來即使對話視窗清空，仍能從專案資料夾找回所有脈絡。
+
 ## 📋 已建立的斜線指令
 
 | 指令 | 功能 | 檔案位置 |

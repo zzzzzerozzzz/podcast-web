@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { getAllPosts } from "@/lib/posts";
+import { ReadingList } from "@/components/Home/ReadingList";
 
 export default async function Home() {
   const posts = getAllPosts();
@@ -148,49 +149,119 @@ export default async function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.slice(0, 3).map((post) => {
-              let categoryImage = "/images/blog-mindset.png";
-              if (post.category === "日常習慣") categoryImage = "/images/blog-habit.png";
-              if (post.category === "數位生活") categoryImage = "/images/blog-digital.png";
-              if (post.category === "Zero 隨手記") categoryImage = "/images/blog-notes.png";
-              if (post.category === "AI 增長引擎") categoryImage = "/images/blog-ai-engine.png";
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            {/* Main Featured Post (Left Column) */}
+            <div className="lg:col-span-7">
+              {(() => {
+                const featuredPost = posts[0];
+                if (!featuredPost) return null;
 
-              return (
-                <Link key={post.id} href={`/blog/${post.slug}`} className="group flex flex-col h-full bg-white rounded-[1.5rem] shadow-sm border border-stone-100/50 hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden relative mb-4 m-2">
-                    <Image
-                      src={categoryImage}
-                      alt={post.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm z-10">
-                      {post.category}
+                // Image Selection Logic
+                let displayImage = "/images/blog-mindset.png"; // Default fallback
+                
+                // 1. Check for specific post images (High Priority)
+                if (featuredPost.slug.includes("perplexity-pro-scenes")) displayImage = "/images/posts/perplexity-net.png";
+                else if (featuredPost.slug.includes("tencent-yuanbao-guide")) displayImage = "/images/posts/data-mine.png";
+                else if (featuredPost.slug.includes("ai-one-person-company") || featuredPost.title.includes("隨手記")) displayImage = "/images/posts/ai-filter.png";
+                
+                // 2. Fallback to category images
+                else {
+                  if (featuredPost.category === "日常習慣") displayImage = "/images/blog-habit.png";
+                  if (featuredPost.category === "數位生活") displayImage = "/images/blog-digital.png";
+                  if (featuredPost.category === "Zero 隨手記") displayImage = "/images/blog-notes.png";
+                  if (featuredPost.category === "AI 增長引擎") displayImage = "/images/blog-ai-engine.png";
+                }
+
+                return (
+                  <Link href={`/blog/${featuredPost.slug}`} className="group block space-y-6">
+                    <div className="aspect-[16/9] rounded-[2rem] overflow-hidden relative shadow-sm border border-stone-100/50 group-hover:border-primary/20 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-500">
+                      <Image
+                        src={displayImage}
+                        alt={featuredPost.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-sm font-bold text-primary shadow-sm z-10">
+                        {featuredPost.category}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="flex-1 flex flex-col px-6 pb-6 pt-2">
-                    <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-3">
-                      <span>{post.date}</span>
-                      <span className="w-1 h-1 bg-stone-300 rounded-full" />
-                      <span>{post.readTime}</span>
+                    
+                    <div className="space-y-4 px-2">
+                       <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
+                        <span>{featuredPost.date}</span>
+                        <span className="w-1 h-1 bg-stone-300 rounded-full" />
+                        <span>{featuredPost.readTime}</span>
+                      </div>
+                      
+                      <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+                        {featuredPost.title}
+                      </h3>
+                      <p className="text-muted-foreground text-lg line-clamp-3 leading-relaxed font-serif">
+                        {featuredPost.excerpt}
+                      </p>
+                      
+                      <div className="inline-flex items-center text-primary font-bold group-hover:translate-x-2 transition-transform">
+                         閱讀完整故事 <MoveRight className="w-5 h-5 ml-2" />
+                      </div>
                     </div>
+                  </Link>
+                );
+              })()}
+            </div>
 
-                    <h3 className="text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed mb-6 flex-1 font-serif">
-                      {post.excerpt}
-                    </p>
+            {/* Recent Posts List (Right Column) */}
+            <div className="lg:col-span-5 space-y-8 pt-2">
+               {posts.slice(1, 4).map((post) => {
+                  // Image Selection Logic
+                  let displayImage = "/images/blog-mindset.png"; // Default fallback
+                  
+                  // 1. Check for specific post images (High Priority)
+                  if (post.slug.includes("perplexity-pro-scenes")) displayImage = "/images/posts/perplexity-net.png";
+                  else if (post.slug.includes("tencent-yuanbao-guide")) displayImage = "/images/posts/data-mine.png";
+                  else if (post.slug.includes("ai-one-person-company") || post.title.includes("隨手記")) displayImage = "/images/posts/ai-filter.png";
+                  
+                  // 2. Fallback to category images
+                  else {
+                    if (post.category === "日常習慣") displayImage = "/images/blog-habit.png";
+                    if (post.category === "數位生活") displayImage = "/images/blog-digital.png";
+                    if (post.category === "Zero 隨手記") displayImage = "/images/blog-notes.png";
+                    if (post.category === "AI 增長引擎") displayImage = "/images/blog-ai-engine.png";
+                  }
 
-                    <div className="flex items-center text-sm font-bold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                      閱讀全文 <MoveRight className="w-4 h-4 ml-1" />
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  return (
+                    <Link key={post.id} href={`/blog/${post.slug}`} className="group flex gap-6 items-start p-4 -mx-4 rounded-2xl hover:bg-stone-50 transition-colors">
+                       <div className="w-32 h-24 relative rounded-xl overflow-hidden shrink-0 shadow-sm border border-stone-100 group-hover:shadow-md transition-all">
+                          <Image
+                            src={displayImage}
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                       </div>
+                       
+                       <div className="space-y-2">
+                          <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
+                            <span className="text-primary font-bold">{post.category}</span>
+                            <span className="w-1 h-1 bg-stone-300 rounded-full" />
+                            <span>{post.date}</span>
+                          </div>
+                          
+                          <h4 className="text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                            {post.title}
+                          </h4>
+                       </div>
+                    </Link>
+                  );
+               })}
+
+               <div className="pt-4 border-t border-stone-100">
+                  <Link href="/blog" className="inline-flex items-center gap-2 text-stone-500 hover:text-primary font-bold transition-colors">
+                     查看更多歷史文章 <MoveRight className="w-4 h-4" />
+                  </Link>
+               </div>
+            </div>
+
           </div>
 
           <div className="mt-12 text-center md:hidden">
@@ -200,6 +271,8 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Reading List Section - New */}
+        <ReadingList />
 
         {/* AI Growth Engine Section - New High Impact Area */}
         <section className="py-20 md:py-28 relative overflow-hidden">
@@ -248,7 +321,7 @@ export default async function Home() {
               <div className="absolute inset-0 bg-primary/20 rounded-[3rem] blur-3xl -z-10 scale-90 group-hover:scale-100 transition-transform duration-700" />
               <div className="relative aspect-square rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl bg-white">
                 <Image
-                  src="/images/blog-ai-engine.png"
+                  src="/images/home-ai-engine-flat.png"
                   alt="AI Growth Engine"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-1000"
@@ -305,7 +378,7 @@ export default async function Home() {
             <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 text-center space-y-6 flex flex-col items-center">
               <div className="relative w-32 h-32 mb-4">
                 <Image
-                  src="/images/membership-exclusive.png"
+                  src="/images/membership-key.png"
                   alt="Exclusive Benefits"
                   fill
                   className="object-contain"

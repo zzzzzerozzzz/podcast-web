@@ -8,6 +8,7 @@ import { InstallPrompt } from "@/components/PWA/InstallPrompt";
 import { Navbar } from "@/components/AppShell/Navbar";
 import { AudioProvider } from "@/lib/audio-context";
 import { MiniPlayer } from "@/components/Audio/MiniPlayer";
+import { Footer } from "@/components/AppShell/Footer";
 
 const outfit = Outfit({
   variable: "--font-sans",
@@ -53,6 +54,7 @@ export default function RootLayout({
           <div className="pt-16 md:pt-20">
             {children}
           </div>
+          <Footer />
           <MiniPlayer />
           <InstallPrompt />
           <div className="md:hidden">
