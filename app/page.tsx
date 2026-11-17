@@ -668,7 +668,9 @@ export default function Home() {
                       <span className="text-[14px] font-semibold text-[#f0b48a]">{p.tag}</span>
                     )}
                   </div>
-                  <div className="text-[22px] leading-tight font-bold font-mono tabular-nums mb-2.5 text-[#f7efdd]">{p.name}</div>
+                  <div className="h-[56px] mb-2 flex items-start">
+                    <span className="text-[22px] leading-tight font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
+                  </div>
                   <p className="text-[13px] text-white/55 leading-snug mb-2.5">{p.who}</p>
                   <p className="text-[14.5px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
                     「{p.hook}」
