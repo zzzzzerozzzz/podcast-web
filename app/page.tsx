@@ -13,43 +13,64 @@ const T = {
     tagline: "一句話：深圳商家想做嘅「香港客人」生意，我哋隔住一條深圳河幫你直接觸達佢哋。",
     dateNote: "數據抓取：2026-11-17（Meta 官方 API 實時）",
     stats: [
-      { value: "38,178", label: "矩陣總粉絲" },
-      { value: "879萬", label: "28日瀏覽·兩大專頁" },
+      { value: "38,178", label: "矩陣總粉絲", up: true },
+      { value: "879萬", label: "28日瀏覽·兩大專頁", up: true },
       { value: "4,267", label: "單帖最高分享" },
       { value: "12,000", label: "私域群組成員" },
     ],
     sellingTitle: "點解揀我哋（三個別人冇嘅）",
     points: [
       {
+        icon: "🎯",
         title: "① 精準：粉絲就係「正在決定去邊消費嘅香港人」",
         body: "北上消費決策週期＝週四計劃 → 週五搵料 → 週六日出發（自家 174 帖數據實證）。你嘅廣告帖出現喺佢哋「搵料」嗰一刻，唔係亂槍打鳥。",
       },
       {
+        icon: "📣",
         title: "② 裂變：內容被香港人「轉發俾朋友」",
         body: "分享係 Facebook 最強推流訊號。我哋單帖分享最高 4,267 次——一次投放，裂變觸及遠超粉絲數。俾 1 個粉嘅錢，到 3 個人嘅屏幕。",
       },
       {
+        icon: "💎",
         title: "③ 私域：12,000 人北上交流群組直達＋可置頂",
         body: "專頁帖之外，群組帖直達 12,000 個活躍問「去邊食去邊玩」嘅香港人，可置頂 7-14 日持續曝光——呢個係廣告投放買唔到嘅。",
       },
     ],
     dashTitle: "後台實錄：28 天增長（兩大專頁官方數據）",
     dashes: [
-      { name: "大灣區北上攻略情報站 · 12,094 追蹤" },
-      { name: "深圳美食住宿｜港人北上攻略 · 7,135 追蹤" },
-    ],
-    dashNumLabels: [
-      { v: "465萬", l: "瀏覽（28日）↑160%" },
-      { v: "147,595", l: "互動 ↑56%" },
-      { v: "+7,497", l: "新追蹤 ↑233%" },
-    ],
-    dashNumLabels2: [
-      { v: "414萬", l: "瀏覽（28日）↑293%" },
-      { v: "154,612", l: "互動 ↑233%" },
-      { v: "+6,330", l: "新追蹤 ↑708%" },
+      {
+        name: "大灣區北上攻略情報站",
+        fans: "12,094 追蹤",
+        nums: [
+          { v: "465萬", l: "瀏覽（28日）↑160%" },
+          { v: "147,595", l: "互動 ↑56%" },
+          { v: "+7,497", l: "新追蹤 ↑233%" },
+        ],
+        float1: "465萬瀏覽",
+        float2: "↑160%",
+      },
+      {
+        name: "深圳美食住宿｜港人北上攻略",
+        fans: "7,135 追蹤",
+        nums: [
+          { v: "414萬", l: "瀏覽（28日）↑293%" },
+          { v: "154,612", l: "互動 ↑233%" },
+          { v: "+6,330", l: "新追蹤 ↑708%" },
+        ],
+        float1: "+708% 增長中",
+        float2: "414萬瀏覽",
+      },
     ],
     dashSum:
       "兩頁合計：28 天 879 萬瀏覽、30.2 萬次互動、新增 13,827 追蹤——日均 31 萬曝光嘅高速增長流量池，你嘅廣告帖進入嘅唔係死水一潭。",
+    cpmTitle: "📈 性價比對決",
+    cpmLeftTitle: "傳統 Meta 廣告 🔥",
+    cpmLeftBody:
+      "CPM（每千次曝光）約 HK$30-150，另加代理費 12-20%。買足 879 萬曝光＝成本高達數十萬，仲要自己煩受眾設定同素材。",
+    cpmRightTitle: "本矩陣推廣 ⚡",
+    cpmRightBody:
+      "揀 $2,800 全矩陣或 $3,880 包月——每千次精準港客觸達成本只需幾毫子至幾蚊，附帶老牌專頁信任度＋私域群組直達。拒絕無效燒錢。",
+    vs: "VS",
     caseTitle: "實績案例：深圳灣展覽推廣",
     caseName: "史前星球恐龍展（深圳灣萬象城 BASE）· 2026-09",
     caseNums: [
@@ -61,14 +82,14 @@ const T = {
       "單條推廣帖帶動大量「點去/幾多錢」私訊查詢，全部引導至場館資訊同港人交通路線（福田/羅湖→11號線後海站）。觀看數超粉絲數＝平台演算法額外推流。",
     topTitle: "近30日代表作（真實數據）",
     topPosts: [
-      { name: "深圳科技地標帖", likes: 2640, shares: 4267 },
-      { name: "廣州北京路帖", likes: 2047, shares: 3026 },
-      { name: "深圳森林商場帖", likes: 854, shares: 214 },
-      { name: "地鐵6號線帖", likes: 772, shares: 94 },
-      { name: "鹽田一日遊帖", likes: 593, shares: 97 },
+      { emoji: "🏙️", name: "深圳科技地標帖", likes: 2640, shares: 4267, hot: true },
+      { emoji: "🛤️", name: "廣州北京路帖", likes: 2047, shares: 3026 },
+      { emoji: "🌿", name: "深圳森林商場帖", likes: 854, shares: 214 },
+      { emoji: "🚇", name: "地鐵6號線帖", likes: 772, shares: 94 },
+      { emoji: "🏖️", name: "鹽田一日遊帖", likes: 593, shares: 97 },
     ],
     likeWord: "讚",
-    shareWord: "分享（裂變觸及）",
+    shareWord: "分享",
     lineupTitle: "媒體陣容",
     lineupHead: ["媒體", "粉絲", "定位"],
     lineup: [
@@ -80,8 +101,7 @@ const T = {
       { name: "IG @chinatravelhack", fans: "3,705", note: "中國旅遊影片同步（兩個月 +24%）" },
     ],
     priceTitle: "合作方案（HK$）",
-    singleTitle: "單項",
-    priceWord: "價",
+    singleTitle: "單項價目",
     singles: [
       ["專頁圖文帖（1專頁1帖）", "$500-800"],
       ["專頁影片帖 Reel（60-90s 配音字幕）", "$800-1,500"],
@@ -91,30 +111,22 @@ const T = {
       ["IG 同步加購", "+$200/帖"],
     ],
     packages: [
-      { tag: "🔥 首單體驗", name: "$688 體驗組", body: "專頁圖文 1 帖＋群組情報帖 1 帖（原價約 $900，先試效果）" },
-      { tag: "🎯 週末爆點", name: "$1,880", body: "週四/五黃金檔 2 條影片＋群組置頂 3 日（卡準「週五搵料」決策點）" },
-      { tag: "🚀 全矩陣", name: "$2,800", body: "3 專頁＋IG＋群組置頂 7 日（單買 $3,500+）" },
-      { tag: "📅 包月檔", name: "$3,880/月", body: "每月 2 影片＋2 圖文＋群組 4 帖＋黃金檔優先（3 個月起）" },
+      { tag: "🔥 首單體驗", name: "$688 體驗組", body: "專頁圖文 1 帖＋群組情報帖 1 帖（原價約 $900，先試效果）", star: false },
+      { tag: "🎯 週末爆點", name: "$1,880", body: "週四/五黃金檔 2 條影片＋群組置頂 3 日（卡準「週五搵料」決策點）", star: false },
+      { tag: "🚀 全矩陣", name: "$2,800", body: "3 專頁＋IG＋群組置頂 7 日（單買 $3,500+）", star: true },
+      { tag: "📅 包月檔", name: "$3,880/月", body: "每月 2 影片＋2 圖文＋群組 4 帖＋黃金檔優先（3 個月起）", star: false },
     ],
+    starBadge: "⭐ 最多商家選擇 · 性價比最高",
+    bookNow: "⚡ 立即預約此方案",
+    payNote: "支持港幣/人民幣對公、對私結算 · 初稿 100% 商家預審",
     addons:
-      "加購：素材授權 +30-50%｜留言關鍵字→私訊導流 +$150（避 FB 外鏈新政）｜簡體版內容 +$100。對比參考：香港 FB 付費廣告 CPM 約 HK$30-150 另加代理費 12-20%。",
-    whyTitle: "值得投放嘅四個理由",
-    cpmTitle: "📈 性價比效益對比",
-    cpmBody:
-      "香港/大灣區 Meta 官方廣告嘅 CPM（每千次曝光成本）約為 HK$30-150（另加代理費 12-20%）。如買足 879 萬曝光，成本高達數十萬。而透過本矩陣（如選擇 $2,800 全矩陣 或 $3,880 包月），每千次精準港客觸達成本只需幾毫子至幾蚊，更附帶老牌專頁信任度與私域群組直達——拒絕無效燒錢。",
-    why: [
-      "北上決策週期＝週四計劃→週五搵料→週六日行動，廣告帖黃金檔對位",
-      "單帖分享 1,000-4,267，裂變觸及遠超粉絲數",
-      "香港 FB 付費廣告 CPM 約 HK$30-150 另加代理費 12-20%——原生內容帖自帶信任＋精準北上客",
-      "AI 生產線＋真人編輯，30 日 92 帖穩定產能",
-    ],
+      "加購：素材授權 +30-50%｜留言關鍵字→私訊導流 +$150（避 FB 外鏈新政）｜簡體版內容 +$100",
     ctaLine: "掃碼即時查詢 · 24 小時內回覆",
     ctaContact: "香港團隊 · 繁簡雙語 · 服務深圳/大灣區商家＋香港品牌",
     qrWechat: "微信掃碼加好友",
     qrWa: "WhatsApp 掃碼",
     qrWaBtn: "桌面版撳呢度開 WhatsApp",
     mailLabel: "電郵",
-    settleNote: "支援港幣／人民幣結算 · 初稿免費預審一次",
     footer:
       "條款：出稿 7 日內；初稿商家預審一次；合作帖按 Meta 政策標註「付費合作」。數據截至 2026-11-17，報價可議。",
   },
@@ -124,43 +136,64 @@ const T = {
     tagline: "一句话：深圳商家想做的「香港客人」生意，我们隔着一条深圳河帮你直接触达他们。",
     dateNote: "数据抓取：2026-11-17（Meta 官方 API 实时）",
     stats: [
-      { value: "38,178", label: "矩阵总粉丝" },
-      { value: "879万", label: "28日浏览·两大专页" },
+      { value: "38,178", label: "矩阵总粉丝", up: true },
+      { value: "879万", label: "28日浏览·两大专页", up: true },
       { value: "4,267", label: "单帖最高分享" },
       { value: "12,000", label: "私域群组成员" },
     ],
     sellingTitle: "为什么选我们（三个别人没有的）",
     points: [
       {
+        icon: "🎯",
         title: "① 精准：粉丝就是「正在决定去哪消费的香港人」",
         body: "北上消费决策周期＝周四计划 → 周五找料 → 周六日出发（自家 174 帖数据实证）。你的广告帖出现在他们「找料」那一刻，不是乱枪打鸟。",
       },
       {
+        icon: "📣",
         title: "② 裂变：内容被香港人「转发给朋友」",
         body: "分享是 Facebook 最强推流信号。我们单帖分享最高 4,267 次——一次投放，裂变触达远超粉丝数。付 1 个粉的钱，到 3 个人的屏幕。",
       },
       {
+        icon: "💎",
         title: "③ 私域：12,000 人北上交流群组直达＋可置顶",
         body: "专页帖之外，群组帖直达 12,000 个活跃问「去哪吃去哪玩」的香港人，可置顶 7-14 天持续曝光——这是广告投放买不到的。",
       },
     ],
     dashTitle: "后台实录：28 天增长（两大专页官方数据）",
     dashes: [
-      { name: "大湾区北上攻略情报站 · 12,094 追踪" },
-      { name: "深圳美食住宿｜港人北上攻略 · 7,135 追踪" },
-    ],
-    dashNumLabels: [
-      { v: "465万", l: "浏览（28日）↑160%" },
-      { v: "147,595", l: "互动 ↑56%" },
-      { v: "+7,497", l: "新追踪 ↑233%" },
-    ],
-    dashNumLabels2: [
-      { v: "414万", l: "浏览（28日）↑293%" },
-      { v: "154,612", l: "互动 ↑233%" },
-      { v: "+6,330", l: "新追踪 ↑708%" },
+      {
+        name: "大湾区北上攻略情报站",
+        fans: "12,094 追踪",
+        nums: [
+          { v: "465万", l: "浏览（28日）↑160%" },
+          { v: "147,595", l: "互动 ↑56%" },
+          { v: "+7,497", l: "新追踪 ↑233%" },
+        ],
+        float1: "465万浏览",
+        float2: "↑160%",
+      },
+      {
+        name: "深圳美食住宿｜港人北上攻略",
+        fans: "7,135 追踪",
+        nums: [
+          { v: "414万", l: "浏览（28日）↑293%" },
+          { v: "154,612", l: "互动 ↑233%" },
+          { v: "+6,330", l: "新追踪 ↑708%" },
+        ],
+        float1: "+708% 增长中",
+        float2: "414万浏览",
+      },
     ],
     dashSum:
       "两页合计：28 天 879 万浏览、30.2 万次互动、新增 13,827 追踪——日均 31 万曝光的高速增长流量池，你的广告帖进入的不是死水一潭。",
+    cpmTitle: "📈 性价比对决",
+    cpmLeftTitle: "传统 Meta 广告 🔥",
+    cpmLeftBody:
+      "CPM（每千次曝光）约 HK$30-150，另加代理费 12-20%。买足 879 万曝光＝成本高达数十万，还要自己烦受众设定和素材。",
+    cpmRightTitle: "本矩阵推广 ⚡",
+    cpmRightBody:
+      "选 $2,800 全矩阵或 $3,880 包月——每千次精准港客触达成本只需几毫至几蚊，附带老牌专页信任度＋私域群组直达。拒绝无效烧钱。",
+    vs: "VS",
     caseTitle: "实绩案例：深圳湾展览推广",
     caseName: "史前星球恐龙展（深圳湾万象城 BASE）· 2026-09",
     caseNums: [
@@ -172,14 +205,14 @@ const T = {
       "单条推广帖带动大量「怎么去/多少钱」私讯查询，全部引导至场馆信息与港人交通路线（福田/罗湖→11号线后海站）。观看数超粉丝数＝平台算法额外推流。",
     topTitle: "近30日代表作（真实数据）",
     topPosts: [
-      { name: "深圳科技地标帖", likes: 2640, shares: 4267 },
-      { name: "广州北京路帖", likes: 2047, shares: 3026 },
-      { name: "深圳森林商场帖", likes: 854, shares: 214 },
-      { name: "地铁6号线帖", likes: 772, shares: 94 },
-      { name: "盐田一日游帖", likes: 593, shares: 97 },
+      { emoji: "🏙️", name: "深圳科技地标帖", likes: 2640, shares: 4267, hot: true },
+      { emoji: "🛤️", name: "广州北京路帖", likes: 2047, shares: 3026 },
+      { emoji: "🌿", name: "深圳森林商场帖", likes: 854, shares: 214 },
+      { emoji: "🚇", name: "地铁6号线帖", likes: 772, shares: 94 },
+      { emoji: "🏖️", name: "盐田一日游帖", likes: 593, shares: 97 },
     ],
     likeWord: "赞",
-    shareWord: "分享（裂变触达）",
+    shareWord: "分享",
     lineupTitle: "媒体阵容",
     lineupHead: ["媒体", "粉丝", "定位"],
     lineup: [
@@ -191,8 +224,7 @@ const T = {
       { name: "IG @chinatravelhack", fans: "3,705", note: "中国旅游影片同步（两个月 +24%）" },
     ],
     priceTitle: "合作方案（HK$）",
-    singleTitle: "单项",
-    priceWord: "价",
+    singleTitle: "单项价目",
     singles: [
       ["专页图文帖（1专页1帖）", "$500-800"],
       ["专页视频帖 Reel（60-90s 配音字幕）", "$800-1,500"],
@@ -202,30 +234,21 @@ const T = {
       ["IG 同步加购", "+$200/帖"],
     ],
     packages: [
-      { tag: "🔥 首单体验", name: "$688 体验组", body: "专页图文 1 帖＋群组情报帖 1 帖（原价约 $900，先试效果）" },
-      { tag: "🎯 周末爆点", name: "$1,880", body: "周四/五黄金档 2 条视频＋群组置顶 3 日（卡准「周五找料」决策点）" },
-      { tag: "🚀 全矩阵", name: "$2,800", body: "3 专页＋IG＋群组置顶 7 日（单买 $3,500+）" },
-      { tag: "📅 包月档", name: "$3,880/月", body: "每月 2 视频＋2 图文＋群组 4 帖＋黄金档优先（3 个月起）" },
+      { tag: "🔥 首单体验", name: "$688 体验组", body: "专页图文 1 帖＋群组情报帖 1 帖（原价约 $900，先试效果）", star: false },
+      { tag: "🎯 周末爆点", name: "$1,880", body: "周四/五黄金档 2 条视频＋群组置顶 3 日（卡准「周五找料」决策点）", star: false },
+      { tag: "🚀 全矩阵", name: "$2,800", body: "3 专页＋IG＋群组置顶 7 日（单买 $3,500+）", star: true },
+      { tag: "📅 包月档", name: "$3,880/月", body: "每月 2 视频＋2 图文＋群组 4 帖＋黄金档优先（3 个月起）", star: false },
     ],
-    addons:
-      "加购：素材授权 +30-50%｜留言关键词→私信导流 +$150（避 FB 外链新政）｜简体版内容 +$100。对比参考：香港 FB 付费广告 CPM 约 HK$30-150 另加代理费 12-20%。",
-    whyTitle: "值得投放的四个理由",
-    cpmTitle: "📈 性价比效益对比",
-    cpmBody:
-      "香港/大湾区 Meta 官方广告的 CPM（每千次曝光成本）约为 HK$30-150（另加代理费 12-20%）。如买足 879 万曝光，成本高达数十万。而透过本矩阵（如选择 $2,800 全矩阵 或 $3,880 包月），每千次精准港客触达成本只需几毫至几蚊，更附带老牌专页信任度与私域群组直达——拒绝无效烧钱。",
-    why: [
-      "北上决策周期＝周四计划→周五找料→周六日行动，广告帖黄金档对位",
-      "单帖分享 1,000-4,267，裂变触达远超粉丝数",
-      "香港 FB 付费广告 CPM 约 HK$30-150 另加代理费 12-20%——原生内容帖自带信任＋精准北上客",
-      "AI 生产线＋真人编辑，30 日 92 帖稳定产能",
-    ],
+    starBadge: "⭐ 最多商家选择 · 性价比最高",
+    bookNow: "⚡ 立即预约此方案",
+    payNote: "支持港币/人民币对公、对私结算 · 初稿 100% 商家预审",
+    addons: "加购：素材授权 +30-50%｜留言关键词→私信导流 +$150（避 FB 外链新政）｜简体版内容 +$100",
     ctaLine: "扫码即时查询 · 24 小时内回复",
     ctaContact: "香港团队 · 繁简双语 · 服务深圳/大湾区商家＋香港品牌",
     qrWechat: "微信扫码加好友",
     qrWa: "WhatsApp 扫码",
     qrWaBtn: "桌面版点这里开 WhatsApp",
     mailLabel: "邮箱",
-    settleNote: "支援港币／人民币结算 · 初稿免费预审一次",
     footer:
       "条款：出稿 7 日内；初稿商家预审一次；合作帖按 Meta 政策标注「付费合作」。数据截至 2026-11-17，报价可议。",
   },
@@ -254,26 +277,34 @@ export default function Home() {
   };
 
   const t = T[lang];
-  const maxLike = Math.max(...t.topPosts.map((p) => p.likes));
-  const dashNums = [t.dashNumLabels, t.dashNumLabels2];
+  const dashImgs = ["/dash-gba.jpg", "/dash-sz.jpg"];
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen bg-[#050a14] text-white relative overflow-hidden">
+      {/* Ambient glows */}
+      <div className="pointer-events-none absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[#7c3aed]/20 blur-[140px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-52 w-[480px] h-[480px] rounded-full bg-[#0ea5e9]/15 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-0 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2dd4a0]/10 blur-[140px]" />
+
       {/* Lang toggle */}
-      <div className="sticky top-0 z-10 bg-[#0f2b5b]/90 backdrop-blur text-white text-sm">
-        <div className="max-w-2xl mx-auto flex justify-end px-4 py-2">
+      <div className="sticky top-0 z-20 bg-[#050a14]/80 backdrop-blur border-b border-white/5 text-sm">
+        <div className="max-w-3xl mx-auto flex justify-end px-5 py-2">
           <button
             onClick={() => switchLang("hk")}
-            className={`px-3 py-1 rounded-l-full border border-white/30 ${
-              lang === "hk" ? "bg-[#ff8a00] font-bold" : "opacity-70"
+            className={`px-4 py-1 rounded-full border transition ${
+              lang === "hk"
+                ? "bg-[#2dd4a0] text-[#050a14] font-bold border-[#2dd4a0]"
+                : "text-white/60 border-white/15"
             }`}
           >
             繁
           </button>
           <button
             onClick={() => switchLang("cn")}
-            className={`px-3 py-1 rounded-r-full border border-l-0 border-white/30 ${
-              lang === "cn" ? "bg-[#ff8a00] font-bold" : "opacity-70"
+            className={`ml-2 px-4 py-1 rounded-full border transition ${
+              lang === "cn"
+                ? "bg-[#2dd4a0] text-[#050a14] font-bold border-[#2dd4a0]"
+                : "text-white/60 border-white/15"
             }`}
           >
             簡
@@ -282,19 +313,25 @@ export default function Home() {
       </div>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0f2b5b] to-[#1c5bb8] text-white px-6 pt-6 pb-8">
-        <div className="max-w-2xl mx-auto">
-          <span className="inline-block bg-[#ff8a00] text-[13px] font-bold rounded-full px-3 py-1 mb-4">
+      <section className="relative px-6 pt-12 pb-10">
+        <div className="max-w-3xl mx-auto">
+          <span className="inline-block bg-gradient-to-r from-[#ff8a00] to-[#ff5e62] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-white">
             {t.badge}
           </span>
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">{t.h1}</h1>
-          <p className="text-[15px] opacity-95 mb-1">{t.tagline}</p>
-          <p className="text-xs opacity-70 mb-6">{t.dateNote}</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">{t.h1}</h1>
+          <p className="text-[15px] text-white/80 mb-2">{t.tagline}</p>
+          <p className="text-xs text-white/40 mb-8">{t.dateNote}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {t.stats.map((s) => (
-              <div key={s.label} className="bg-white/10 rounded-xl px-3 py-3 text-center">
-                <div className="text-xl font-bold">{s.value}</div>
-                <div className="text-[11px] opacity-85">{s.label}</div>
+              <div
+                key={s.label}
+                className="bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl px-4 py-4 text-center"
+              >
+                <div className="text-2xl font-bold font-mono tabular-nums bg-gradient-to-r from-[#2dd4a0] to-[#38bdf8] bg-clip-text text-transparent">
+                  {s.value}
+                  {s.up ? <span className="text-[#2dd4a0] text-base ml-1">↗</span> : null}
+                </div>
+                <div className="text-[11px] text-white/50 mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -302,141 +339,175 @@ export default function Home() {
       </section>
 
       {/* Selling points */}
-      <section className="px-6 py-10">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
-            {t.sellingTitle}
-          </h2>
+      <section className="px-6 py-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.sellingTitle}</h2>
           <div className="space-y-4">
             {t.points.map((p) => (
-              <div key={p.title} className="bg-[#f0f7ff] rounded-xl p-4">
-                <h3 className="font-semibold text-[#0f2b5b] text-[15px] mb-1">{p.title}</h3>
-                <p className="text-sm text-slate-600">{p.body}</p>
+              <div
+                key={p.title}
+                className="bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl p-5"
+              >
+                <h3 className="font-semibold text-[15px] mb-2">
+                  <span className="text-xl mr-2">{p.icon}</span>
+                  {p.title}
+                </h3>
+                <p className="text-sm text-white/60 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Dashboards */}
-      <section className="px-6 pb-4">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
-            {t.dashTitle}
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
+      {/* CPM VS */}
+      <section className="px-6 py-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.cpmTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-4 items-stretch relative">
+            <div className="bg-white/[0.03] backdrop-blur border border-red-400/20 rounded-2xl p-5">
+              <h3 className="font-bold text-red-300 text-[15px] mb-2">{t.cpmLeftTitle}</h3>
+              <p className="text-sm text-white/60 leading-relaxed">{t.cpmLeftBody}</p>
+            </div>
+            <div className="bg-[#2dd4a0]/[0.06] backdrop-blur border-2 border-[#2dd4a0]/60 rounded-2xl p-5 glow-breath">
+              <h3 className="font-bold text-[#2dd4a0] text-[15px] mb-2">{t.cpmRightTitle}</h3>
+              <p className="text-sm text-white/70 leading-relaxed">{t.cpmRightBody}</p>
+            </div>
+            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#050a14] border-2 border-white/15 items-center justify-center font-bold text-sm z-10">
+              {t.vs}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboards in phone mockups */}
+      <section className="px-6 py-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.dashTitle}</h2>
+          <div className="grid sm:grid-cols-2 gap-10">
             {t.dashes.map((d, i) => (
-              <div key={d.name} className="bg-[#f0f7ff] rounded-xl p-4">
-                <h3 className="font-semibold text-[#0f2b5b] text-[14px] mb-3">{d.name}</h3>
-                <div className="grid grid-cols-3 gap-2 mb-3">
-                  {dashNums[i].map((n) => (
-                    <div key={n.l} className="bg-white rounded-lg py-2 px-1 text-center">
-                      <div className="text-base font-bold text-[#c2410c]">{n.v}</div>
-                      <div className="text-[10px] text-slate-500">{n.l}</div>
-                    </div>
-                  ))}
+              <div key={d.name} className="relative">
+                <div className={`relative mx-auto w-full max-w-[270px] ${i === 0 ? "md:-rotate-2" : "md:rotate-2"}`}>
+                  <div className="rounded-[2.4rem] border-[8px] border-[#161c2c] bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden">
+                    <div className="absolute left-1/2 -translate-x-1/2 top-2 w-20 h-5 bg-black rounded-full z-10" />
+                    <img src={dashImgs[i]} alt={d.name} className="w-full aspect-[9/19] object-cover object-top" />
+                  </div>
+                  <div className="absolute -right-3 top-10 bg-[#2dd4a0] text-[#050a14] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_20px_rgba(45,212,160,0.5)]">
+                    {d.float1}
+                  </div>
+                  <div className="absolute -left-3 bottom-12 bg-[#38bdf8] text-[#050a14] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_20px_rgba(56,189,248,0.5)]">
+                    {d.float2}
+                  </div>
                 </div>
-                <img
-                  src={i === 0 ? "/dash-gba.jpg" : "/dash-sz.jpg"}
-                  alt={d.name}
-                  className="w-full rounded-lg border border-slate-200"
-                />
+                <div className="mt-8 text-center">
+                  <h3 className="font-semibold text-[15px]">{d.name}</h3>
+                  <p className="text-xs text-white/40 mb-3">{d.fans}</p>
+                  <div className="grid grid-cols-3 gap-2 max-w-xs mx-auto">
+                    {d.nums.map((n) => (
+                      <div key={n.l} className="bg-white/[0.04] border border-white/10 rounded-xl py-2 px-1 text-center">
+                        <div className="text-[15px] font-bold font-mono tabular-nums text-[#2dd4a0]">{n.v}</div>
+                        <div className="text-[10px] text-white/45">{n.l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
-          <p className="text-sm text-slate-600 mt-4">{t.dashSum}</p>
+          <p className="text-sm text-white/60 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
         </div>
       </section>
 
       {/* Case study */}
       <section className="px-6 py-8">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
-            {t.caseTitle}
-          </h2>
-          <div className="bg-[#f0f7ff] rounded-xl p-4">
-            <h3 className="font-semibold text-[#0f2b5b] text-[15px]">{t.caseName}</h3>
-            <div className="grid grid-cols-3 gap-2 my-3">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.caseTitle}</h2>
+          <div className="bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl p-5">
+            <h3 className="font-semibold text-[15px] mb-1">
+              <span className="text-xl mr-2">🦕</span>
+              {t.caseName}
+            </h3>
+            <div className="grid grid-cols-3 gap-2 my-4">
               {t.caseNums.map((n) => (
-                <div key={n.l} className="bg-white rounded-lg py-2 px-1 text-center">
-                  <div className="text-base font-bold text-[#c2410c]">{n.v}</div>
-                  <div className="text-[10px] text-slate-500">{n.l}</div>
+                <div key={n.l} className="bg-white/[0.04] border border-white/10 rounded-xl py-2 px-1 text-center">
+                  <div className="text-base font-bold font-mono tabular-nums text-[#2dd4a0]">{n.v}</div>
+                  <div className="text-[10px] text-white/45">{n.l}</div>
                 </div>
               ))}
             </div>
-            <p className="text-sm text-slate-600">{t.caseBody}</p>
+            <p className="text-sm text-white/60 leading-relaxed">{t.caseBody}</p>
           </div>
         </div>
       </section>
 
-      {/* Top posts chart */}
-      <section className="px-6 pb-8">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
-            {t.topTitle}
-          </h2>
-          <div className="bg-white rounded-xl border border-slate-100 p-4">
+      {/* Top posts cards */}
+      <section className="px-6 py-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.topTitle}</h2>
+          <div className="space-y-3">
             {t.topPosts.map((p) => (
-              <div key={p.name} className="mb-3">
-                <div className="flex justify-between text-[13px] mb-1">
-                  <span>{p.name}</span>
-                  <span className="text-slate-500">
-                    {t.likeWord} {p.likes.toLocaleString()}｜{lang === "hk" ? "分享" : "分享"}{" "}
-                    {p.shares.toLocaleString()}
-                  </span>
+              <div
+                key={p.name}
+                className={`flex items-center gap-4 rounded-2xl p-3.5 backdrop-blur border ${
+                  p.hot
+                    ? "border-[#2dd4a0]/60 bg-[#2dd4a0]/[0.05]"
+                    : "border-white/10 bg-white/[0.03]"
+                }`}
+              >
+                <div
+                  className={`w-16 h-16 rounded-xl flex items-center justify-center text-3xl shrink-0 bg-gradient-to-br ${
+                    p.hot ? "from-[#2dd4a0]/30 to-[#38bdf8]/30" : "from-white/10 to-white/5"
+                  }`}
+                >
+                  {p.emoji}
                 </div>
-                <div className="h-3.5 bg-slate-100 rounded overflow-hidden mb-1">
-                  <div
-                    className="h-full bg-gradient-to-r from-[#1c5bb8] to-[#4d8be0]"
-                    style={{ width: `${(p.likes / maxLike) * 100}%` }}
-                  />
-                </div>
-                <div className="h-3.5 bg-slate-100 rounded overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-[#ff8a00] to-[#ffb25e]"
-                    style={{ width: `${(p.shares / maxLike) * 100}%` }}
-                  />
+                <div className="min-w-0 flex-1">
+                  <div className="font-semibold text-[14px] truncate">
+                    {p.hot ? "🔥 " : ""}
+                    {p.name}
+                  </div>
+                  <div className="flex gap-2 mt-1.5">
+                    <span className="text-[11px] bg-white/10 rounded-full px-2.5 py-0.5 text-white/70">
+                      {t.likeWord} {p.likes.toLocaleString()}
+                    </span>
+                    <span className="text-[11px] bg-[#ff8a00]/20 text-[#ffb25e] rounded-full px-2.5 py-0.5 font-semibold">
+                      {t.shareWord} {p.shares.toLocaleString()}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
-            <p className="text-[11px] text-slate-500 mt-1">
-              <span className="inline-block w-2.5 h-2.5 bg-[#1c5bb8] rounded-sm mr-1 align-middle" />
-              {t.likeWord}
-              <span className="inline-block w-2.5 h-2.5 bg-[#ff8a00] rounded-sm mr-1 ml-3 align-middle" />
-              {t.shareWord}
-            </p>
           </div>
         </div>
       </section>
 
       {/* Lineup */}
-      <section className="px-6 pb-8">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
-            {t.lineupTitle}
-          </h2>
-          <div className="bg-white rounded-xl border border-slate-100 overflow-hidden">
+      <section className="px-6 py-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.lineupTitle}</h2>
+          <div className="bg-white/[0.03] backdrop-blur border border-white/10 rounded-2xl overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-[#eef2fa] text-[#0f2b5b] text-left">
-                  <th className="px-3 py-2">{t.lineupHead[0]}</th>
-                  <th className="px-3 py-2">{t.lineupHead[1]}</th>
-                  <th className="px-3 py-2 hidden md:table-cell">{t.lineupHead[2]}</th>
+                <tr className="bg-white/[0.04] text-left text-white/60">
+                  <th className="px-4 py-3">{t.lineupHead[0]}</th>
+                  <th className="px-4 py-3">{t.lineupHead[1]}</th>
+                  <th className="px-4 py-3 hidden md:table-cell">{t.lineupHead[2]}</th>
                 </tr>
               </thead>
               <tbody>
                 {t.lineup.map((m) => (
-                  <tr key={m.name} className="border-t border-slate-100">
-                    <td className="px-3 py-2">{m.name}</td>
-                    <td className="px-3 py-2 font-bold text-[#0f2b5b] whitespace-nowrap">{m.fans}</td>
-                    <td className="px-3 py-2 text-slate-500 hidden md:table-cell">{m.note}</td>
+                  <tr key={m.name} className="border-t border-white/5">
+                    <td className="px-4 py-3">{m.name}</td>
+                    <td className="px-4 py-3 font-bold font-mono tabular-nums text-[#2dd4a0] whitespace-nowrap">
+                      {m.fans}
+                    </td>
+                    <td className="px-4 py-3 text-white/50 hidden md:table-cell">{m.note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <div className="md:hidden px-3 pb-3 space-y-1">
+            <div className="md:hidden px-4 pb-4 space-y-1.5">
               {t.lineup.map((m) => (
-                <p key={m.name} className="text-[11px] text-slate-500">
+                <p key={m.name} className="text-[11px] text-white/40">
                   · {m.name}：{m.note}
                 </p>
               ))}
@@ -446,96 +517,96 @@ export default function Home() {
       </section>
 
       {/* Pricing */}
-      <section className="px-6 pb-8">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
-            {t.priceTitle}
-          </h2>
-          <div className="bg-white rounded-xl border border-slate-100 overflow-hidden mb-5">
+      <section className="px-6 py-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.priceTitle}</h2>
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            {t.packages.map((p) => (
+              <div
+                key={p.name}
+                className={`rounded-2xl p-5 backdrop-blur flex flex-col ${
+                  p.star
+                    ? "border-2 border-[#2dd4a0]/70 bg-[#2dd4a0]/[0.06] glow-breath md:-translate-y-2"
+                    : "border border-white/10 bg-white/[0.03]"
+                }`}
+              >
+                {p.star ? (
+                  <div className="self-center -mt-8 mb-3 bg-gradient-to-r from-[#2dd4a0] to-[#38bdf8] text-[#050a14] text-[12px] font-bold rounded-full px-4 py-1.5">
+                    {t.starBadge}
+                  </div>
+                ) : null}
+                <div className="text-[13px] font-semibold text-[#ffb25e] mb-1">{p.tag}</div>
+                <div className="text-2xl font-bold font-mono tabular-nums mb-2">{p.name}</div>
+                <p className="text-sm text-white/60 leading-relaxed mb-4 flex-1">{p.body}</p>
+                <a
+                  href="https://wa.me/qr/RFLV47X75BYHI1"
+                  className={`text-center text-sm font-bold rounded-full py-2.5 px-4 ${
+                    p.star
+                      ? "bg-gradient-to-r from-[#2dd4a0] to-[#20b894] text-[#050a14]"
+                      : "border border-white/20 text-white/80"
+                  }`}
+                >
+                  {t.bookNow}
+                </a>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-[13px] text-[#2dd4a0] mb-4 font-semibold">{t.payNote}</p>
+          <div className="bg-white/[0.03] backdrop-blur border border-white/10 rounded-2xl overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-[#eef2fa] text-[#0f2b5b] text-left">
-                  <th className="px-3 py-2">{t.singleTitle}</th>
-                  <th className="px-3 py-2">{t.priceWord}</th>
+                <tr className="bg-white/[0.04] text-left text-white/60">
+                  <th className="px-4 py-3">{t.singleTitle}</th>
                 </tr>
               </thead>
               <tbody>
                 {t.singles.map(([k, v]) => (
-                  <tr key={k} className="border-t border-slate-100">
-                    <td className="px-3 py-2">{k}</td>
-                    <td className="px-3 py-2 font-bold text-[#c2410c] whitespace-nowrap">{v}</td>
+                  <tr key={k} className="border-t border-white/5">
+                    <td className="px-4 py-2.5 flex justify-between gap-4">
+                      <span>{k}</span>
+                      <span className="font-bold font-mono tabular-nums text-[#ffb25e] whitespace-nowrap">{v}</span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="grid md:grid-cols-2 gap-3">
-            {t.packages.map((p) => (
-              <div key={p.name} className="bg-[#fff7e6] rounded-xl p-4">
-                <div className="text-[13px] text-[#c2410c] font-bold mb-1">{p.tag}</div>
-                <div className="text-lg font-bold text-slate-800 mb-1">{p.name}</div>
-                <p className="text-[13px] text-slate-600">{p.body}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-slate-500 mt-4">{t.addons}</p>
-        </div>
-      </section>
-
-      {/* Why invest */}
-      <section className="px-6 pb-8">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
-            {t.whyTitle}
-          </h2>
-          <div className="bg-[#f0f7ff] border border-[#1c5bb8]/30 rounded-xl p-4 mb-4">
-            <h3 className="font-bold text-[#0f2b5b] text-[15px] mb-1">{t.cpmTitle}</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">{t.cpmBody}</p>
-          </div>
-          <ul className="space-y-2">
-            {t.why.map((w) => (
-              <li key={w} className="text-sm text-slate-600 flex gap-2">
-                <span className="text-[#ff8a00] font-bold">✓</span>
-                {w}
-              </li>
-            ))}
-          </ul>
+          <p className="text-xs text-white/40 mt-3">{t.addons}</p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-[#0f2b5b] text-white px-6 py-10 text-center">
-        <div className="max-w-2xl mx-auto">
+      <section className="px-6 py-12 relative">
+        <div className="max-w-3xl mx-auto bg-white/[0.03] backdrop-blur border border-white/10 rounded-3xl p-8 text-center">
           <p className="text-lg font-bold mb-2">{t.ctaLine}</p>
-          <p className="text-sm opacity-85 mb-6">{t.ctaContact}</p>
-          <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-4">
-            <div className="bg-white rounded-xl p-3">
-              <img src="/qr-wechat.jpg" alt="WeChat QR" className="w-full rounded-lg" />
+          <p className="text-sm text-white/50 mb-8">{t.ctaContact}</p>
+          <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
+            <div className="bg-white rounded-2xl p-3">
+              <img src="/qr-wechat.jpg" alt="WeChat QR" className="w-full rounded-xl" />
               <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWechat}</p>
             </div>
-            <div className="bg-white rounded-xl p-3">
-              <img src="/qr-whatsapp.jpg" alt="WhatsApp QR" className="w-full rounded-lg" />
+            <div className="bg-white rounded-2xl p-3">
+              <img src="/qr-whatsapp.jpg" alt="WhatsApp QR" className="w-full rounded-xl" />
               <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWa}</p>
             </div>
           </div>
           <a
             href="https://wa.me/qr/RFLV47X75BYHI1"
-            className="inline-block bg-[#ff8a00] text-white font-bold rounded-full px-6 py-3 text-sm mb-4"
+            className="inline-block bg-gradient-to-r from-[#ff8a00] to-[#ff5e62] text-white font-bold rounded-full px-8 py-3 text-sm mb-4"
           >
             {t.qrWaBtn}
           </a>
           <p className="text-sm">
             {t.mailLabel}：
-            <a href="mailto:ZEROWONG5@GMAIL.COM" className="underline font-bold">
+            <a href="mailto:ZEROWONG5@GMAIL.COM" className="underline font-bold text-[#38bdf8]">
               ZEROWONG5@GMAIL.COM
             </a>
           </p>
-          <p className="text-[13px] opacity-85 mt-2">{t.settleNote}</p>
         </div>
       </section>
 
-      <footer className="bg-slate-100 px-6 py-5">
-        <p className="max-w-2xl mx-auto text-[11px] text-slate-400 text-center">{t.footer}</p>
+      <footer className="px-6 py-6 border-t border-white/5">
+        <p className="max-w-3xl mx-auto text-[11px] text-white/30 text-center">{t.footer}</p>
       </footer>
     </main>
   );
