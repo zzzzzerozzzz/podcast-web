@@ -6,8 +6,29 @@ import { useEffect, useState } from "react";
 
 type Lang = "hk" | "cn";
 
+function Logo() {
+  return (
+    <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden>
+      <defs>
+        <linearGradient id="ztgg" x1="0" y1="40" x2="40" y2="0">
+          <stop offset="0" stopColor="#8a6a3b" />
+          <stop offset="0.55" stopColor="#c5a065" />
+          <stop offset="1" stopColor="#f0d9a8" />
+        </linearGradient>
+      </defs>
+      <rect x="2" y="2" width="36" height="36" rx="14" fill="url(#ztgg)" opacity="0.92" />
+      <path d="M12 27 C15 27 16.5 20 20 16.5 C22.5 14 26 13 29 13" stroke="#2b2013" strokeWidth="2.6" strokeLinecap="round" fill="none" />
+      <path d="M24.5 11.5 L29.5 13 L28 18" stroke="#2b2013" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <circle cx="13" cy="31" r="1.7" fill="#2b2013" opacity="0.55" />
+      <circle cx="18" cy="32.5" r="1.3" fill="#2b2013" opacity="0.4" />
+    </svg>
+  );
+}
+
 const T = {
   hk: {
+    brand: "Zero to Growth (ZTG) Studio",
+    brandSub: "零到成長工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒體矩陣",
     tagline: "一句話：深圳商家想做嘅「香港客人」生意，我哋隔住一條深圳河幫你直接觸達佢哋。",
@@ -67,7 +88,7 @@ const T = {
     cpmLeftTitle: "傳統 Meta 廣告 🔥",
     cpmLeftBody:
       "CPM（每千次曝光）約 HK$30-150，另加代理費 12-20%。買足 879 萬曝光＝成本高達數十萬，仲要自己煩受眾設定同素材。",
-    cpmRightTitle: "本矩陣推廣 ⚡",
+    cpmRightTitle: "ZTG 矩陣推廣 ⚡",
     cpmRightBody:
       "揀 $2,800 全矩陣或 $3,880 包月——每千次精準港客觸達成本只需幾毫子至幾蚊，附帶老牌專頁信任度＋私域群組直達。拒絕無效燒錢。",
     vs: "VS",
@@ -111,14 +132,15 @@ const T = {
       ["IG 同步加購", "+$200/帖"],
     ],
     packages: [
-      { tag: "🔥 首單體驗", name: "$688 體驗組", body: "專頁圖文 1 帖＋群組情報帖 1 帖（原價約 $900，先試效果）", star: false },
-      { tag: "🎯 週末爆點", name: "$1,880", body: "週四/五黃金檔 2 條影片＋群組置頂 3 日（卡準「週五搵料」決策點）", star: false },
-      { tag: "🚀 全矩陣", name: "$2,800", body: "3 專頁＋IG＋群組置頂 7 日（單買 $3,500+）", star: true },
-      { tag: "📅 包月檔", name: "$3,880/月", body: "每月 2 影片＋2 圖文＋群組 4 帖＋黃金檔優先（3 個月起）", star: false },
+      { tag: "🔥 首單體驗", name: "$688 體驗組", body: "專頁圖文 1 帖＋群組情報帖 1 帖（原價約 $900，先試效果）", star: "" },
+      { tag: "🎯 週末爆點", name: "$1,880", body: "週四/五黃金檔 2 條影片＋群組置頂 3 日（卡準「週五搵料」決策點）", star: "top" },
+      { tag: "🚀 全矩陣", name: "$2,800", body: "3 專頁＋IG＋群組置頂 7 日（單買 $3,500+）", star: "value" },
+      { tag: "📅 包月檔", name: "$3,880/月", body: "每月 2 影片＋2 圖文＋群組 4 帖＋黃金檔優先（3 個月起）", star: "" },
     ],
-    starBadge: "⭐ 最多商家選擇 · 性價比最高",
+    starTop: "⭐ 最多商家選擇",
+    starValue: "⭐ 性價比最高",
     bookNow: "⚡ 立即預約此方案",
-    payNote: "支持港幣/人民幣對公、對私結算 · 初稿 100% 商家預審",
+    payNote: "支持港幣/人民幣對公、對私結算，初稿 100% 商家預審，與您一起溫暖成長",
     addons:
       "加購：素材授權 +30-50%｜留言關鍵字→私訊導流 +$150（避 FB 外鏈新政）｜簡體版內容 +$100",
     ctaLine: "掃碼即時查詢 · 24 小時內回覆",
@@ -131,6 +153,8 @@ const T = {
       "條款：出稿 7 日內；初稿商家預審一次；合作帖按 Meta 政策標註「付費合作」。數據截至 2026-11-17，報價可議。",
   },
   cn: {
+    brand: "Zero to Growth (ZTG) Studio",
+    brandSub: "零到成长工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒体矩阵",
     tagline: "一句话：深圳商家想做的「香港客人」生意，我们隔着一条深圳河帮你直接触达他们。",
@@ -190,7 +214,7 @@ const T = {
     cpmLeftTitle: "传统 Meta 广告 🔥",
     cpmLeftBody:
       "CPM（每千次曝光）约 HK$30-150，另加代理费 12-20%。买足 879 万曝光＝成本高达数十万，还要自己烦受众设定和素材。",
-    cpmRightTitle: "本矩阵推广 ⚡",
+    cpmRightTitle: "ZTG 矩阵推广 ⚡",
     cpmRightBody:
       "选 $2,800 全矩阵或 $3,880 包月——每千次精准港客触达成本只需几毫至几蚊，附带老牌专页信任度＋私域群组直达。拒绝无效烧钱。",
     vs: "VS",
@@ -234,14 +258,15 @@ const T = {
       ["IG 同步加购", "+$200/帖"],
     ],
     packages: [
-      { tag: "🔥 首单体验", name: "$688 体验组", body: "专页图文 1 帖＋群组情报帖 1 帖（原价约 $900，先试效果）", star: false },
-      { tag: "🎯 周末爆点", name: "$1,880", body: "周四/五黄金档 2 条视频＋群组置顶 3 日（卡准「周五找料」决策点）", star: false },
-      { tag: "🚀 全矩阵", name: "$2,800", body: "3 专页＋IG＋群组置顶 7 日（单买 $3,500+）", star: true },
-      { tag: "📅 包月档", name: "$3,880/月", body: "每月 2 视频＋2 图文＋群组 4 帖＋黄金档优先（3 个月起）", star: false },
+      { tag: "🔥 首单体验", name: "$688 体验组", body: "专页图文 1 帖＋群组情报帖 1 帖（原价约 $900，先试效果）", star: "" },
+      { tag: "🎯 周末爆点", name: "$1,880", body: "周四/五黄金档 2 条视频＋群组置顶 3 日（卡准「周五找料」决策点）", star: "top" },
+      { tag: "🚀 全矩阵", name: "$2,800", body: "3 专页＋IG＋群组置顶 7 日（单买 $3,500+）", star: "value" },
+      { tag: "📅 包月档", name: "$3,880/月", body: "每月 2 视频＋2 图文＋群组 4 帖＋黄金档优先（3 个月起）", star: "" },
     ],
-    starBadge: "⭐ 最多商家选择 · 性价比最高",
+    starTop: "⭐ 最多商家选择",
+    starValue: "⭐ 性价比最高",
     bookNow: "⚡ 立即预约此方案",
-    payNote: "支持港币/人民币对公、对私结算 · 初稿 100% 商家预审",
+    payNote: "支持港币/人民币对公、对私结算，初稿 100% 商家预审，与您一起温暖成长",
     addons: "加购：素材授权 +30-50%｜留言关键词→私信导流 +$150（避 FB 外链新政）｜简体版内容 +$100",
     ctaLine: "扫码即时查询 · 24 小时内回复",
     ctaContact: "香港团队 · 繁简双语 · 服务深圳/大湾区商家＋香港品牌",
@@ -253,6 +278,12 @@ const T = {
       "条款：出稿 7 日内；初稿商家预审一次；合作帖按 Meta 政策标注「付费合作」。数据截至 2026-11-17，报价可议。",
   },
 };
+
+const CARD = "rounded-3xl border border-[#c5a065]/25 bg-[#2a241c]/70 backdrop-blur";
+const GOLD = "#e8c98a";
+const CREAM = "#f5d98b";
+const SOFTGREEN = "#b9d4a8";
+const ORANGE = "#f0955c";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("cn");
@@ -280,58 +311,65 @@ export default function Home() {
   const dashImgs = ["/dash-gba.jpg", "/dash-sz.jpg"];
 
   return (
-    <main className="min-h-screen bg-[#050a14] text-white relative overflow-hidden">
-      {/* Ambient glows */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[#7c3aed]/20 blur-[140px]" />
-      <div className="pointer-events-none absolute top-1/3 -right-52 w-[480px] h-[480px] rounded-full bg-[#0ea5e9]/15 blur-[150px]" />
-      <div className="pointer-events-none absolute bottom-0 left-1/4 w-[420px] h-[420px] rounded-full bg-[#2dd4a0]/10 blur-[140px]" />
+    <main className="min-h-screen bg-[#221d17] text-[#f3ead9] relative overflow-hidden">
+      {/* Warm glows + paper grain */}
+      <div className="pointer-events-none absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#c5a065]/15 blur-[150px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-52 w-[500px] h-[500px] rounded-full bg-[#e07b39]/10 blur-[160px]" />
+      <div className="pointer-events-none absolute bottom-10 left-1/5 w-[440px] h-[440px] rounded-full bg-[#9db88a]/10 blur-[150px]" />
+      <div className="pointer-events-none fixed inset-0 paper-grain opacity-[0.05] mix-blend-overlay" />
 
-      {/* Lang toggle */}
-      <div className="sticky top-0 z-20 bg-[#050a14]/80 backdrop-blur border-b border-white/5 text-sm">
-        <div className="max-w-3xl mx-auto flex justify-end px-5 py-2">
-          <button
-            onClick={() => switchLang("hk")}
-            className={`px-4 py-1 rounded-full border transition ${
-              lang === "hk"
-                ? "bg-[#2dd4a0] text-[#050a14] font-bold border-[#2dd4a0]"
-                : "text-white/60 border-white/15"
-            }`}
-          >
-            繁
-          </button>
-          <button
-            onClick={() => switchLang("cn")}
-            className={`ml-2 px-4 py-1 rounded-full border transition ${
-              lang === "cn"
-                ? "bg-[#2dd4a0] text-[#050a14] font-bold border-[#2dd4a0]"
-                : "text-white/60 border-white/15"
-            }`}
-          >
-            簡
-          </button>
+      {/* Header */}
+      <div className="sticky top-0 z-20 bg-[#221d17]/85 backdrop-blur border-b border-[#c5a065]/15">
+        <div className="max-w-3xl mx-auto flex items-center justify-between px-5 py-2.5">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Logo />
+            <div className="leading-tight min-w-0">
+              <div className="text-[13px] font-bold text-[#e8c98a] truncate">{t.brand}</div>
+              <div className="text-[10px] text-white/40">{t.brandSub}</div>
+            </div>
+          </div>
+          <div className="flex items-center shrink-0">
+            <button
+              onClick={() => switchLang("hk")}
+              className={`px-4 py-1 rounded-full border transition text-sm ${
+                lang === "hk"
+                  ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
+                  : "text-white/50 border-white/15"
+              }`}
+            >
+              繁
+            </button>
+            <button
+              onClick={() => switchLang("cn")}
+              className={`ml-2 px-4 py-1 rounded-full border transition text-sm ${
+                lang === "cn"
+                  ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
+                  : "text-white/50 border-white/15"
+              }`}
+            >
+              簡
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Hero */}
       <section className="relative px-6 pt-12 pb-10">
         <div className="max-w-3xl mx-auto">
-          <span className="inline-block bg-gradient-to-r from-[#ff8a00] to-[#ff5e62] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-white">
+          <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
             {t.badge}
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">{t.h1}</h1>
-          <p className="text-[15px] text-white/80 mb-2">{t.tagline}</p>
-          <p className="text-xs text-white/40 mb-8">{t.dateNote}</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
+          <p className="text-[15px] text-[#e9dcc2]/80 mb-2">{t.tagline}</p>
+          <p className="text-xs text-white/35 mb-8">{t.dateNote}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {t.stats.map((s) => (
-              <div
-                key={s.label}
-                className="bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl px-4 py-4 text-center"
-              >
-                <div className="text-2xl font-bold font-mono tabular-nums bg-gradient-to-r from-[#2dd4a0] to-[#38bdf8] bg-clip-text text-transparent">
+              <div key={s.label} className={`${CARD} px-4 py-5 text-center glow-gold`}>
+                <div className="text-2xl font-bold font-mono tabular-nums text-[#f5d98b]">
                   {s.value}
-                  {s.up ? <span className="text-[#2dd4a0] text-base ml-1">↗</span> : null}
+                  {s.up ? <span className="text-[#b9d4a8] text-base ml-1">↗</span> : null}
                 </div>
-                <div className="text-[11px] text-white/50 mt-1">{s.label}</div>
+                <div className="text-[11px] text-white/45 mt-1.5">{s.label}</div>
               </div>
             ))}
           </div>
@@ -341,18 +379,17 @@ export default function Home() {
       {/* Selling points */}
       <section className="px-6 py-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.sellingTitle}</h2>
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">
+            {t.sellingTitle}
+          </h2>
           <div className="space-y-4">
             {t.points.map((p) => (
-              <div
-                key={p.title}
-                className="bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl p-5"
-              >
-                <h3 className="font-semibold text-[15px] mb-2">
+              <div key={p.title} className={`${CARD} p-5`}>
+                <h3 className="font-semibold text-[15px] mb-2 text-[#f3ead9]">
                   <span className="text-xl mr-2">{p.icon}</span>
                   {p.title}
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed">{p.body}</p>
+                <p className="text-sm text-white/55 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
@@ -362,49 +399,52 @@ export default function Home() {
       {/* CPM VS */}
       <section className="px-6 py-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.cpmTitle}</h2>
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
           <div className="grid md:grid-cols-2 gap-4 items-stretch relative">
-            <div className="bg-white/[0.03] backdrop-blur border border-red-400/20 rounded-2xl p-5">
-              <h3 className="font-bold text-red-300 text-[15px] mb-2">{t.cpmLeftTitle}</h3>
-              <p className="text-sm text-white/60 leading-relaxed">{t.cpmLeftBody}</p>
+            <div className="rounded-3xl border border-white/10 bg-[#26211a]/60 backdrop-blur p-5">
+              <h3 className="font-bold text-[#e0896a] text-[15px] mb-2">{t.cpmLeftTitle}</h3>
+              <p className="text-sm text-white/50 leading-relaxed">{t.cpmLeftBody}</p>
             </div>
-            <div className="bg-[#2dd4a0]/[0.06] backdrop-blur border-2 border-[#2dd4a0]/60 rounded-2xl p-5 glow-breath">
-              <h3 className="font-bold text-[#2dd4a0] text-[15px] mb-2">{t.cpmRightTitle}</h3>
-              <p className="text-sm text-white/70 leading-relaxed">{t.cpmRightBody}</p>
+            <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] backdrop-blur p-5 glow-gold">
+              <h3 className="font-bold text-[#e8c98a] text-[15px] mb-2">{t.cpmRightTitle}</h3>
+              <p className="text-sm text-[#f3ead9]/75 leading-relaxed">{t.cpmRightBody}</p>
             </div>
-            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#050a14] border-2 border-white/15 items-center justify-center font-bold text-sm z-10">
+            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#221d17] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10">
               {t.vs}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Dashboards in phone mockups */}
+      {/* Dashboards in polaroid frames */}
       <section className="px-6 py-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.dashTitle}</h2>
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
           <div className="grid sm:grid-cols-2 gap-10">
             {t.dashes.map((d, i) => (
               <div key={d.name} className="relative">
-                <div className={`relative mx-auto w-full max-w-[270px] ${i === 0 ? "md:-rotate-2" : "md:rotate-2"}`}>
-                  <div className="rounded-[2.4rem] border-[8px] border-[#161c2c] bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden">
-                    <div className="absolute left-1/2 -translate-x-1/2 top-2 w-20 h-5 bg-black rounded-full z-10" />
-                    <img src={dashImgs[i]} alt={d.name} className="w-full aspect-[9/19] object-cover object-top" />
+                <div className={`relative mx-auto w-full max-w-[280px] ${i === 0 ? "md:-rotate-2" : "md:rotate-2"}`}>
+                  {/* tape */}
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#e8c98a]/40 rotate-[-4deg] rounded-sm z-10 backdrop-blur-sm" />
+                  <div className="bg-[#faf6ec] rounded-2xl p-3 shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
+                    <img src={dashImgs[i]} alt={d.name} className="w-full rounded-xl aspect-[9/18] object-cover object-top" />
+                    <p className="text-center text-[12px] font-semibold text-[#6b5a3e] mt-2.5 truncate">
+                      ✦ {d.name} ✦
+                    </p>
                   </div>
-                  <div className="absolute -right-3 top-10 bg-[#2dd4a0] text-[#050a14] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_20px_rgba(45,212,160,0.5)]">
+                  <div className="absolute -right-3 top-8 bg-[#f5d98b] text-[#3a2f1c] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(245,217,139,0.45)] rotate-3">
                     {d.float1}
                   </div>
-                  <div className="absolute -left-3 bottom-12 bg-[#38bdf8] text-[#050a14] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_20px_rgba(56,189,248,0.5)]">
+                  <div className="absolute -left-3 bottom-14 bg-[#b9d4a8] text-[#26301c] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(185,212,168,0.4)] -rotate-2">
                     {d.float2}
                   </div>
                 </div>
                 <div className="mt-8 text-center">
-                  <h3 className="font-semibold text-[15px]">{d.name}</h3>
                   <p className="text-xs text-white/40 mb-3">{d.fans}</p>
                   <div className="grid grid-cols-3 gap-2 max-w-xs mx-auto">
                     {d.nums.map((n) => (
-                      <div key={n.l} className="bg-white/[0.04] border border-white/10 rounded-xl py-2 px-1 text-center">
-                        <div className="text-[15px] font-bold font-mono tabular-nums text-[#2dd4a0]">{n.v}</div>
+                      <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
+                        <div className="text-[15px] font-bold font-mono tabular-nums text-[#f5d98b]">{n.v}</div>
                         <div className="text-[10px] text-white/45">{n.l}</div>
                       </div>
                     ))}
@@ -413,64 +453,64 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-sm text-white/60 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
+          <p className="text-sm text-white/55 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
         </div>
       </section>
 
       {/* Case study */}
       <section className="px-6 py-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.caseTitle}</h2>
-          <div className="bg-white/[0.04] backdrop-blur border border-white/10 rounded-2xl p-5">
-            <h3 className="font-semibold text-[15px] mb-1">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
+          <div className={`${CARD} p-5`}>
+            <h3 className="font-semibold text-[15px] mb-1 text-[#f3ead9]">
               <span className="text-xl mr-2">🦕</span>
               {t.caseName}
             </h3>
             <div className="grid grid-cols-3 gap-2 my-4">
               {t.caseNums.map((n) => (
-                <div key={n.l} className="bg-white/[0.04] border border-white/10 rounded-xl py-2 px-1 text-center">
-                  <div className="text-base font-bold font-mono tabular-nums text-[#2dd4a0]">{n.v}</div>
+                <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
+                  <div className="text-base font-bold font-mono tabular-nums text-[#f5d98b]">{n.v}</div>
                   <div className="text-[10px] text-white/45">{n.l}</div>
                 </div>
               ))}
             </div>
-            <p className="text-sm text-white/60 leading-relaxed">{t.caseBody}</p>
+            <p className="text-sm text-white/55 leading-relaxed">{t.caseBody}</p>
           </div>
         </div>
       </section>
 
-      {/* Top posts cards */}
+      {/* Top posts polaroid wall */}
       <section className="px-6 py-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.topTitle}</h2>
-          <div className="space-y-3">
-            {t.topPosts.map((p) => (
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {t.topPosts.map((p, i) => (
               <div
                 key={p.name}
-                className={`flex items-center gap-4 rounded-2xl p-3.5 backdrop-blur border ${
+                className={`rounded-3xl p-4 backdrop-blur border flex items-center gap-4 ${
                   p.hot
-                    ? "border-[#2dd4a0]/60 bg-[#2dd4a0]/[0.05]"
-                    : "border-white/10 bg-white/[0.03]"
-                }`}
+                    ? "border-[#c5a065]/60 bg-[#c5a065]/[0.06]"
+                    : "border-[#c5a065]/20 bg-[#2a241c]/70"
+                } ${i % 2 === 0 ? "md:-rotate-1" : "md:rotate-1"}`}
               >
                 <div
-                  className={`w-16 h-16 rounded-xl flex items-center justify-center text-3xl shrink-0 bg-gradient-to-br ${
-                    p.hot ? "from-[#2dd4a0]/30 to-[#38bdf8]/30" : "from-white/10 to-white/5"
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0 ${
+                    p.hot ? "bg-gradient-to-br from-[#e8c98a]/40 to-[#b9d4a8]/30" : "bg-gradient-to-br from-white/10 to-white/5"
                   }`}
                 >
                   {p.emoji}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-[14px] truncate">
+                  <div className="font-semibold text-[14px] truncate text-[#f3ead9]">
                     {p.hot ? "🔥 " : ""}
                     {p.name}
                   </div>
-                  <div className="flex gap-2 mt-1.5">
-                    <span className="text-[11px] bg-white/10 rounded-full px-2.5 py-0.5 text-white/70">
+                  <div className="flex gap-2 mt-1.5 flex-wrap">
+                    <span className="text-[11px] bg-white/10 rounded-full px-2.5 py-0.5 text-white/65">
                       {t.likeWord} {p.likes.toLocaleString()}
                     </span>
-                    <span className="text-[11px] bg-[#ff8a00]/20 text-[#ffb25e] rounded-full px-2.5 py-0.5 font-semibold">
-                      {t.shareWord} {p.shares.toLocaleString()}
+                    <span className="text-[11px] bg-[#f0955c]/20 text-[#f0b48a] rounded-full px-2.5 py-0.5 font-semibold">
+                      🔥 {t.shareWord} {p.shares.toLocaleString()}
                     </span>
                   </div>
                 </div>
@@ -483,11 +523,11 @@ export default function Home() {
       {/* Lineup */}
       <section className="px-6 py-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.lineupTitle}</h2>
-          <div className="bg-white/[0.03] backdrop-blur border border-white/10 rounded-2xl overflow-hidden">
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
+          <div className={`${CARD} overflow-hidden`}>
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-white/[0.04] text-left text-white/60">
+                <tr className="bg-white/[0.04] text-left text-white/55">
                   <th className="px-4 py-3">{t.lineupHead[0]}</th>
                   <th className="px-4 py-3">{t.lineupHead[1]}</th>
                   <th className="px-4 py-3 hidden md:table-cell">{t.lineupHead[2]}</th>
@@ -497,17 +537,15 @@ export default function Home() {
                 {t.lineup.map((m) => (
                   <tr key={m.name} className="border-t border-white/5">
                     <td className="px-4 py-3">{m.name}</td>
-                    <td className="px-4 py-3 font-bold font-mono tabular-nums text-[#2dd4a0] whitespace-nowrap">
-                      {m.fans}
-                    </td>
-                    <td className="px-4 py-3 text-white/50 hidden md:table-cell">{m.note}</td>
+                    <td className="px-4 py-3 font-bold font-mono tabular-nums text-[#f5d98b] whitespace-nowrap">{m.fans}</td>
+                    <td className="px-4 py-3 text-white/45 hidden md:table-cell">{m.note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <div className="md:hidden px-4 pb-4 space-y-1.5">
               {t.lineup.map((m) => (
-                <p key={m.name} className="text-[11px] text-white/40">
+                <p key={m.name} className="text-[11px] text-white/35">
                   · {m.name}：{m.note}
                 </p>
               ))}
@@ -516,46 +554,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Pricing — Morandi cards */}
       <section className="px-6 py-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#2dd4a0]">{t.priceTitle}</h2>
-          <div className="grid sm:grid-cols-2 gap-4 mb-6">
-            {t.packages.map((p) => (
-              <div
-                key={p.name}
-                className={`rounded-2xl p-5 backdrop-blur flex flex-col ${
-                  p.star
-                    ? "border-2 border-[#2dd4a0]/70 bg-[#2dd4a0]/[0.06] glow-breath md:-translate-y-2"
-                    : "border border-white/10 bg-white/[0.03]"
-                }`}
-              >
-                {p.star ? (
-                  <div className="self-center -mt-8 mb-3 bg-gradient-to-r from-[#2dd4a0] to-[#38bdf8] text-[#050a14] text-[12px] font-bold rounded-full px-4 py-1.5">
-                    {t.starBadge}
-                  </div>
-                ) : null}
-                <div className="text-[13px] font-semibold text-[#ffb25e] mb-1">{p.tag}</div>
-                <div className="text-2xl font-bold font-mono tabular-nums mb-2">{p.name}</div>
-                <p className="text-sm text-white/60 leading-relaxed mb-4 flex-1">{p.body}</p>
-                <a
-                  href="https://wa.me/qr/RFLV47X75BYHI1"
-                  className={`text-center text-sm font-bold rounded-full py-2.5 px-4 ${
-                    p.star
-                      ? "bg-gradient-to-r from-[#2dd4a0] to-[#20b894] text-[#050a14]"
-                      : "border border-white/20 text-white/80"
+          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
+          <div className="grid sm:grid-cols-2 gap-5 mb-6">
+            {t.packages.map((p) => {
+              const morandi =
+                p.star === "top"
+                  ? "bg-[#e8c9a8]/15 border-2 border-[#e8c98a]/60"
+                  : p.star === "value"
+                    ? "bg-[#b8c9a8]/12 border-2 border-[#b9d4a8]/60"
+                    : "bg-[#d9c7a7]/[0.07] border border-[#c5a065]/20";
+              return (
+                <div
+                  key={p.name}
+                  className={`rounded-3xl p-5 backdrop-blur flex flex-col relative ${morandi} ${
+                    p.star ? "glow-gold md:-translate-y-1.5" : ""
                   }`}
                 >
-                  {t.bookNow}
-                </a>
-              </div>
-            ))}
+                  {p.star ? (
+                    <div className="self-center absolute -top-3.5 bg-[#f5d98b] text-[#3a2f1c] text-[12px] font-bold rounded-full px-4 py-1 shadow-[0_4px_14px_rgba(0,0,0,0.4)] rotate-[-2deg]">
+                      {p.star === "top" ? t.starTop : t.starValue}
+                    </div>
+                  ) : null}
+                  <div className="text-[13px] font-semibold text-[#f0b48a] mb-1 mt-1">{p.tag}</div>
+                  <div className="text-2xl font-bold font-mono tabular-nums mb-2 text-[#f7efdd]">{p.name}</div>
+                  <p className="text-sm text-white/55 leading-relaxed mb-4 flex-1">{p.body}</p>
+                  <a
+                    href="https://wa.me/qr/RFLV47X75BYHI1"
+                    className={`text-center text-sm font-bold rounded-full py-2.5 px-4 ${
+                      p.star
+                        ? "bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114]"
+                        : "border border-[#c5a065]/40 text-[#e8c98a]"
+                    }`}
+                  >
+                    {t.bookNow}
+                  </a>
+                </div>
+              );
+            })}
           </div>
-          <p className="text-center text-[13px] text-[#2dd4a0] mb-4 font-semibold">{t.payNote}</p>
-          <div className="bg-white/[0.03] backdrop-blur border border-white/10 rounded-2xl overflow-hidden">
+          <p className="text-center text-[13px] text-[#e8c98a] mb-4 font-semibold">{t.payNote}</p>
+          <div className={`${CARD} overflow-hidden`}>
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-white/[0.04] text-left text-white/60">
+                <tr className="bg-white/[0.04] text-left text-white/55">
                   <th className="px-4 py-3">{t.singleTitle}</th>
                 </tr>
               </thead>
@@ -564,48 +608,52 @@ export default function Home() {
                   <tr key={k} className="border-t border-white/5">
                     <td className="px-4 py-2.5 flex justify-between gap-4">
                       <span>{k}</span>
-                      <span className="font-bold font-mono tabular-nums text-[#ffb25e] whitespace-nowrap">{v}</span>
+                      <span className="font-bold font-mono tabular-nums text-[#f0b48a] whitespace-nowrap">{v}</span>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-white/40 mt-3">{t.addons}</p>
+          <p className="text-xs text-white/35 mt-3">{t.addons}</p>
         </div>
       </section>
 
       {/* CTA */}
       <section className="px-6 py-12 relative">
-        <div className="max-w-3xl mx-auto bg-white/[0.03] backdrop-blur border border-white/10 rounded-3xl p-8 text-center">
-          <p className="text-lg font-bold mb-2">{t.ctaLine}</p>
-          <p className="text-sm text-white/50 mb-8">{t.ctaContact}</p>
+        <div className={`max-w-3xl mx-auto ${CARD} p-8 text-center glow-gold`}>
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <Logo />
+            <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
+          </div>
+          <p className="text-lg font-bold mb-2 text-[#f7efdd]">{t.ctaLine}</p>
+          <p className="text-sm text-white/45 mb-8">{t.ctaContact}</p>
           <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
-            <div className="bg-white rounded-2xl p-3">
-              <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl bg-white" />
-              <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWechat}</p>
+            <div className="bg-[#faf6ec] rounded-2xl p-3">
+              <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl" />
+              <p className="text-[13px] font-bold text-[#4a3b22] mt-2">{t.qrWechat}</p>
             </div>
-            <div className="bg-white rounded-2xl p-3">
-              <img src="/qr-whatsapp.png" alt="WhatsApp QR" className="w-full rounded-xl bg-white" />
-              <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWa}</p>
+            <div className="bg-[#faf6ec] rounded-2xl p-3">
+              <img src="/qr-whatsapp.png" alt="WhatsApp QR" className="w-full rounded-xl" />
+              <p className="text-[13px] font-bold text-[#4a3b22] mt-2">{t.qrWa}</p>
             </div>
           </div>
           <a
             href="https://wa.me/qr/RFLV47X75BYHI1"
-            className="inline-block bg-gradient-to-r from-[#ff8a00] to-[#ff5e62] text-white font-bold rounded-full px-8 py-3 text-sm mb-4"
+            className="inline-block bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-8 py-3 text-sm mb-4"
           >
             {t.qrWaBtn}
           </a>
           <p className="text-sm">
             {t.mailLabel}：
-            <a href="mailto:ZEROWONG5@GMAIL.COM" className="underline font-bold text-[#38bdf8]">
+            <a href="mailto:ZEROWONG5@GMAIL.COM" className="underline font-bold text-[#e8c98a]">
               ZEROWONG5@GMAIL.COM
             </a>
           </p>
         </div>
       </section>
 
-      <footer className="px-6 py-6 border-t border-white/5">
+      <footer className="px-6 py-6 border-t border-[#c5a065]/15">
         <p className="max-w-3xl mx-auto text-[11px] text-white/30 text-center">{t.footer}</p>
       </footer>
     </main>
