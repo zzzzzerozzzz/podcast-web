@@ -267,7 +267,7 @@ const SOFTGREEN = "#b9d4a8";
 const ORANGE = "#f0955c";
 
 export default function Home() {
-  const [lang, setLang] = useState<Lang>("cn");
+  const [lang, setLang] = useState<Lang>("hk");
 
   useEffect(() => {
     const saved = typeof window !== "undefined" ? window.localStorage.getItem("mk-lang") : null;
@@ -346,11 +346,11 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {t.stats.map((s) => (
               <div key={s.label} className={`${CARD} px-4 py-5 text-center glow-gold`}>
-                <div className="text-2xl font-bold font-mono tabular-nums text-[#f5d98b]">
+                <div className="text-[26px] leading-none font-bold font-mono tabular-nums text-[#f5d98b]">
                   {s.value}
                   {s.up ? <span className="text-[#b9d4a8] text-base ml-1">↗</span> : null}
                 </div>
-                <div className="text-[11px] text-white/45 mt-1.5">{s.label}</div>
+                <div className="text-[10px] text-white/35 mt-2">{s.label}</div>
               </div>
             ))}
           </div>
@@ -610,18 +610,18 @@ export default function Home() {
           <p className="text-lg font-bold mb-2 text-[#f7efdd]">{t.ctaLine}</p>
           <p className="text-sm text-white/45 mb-8">{t.ctaContact}</p>
           <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
-            <div className="bg-[#faf6ec] rounded-2xl p-3">
+            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45 glow-gold">
               <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl" />
               <p className="text-[13px] font-bold text-[#4a3b22] mt-2">{t.qrWechat}</p>
             </div>
-            <div className="bg-[#faf6ec] rounded-2xl p-3">
+            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45 glow-gold">
               <img src="/qr-whatsapp.png" alt="WhatsApp QR" className="w-full rounded-xl" />
               <p className="text-[13px] font-bold text-[#4a3b22] mt-2">{t.qrWa}</p>
             </div>
           </div>
           <a
             href="https://wa.me/qr/RFLV47X75BYHI1"
-            className="inline-block bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-8 py-3 text-sm mb-4"
+            className="inline-block bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-8 py-3 text-sm mb-4 shadow-[0_0_20px_rgba(232,155,92,0.4)]"
           >
             {t.qrWaBtn}
           </a>
