@@ -2,13 +2,13 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: "Zero to Growth",
-        short_name: "Zero2Growth",
-        description: "Your daily dose of growth and nurturing.",
+        name: "港人北上媒体矩阵",
+        short_name: "北上媒体矩阵",
+        description: "深圳·大湾区商家触达香港消费者的最直接渠道。",
         start_url: "/",
         display: "standalone",
-        background_color: "#FAFAF5",
-        theme_color: "#FAFAF5",
+        background_color: "#0f2b5b",
+        theme_color: "#0f2b5b",
         icons: [
             {
                 src: "/icon-192x192.png",

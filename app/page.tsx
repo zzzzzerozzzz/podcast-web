@@ -1,497 +1,365 @@
-import { MoveRight, Play, Sparkles, Zap } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { getAllPosts } from "@/lib/posts";
-import { ReadingList } from "@/components/Home/ReadingList";
+/* eslint-disable @next/next/no-img-element */
 
-export default async function Home() {
-  const posts = getAllPosts();
+const stats = [
+  { value: "38,178", label: "矩阵总粉丝（FB＋IG）" },
+  { value: "879万", label: "28日浏览·两大专页" },
+  { value: "4,267", label: "单帖最高分享" },
+  { value: "12,000", label: "私域群组成员" },
+];
+
+const sellingPoints = [
+  {
+    title: "① 精准：粉丝就是「正在决定去哪消费的香港人」",
+    body: "北上消费决策周期＝周四计划 → 周五找料 → 周六日出发（自家 174 帖数据实证）。你的广告帖出现在他们「找料」那一刻，不是乱枪打鸟。",
+  },
+  {
+    title: "② 裂变：内容被香港人「转发给朋友」",
+    body: "分享是 Facebook 最强推流信号。我们单帖分享最高 4,267 次——一次投放，裂变触达远超粉丝数。付 1 个粉的钱，到 3 个人的屏幕。",
+  },
+  {
+    title: "③ 私域：12,000 人北上交流群组直达＋可置顶",
+    body: "专页帖之外，群组帖直达 12,000 个活跃问「去哪吃去哪玩」的香港人，可置顶 7-14 天持续曝光——这是广告投放买不到的。",
+  },
+];
+
+const dashboards = [
+  {
+    img: "/dash-gba.jpg",
+    name: "大湾区北上攻略情报站 · 12,094 追踪",
+    nums: [
+      { v: "465万", l: "浏览（28日）↑160%" },
+      { v: "147,595", l: "互动 ↑56%" },
+      { v: "+7,497", l: "新追踪 ↑233%" },
+    ],
+  },
+  {
+    img: "/dash-sz.jpg",
+    name: "深圳美食住宿｜港人北上攻略 · 7,135 追踪",
+    nums: [
+      { v: "414万", l: "浏览（28日）↑293%" },
+      { v: "154,612", l: "互动 ↑233%" },
+      { v: "+6,330", l: "新追踪 ↑708%" },
+    ],
+  },
+];
+
+const caseNums = [
+  { v: "13,186", l: "观看（2日）" },
+  { v: "85", l: "条留言查询" },
+  { v: "1.3×", l: "观看 ÷ 粉丝数" },
+];
+
+const topPosts = [
+  { name: "深圳科技地标帖", likes: 2640, shares: 4267 },
+  { name: "广州北京路帖", likes: 2047, shares: 3026 },
+  { name: "深圳森林商场帖", likes: 854, shares: 214 },
+  { name: "地铁6号线帖", likes: 772, shares: 94 },
+  { name: "盐田一日游帖", likes: 593, shares: 97 },
+];
+
+const lineup = [
+  { name: "大湾区北上攻略情报站", fans: "12,094", note: "大湾区食玩买攻略＋影片" },
+  { name: "广东美食旅游攻略", fans: "10,469", note: "广东省美食旅游（12/25 恢复全量）" },
+  { name: "深圳美食住宿｜港人北上攻略", fans: "7,135", note: "深圳食住买专页（28日 +708% 增长中）" },
+  { name: "FB群组·深圳食玩买｜广州美食｜港人北上交流", fans: "约12,000", note: "私域直达＋置顶" },
+  { name: "IG @cantonesefoodtravelguide", fans: "4,775", note: "广东/深圳影片同步（两个月 +36%）" },
+  { name: "IG @chinatravelhack", fans: "3,705", note: "中国旅游影片同步（两个月 +24%）" },
+];
+
+const singleRates = [
+  ["专页图文帖（1专页1帖）", "$500-800"],
+  ["专页视频帖 Reel（60-90s 配音字幕）", "$800-1,500"],
+  ["探店合作（商家出餐/门票）", "互惠＋$300-600"],
+  ["群组情报帖（12,000成员直达）", "$300-800"],
+  ["群组置顶 7日／14日", "+$600／+$1,000"],
+  ["IG 同步加购", "+$200/帖"],
+];
+
+const packages = [
+  {
+    tag: "🔥 首单体验",
+    name: "$688 体验组",
+    body: "专页图文 1 帖＋群组情报帖 1 帖（原价约 $900，先试效果）",
+  },
+  {
+    tag: "🎯 周末爆点",
+    name: "$1,880",
+    body: "周四/五黄金档 2 条视频＋群组置顶 3 日（卡准「周五找料」决策点）",
+  },
+  {
+    tag: "🚀 全矩阵",
+    name: "$2,800",
+    body: "3 专页＋IG＋群组置顶 7 日（单买 $3,500+）",
+  },
+  {
+    tag: "📅 包月档",
+    name: "$3,880/月",
+    body: "每月 2 视频＋2 图文＋群组 4 帖＋黄金档优先（3 个月起）",
+  },
+];
+
+const WHY = [
+  "北上决策周期＝周四计划→周五找料→周六日行动，广告帖黄金档对位",
+  "单帖分享 1,000-4,267，裂变触达远超粉丝数",
+  "香港 FB 付费广告 CPM 约 HK$30-150 另加代理费 12-20%——原生内容帖自带信任＋精准北上客",
+  "AI 生产线＋真人编辑，30 日 92 帖稳定产能",
+];
+
+export default function Home() {
+  const maxLike = Math.max(...topPosts.map((p) => p.likes));
 
   return (
-    <main className="min-h-screen text-foreground selection:bg-primary/20">
-
-      {/* Decorative Gradient Blob */}
-      <div className="fixed top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
-      <div className="fixed bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
-        {/* HERO SECTION: Split Layout (Left: Text, Right: Visual) */}
-        <section className="py-12 md:py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-          {/* Left Column: Copy */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wide uppercase">
-              <Sparkles className="w-4 h-4" /> 每日成長指南
-            </div>
-
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground leading-[1.1]">
-              滋養你的旅程，<span className="text-primary italic font-serif whitespace-nowrap">Zero to Growth</span>。
-            </h1>
-
-            <p className="text-xl md:text-2xl text-primary font-bold font-serif italic relative inline-block">
-              「每週陪你成長一點點，慢慢走得更遠。」
-              <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary/10 -z-10 -rotate-1 skew-x-12" />
-            </p>
-
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-xl font-serif">
-              透過實戰方法論與底層邏輯，陪你完成從 0 到 1 的真實成長，<br />
-              並在混亂的職場中看見生長的秩序。
-            </p>
-
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Link href="/blog">
-                <Button className="rounded-full bg-primary hover:bg-primary/90 text-white px-8 h-14 shadow-lg shadow-primary/25 text-base font-bold tracking-wide transition-all hover:scale-105 active:scale-95">
-                  開始閱讀
-                </Button>
-              </Link>
-              <Link href="/listen">
-                <Button variant="outline" className="rounded-full border-2 border-primary/10 text-primary bg-transparent hover:bg-primary/5 px-8 h-14 text-base font-bold transition-all hover:scale-105 active:scale-95">
-                  <Play className="w-5 h-5 mr-2 fill-current" /> 聆聽 Podcast
-                </Button>
-              </Link>
-            </div>
+    <main className="min-h-screen bg-slate-50">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-[#0f2b5b] to-[#1c5bb8] text-white px-6 pt-10 pb-8">
+        <div className="max-w-2xl mx-auto">
+          <span className="inline-block bg-[#ff8a00] text-[13px] font-bold rounded-full px-3 py-1 mb-4">
+            深圳/大湾区商家 · 港客推广专家
+          </span>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">港人北上媒体矩阵</h1>
+          <p className="text-[15px] opacity-95 mb-1">
+            一句话：深圳商家想做的「香港客人」生意，我们隔着一条深圳河帮你直接触达他们。
+          </p>
+          <p className="text-xs opacity-70 mb-6">数据抓取：2026-11-17（Meta 官方 API 实时）</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {stats.map((s) => (
+              <div key={s.label} className="bg-white/10 rounded-xl px-3 py-3 text-center">
+                <div className="text-xl font-bold">{s.value}</div>
+                <div className="text-[11px] opacity-85">{s.label}</div>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
+      {/* Selling points */}
+      <section className="px-6 py-10">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
+            为什么选我们（三个别人没有的）
+          </h2>
+          <div className="space-y-4">
+            {sellingPoints.map((p) => (
+              <div key={p.title} className="bg-[#f0f7ff] rounded-xl p-4">
+                <h3 className="font-semibold text-[#0f2b5b] text-[15px] mb-1">{p.title}</h3>
+                <p className="text-sm text-slate-600">{p.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          {/* Right Column: Visual Element */}
-          <div className="relative flex justify-center lg:justify-end animate-float">
-            <div className="relative w-full max-w-lg aspect-square group">
-              {/* Decorative shadow layer */}
-              <div className="absolute inset-4 bg-primary/20 rounded-[3rem] blur-2xl -z-10 translate-y-4 group-hover:translate-y-6 transition-transform duration-500" />
-
-              <div className="absolute inset-0 rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl bg-white">
-                <Image
-                  src="/images/hero-abstract.png"
-                  alt="Zero to Growth Concept"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+      {/* Dashboards */}
+      <section className="px-6 pb-4">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
+            后台实录：28 天增长（两大专页官方数据）
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {dashboards.map((d) => (
+              <div key={d.name} className="bg-[#f0f7ff] rounded-xl p-4">
+                <h3 className="font-semibold text-[#0f2b5b] text-[14px] mb-3">{d.name}</h3>
+                <div className="grid grid-cols-3 gap-2 mb-3">
+                  {d.nums.map((n) => (
+                    <div key={n.l} className="bg-white rounded-lg py-2 px-1 text-center">
+                      <div className="text-base font-bold text-[#c2410c]">{n.v}</div>
+                      <div className="text-[10px] text-slate-500">{n.l}</div>
+                    </div>
+                  ))}
+                </div>
+                <img
+                  src={d.img}
+                  alt={`${d.name} 后台截图`}
+                  className="w-full rounded-lg border border-slate-200"
                 />
               </div>
+            ))}
+          </div>
+          <p className="text-sm text-slate-600 mt-4">
+            两页合计：28 天 <b>879 万浏览</b>、30.2 万次互动、新增 13,827 追踪——日均 31 万曝光的高速增长流量池，你的广告帖进入的不是死水一潭。
+          </p>
+        </div>
+      </section>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl border border-stone-100 hidden md:block animate-bounce-slow">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    <Zap className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-foreground">實戰方法論</p>
-                    <p className="text-xs text-muted-foreground">從 0 到 1 的深度解析</p>
-                  </div>
+      {/* Case study */}
+      <section className="px-6 py-8">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
+            实绩案例：深圳湾展览推广
+          </h2>
+          <div className="bg-[#f0f7ff] rounded-xl p-4">
+            <h3 className="font-semibold text-[#0f2b5b] text-[15px]">
+              史前星球恐龙展（深圳湾万象城 BASE）· 2026-09
+            </h3>
+            <div className="grid grid-cols-3 gap-2 my-3">
+              {caseNums.map((n) => (
+                <div key={n.l} className="bg-white rounded-lg py-2 px-1 text-center">
+                  <div className="text-base font-bold text-[#c2410c]">{n.v}</div>
+                  <div className="text-[10px] text-slate-500">{n.l}</div>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-slate-600">
+              单条推广帖带动大量「怎么去/多少钱」私讯查询，全部引导至场馆信息与港人交通路线（福田/罗湖→11号线后海站）。观看数超粉丝数＝平台算法额外推流。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Top posts chart */}
+      <section className="px-6 pb-8">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
+            近30日代表作（真实数据）
+          </h2>
+          <div className="bg-white rounded-xl border border-slate-100 p-4">
+            {topPosts.map((p) => (
+              <div key={p.name} className="mb-3">
+                <div className="flex justify-between text-[13px] mb-1">
+                  <span>{p.name}</span>
+                  <span className="text-slate-500">
+                    赞 {p.likes.toLocaleString()}｜分享 {p.shares.toLocaleString()}
+                  </span>
+                </div>
+                <div className="h-3.5 bg-slate-100 rounded overflow-hidden mb-1">
+                  <div
+                    className="h-full bg-gradient-to-r from-[#1c5bb8] to-[#4d8be0]"
+                    style={{ width: `${(p.likes / maxLike) * 100}%` }}
+                  />
+                </div>
+                <div className="h-3.5 bg-slate-100 rounded overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-[#ff8a00] to-[#ffb25e]"
+                    style={{ width: `${(p.shares / maxLike) * 100}%` }}
+                  />
                 </div>
               </div>
-            </div>
+            ))}
+            <p className="text-[11px] text-slate-500 mt-1">
+              <span className="inline-block w-2.5 h-2.5 bg-[#1c5bb8] rounded-sm mr-1 align-middle" />
+              赞
+              <span className="inline-block w-2.5 h-2.5 bg-[#ff8a00] rounded-sm mr-1 ml-3 align-middle" />
+              分享（裂变触达）
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Update Log Section */}
-        <section className="py-12 md:py-16">
-          <div className="w-full max-w-4xl mx-auto bg-white rounded-[2.5rem] shadow-xl border border-stone-100 overflow-hidden">
-            <div className="bg-stone-50 px-8 py-6 border-b border-stone-200/50 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-primary" />
-                <h3 className="text-xl font-bold text-foreground">最新更新</h3>
-              </div>
-              <Link href="/blog" className="text-sm font-bold text-primary hover:underline">查看全部</Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-stone-100">
-              {posts.slice(0, 3).map((post) => (
-                <Link key={post.id} href={`/blog/${post.slug}`} className="p-6 hover:bg-stone-50/50 transition-colors group">
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded-md">
-                        {post.category}
-                      </span>
-                      <span className="text-[10px] text-muted-foreground">{post.date}</span>
-                    </div>
-                    <h4 className="font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                      {post.title}
-                    </h4>
-                  </div>
-                </Link>
+      {/* Lineup */}
+      <section className="px-6 pb-8">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
+            媒体阵容
+          </h2>
+          <div className="bg-white rounded-xl border border-slate-100 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-[#eef2fa] text-[#0f2b5b] text-left">
+                  <th className="px-3 py-2">媒体</th>
+                  <th className="px-3 py-2">粉丝</th>
+                  <th className="px-3 py-2 hidden md:table-cell">定位</th>
+                </tr>
+              </thead>
+              <tbody>
+                {lineup.map((m) => (
+                  <tr key={m.name} className="border-t border-slate-100">
+                    <td className="px-3 py-2">{m.name}</td>
+                    <td className="px-3 py-2 font-bold text-[#0f2b5b] whitespace-nowrap">{m.fans}</td>
+                    <td className="px-3 py-2 text-slate-500 hidden md:table-cell">{m.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="md:hidden px-3 pb-3 space-y-1">
+              {lineup.map((m) => (
+                <p key={m.name} className="text-[11px] text-slate-500">
+                  · {m.name}：{m.note}
+                </p>
               ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="py-12 md:py-16">
-          <div className="bg-[#1c1917] rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl">
-            {/* Quotes decoration */}
-            <div className="absolute top-10 left-10 text-9xl font-serif text-white/5 leading-none font-black">“</div>
-            <div className="absolute bottom-[-20px] right-10 text-9xl font-serif text-white/5 leading-none rotate-180 font-black">“</div>
-
-            <blockquote className="max-w-4xl mx-auto relative z-10">
-              <p className="text-2xl md:text-4xl md:leading-relaxed font-serif font-bold text-stone-200 italic tracking-wide">
-                「種下一棵樹最好的時間是 20 年前，<br className="hidden md:block" />
-                其次是<span className="text-primary">現在</span>。」
-              </p>
-              <footer className="mt-8 text-sm font-bold tracking-[0.2em] text-stone-500 uppercase">
-                — 中國諺語
-              </footer>
-            </blockquote>
-          </div>
-        </section>
-
-
-        {/* Featured / Latest Articles (Main Grid) */}
-        <section className="py-12 md:py-24">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">最新思維</h2>
-              <p className="text-muted-foreground text-lg max-w-2xl font-serif">
-                探索關於自我成長的深度洞察
-              </p>
-            </div>
-            <Link href="/blog" className="hidden md:flex items-center gap-2 text-primary font-bold hover:text-primary/80 transition-colors">
-              查看所有文章 <MoveRight className="w-5 h-5" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            {/* Main Featured Post (Left Column) */}
-            <div className="lg:col-span-7">
-              {(() => {
-                const featuredPost = posts[0];
-                if (!featuredPost) return null;
-
-                // Image Selection Logic
-                let displayImage = "/images/blog-mindset.png"; // Default fallback
-                
-                // 1. Check for specific post images (High Priority)
-                if (featuredPost.slug.includes("perplexity-pro-scenes")) displayImage = "/images/posts/perplexity-net.png";
-                else if (featuredPost.slug.includes("tencent-yuanbao-guide")) displayImage = "/images/posts/data-mine.png";
-                else if (featuredPost.slug.includes("ai-one-person-company") || featuredPost.title.includes("隨手記")) displayImage = "/images/posts/ai-filter.png";
-                
-                // 2. Fallback to category images
-                else {
-                  if (featuredPost.category === "日常習慣") displayImage = "/images/blog-habit.png";
-                  if (featuredPost.category === "數位生活") displayImage = "/images/blog-digital.png";
-                  if (featuredPost.category === "Zero 隨手記") displayImage = "/images/blog-notes.png";
-                  if (featuredPost.category === "AI 增長引擎") displayImage = "/images/blog-ai-engine.png";
-                }
-
-                return (
-                  <Link href={`/blog/${featuredPost.slug}`} className="group block space-y-6">
-                    <div className="aspect-[16/9] rounded-[2rem] overflow-hidden relative shadow-sm border border-stone-100/50 group-hover:border-primary/20 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-500">
-                      <Image
-                        src={displayImage}
-                        alt={featuredPost.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-sm font-bold text-primary shadow-sm z-10">
-                        {featuredPost.category}
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-4 px-2">
-                       <div className="flex items-center gap-3 text-sm font-medium text-muted-foreground">
-                        <span>{featuredPost.date}</span>
-                        <span className="w-1 h-1 bg-stone-300 rounded-full" />
-                        <span>{featuredPost.readTime}</span>
-                      </div>
-                      
-                      <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
-                        {featuredPost.title}
-                      </h3>
-                      <p className="text-muted-foreground text-lg line-clamp-3 leading-relaxed font-serif">
-                        {featuredPost.excerpt}
-                      </p>
-                      
-                      <div className="inline-flex items-center text-primary font-bold group-hover:translate-x-2 transition-transform">
-                         閱讀完整故事 <MoveRight className="w-5 h-5 ml-2" />
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })()}
-            </div>
-
-            {/* Recent Posts List (Right Column) */}
-            <div className="lg:col-span-5 space-y-8 pt-2">
-               {posts.slice(1, 4).map((post) => {
-                  // Image Selection Logic
-                  let displayImage = "/images/blog-mindset.png"; // Default fallback
-                  
-                  // 1. Check for specific post images (High Priority)
-                  if (post.slug.includes("perplexity-pro-scenes")) displayImage = "/images/posts/perplexity-net.png";
-                  else if (post.slug.includes("tencent-yuanbao-guide")) displayImage = "/images/posts/data-mine.png";
-                  else if (post.slug.includes("ai-one-person-company") || post.title.includes("隨手記")) displayImage = "/images/posts/ai-filter.png";
-                  
-                  // 2. Fallback to category images
-                  else {
-                    if (post.category === "日常習慣") displayImage = "/images/blog-habit.png";
-                    if (post.category === "數位生活") displayImage = "/images/blog-digital.png";
-                    if (post.category === "Zero 隨手記") displayImage = "/images/blog-notes.png";
-                    if (post.category === "AI 增長引擎") displayImage = "/images/blog-ai-engine.png";
-                  }
-
-                  return (
-                    <Link key={post.id} href={`/blog/${post.slug}`} className="group flex gap-6 items-start p-4 -mx-4 rounded-2xl hover:bg-stone-50 transition-colors">
-                       <div className="w-32 h-24 relative rounded-xl overflow-hidden shrink-0 shadow-sm border border-stone-100 group-hover:shadow-md transition-all">
-                          <Image
-                            src={displayImage}
-                            alt={post.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                       </div>
-                       
-                       <div className="space-y-2">
-                          <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-                            <span className="text-primary font-bold">{post.category}</span>
-                            <span className="w-1 h-1 bg-stone-300 rounded-full" />
-                            <span>{post.date}</span>
-                          </div>
-                          
-                          <h4 className="text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors line-clamp-2">
-                            {post.title}
-                          </h4>
-                       </div>
-                    </Link>
-                  );
-               })}
-
-               <div className="pt-4 border-t border-stone-100">
-                  <Link href="/blog" className="inline-flex items-center gap-2 text-stone-500 hover:text-primary font-bold transition-colors">
-                     查看更多歷史文章 <MoveRight className="w-4 h-4" />
-                  </Link>
-               </div>
-            </div>
-
-          </div>
-
-          <div className="mt-12 text-center md:hidden">
-            <Link href="/blog" className="inline-flex items-center gap-2 text-primary font-bold">
-              查看所有文章 <MoveRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </section>
-
-        {/* Reading List Section - New */}
-        <ReadingList />
-
-        {/* AI Growth Engine Section - New High Impact Area */}
-        <section className="py-20 md:py-28 relative overflow-hidden">
-          {/* Background Decorative Element */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-[50%] blur-[100px] -z-10" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase">
-                <Zap className="w-4 h-4 fill-current" /> AI 增長引擎
-              </div>
-
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.15] tracking-tight">
-                AI 不會取代你，<br className="hidden md:block" />
-                但會用 AI 的人會。
-              </h2>
-
-              <p className="text-2xl md:text-3xl font-serif italic text-primary font-bold">
-                「在這裡，重新定義你的增長上限。」
-              </p>
-
-              <div className="prose prose-lg prose-stone font-serif text-muted-foreground leading-relaxed max-w-2xl">
-                <p>
-                  我們不談冰冷的技術，我們談<strong>實戰的 AI 工作流</strong>。透過將 AI 工具無縫融入你的每日決策、資料處理與產出系統，我們將原本的「低效勤奮」轉化為「指數級增長」。
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                <Link href="/ai-engine">
-                  <Button className="rounded-full bg-stone-900 hover:bg-stone-800 text-white px-10 h-16 text-lg font-bold shadow-2xl transition-all hover:scale-105 active:scale-95">
-                    進入 AI 增長引擎
-                  </Button>
-                </Link>
-                <div className="flex -space-x-3 items-center ml-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-stone-100 overflow-hidden">
-                      <Image src={`/images/hero-abstract.png`} alt="User" width={40} height={40} className="object-cover opacity-50" />
-                    </div>
-                  ))}
-                  <span className="ml-6 text-sm font-bold text-stone-500">已幫助 500+ 管理者轉型</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 relative group animate-float">
-              <div className="absolute inset-0 bg-primary/20 rounded-[3rem] blur-3xl -z-10 scale-90 group-hover:scale-100 transition-transform duration-700" />
-              <div className="relative aspect-square rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl bg-white">
-                <Image
-                  src="/images/home-ai-engine-flat.png"
-                  alt="AI Growth Engine"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                />
-              </div>
-              {/* Micro-interaction Overlay */}
-              <div className="absolute top-10 right-4 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-xl border border-stone-100 min-w-[160px] hidden xl:block animate-float">
-                <div className="space-y-3">
-                  <div className="h-2 w-12 bg-primary/20 rounded-full" />
-                  <div className="h-2 w-24 bg-stone-100 rounded-full" />
-                  <div className="h-2 w-16 bg-stone-100 rounded-full" />
-                  <p className="text-[10px] font-bold text-primary mt-2 whitespace-nowrap">
-                    🚀 系統效率提升 300%+
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        {/* Membership CTA Section */}
-        <section className="py-24 relative">
-          <div className="absolute inset-0 bg-stone-900 rounded-[3rem] -z-10 overflow-hidden">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-          </div>
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-8 md:p-12">
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-sm font-bold tracking-wide uppercase border border-white/20">
-                <Sparkles className="w-4 h-4" /> 會員專屬
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-                加入我們，<br />
-                <span className="text-primary italic font-serif">深度連結</span>你的成長旅程。
-              </h2>
-              <div className="space-y-4">
-                {[
-                  "每週精選解讀：解讀精選書本或精選文章",
-                  "會員限定 Podcast：深度訪談與幕後",
-                  "深度剖析會員營運與管理實戰難題",
-                  "專屬社群交流：與志同道合者同行"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-stone-300">
-                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                    {item}
-                  </div>
+      {/* Pricing */}
+      <section className="px-6 pb-8">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
+            合作方案（HK$）
+          </h2>
+          <div className="bg-white rounded-xl border border-slate-100 overflow-hidden mb-5">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-[#eef2fa] text-[#0f2b5b] text-left">
+                  <th className="px-3 py-2">单项</th>
+                  <th className="px-3 py-2">价</th>
+                </tr>
+              </thead>
+              <tbody>
+                {singleRates.map(([k, v]) => (
+                  <tr key={k} className="border-t border-slate-100">
+                    <td className="px-3 py-2">{k}</td>
+                    <td className="px-3 py-2 font-bold text-[#c2410c] whitespace-nowrap">{v}</td>
+                  </tr>
                 ))}
-              </div>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 text-center space-y-6 flex flex-col items-center">
-              <div className="relative w-32 h-32 mb-4">
-                <Image
-                  src="/images/membership-key.png"
-                  alt="Exclusive Benefits"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="text-stone-400 font-bold uppercase tracking-wider text-sm">早鳥優惠</div>
-              <div className="flex justify-center items-baseline gap-2 text-white">
-                <span className="text-5xl font-bold">$99</span>
-                <span className="text-xl text-stone-400">/ 月</span>
-              </div>
-              <p className="text-stone-300 text-sm">隨時取消，無隱藏費用。</p>
-              <Button className="w-full rounded-full bg-primary hover:bg-primary/90 text-white py-6 text-base font-bold shadow-lg shadow-primary/25">
-                立即加入會員
-              </Button>
-            </div>
+              </tbody>
+            </table>
           </div>
-        </section>
-
-
-        {/* About Section (Zero Wong Story) */}
-        <section className="py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Visual / Profile Image Column (Left on Desktop) */}
-          <div className="lg:col-span-12 xl:col-span-5 space-y-8 sticky top-24">
-            <div className="relative aspect-[4/5] md:aspect-[3/2] lg:aspect-[3/4] rounded-[2.5rem] overflow-hidden bg-stone-200 shadow-xl border-8 border-white">
-              <Image
-                src="/images/zero-portrait.png"
-                alt="Zero Wong - Founder"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Personal Quote */}
-            <div className="bg-primary/5 p-8 rounded-3xl border border-primary/10">
-              <blockquote className="font-serif text-xl font-bold text-primary italic leading-relaxed">
-                「在餐飲與商業的世界裡，<br />停止進化，就是退化的開始。」
-              </blockquote>
-            </div>
+          <div className="grid md:grid-cols-2 gap-3">
+            {packages.map((p) => (
+              <div key={p.name} className="bg-[#fff7e6] rounded-xl p-4">
+                <div className="text-[13px] text-[#c2410c] font-bold mb-1">{p.tag}</div>
+                <div className="text-lg font-bold text-slate-800 mb-1">{p.name}</div>
+                <p className="text-[13px] text-slate-600">{p.body}</p>
+              </div>
+            ))}
           </div>
+          <p className="text-xs text-slate-500 mt-4">
+            加购：素材授权 +30-50%｜留言关键词→私信导流 +$150（避 FB
+            外链新政）｜简体版内容 +$100。对比参考：香港 FB 付费广告 CPM 约 HK$30-150 另加代理费 12-20%。
+          </p>
+        </div>
+      </section>
 
-          {/* Content Column (Right on Desktop) */}
-          <div className="lg:col-span-12 xl:col-span-7 space-y-12">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 text-stone-600 text-sm font-bold tracking-wide uppercase">
-                關於創辦人
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-800 leading-tight">
-                從傳菜侍應到營運總監，<br />
-                <span className="text-primary">25 年「從零增長」的實戰告白</span>
-              </h2>
-            </div>
+      {/* Why invest */}
+      <section className="px-6 pb-8">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
+            值得投放的四个理由
+          </h2>
+          <ul className="space-y-2">
+            {WHY.map((w) => (
+              <li key={w} className="text-sm text-slate-600 flex gap-2">
+                <span className="text-[#ff8a00] font-bold">✓</span>
+                {w}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-            <div className="prose prose-lg prose-stone max-w-none prose-p:font-serif prose-p:text-stone-600 prose-headings:text-foreground prose-strong:text-primary">
-              <p>
-                很多人問我，為什麼我的品牌叫 <strong>Zero to Growth</strong>？ 這不只是一個名字，這是我過去 25 年職涯的真實寫照。我叫 Zero，我的故事從「零」開始，但我的目標是與你一起實現無限的「增長」。
-              </p>
+      {/* CTA */}
+      <section className="bg-[#0f2b5b] text-white px-6 py-10 text-center">
+        <div className="max-w-2xl mx-auto">
+          <p className="text-lg font-bold mb-2">WhatsApp 即时查询 · 24 小时内回复</p>
+          <p className="text-sm opacity-85 mb-6">
+            【联络人／电话待补】｜香港团队 · 繁简双语 · 服务深圳/大湾区商家＋香港品牌
+          </p>
+          <a
+            href="https://wa.me/"
+            className="inline-block bg-[#ff8a00] text-white font-bold rounded-full px-8 py-3"
+          >
+            WhatsApp 查询合作
+          </a>
+        </div>
+      </section>
 
-              <div className="space-y-10 mt-12">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-primary/30">1</div>
-                  <div className="pt-2">
-                    <h3 className="text-xl font-bold text-stone-800 mb-2">起點：那雙拿過托盤的手</h3>
-                    <p>
-                      25 年前，我是一一名最平凡不過的侍應。那段日子教給我最寶貴的一課，不是服務流程，而是<strong>「洞察人性」</strong>。這雙拿過托盤的手，讓我至今依然能與第一線員工同頻呼吸，深知基層的痛點與力量。
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center font-bold text-xl">2</div>
-                  <div className="pt-2">
-                    <h3 className="text-xl font-bold text-stone-800 mb-2">跨越：從 1 到 200 的管理修煉</h3>
-                    <p>
-                      從樓面走向決策室，從管理幾個人到帶領一支 200 人的企業團隊。在內地市場深耕的歲月裡，我領悟到：經驗能讓你生存，但唯有<strong>系統化的管理</strong>才能讓你壯大。
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center font-bold text-xl">3</div>
-                  <div className="pt-2">
-                    <h3 className="text-xl font-bold text-stone-800 mb-2">進化：NLP Master 與跨學科的碰撞</h3>
-                    <p>
-                      為了破解「人」與「增長」的密碼，我取得 <strong>NLP 高級執行師</strong>資格。我研發出一套「有溫度的科學管理法」：管理不再是命令，而是激發動力；營銷不再是推銷，而是建立潛意識連結。
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border-2 border-primary text-primary flex items-center justify-center font-bold text-xl">4</div>
-                  <div className="pt-2">
-                    <h3 className="text-xl font-bold text-stone-800 mb-2">執著：永不停止的「知識更新」</h3>
-                    <p>
-                      即便擁有 25 年資歷，我依然把自己當作一名「學生」。我不斷吸收全球最新的管理思維與數位營銷技術，確保我的管理邏輯始終站在趨勢的前沿。
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-12 p-8 bg-stone-50 rounded-3xl border border-stone-100 shadow-inner">
-                <h3 className="text-2xl font-bold text-stone-800 mb-4">願景：為什麼創立 Zero to Growth？</h3>
-                <p className="mb-4">
-                  我想告訴每一個創業者與管理人員：<strong>增長（Growth）不是奇蹟，而是一門可以被設計的科學。</strong>
-                </p>
-                <p>
-                  我的名字叫 Zero。我從零出發，走過 25 年的餐飲起伏；現在，我想透過持續的分享，陪著你一起見證屬於你的增長奇蹟。
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </div>
+      <footer className="bg-slate-100 px-6 py-5">
+        <p className="max-w-2xl mx-auto text-[11px] text-slate-400 text-center">
+          条款：出稿 7 日内；初稿商家预审一次；合作帖按 Meta 政策标注「付费合作」。数据截至
+          2026-11-17，报价可议。
+        </p>
+      </footer>
     </main>
   );
 }
