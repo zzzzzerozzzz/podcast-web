@@ -123,6 +123,7 @@ const T = {
         ],
         value: "單買原價需 $800-$1,100 ｜ 限首單體驗",
         expect: "",
+        gift: "季度優惠：預付 3 個月一律 85 折",
         star: "",
       },
       {
@@ -131,6 +132,7 @@ const T = {
         who: "主打視覺誘惑（烤肉、烘焙、按摩SPA、特色體驗），想精準截擊「週五放工即出發」嘅香港客群",
         hook: "卡準香港人『週四搵料、週五決定、週六衝深圳』嘅黃金決策期，短影音引爆週末到店！",
         expect: "精準短片常態播放約 50,000-150,000 次（單條最高達 25 萬人次）",
+        gift: "限時加贈：免費同步 2 大 IG Reels（@cantonesefoodtravelguide + @chinatravelhack）｜季度預付 3 個月 85 折",
         items: [
           "2 條黃金檔短影音（Reel/Shorts），鎖定週四／週五 17:00-20:00 出發前夕發布",
           "包辦全套後製：商家提供原片素材，工作室包辦港式粵語專業配音＋繁體爆點字幕＋網感精剪",
@@ -153,6 +155,7 @@ const T = {
         ],
         value: "單項購買總值逾 $3,900+，一站式搞掂全網曝光",
         expect: "",
+        gift: "季度優惠：預付 3 個月一律 85 折",
         star: "value",
       },
       {
@@ -169,6 +172,7 @@ const T = {
         ],
         value: "3 個月起簽",
         expect: "",
+        gift: "季度簽約特惠：預付 3 個月 85 折＝HK$9,800／季（月均 $3,266，立減近 $1,800），加贈全季雙 IG Reels 同步",
         star: "",
       },
     ],
@@ -303,6 +307,7 @@ const T = {
         ],
         value: "单买原价需 $800-$1,100 ｜ 限首单体验",
         expect: "",
+        gift: "季度优惠：预付 3 个月一律 85 折",
         star: "",
       },
       {
@@ -311,6 +316,7 @@ const T = {
         who: "主打视觉诱惑（烤肉、烘焙、按摩SPA、特色体验），想精准截击「周五下班即出发」的香港客群",
         hook: "卡准香港人『周四找料、周五决定、周六冲深圳』的黄金决策期，短影音引爆周末到店！",
         expect: "精准短片常态播放约 50,000-150,000 次（单条最高达 25 万人次）",
+        gift: "限时加赠：免费同步 2 大 IG Reels（@cantonesefoodtravelguide + @chinatravelhack）｜季度预付 3 个月 85 折",
         items: [
           "2 条黄金档短影音（Reel/Shorts），锁定周四／周五 17:00-20:00 出发前夕发布",
           "包办全套后期：商家提供原片素材，工作室包办港式粤语专业配音＋繁体爆点字幕＋网感精剪",
@@ -333,6 +339,7 @@ const T = {
         ],
         value: "单项购买总值逾 $3,900+，一站式搞定全网曝光",
         expect: "",
+        gift: "季度优惠：预付 3 个月一律 85 折",
         star: "value",
       },
       {
@@ -662,6 +669,11 @@ export default function Home() {
                   {p.expect ? (
                     <p className="text-[14px] text-[#f5d98b] font-bold bg-[#c5a065]/10 rounded-xl px-3 py-2 mb-3.5">
                       {p.expect}
+                    </p>
+                  ) : null}
+                  {p.gift ? (
+                    <p className="text-[13.5px] text-[#b9d4a8] font-bold bg-[#b9d4a8]/10 border border-[#b9d4a8]/25 rounded-xl px-3 py-2 mb-3.5">
+                      {p.gift}
                     </p>
                   ) : null}
                   <ul className="space-y-2 mb-3.5 flex-1">
