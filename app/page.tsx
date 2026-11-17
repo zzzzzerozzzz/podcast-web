@@ -452,7 +452,7 @@ export default function Home() {
       <section className="relative px-6 pt-12 pb-10">
         <div className="max-w-5xl mx-auto lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
           <div>
-            <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
+            <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[14px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
               {t.badge}
             </span>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
@@ -466,12 +466,12 @@ export default function Home() {
                   {s.value}
                   {s.up ? <span className="text-[#b9d4a8] text-base ml-1">↗</span> : null}
                 </div>
-                <div className="text-[10px] text-white/35 mt-2">{s.label}</div>
+                <div className="text-[11.5px] text-white/40 mt-2">{s.label}</div>
               </div>
             ))}
           </div>
           <div className={`${CARD} mt-4 px-5 py-3.5 text-center col-span-full`}>
-            <p className="text-[13px] text-[#f5d98b] font-semibold leading-relaxed">{t.reelsLine}</p>
+            <p className="text-[15px] text-[#f5d98b] font-semibold leading-relaxed">{t.reelsLine}</p>
           </div>
         </div>
       </section>
@@ -479,7 +479,7 @@ export default function Home() {
       {/* Selling points */}
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">
             {t.sellingTitle}
           </h2>
           <div className="grid gap-4 md:grid-cols-3">
@@ -489,7 +489,7 @@ export default function Home() {
                   <span className="text-xl mr-2">{p.icon}</span>
                   {p.title}
                 </h3>
-                <p className="text-sm text-white/55 leading-relaxed">{p.body}</p>
+                <p className="text-[15.5px] text-white/60 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
@@ -499,15 +499,15 @@ export default function Home() {
       {/* CPM VS */}
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
           <div className="grid md:grid-cols-2 gap-4 items-stretch relative">
             <div className="rounded-3xl border border-white/10 bg-[#26211a]/60 backdrop-blur p-5">
               <h3 className="font-bold text-[#e0896a] text-[15px] mb-2">{t.cpmLeftTitle}</h3>
-              <p className="text-sm text-white/50 leading-relaxed">{t.cpmLeftBody}</p>
+              <p className="text-[15.5px] text-white/55 leading-relaxed">{t.cpmLeftBody}</p>
             </div>
             <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] backdrop-blur p-5 glow-gold">
               <h3 className="font-bold text-[#e8c98a] text-[15px] mb-2">{t.cpmRightTitle}</h3>
-              <p className="text-sm text-[#f3ead9]/75 leading-relaxed">{t.cpmRightBody}</p>
+              <p className="text-[15.5px] text-[#f3ead9]/80 leading-relaxed">{t.cpmRightBody}</p>
             </div>
             <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#221d17] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10">
               {t.vs}
@@ -519,7 +519,7 @@ export default function Home() {
       {/* Dashboards in polaroid frames */}
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
           <div className="grid sm:grid-cols-2 gap-10">
             {t.dashes.map((d, i) => (
               <div key={d.name} className="relative">
@@ -528,14 +528,14 @@ export default function Home() {
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#e8c98a]/40 rotate-[-4deg] rounded-sm z-10 backdrop-blur-sm" />
                   <div className="bg-[#faf6ec] rounded-[28px] p-3 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)]">
                     <img src={dashImgs[i]} alt={d.name} className="w-full rounded-xl aspect-[9/18] object-cover object-top" />
-                    <p className="text-center text-[12px] font-semibold text-[#6b5a3e] mt-2.5 truncate">
+                    <p className="text-center text-[13px] font-semibold text-[#6b5a3e] mt-2.5 truncate">
                       ✦ {d.name} ✦
                     </p>
                   </div>
-                  <div className="absolute -right-3 top-8 bg-[#f5d98b] text-[#3a2f1c] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(245,217,139,0.45)] rotate-3">
+                  <div className="absolute -right-3 top-8 bg-[#f5d98b] text-[#3a2f1c] text-[13px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(245,217,139,0.45)] rotate-3">
                     {d.float1}
                   </div>
-                  <div className="absolute -left-3 bottom-14 bg-[#b9d4a8] text-[#26301c] text-[12px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(185,212,168,0.4)] -rotate-2">
+                  <div className="absolute -left-3 bottom-14 bg-[#b9d4a8] text-[#26301c] text-[13px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(185,212,168,0.4)] -rotate-2">
                     {d.float2}
                   </div>
                 </div>
@@ -560,7 +560,7 @@ export default function Home() {
       {/* Case study */}
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
           <div className={`${CARD} p-5`}>
             <h3 className="font-semibold text-[15px] mb-1 text-[#f3ead9]">
               <span className="text-xl mr-2">🦕</span>
@@ -574,7 +574,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <p className="text-sm text-white/55 leading-relaxed">{t.caseBody}</p>
+            <p className="text-[15.5px] text-white/60 leading-relaxed">{t.caseBody}</p>
           </div>
         </div>
       </section>
@@ -582,7 +582,7 @@ export default function Home() {
       {/* Top posts polaroid wall */}
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {t.topPosts.map((p, i) => (
               <div
@@ -623,9 +623,9 @@ export default function Home() {
       {/* Lineup */}
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
           <div className={`${CARD} overflow-hidden`}>
-            <table className="w-full text-sm">
+            <table className="w-full text-[15px]">
               <thead>
                 <tr className="bg-white/[0.04] text-left text-white/55">
                   <th className="px-4 py-3">{t.lineupHead[0]}</th>
@@ -645,7 +645,7 @@ export default function Home() {
             </table>
             <div className="md:hidden px-4 pb-4 space-y-1.5">
               {t.lineup.map((m) => (
-                <p key={m.name} className="text-[11px] text-white/35">
+                <p key={m.name} className="text-[12.5px] text-white/40">
                   · {m.name}：{m.note}
                 </p>
               ))}
@@ -657,7 +657,7 @@ export default function Home() {
       {/* Pricing — Morandi cards */}
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-5 mb-6 items-start">
             {t.packages.map((p) => {
               const morandi =
@@ -678,27 +678,27 @@ export default function Home() {
                       {p.star === "top" ? t.starTop : t.starValue}
                     </div>
                   ) : null}
-                  <div className="text-[13px] font-semibold text-[#f0b48a] mb-1 mt-1">{p.tag}</div>
+                  <div className="text-[14px] font-semibold text-[#f0b48a] mb-1 mt-1">{p.tag}</div>
                   <div className="text-[22px] leading-tight font-bold font-mono tabular-nums mb-2.5 text-[#f7efdd]">{p.name}</div>
-                  <p className="text-[12px] text-white/50 leading-snug mb-2.5">🎯 {p.who}</p>
-                  <p className="text-[13px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
+                  <p className="text-[13px] text-white/55 leading-snug mb-2.5">🎯 {p.who}</p>
+                  <p className="text-[14.5px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
                     「{p.hook}」
                   </p>
                   {p.expect ? (
-                    <p className="text-[12.5px] text-[#f5d98b] font-bold bg-[#c5a065]/10 rounded-xl px-3 py-2 mb-3.5">
+                    <p className="text-[14px] text-[#f5d98b] font-bold bg-[#c5a065]/10 rounded-xl px-3 py-2 mb-3.5">
                       📊 {p.expect}
                     </p>
                   ) : null}
                   <ul className="space-y-2 mb-3.5 flex-1">
                     {p.items.map((i) => (
-                      <li key={i} className="text-[12.5px] text-white/60 leading-snug flex gap-1.5">
+                      <li key={i} className="text-[14px] text-white/65 leading-snug flex gap-1.5">
                         <span className="text-[#c5a065] shrink-0">✦</span>
                         <span>{i}</span>
                       </li>
                     ))}
                   </ul>
                   {p.value ? (
-                    <p className="text-[11.5px] text-[#b9d4a8] font-semibold mb-3.5">💎 {p.value}</p>
+                    <p className="text-[13px] text-[#b9d4a8] font-semibold mb-3.5">💎 {p.value}</p>
                   ) : null}
                   <a
                     href="https://wa.me/qr/RFLV47X75BYHI1"
@@ -714,7 +714,7 @@ export default function Home() {
               );
             })}
           </div>
-          <p className="text-center text-[13px] text-[#e8c98a] mb-4 font-semibold">{t.payNote}</p>
+          <p className="text-center text-[14.5px] text-[#e8c98a] mb-4 font-semibold">{t.payNote}</p>
           <div className={`${CARD} p-2`}>
             <div className="px-3 pt-2 pb-1 text-sm text-white/55">{t.singleTitle}</div>
             <div className="grid md:grid-cols-2 gap-x-6">
@@ -726,7 +726,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <p className="text-xs text-white/35 mt-3">{t.addons}</p>
+          <p className="text-[13.5px] text-white/40 mt-3">{t.addons}</p>
         </div>
       </section>
 
@@ -738,15 +738,15 @@ export default function Home() {
             <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
           </div>
           <p className="text-lg font-bold mb-2 text-[#f7efdd]">{t.ctaLine}</p>
-          <p className="text-sm text-white/45 mb-8">{t.ctaContact}</p>
+          <p className="text-[15px] text-white/50 mb-8">{t.ctaContact}</p>
           <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
             <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45 glow-gold">
               <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl" />
-              <p className="text-[13px] font-bold text-[#4a3b22] mt-2">{t.qrWechat}</p>
+              <p className="text-[14px] font-bold text-[#4a3b22] mt-2">{t.qrWechat}</p>
             </div>
             <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45 glow-gold">
               <img src="/qr-whatsapp.png" alt="WhatsApp QR" className="w-full rounded-xl" />
-              <p className="text-[13px] font-bold text-[#4a3b22] mt-2">{t.qrWa}</p>
+              <p className="text-[14px] font-bold text-[#4a3b22] mt-2">{t.qrWa}</p>
             </div>
           </div>
           <a
@@ -765,7 +765,7 @@ export default function Home() {
       </section>
 
       <footer className="px-6 py-6 border-t border-[#c5a065]/15">
-        <p className="max-w-5xl mx-auto text-[11px] text-white/30 text-center">{t.footer}</p>
+        <p className="max-w-5xl mx-auto text-[12px] text-white/35 text-center">{t.footer}</p>
       </footer>
     </main>
   );

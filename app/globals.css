@@ -150,19 +150,19 @@
 
 /* Depth glassmorphism — added 2026-11-17 (ZERO spec) */
 body {
-  background-color: #0c0f17;
+  background-color: #221d17;
   background-image:
-    radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.10) 0px, transparent 45%),
-    radial-gradient(at 85% 40%, rgba(245, 158, 11, 0.07) 0px, transparent 45%),
-    radial-gradient(at 50% 85%, rgba(16, 185, 129, 0.06) 0px, transparent 50%);
+    radial-gradient(at 15% 15%, rgba(197, 160, 101, 0.16) 0px, transparent 45%),
+    radial-gradient(at 85% 40%, rgba(224, 123, 57, 0.10) 0px, transparent 45%),
+    radial-gradient(at 50% 85%, rgba(157, 184, 138, 0.08) 0px, transparent 50%);
   background-attachment: fixed;
 }
 .glass-card {
   background: rgba(255, 255, 255, 0.03) !important;
   backdrop-filter: blur(16px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(232, 201, 138, 0.16) !important;
+  border-top: 1px solid rgba(245, 217, 139, 0.24) !important;
   border-radius: 20px !important;
   box-shadow:
     0 16px 36px 0 rgba(0, 0, 0, 0.4),
@@ -173,10 +173,10 @@ body {
   transform: translateY(-3px);
   box-shadow:
     0 22px 45px 0 rgba(0, 0, 0, 0.55),
-    0 0 16px rgba(245, 158, 11, 0.12),
+    0 0 16px rgba(232, 201, 138, 0.16),
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 .glass-card.featured {
-  border: 1px solid rgba(245, 158, 11, 0.35) !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(232, 201, 138, 0.45) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 155, 92, 0.22) !important;
 }
