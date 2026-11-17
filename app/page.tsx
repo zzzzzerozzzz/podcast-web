@@ -113,10 +113,62 @@ const T = {
       ["IG 同步加購", "+$200/帖"],
     ],
     packages: [
-      { tag: "🔥 首單體驗", name: "$688 體驗組", body: "專頁圖文 1 帖＋群組情報帖 1 帖（原價約 $900，先試效果）", star: "" },
-      { tag: "🎯 週末爆點", name: "$1,880", body: "週四/五黃金檔 2 條影片＋群組置頂 3 日（卡準「週五搵料」決策點）", star: "top" },
-      { tag: "🚀 全矩陣", name: "$2,800", body: "3 專頁＋IG＋群組置頂 7 日（單買 $3,500+）", star: "value" },
-      { tag: "📅 包月檔", name: "$3,880/月", body: "每月 2 影片＋2 圖文＋群組 4 帖＋黃金檔優先（3 個月起）", star: "" },
+      {
+        tag: "🔥 首單體驗",
+        name: "$688 輕量試水組",
+        who: "未做過港客推廣、想用「幾百蚊成本」實測香港客流反應嘅單店／新品牌",
+        hook: "唔使大筆預算，幾百蚊即刻試出香港客人對你品牌嘅真實吸引力！",
+        items: [
+          "主力專頁圖文 1 帖（精選《大灣區北上攻略情報站》，深度港式語境排版）",
+          "12,000 人私域情報帖 1 帖（精準植入群組「週末去邊玩」討論區）",
+          "初稿預審保障：發布前 100% 經商家確認，修改至滿意才出稿",
+        ],
+        value: "原單買需 $800-$1,100 ｜ 限首次合作專享",
+        star: "",
+      },
+      {
+        tag: "🎯 週末爆點短影音組",
+        name: "$1,880",
+        who: "主打視覺誘惑（如炭火烤肉、特色烘焙、SPA按摩），想精準截擊「週五放工即出發」嘅香港客群",
+        hook: "卡準香港人『週五搵料、週六衝深圳』嘅決策黃金期，用短片直接引爆週末到店！",
+        items: [
+          "2 條黃金檔短影音（Reel/Shorts）：鎖定週四／週五 17:00-20:00 港人搵料高峰排期發布",
+          "包辦全套地道後製：商家提供拍攝素材，我哋負責港式粵語專業配音＋繁體爆點字幕＋網感節奏精剪",
+          "12,000 人私域群組置頂 3 日：週末黃金 72 小時鎖定群組首頁入口持續曝光",
+          "雙主力專頁聯播：擴大流量池，享受算法雙重推流",
+        ],
+        value: "",
+        star: "top",
+      },
+      {
+        tag: "🚀 開業／大促力薦",
+        name: "$2,800 全矩陣霸屏",
+        who: "新店插旗深圳、大型商場節慶、展覽盛事，或連鎖品牌單月主推",
+        hook: "唔做慢熱推廣！要就一次過喺全香港人 Feed 流洗版，短時間製造開局排隊效應！",
+        items: [
+          "全渠道 3 大 FB 專頁同步分發（總計逾 38,000+ 精準粉絲矩陣同步鋪量）",
+          "雙 IG 帳號同步發布（@cantonesefoodtravelguide + @chinatravelhack 觸及年輕探店客群）",
+          "12,000 人交流群「精華置頂」整整 7 日（佔領全週私域頂流）",
+          "自帶二級裂變機制：文案精心設計 @Tag 好友與轉發激勵，享受最高單帖 4,200+ 次轉發嘅推流效應",
+        ],
+        value: "單項購買總值逾 $3,900+，全網一站式打通",
+        star: "value",
+      },
+      {
+        tag: "👑 品牌季度簽約首選",
+        name: "$3,880/月 長效增長代運營檔",
+        who: "拒絕「爆一日就靜返」！想建立長期香港客流基本盤、鎖定港人「週末固定飯堂」嘅實力品牌",
+        hook: "告別單次撞運氣，每月多頻次精準植入生活圈，令香港人過關第一時間諗起你！",
+        items: [
+          "全月 4 篇深度宣傳：3 條精剪粵語配音短影音＋3 篇深度原創種草圖文",
+          "群組深度互動 3 帖：週 1 帖持續發酵，以真實探店口吻解答港人留言（每 10-15 天放出 1 次群組貼，合共 3 次）",
+          "全月黃金發帖檔期優先鎖定（保證卡準各個公眾假期與連假前夕）",
+          "月度官方 API 數據回盤：提供完整觸及、互動及私訊諮詢復盤報告",
+          "增值贈送：免費提供「港人到店路線指引＋口岸交通指南」宣傳模板",
+        ],
+        value: "3 個月起簽，尊享專屬流量顧問服務",
+        star: "",
+      },
     ],
     starTop: "⭐ 最多商家選擇",
     starValue: "⭐ 性價比最高",
@@ -239,10 +291,62 @@ const T = {
       ["IG 同步加购", "+$200/帖"],
     ],
     packages: [
-      { tag: "🔥 首单体验", name: "$688 体验组", body: "专页图文 1 帖＋群组情报帖 1 帖（原价约 $900，先试效果）", star: "" },
-      { tag: "🎯 周末爆点", name: "$1,880", body: "周四/五黄金档 2 条视频＋群组置顶 3 日（卡准「周五找料」决策点）", star: "top" },
-      { tag: "🚀 全矩阵", name: "$2,800", body: "3 专页＋IG＋群组置顶 7 日（单买 $3,500+）", star: "value" },
-      { tag: "📅 包月档", name: "$3,880/月", body: "每月 2 视频＋2 图文＋群组 4 帖＋黄金档优先（3 个月起）", star: "" },
+      {
+        tag: "🔥 首单体验",
+        name: "$688 轻量试水组",
+        who: "未做过港客推广、想用「几百蚊成本」实测香港客流反应的单店／新品牌",
+        hook: "不用大笔预算，几百蚊立刻试出香港客人对你品牌的真实吸引力！",
+        items: [
+          "主力专页图文 1 帖（精选《大湾区北上攻略情报站》，深度港式语境排版）",
+          "12,000 人私域情报帖 1 帖（精准植入群组「周末去哪玩」讨论区）",
+          "初稿预审保障：发布前 100% 经商家确认，修改至满意才出稿",
+        ],
+        value: "原单买需 $800-$1,100 ｜ 限首次合作专享",
+        star: "",
+      },
+      {
+        tag: "🎯 周末爆点短影音组",
+        name: "$1,880",
+        who: "主打视觉诱惑（如炭火烤肉、特色烘焙、SPA按摩），想精准截击「周五下班即出发」的香港客群",
+        hook: "卡准香港人『周五找料、周六冲深圳』的决策黄金期，用短片直接引爆周末到店！",
+        items: [
+          "2 条黄金档短影音（Reel/Shorts）：锁定周四／周五 17:00-20:00 港人找料高峰排期发布",
+          "包办全套地道后期：商家提供拍摄素材，我们负责港式粤语专业配音＋繁体爆点字幕＋网感节奏精剪",
+          "12,000 人私域群组置顶 3 日：周末黄金 72 小时锁定群组首页入口持续曝光",
+          "双主力专页联播：扩大流量池，享受算法双重推流",
+        ],
+        value: "",
+        star: "top",
+      },
+      {
+        tag: "🚀 开业／大促力荐",
+        name: "$2,800 全矩阵霸屏",
+        who: "新店插旗深圳、大型商场节庆、展览盛事，或连锁品牌单月主推",
+        hook: "不做慢热推广！要就一次过在全香港人 Feed 流洗版，短时间制造开局排队效应！",
+        items: [
+          "全渠道 3 大 FB 专页同步分发（总计逾 38,000+ 精准粉丝矩阵同步铺量）",
+          "双 IG 帐号同步发布（@cantonesefoodtravelguide + @chinatravelhack 触及年轻探店客群）",
+          "12,000 人交流群「精华置顶」整整 7 日（占领全周私域顶流）",
+          "自带二级裂变机制：文案精心设计 @Tag 好友与转发激励，享受最高单帖 4,200+ 次转发的推流效应",
+        ],
+        value: "单项购买总值逾 $3,900+，全网一站式打通",
+        star: "value",
+      },
+      {
+        tag: "👑 品牌季度签约首选",
+        name: "$3,880/月 长效增长代运营档",
+        who: "拒绝「爆一日就静返」！想建立长期香港客流基本盘、锁定港人「周末固定饭堂」的实力品牌",
+        hook: "告别单次撞运气，每月多频次精准植入生活圈，令香港人过关第一时间想起你！",
+        items: [
+          "全月 4 篇深度宣传：3 条精剪粤语配音短影音＋3 篇深度原创种草图文",
+          "群组深度互动 3 帖：周 1 帖持续发酵，以真实探店口吻解答港人留言（每 10-15 天放出 1 次群组贴，合共 3 次）",
+          "全月黄金发帖档期优先锁定（保证卡准各个公众假期与连假前夕）",
+          "月度官方 API 数据回盘：提供完整触及、互动及私讯咨询复盘报告",
+          "增值赠送：免费提供「港人到店路线指引＋口岸交通指南」宣传模板",
+        ],
+        value: "3 个月起签，尊享专属流量顾问服务",
+        star: "",
+      },
     ],
     starTop: "⭐ 最多商家选择",
     starValue: "⭐ 性价比最高",
@@ -541,7 +645,7 @@ export default function Home() {
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mb-6">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-5 mb-6 items-start">
             {t.packages.map((p) => {
               const morandi =
                 p.star === "top"
@@ -562,8 +666,22 @@ export default function Home() {
                     </div>
                   ) : null}
                   <div className="text-[13px] font-semibold text-[#f0b48a] mb-1 mt-1">{p.tag}</div>
-                  <div className="text-2xl font-bold font-mono tabular-nums mb-2 text-[#f7efdd]">{p.name}</div>
-                  <p className="text-sm text-white/55 leading-relaxed mb-4 flex-1">{p.body}</p>
+                  <div className="text-[22px] leading-tight font-bold font-mono tabular-nums mb-2.5 text-[#f7efdd]">{p.name}</div>
+                  <p className="text-[12px] text-white/50 leading-snug mb-2.5">🎯 {p.who}</p>
+                  <p className="text-[13px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
+                    「{p.hook}」
+                  </p>
+                  <ul className="space-y-2 mb-3.5 flex-1">
+                    {p.items.map((i) => (
+                      <li key={i} className="text-[12.5px] text-white/60 leading-snug flex gap-1.5">
+                        <span className="text-[#c5a065] shrink-0">✦</span>
+                        <span>{i}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {p.value ? (
+                    <p className="text-[11.5px] text-[#b9d4a8] font-semibold mb-3.5">💎 {p.value}</p>
+                  ) : null}
                   <a
                     href="https://wa.me/qr/RFLV47X75BYHI1"
                     className={`text-center text-sm font-bold rounded-full py-2.5 px-4 ${
