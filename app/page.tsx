@@ -101,6 +101,8 @@ const T = {
       { name: "IG @chinatravelhack", fans: "3,705", note: "中國旅遊影片同步（兩個月 +24%）" },
     ],
     priceTitle: "合作方案（HK$）",
+    qBannerTitle: "季度優惠｜預付 3 個月一律 85 折",
+    qBannerSub: "$3,880/月 × 3 個月 ＝ HK$9,800／季（月均 $3,266，立減近 $1,800）——適用於全部方案",
     singleTitle: "單項價目",
     singles: [
       ["專頁圖文帖（1專頁1帖）", "$500-800"],
@@ -285,6 +287,8 @@ const T = {
       { name: "IG @chinatravelhack", fans: "3,705", note: "中国旅游影片同步（两个月 +24%）" },
     ],
     priceTitle: "合作方案（HK$）",
+    qBannerTitle: "季度優惠｜預付 3 個月一律 85 折",
+    qBannerSub: "$3,880/月 × 3 個月 ＝ HK$9,800／季（月均 $3,266，立減近 $1,800）——適用於全部方案",
     singleTitle: "单项价目",
     singles: [
       ["专页图文帖（1专页1帖）", "$500-800"],
@@ -640,6 +644,10 @@ export default function Home() {
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
+          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 backdrop-blur px-6 py-4 mb-6 glow-gold text-center">
+            <p className="text-[19px] font-bold text-[#f5d98b] tracking-wide">{t.qBannerTitle}</p>
+            <p className="text-[14px] text-[#f3ead9]/85 mt-1">{t.qBannerSub}</p>
+          </div>
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-5 mb-6">
             {t.packages.map((p) => {
               const morandi =
