@@ -9,7 +9,7 @@ type Lang = "hk" | "cn";
 const T = {
   hk: {
     brand: "Zero to Growth (ZTG) Studio",
-    brandSub: "零到成長工作室",
+    brandSub: "跨境新媒體引流工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒體矩陣",
     tagline: "一句話：深圳商家想做嘅「香港客人」生意，我哋隔住一條深圳河幫你直接觸達佢哋。",
@@ -192,7 +192,7 @@ const T = {
   },
   cn: {
     brand: "Zero to Growth (ZTG) Studio",
-    brandSub: "零到成长工作室",
+    brandSub: "跨境新媒体引流工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒体矩阵",
     tagline: "一句话：深圳商家想做的「香港客人」生意，我们隔着一条深圳河帮你直接触达他们。",
@@ -466,7 +466,7 @@ export default function Home() {
                   {s.value}
                   {s.up ? <span className="text-[#b9d4a8] text-base ml-1">↗</span> : null}
                 </div>
-                <div className="text-[11.5px] text-white/40 mt-2">{s.label}</div>
+                <div className="text-[11.5px] text-[#94a3b8] mt-2">{s.label}</div>
               </div>
             ))}
           </div>
@@ -500,17 +500,17 @@ export default function Home() {
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
-          <div className="grid md:grid-cols-2 gap-4 items-stretch relative">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch relative">
             <div className="rounded-3xl border border-white/10 bg-[#26211a]/60 backdrop-blur p-5">
               <h3 className="font-bold text-[#e0896a] text-[15px] mb-2">{t.cpmLeftTitle}</h3>
               <p className="text-[15.5px] text-white/55 leading-relaxed">{t.cpmLeftBody}</p>
             </div>
+            <div className="flex w-11 h-11 rounded-full bg-[#241e18] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10 mx-auto my-1 md:my-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+              {t.vs}
+            </div>
             <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] backdrop-blur p-5 glow-gold">
               <h3 className="font-bold text-[#e8c98a] text-[15px] mb-2">{t.cpmRightTitle}</h3>
               <p className="text-[15.5px] text-[#f3ead9]/80 leading-relaxed">{t.cpmRightBody}</p>
-            </div>
-            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#221d17] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10">
-              {t.vs}
             </div>
           </div>
         </div>
