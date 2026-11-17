@@ -105,9 +105,12 @@ const T = {
       "香港 FB 付費廣告 CPM 約 HK$30-150 另加代理費 12-20%——原生內容帖自帶信任＋精準北上客",
       "AI 生產線＋真人編輯，30 日 92 帖穩定產能",
     ],
-    ctaLine: "WhatsApp 即時查詢 · 24 小時內回覆",
-    ctaContact: "【聯絡人／電話待補】｜香港團隊 · 繁簡雙語 · 服務深圳/大灣區商家＋香港品牌",
-    ctaBtn: "WhatsApp 查詢合作",
+    ctaLine: "掃碼即時查詢 · 24 小時內回覆",
+    ctaContact: "香港團隊 · 繁簡雙語 · 服務深圳/大灣區商家＋香港品牌",
+    qrWechat: "微信掃碼加好友",
+    qrWa: "WhatsApp 掃碼",
+    qrWaBtn: "桌面版撳呢度開 WhatsApp",
+    mailLabel: "電郵",
     footer:
       "條款：出稿 7 日內；初稿商家預審一次；合作帖按 Meta 政策標註「付費合作」。數據截至 2026-11-17，報價可議。",
   },
@@ -209,9 +212,12 @@ const T = {
       "香港 FB 付费广告 CPM 约 HK$30-150 另加代理费 12-20%——原生内容帖自带信任＋精准北上客",
       "AI 生产线＋真人编辑，30 日 92 帖稳定产能",
     ],
-    ctaLine: "WhatsApp 即时查询 · 24 小时内回复",
-    ctaContact: "【联络人／电话待补】｜香港团队 · 繁简双语 · 服务深圳/大湾区商家＋香港品牌",
-    ctaBtn: "WhatsApp 查询合作",
+    ctaLine: "扫码即时查询 · 24 小时内回复",
+    ctaContact: "香港团队 · 繁简双语 · 服务深圳/大湾区商家＋香港品牌",
+    qrWechat: "微信扫码加好友",
+    qrWa: "WhatsApp 扫码",
+    qrWaBtn: "桌面版点这里开 WhatsApp",
+    mailLabel: "邮箱",
     footer:
       "条款：出稿 7 日内；初稿商家预审一次；合作帖按 Meta 政策标注「付费合作」。数据截至 2026-11-17，报价可议。",
   },
@@ -490,12 +496,28 @@ export default function Home() {
         <div className="max-w-2xl mx-auto">
           <p className="text-lg font-bold mb-2">{t.ctaLine}</p>
           <p className="text-sm opacity-85 mb-6">{t.ctaContact}</p>
+          <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-4">
+            <div className="bg-white rounded-xl p-3">
+              <img src="/qr-wechat.jpg" alt="WeChat QR" className="w-full rounded-lg" />
+              <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWechat}</p>
+            </div>
+            <div className="bg-white rounded-xl p-3">
+              <img src="/qr-whatsapp.jpg" alt="WhatsApp QR" className="w-full rounded-lg" />
+              <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWa}</p>
+            </div>
+          </div>
           <a
-            href="https://wa.me/"
-            className="inline-block bg-[#ff8a00] text-white font-bold rounded-full px-8 py-3"
+            href="https://wa.me/qr/RFLV47X75BYHI1"
+            className="inline-block bg-[#ff8a00] text-white font-bold rounded-full px-6 py-3 text-sm mb-4"
           >
-            {t.ctaBtn}
+            {t.qrWaBtn}
           </a>
+          <p className="text-sm">
+            {t.mailLabel}：
+            <a href="mailto:ZEROWONG5@GMAIL.COM" className="underline font-bold">
+              ZEROWONG5@GMAIL.COM
+            </a>
+          </p>
         </div>
       </section>
 
