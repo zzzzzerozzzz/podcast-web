@@ -301,7 +301,7 @@ export default function Home() {
 
       {/* Header */}
       <div className="sticky top-0 z-20 bg-[#221d17]/85 backdrop-blur border-b border-[#c5a065]/15">
-        <div className="max-w-3xl mx-auto flex items-center justify-between px-5 py-2.5">
+        <div className="max-w-5xl mx-auto flex items-center justify-between px-5 py-2.5">
           <div className="flex items-center gap-2.5 min-w-0">
             <img src="/logo.png" alt="ZTG Studio logo" className="w-10 h-10 object-contain shrink-0" />
             <div className="leading-tight min-w-0">
@@ -336,14 +336,16 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative px-6 pt-12 pb-10">
-        <div className="max-w-3xl mx-auto">
-          <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
-            {t.badge}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
-          <p className="text-[15px] text-[#e9dcc2]/80 mb-2">{t.tagline}</p>
-          <p className="text-xs text-white/35 mb-8">{t.dateNote}</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="max-w-5xl mx-auto lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
+          <div>
+            <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
+              {t.badge}
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
+            <p className="text-[15px] text-[#e9dcc2]/80 mb-2">{t.tagline}</p>
+            <p className="text-xs text-white/35 mb-8 lg:mb-0">{t.dateNote}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
             {t.stats.map((s) => (
               <div key={s.label} className={`${CARD} px-4 py-5 text-center glow-gold`}>
                 <div className="text-[26px] leading-none font-bold font-mono tabular-nums text-[#f5d98b]">
@@ -359,11 +361,11 @@ export default function Home() {
 
       {/* Selling points */}
       <section className="px-6 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">
             {t.sellingTitle}
           </h2>
-          <div className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-3">
             {t.points.map((p) => (
               <div key={p.title} className={`${CARD} p-5`}>
                 <h3 className="font-semibold text-[15px] mb-2 text-[#f3ead9]">
@@ -379,7 +381,7 @@ export default function Home() {
 
       {/* CPM VS */}
       <section className="px-6 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
           <div className="grid md:grid-cols-2 gap-4 items-stretch relative">
             <div className="rounded-3xl border border-white/10 bg-[#26211a]/60 backdrop-blur p-5">
@@ -399,7 +401,7 @@ export default function Home() {
 
       {/* Dashboards in polaroid frames */}
       <section className="px-6 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
           <div className="grid sm:grid-cols-2 gap-10">
             {t.dashes.map((d, i) => (
@@ -440,7 +442,7 @@ export default function Home() {
 
       {/* Case study */}
       <section className="px-6 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
           <div className={`${CARD} p-5`}>
             <h3 className="font-semibold text-[15px] mb-1 text-[#f3ead9]">
@@ -462,9 +464,9 @@ export default function Home() {
 
       {/* Top posts polaroid wall */}
       <section className="px-6 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {t.topPosts.map((p, i) => (
               <div
                 key={p.name}
@@ -503,7 +505,7 @@ export default function Home() {
 
       {/* Lineup */}
       <section className="px-6 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
           <div className={`${CARD} overflow-hidden`}>
             <table className="w-full text-sm">
@@ -537,9 +539,9 @@ export default function Home() {
 
       {/* Pricing — Morandi cards */}
       <section className="px-6 py-8">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
-          <div className="grid sm:grid-cols-2 gap-5 mb-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mb-6">
             {t.packages.map((p) => {
               const morandi =
                 p.star === "top"
@@ -577,24 +579,16 @@ export default function Home() {
             })}
           </div>
           <p className="text-center text-[13px] text-[#e8c98a] mb-4 font-semibold">{t.payNote}</p>
-          <div className={`${CARD} overflow-hidden`}>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-white/[0.04] text-left text-white/55">
-                  <th className="px-4 py-3">{t.singleTitle}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {t.singles.map(([k, v]) => (
-                  <tr key={k} className="border-t border-white/5">
-                    <td className="px-4 py-2.5 flex justify-between gap-4">
-                      <span>{k}</span>
-                      <span className="font-bold font-mono tabular-nums text-[#f0b48a] whitespace-nowrap">{v}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className={`${CARD} p-2`}>
+            <div className="px-3 pt-2 pb-1 text-sm text-white/55">{t.singleTitle}</div>
+            <div className="grid md:grid-cols-2 gap-x-6">
+              {t.singles.map(([k, v]) => (
+                <div key={k} className="flex justify-between items-baseline gap-4 px-3 py-2.5 border-b border-white/5">
+                  <span className="text-sm">{k}</span>
+                  <span className="text-sm font-bold font-mono tabular-nums text-[#f0b48a] whitespace-nowrap">{v}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <p className="text-xs text-white/35 mt-3">{t.addons}</p>
         </div>
@@ -602,7 +596,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="px-6 py-12 relative">
-        <div className={`max-w-3xl mx-auto ${CARD} p-8 text-center glow-gold`}>
+        <div className={`max-w-5xl mx-auto ${CARD} p-8 text-center glow-gold`}>
           <div className="flex items-center justify-center gap-2 mb-3">
             <img src="/logo.png" alt="ZTG Studio logo" className="w-9 h-9 object-contain" />
             <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
@@ -635,7 +629,7 @@ export default function Home() {
       </section>
 
       <footer className="px-6 py-6 border-t border-[#c5a065]/15">
-        <p className="max-w-3xl mx-auto text-[11px] text-white/30 text-center">{t.footer}</p>
+        <p className="max-w-5xl mx-auto text-[11px] text-white/30 text-center">{t.footer}</p>
       </footer>
     </main>
   );
