@@ -659,13 +659,15 @@ export default function Home() {
                     p.star ? "glow-gold" : ""
                   }`}
                 >
-                  {p.star ? (
-                    <div className="self-center mb-2 bg-[#f5d98b] text-[#3a2f1c] text-[12.5px] font-bold rounded-full px-5 py-1.5 shadow-[0_4px_14px_rgba(0,0,0,0.4)] text-center">
-                      {p.tag}
-                    </div>
-                  ) : (
-                    <div className="text-[14px] font-semibold text-[#f0b48a] mb-1">{p.tag}</div>
-                  )}
+                  <div className="h-[34px] mb-1.5 flex items-center justify-center shrink-0">
+                    {p.star ? (
+                      <span className="bg-[#f5d98b] text-[#3a2f1c] text-[12.5px] font-bold rounded-full px-5 py-1.5 shadow-[0_4px_14px_rgba(0,0,0,0.4)]">
+                        {p.tag}
+                      </span>
+                    ) : (
+                      <span className="text-[14px] font-semibold text-[#f0b48a]">{p.tag}</span>
+                    )}
+                  </div>
                   <div className="text-[22px] leading-tight font-bold font-mono tabular-nums mb-2.5 text-[#f7efdd]">{p.name}</div>
                   <p className="text-[13px] text-white/55 leading-snug mb-2.5">{p.who}</p>
                   <p className="text-[14.5px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
