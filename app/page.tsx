@@ -8,7 +8,7 @@ type Lang = "hk" | "cn";
 
 const T = {
   hk: {
-    brand: "Zero to Growth (ZTG) Studio",
+    brand: "Zero to Growth Studio",
     brandSub: "跨境新媒體引流工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒體矩陣",
@@ -20,22 +20,19 @@ const T = {
       { value: "4,267", label: "單帖最高分享" },
       { value: "12,000", label: "私域群組成員" },
     ],
-    reelsLine: "🔥 短影音（Reels）傳播力：常態爆款播放 50,000-150,000+ 次 ｜ 單條最高曝光突破 250,000+ 人次（演算法自然外溢破圈，突破粉絲數限制）",
+    reelsLine: "短影音（Reels）傳播力：常態爆款播放 50,000-150,000+ 次 ｜ 單條最高曝光突破 250,000+ 人次（演算法自然外溢破圈，突破粉絲數限制）",
     sellingTitle: "點解揀我哋（三個別人冇嘅）",
     points: [
       {
-        icon: "🎯",
-        title: "① 精準：粉絲就係「正在決定去邊消費嘅香港人」",
+        title: "01 精準觸達｜粉絲就係「正在決定去邊消費嘅香港人」",
         body: "北上消費決策週期＝週四計劃 → 週五搵料 → 週六日出發（自家 174 帖數據實證）。你嘅廣告帖出現喺佢哋「搵料」嗰一刻，唔係亂槍打鳥。",
       },
       {
-        icon: "📣",
-        title: "② 裂變：內容被香港人轉發，演算法暴力推流",
+        title: "02 爆款裂變｜內容被香港人轉發，演算法暴力推流",
         body: "唔需要擔心專頁粉絲基數——我哋原創 Reel 短影音常規爆款播放達 5-15 萬次，單條最高紀錄達 25 萬次曝光！配合 Facebook／Instagram 演算法二次擴散，單帖最高分享 4,267 次，直接打入未追蹤你嘅數十萬潛在香港遊客屏幕。",
       },
       {
-        icon: "💎",
-        title: "③ 私域：12,000 人北上交流群組直達＋可置頂",
+        title: "03 私域直達｜12,000 人北上交流群組直達＋可置頂",
         body: "專頁帖之外，群組帖直達 12,000 個活躍問「去邊食去邊玩」嘅香港人，可置頂 7-14 日持續曝光——呢個係廣告投放買唔到嘅。",
       },
     ],
@@ -66,11 +63,11 @@ const T = {
     ],
     dashSum:
       "兩頁合計：28 天 879 萬瀏覽、30.2 萬次互動、新增 13,827 追蹤——日均 31 萬曝光嘅高速增長流量池，你嘅廣告帖進入嘅唔係死水一潭。",
-    cpmTitle: "📈 性價比對決",
-    cpmLeftTitle: "傳統 Meta 廣告 🔥",
+    cpmTitle: "性價比對決",
+    cpmLeftTitle: "傳統 Meta 廣告",
     cpmLeftBody:
       "CPM（每千次曝光）約 HK$30-150，另加代理費 12-20%。買足 879 萬曝光＝成本高達數十萬，仲要自己煩受眾設定同素材。",
-    cpmRightTitle: "ZTG 矩陣推廣 ⚡",
+    cpmRightTitle: "ZTG 矩陣推廣",
     cpmRightBody:
       "揀 $2,800 全矩陣或 $3,880 包月——每千次精準港客觸達成本只需幾毫子至幾蚊，附帶老牌專頁信任度＋私域群組直達。拒絕無效燒錢。",
     vs: "VS",
@@ -85,11 +82,11 @@ const T = {
       "單條推廣帖帶動大量「點去/幾多錢」私訊查詢，全部引導至場館資訊同港人交通路線（福田/羅湖→11號線後海站）。觀看數超粉絲數＝平台演算法額外推流。",
     topTitle: "近30日代表作（真實數據）",
     topPosts: [
-      { emoji: "🏙️", name: "深圳科技地標帖", likes: 2640, shares: 4267, hot: true },
-      { emoji: "🛤️", name: "廣州北京路帖", likes: 2047, shares: 3026 },
-      { emoji: "🌿", name: "深圳森林商場帖", likes: 854, shares: 214 },
-      { emoji: "🚇", name: "地鐵6號線帖", likes: 772, shares: 94 },
-      { emoji: "🏖️", name: "鹽田一日遊帖", likes: 593, shares: 97 },
+      { img: "/posts/p1.jpg", name: "深圳科技地標帖", likes: 2640, shares: 4267, hot: true },
+      { img: "/posts/p2.jpg", name: "廣州北京路帖", likes: 2047, shares: 3026 },
+      { img: "/posts/p3.jpg", name: "深圳森林商場帖", likes: 854, shares: 214 },
+      { img: "/posts/p4.jpg", name: "地鐵6號線帖", likes: 772, shares: 94 },
+      { img: "/posts/p5.jpg", name: "鹽田一日遊帖", likes: 593, shares: 97 },
     ],
     likeWord: "讚",
     shareWord: "分享",
@@ -115,7 +112,7 @@ const T = {
     ],
     packages: [
       {
-        tag: "🔥 首單體驗",
+        tag: "首單體驗",
         name: "$688 輕量試水組",
         who: "未做過港客推廣、想用幾百蚊實測香港客流反應嘅單店／新品牌",
         hook: "幾百蚊極低門檻，即刻試出香港客人對你品牌嘅真實吸引力！",
@@ -129,7 +126,7 @@ const T = {
         star: "",
       },
       {
-        tag: "⭐ 最多餐飲／休閒景點選擇",
+        tag: "最多餐飲／休閒景點選擇",
         name: "$1,880 週末爆點短影音組",
         who: "主打視覺誘惑（烤肉、烘焙、按摩SPA、特色體驗），想精準截擊「週五放工即出發」嘅香港客群",
         hook: "卡準香港人『週四搵料、週五決定、週六衝深圳』嘅黃金決策期，短影音引爆週末到店！",
@@ -144,7 +141,7 @@ const T = {
         star: "top",
       },
       {
-        tag: "🚀 新店／大促力薦・性價比最高",
+        tag: "新店／大促力薦 · 性價比最高",
         name: "$2,800 全矩陣霸屏方案",
         who: "新店插旗深圳、大型商場活動、展覽盛事，或連鎖品牌單月主推",
         hook: "唔做慢熱推廣！一次過喺全香港人嘅 Feed 流洗版，短時間製造開局排隊效應！",
@@ -159,7 +156,7 @@ const T = {
         star: "value",
       },
       {
-        tag: "📅 品牌季度簽約首選",
+        tag: "品牌季度簽約首選",
         name: "$3,880/月 長效增長代運營檔",
         who: "拒絕「爆一日就靜返」！想建立長期香港客流基本盤、鎖定港人「週末固定飯堂」嘅實力品牌",
         hook: "告別單次撞運氣，每月多頻次精準植入生活圈，令香港人過關第一時間諗起你！",
@@ -176,9 +173,9 @@ const T = {
       },
     ],
     payNote: "支持港幣／人民幣對公或對私結算 ｜ 短影音由商家提供素材，工作室全包港式粵語配音、字幕及精剪（如需派員深圳實拍探店可另加購） ｜ 初稿 100% 商家預審確認",
-    starTop: "⭐ 最多商家選擇",
-    starValue: "⭐ 性價比最高",
-    bookNow: "⚡ 立即預約此方案",
+    starTop: "最多商家選擇",
+    starValue: "性價比最高",
+    bookNow: "立即預約此方案",
     addons:
       "加購：素材授權 +30-50%｜留言關鍵字→私訊導流 +$150（避 FB 外鏈新政）｜簡體版內容 +$100",
     ctaLine: "掃碼即時查詢 · 24 小時內回覆",
@@ -191,7 +188,7 @@ const T = {
       "條款：出稿 7 日內；初稿商家預審一次；合作帖按 Meta 政策標註「付費合作」。數據截至 2026-11-17，報價可議。",
   },
   cn: {
-    brand: "Zero to Growth (ZTG) Studio",
+    brand: "Zero to Growth Studio",
     brandSub: "跨境新媒体引流工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒体矩阵",
@@ -203,22 +200,19 @@ const T = {
       { value: "4,267", label: "单帖最高分享" },
       { value: "12,000", label: "私域群组成员" },
     ],
-    reelsLine: "🔥 短影音（Reels）传播力：常态爆款播放 50,000-150,000+ 次 ｜ 单条最高曝光突破 250,000+ 人次（算法自然外溢破圈，突破粉丝数限制）",
+    reelsLine: "短影音（Reels）传播力：常态爆款播放 50,000-150,000+ 次 ｜ 单条最高曝光突破 250,000+ 人次（算法自然外溢破圈，突破粉丝数限制）",
     sellingTitle: "为什么选我们（三个别人没有的）",
     points: [
       {
-        icon: "🎯",
-        title: "① 精准：粉丝就是「正在决定去哪消费的香港人」",
+        title: "01 精准触达｜粉丝就是「正在决定去哪消费的香港人」",
         body: "北上消费决策周期＝周四计划 → 周五找料 → 周六日出发（自家 174 帖数据实证）。你的广告帖出现在他们「找料」那一刻，不是乱枪打鸟。",
       },
       {
-        icon: "📣",
-        title: "② 裂变：内容被香港人转发，算法暴力推流",
+        title: "02 爆款裂变｜内容被香港人转发，算法暴力推流",
         body: "不需要担心专页粉丝基数——我们原创 Reel 短影音常规爆款播放达 5-15 万次，单条最高纪录达 25 万次曝光！配合 Facebook／Instagram 算法二次扩散，单帖最高分享 4,267 次，直接打入未追踪你的数十万潜在香港游客屏幕。",
       },
       {
-        icon: "💎",
-        title: "③ 私域：12,000 人北上交流群组直达＋可置顶",
+        title: "03 私域直达｜12,000 人北上交流群组直达＋可置顶",
         body: "专页帖之外，群组帖直达 12,000 个活跃问「去哪吃去哪玩」的香港人，可置顶 7-14 天持续曝光——这是广告投放买不到的。",
       },
     ],
@@ -249,11 +243,11 @@ const T = {
     ],
     dashSum:
       "两页合计：28 天 879 万浏览、30.2 万次互动、新增 13,827 追踪——日均 31 万曝光的高速增长流量池，你的广告帖进入的不是死水一潭。",
-    cpmTitle: "📈 性价比对决",
-    cpmLeftTitle: "传统 Meta 广告 🔥",
+    cpmTitle: "性价比对决",
+    cpmLeftTitle: "传统 Meta 广告",
     cpmLeftBody:
       "CPM（每千次曝光）约 HK$30-150，另加代理费 12-20%。买足 879 万曝光＝成本高达数十万，还要自己烦受众设定和素材。",
-    cpmRightTitle: "ZTG 矩阵推广 ⚡",
+    cpmRightTitle: "ZTG 矩阵推广",
     cpmRightBody:
       "选 $2,800 全矩阵或 $3,880 包月——每千次精准港客触达成本只需几毫至几蚊，附带老牌专页信任度＋私域群组直达。拒绝无效烧钱。",
     vs: "VS",
@@ -268,11 +262,11 @@ const T = {
       "单条推广帖带动大量「怎么去/多少钱」私讯查询，全部引导至场馆信息与港人交通路线（福田/罗湖→11号线后海站）。观看数超粉丝数＝平台算法额外推流。",
     topTitle: "近30日代表作（真实数据）",
     topPosts: [
-      { emoji: "🏙️", name: "深圳科技地标帖", likes: 2640, shares: 4267, hot: true },
-      { emoji: "🛤️", name: "广州北京路帖", likes: 2047, shares: 3026 },
-      { emoji: "🌿", name: "深圳森林商场帖", likes: 854, shares: 214 },
-      { emoji: "🚇", name: "地铁6号线帖", likes: 772, shares: 94 },
-      { emoji: "🏖️", name: "盐田一日游帖", likes: 593, shares: 97 },
+      { img: "/posts/p1.jpg", name: "深圳科技地标帖", likes: 2640, shares: 4267, hot: true },
+      { img: "/posts/p2.jpg", name: "广州北京路帖", likes: 2047, shares: 3026 },
+      { img: "/posts/p3.jpg", name: "深圳森林商场帖", likes: 854, shares: 214 },
+      { img: "/posts/p4.jpg", name: "地铁6号线帖", likes: 772, shares: 94 },
+      { img: "/posts/p5.jpg", name: "盐田一日游帖", likes: 593, shares: 97 },
     ],
     likeWord: "赞",
     shareWord: "分享",
@@ -298,7 +292,7 @@ const T = {
     ],
     packages: [
       {
-        tag: "🔥 首单体验",
+        tag: "首单体验",
         name: "$688 轻量试水组",
         who: "未做过港客推广、想用几百蚊实测香港客流反应的单店／新品牌",
         hook: "几百蚊极低门槛，立刻试出香港客人对你品牌的真实吸引力！",
@@ -312,7 +306,7 @@ const T = {
         star: "",
       },
       {
-        tag: "⭐ 最多餐饮／休闲景点选择",
+        tag: "最多餐饮／休闲景点选择",
         name: "$1,880 周末爆点短影音组",
         who: "主打视觉诱惑（烤肉、烘焙、按摩SPA、特色体验），想精准截击「周五下班即出发」的香港客群",
         hook: "卡准香港人『周四找料、周五决定、周六冲深圳』的黄金决策期，短影音引爆周末到店！",
@@ -327,7 +321,7 @@ const T = {
         star: "top",
       },
       {
-        tag: "🚀 新店／大促力荐・性价比最高",
+        tag: "新店／大促力荐 · 性价比最高",
         name: "$2,800 全矩阵霸屏方案",
         who: "新店插旗深圳、大型商场活动、展览盛事，或连锁品牌单月主推",
         hook: "不做慢热推广！一次过在全香港人的 Feed 流洗版，短时间制造开局排队效应！",
@@ -342,7 +336,7 @@ const T = {
         star: "value",
       },
       {
-        tag: "📅 品牌季度签约首选",
+        tag: "品牌季度签约首选",
         name: "$3,880/月 长效增长代运营档",
         who: "拒绝「爆一日就静返」！想建立长期香港客流基本盘、锁定港人「周末固定饭堂」的实力品牌",
         hook: "告别单次撞运气，每月多频次精准植入生活圈，令香港人过关第一时间想起你！",
@@ -358,9 +352,9 @@ const T = {
         star: "",
       },
     ],
-    starTop: "⭐ 最多商家选择",
-    starValue: "⭐ 性价比最高",
-    bookNow: "⚡ 立即预约此方案",
+    starTop: "最多商家选择",
+    starValue: "性价比最高",
+    bookNow: "立即预约此方案",
     payNote: "支持港币／人民币对公或对私结算 ｜ 短影音由商家提供素材，工作室全包港式粤语配音、字幕及精剪（如需派员深圳实拍探店可另加购） ｜ 初稿 100% 商家预审确认",
     addons: "加购：素材授权 +30-50%｜留言关键词→私信导流 +$150（避 FB 外链新政）｜简体版内容 +$100",
     ctaLine: "扫码即时查询 · 24 小时内回复",
@@ -420,7 +414,6 @@ export default function Home() {
             <img src="/logo.png" alt="ZTG Studio logo" className="w-10 h-10 object-contain shrink-0" />
             <div className="leading-tight min-w-0">
               <div className="text-[13px] font-bold text-[#e8c98a] truncate">{t.brand}</div>
-              <div className="text-[10px] text-white/40">{t.brandSub}</div>
             </div>
           </div>
           <div className="flex items-center shrink-0">
@@ -452,9 +445,6 @@ export default function Home() {
       <section className="relative px-6 pt-12 pb-10">
         <div className="max-w-5xl mx-auto lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
           <div>
-            <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[14px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
-              {t.badge}
-            </span>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
             <p className="text-[15px] text-[#e9dcc2]/80 mb-2">{t.tagline}</p>
             <p className="text-xs text-white/35 mb-8 lg:mb-0">{t.dateNote}</p>
@@ -485,10 +475,7 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-3">
             {t.points.map((p) => (
               <div key={p.title} className={`${CARD} p-5`}>
-                <h3 className="font-semibold text-[15px] mb-2 text-[#f3ead9]">
-                  <span className="text-xl mr-2">{p.icon}</span>
-                  {p.title}
-                </h3>
+                <h3 className="font-semibold text-[15px] mb-2 text-[#f3ead9]">{p.title}</h3>
                 <p className="text-[15.5px] text-white/60 leading-relaxed">{p.body}</p>
               </div>
             ))}
@@ -562,10 +549,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
           <div className={`${CARD} p-5`}>
-            <h3 className="font-semibold text-[15px] mb-1 text-[#f3ead9]">
-              <span className="text-xl mr-2">🦕</span>
-              {t.caseName}
-            </h3>
+            <h3 className="font-semibold text-[15px] mb-1 text-[#f3ead9]">{t.caseName}</h3>
             <div className="grid grid-cols-3 gap-2 my-4">
               {t.caseNums.map((n) => (
                 <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
@@ -593,18 +577,9 @@ export default function Home() {
                     : "border-[#c5a065]/20 bg-[#2a241c]/70"
                 } ${i % 2 === 0 ? "md:-rotate-1" : "md:rotate-1"}`}
               >
-                <div
-                  className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0 ${
-                    p.hot ? "bg-gradient-to-br from-[#e8c98a]/40 to-[#b9d4a8]/30" : "bg-gradient-to-br from-white/10 to-white/5"
-                  }`}
-                >
-                  {p.emoji}
-                </div>
+                <img src={p.img} alt={p.name} className="w-16 h-16 rounded-2xl object-cover shrink-0 border border-white/10" />
                 <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-[14px] truncate text-[#f3ead9]">
-                    {p.hot ? "🔥 " : ""}
-                    {p.name}
-                  </div>
+                  <div className="font-semibold text-[14px] truncate text-[#f3ead9]">{p.name}</div>
                   <div className="flex gap-2 mt-1.5 flex-wrap">
                     <span className="text-[11px] bg-white/10 rounded-full px-2.5 py-0.5 text-white/65">
                       {t.likeWord} {p.likes.toLocaleString()}
@@ -686,7 +661,7 @@ export default function Home() {
                   </p>
                   {p.expect ? (
                     <p className="text-[14px] text-[#f5d98b] font-bold bg-[#c5a065]/10 rounded-xl px-3 py-2 mb-3.5">
-                      📊 {p.expect}
+                      {p.expect}
                     </p>
                   ) : null}
                   <ul className="space-y-2 mb-3.5 flex-1">
@@ -698,7 +673,7 @@ export default function Home() {
                     ))}
                   </ul>
                   {p.value ? (
-                    <p className="text-[13px] text-[#b9d4a8] font-semibold mb-3.5">💎 {p.value}</p>
+                    <p className="text-[13px] text-[#b9d4a8] font-semibold mb-3.5">{p.value}</p>
                   ) : null}
                   <a
                     href="https://wa.me/qr/RFLV47X75BYHI1"
