@@ -633,7 +633,7 @@ export default function Home() {
       <section className="px-6 py-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
-          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-5 mb-6 items-start">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-5 mb-6">
             {t.packages.map((p) => {
               const morandi =
                 p.star === "top"
@@ -645,17 +645,17 @@ export default function Home() {
                 <div
                   key={p.name}
                   className={`rounded-3xl p-5 backdrop-blur flex flex-col relative ${morandi} ${
-                    p.star ? "glow-gold md:-translate-y-1.5" : ""
+                    p.star ? "glow-gold" : ""
                   }`}
                 >
                   {p.star ? (
-                    <div className="self-center absolute -top-3.5 bg-[#f5d98b] text-[#3a2f1c] text-[12px] font-bold rounded-full px-4 py-1 shadow-[0_4px_14px_rgba(0,0,0,0.4)] rotate-[-2deg]">
+                    <div className="self-center mb-2 bg-[#f5d98b] text-[#3a2f1c] text-[12px] font-bold rounded-full px-4 py-1 shadow-[0_4px_14px_rgba(0,0,0,0.4)]">
                       {p.star === "top" ? t.starTop : t.starValue}
                     </div>
                   ) : null}
-                  <div className="text-[14px] font-semibold text-[#f0b48a] mb-1 mt-1">{p.tag}</div>
+                  <div className="text-[14px] font-semibold text-[#f0b48a] mb-1">{p.tag}</div>
                   <div className="text-[22px] leading-tight font-bold font-mono tabular-nums mb-2.5 text-[#f7efdd]">{p.name}</div>
-                  <p className="text-[13px] text-white/55 leading-snug mb-2.5">🎯 {p.who}</p>
+                  <p className="text-[13px] text-white/55 leading-snug mb-2.5">{p.who}</p>
                   <p className="text-[14.5px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
                     「{p.hook}」
                   </p>
