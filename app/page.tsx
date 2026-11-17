@@ -13,7 +13,7 @@ const T = {
     tagline: "一句話：深圳商家想做嘅「香港客人」生意，我哋隔住一條深圳河幫你直接觸達佢哋。",
     dateNote: "數據抓取：2026-11-17（Meta 官方 API 實時）",
     stats: [
-      { value: "38,178", label: "矩陣總粉絲（FB＋IG）" },
+      { value: "38,178", label: "矩陣總粉絲" },
       { value: "879萬", label: "28日瀏覽·兩大專頁" },
       { value: "4,267", label: "單帖最高分享" },
       { value: "12,000", label: "私域群組成員" },
@@ -73,7 +73,7 @@ const T = {
     lineupHead: ["媒體", "粉絲", "定位"],
     lineup: [
       { name: "大灣區北上攻略情報站", fans: "12,094", note: "大灣區食玩買攻略＋影片" },
-      { name: "廣東美食旅遊攻略", fans: "10,469", note: "廣東省美食旅遊（12/25 恢復全量）" },
+      { name: "廣東美食旅遊攻略", fans: "10,469", note: "廣東省深度食玩旅遊指南（高權重老牌專頁）" },
       { name: "深圳美食住宿｜港人北上攻略", fans: "7,135", note: "深圳食住買專頁（28日 +708% 增長中）" },
       { name: "FB群組·深圳食玩買｜廣州美食｜港人北上交流", fans: "約12,000", note: "私域直達＋置頂" },
       { name: "IG @cantonesefoodtravelguide", fans: "4,775", note: "廣東/深圳影片同步（兩個月 +36%）" },
@@ -99,6 +99,9 @@ const T = {
     addons:
       "加購：素材授權 +30-50%｜留言關鍵字→私訊導流 +$150（避 FB 外鏈新政）｜簡體版內容 +$100。對比參考：香港 FB 付費廣告 CPM 約 HK$30-150 另加代理費 12-20%。",
     whyTitle: "值得投放嘅四個理由",
+    cpmTitle: "📈 性價比效益對比",
+    cpmBody:
+      "香港/大灣區 Meta 官方廣告嘅 CPM（每千次曝光成本）約為 HK$30-150（另加代理費 12-20%）。如買足 879 萬曝光，成本高達數十萬。而透過本矩陣（如選擇 $2,800 全矩陣 或 $3,880 包月），每千次精準港客觸達成本只需幾毫子至幾蚊，更附帶老牌專頁信任度與私域群組直達——拒絕無效燒錢。",
     why: [
       "北上決策週期＝週四計劃→週五搵料→週六日行動，廣告帖黃金檔對位",
       "單帖分享 1,000-4,267，裂變觸及遠超粉絲數",
@@ -111,6 +114,7 @@ const T = {
     qrWa: "WhatsApp 掃碼",
     qrWaBtn: "桌面版撳呢度開 WhatsApp",
     mailLabel: "電郵",
+    settleNote: "支援港幣／人民幣結算 · 初稿免費預審一次",
     footer:
       "條款：出稿 7 日內；初稿商家預審一次；合作帖按 Meta 政策標註「付費合作」。數據截至 2026-11-17，報價可議。",
   },
@@ -120,7 +124,7 @@ const T = {
     tagline: "一句话：深圳商家想做的「香港客人」生意，我们隔着一条深圳河帮你直接触达他们。",
     dateNote: "数据抓取：2026-11-17（Meta 官方 API 实时）",
     stats: [
-      { value: "38,178", label: "矩阵总粉丝（FB＋IG）" },
+      { value: "38,178", label: "矩阵总粉丝" },
       { value: "879万", label: "28日浏览·两大专页" },
       { value: "4,267", label: "单帖最高分享" },
       { value: "12,000", label: "私域群组成员" },
@@ -180,7 +184,7 @@ const T = {
     lineupHead: ["媒体", "粉丝", "定位"],
     lineup: [
       { name: "大湾区北上攻略情报站", fans: "12,094", note: "大湾区食玩买攻略＋影片" },
-      { name: "广东美食旅游攻略", fans: "10,469", note: "广东省美食旅游（12/25 恢复全量）" },
+      { name: "广东美食旅游攻略", fans: "10,469", note: "广东省深度食玩旅游指南（高权重老牌专页）" },
       { name: "深圳美食住宿｜港人北上攻略", fans: "7,135", note: "深圳食住买专页（28日 +708% 增长中）" },
       { name: "FB群组·深圳食玩买｜广州美食｜港人北上交流", fans: "约12,000", note: "私域直达＋置顶" },
       { name: "IG @cantonesefoodtravelguide", fans: "4,775", note: "广东/深圳影片同步（两个月 +36%）" },
@@ -206,6 +210,9 @@ const T = {
     addons:
       "加购：素材授权 +30-50%｜留言关键词→私信导流 +$150（避 FB 外链新政）｜简体版内容 +$100。对比参考：香港 FB 付费广告 CPM 约 HK$30-150 另加代理费 12-20%。",
     whyTitle: "值得投放的四个理由",
+    cpmTitle: "📈 性价比效益对比",
+    cpmBody:
+      "香港/大湾区 Meta 官方广告的 CPM（每千次曝光成本）约为 HK$30-150（另加代理费 12-20%）。如买足 879 万曝光，成本高达数十万。而透过本矩阵（如选择 $2,800 全矩阵 或 $3,880 包月），每千次精准港客触达成本只需几毫至几蚊，更附带老牌专页信任度与私域群组直达——拒绝无效烧钱。",
     why: [
       "北上决策周期＝周四计划→周五找料→周六日行动，广告帖黄金档对位",
       "单帖分享 1,000-4,267，裂变触达远超粉丝数",
@@ -218,6 +225,7 @@ const T = {
     qrWa: "WhatsApp 扫码",
     qrWaBtn: "桌面版点这里开 WhatsApp",
     mailLabel: "邮箱",
+    settleNote: "支援港币／人民币结算 · 初稿免费预审一次",
     footer:
       "条款：出稿 7 日内；初稿商家预审一次；合作帖按 Meta 政策标注「付费合作」。数据截至 2026-11-17，报价可议。",
   },
@@ -480,6 +488,10 @@ export default function Home() {
           <h2 className="text-xl font-bold text-[#0f2b5b] border-l-4 border-[#1c5bb8] pl-3 mb-5">
             {t.whyTitle}
           </h2>
+          <div className="bg-[#f0f7ff] border border-[#1c5bb8]/30 rounded-xl p-4 mb-4">
+            <h3 className="font-bold text-[#0f2b5b] text-[15px] mb-1">{t.cpmTitle}</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">{t.cpmBody}</p>
+          </div>
           <ul className="space-y-2">
             {t.why.map((w) => (
               <li key={w} className="text-sm text-slate-600 flex gap-2">
@@ -518,6 +530,7 @@ export default function Home() {
               ZEROWONG5@GMAIL.COM
             </a>
           </p>
+          <p className="text-[13px] opacity-85 mt-2">{t.settleNote}</p>
         </div>
       </section>
 
