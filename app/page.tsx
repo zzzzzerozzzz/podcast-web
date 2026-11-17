@@ -6,25 +6,6 @@ import { useEffect, useState } from "react";
 
 type Lang = "hk" | "cn";
 
-function Logo() {
-  return (
-    <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden>
-      <defs>
-        <linearGradient id="ztgg" x1="0" y1="40" x2="40" y2="0">
-          <stop offset="0" stopColor="#8a6a3b" />
-          <stop offset="0.55" stopColor="#c5a065" />
-          <stop offset="1" stopColor="#f0d9a8" />
-        </linearGradient>
-      </defs>
-      <rect x="2" y="2" width="36" height="36" rx="14" fill="url(#ztgg)" opacity="0.92" />
-      <path d="M12 27 C15 27 16.5 20 20 16.5 C22.5 14 26 13 29 13" stroke="#2b2013" strokeWidth="2.6" strokeLinecap="round" fill="none" />
-      <path d="M24.5 11.5 L29.5 13 L28 18" stroke="#2b2013" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <circle cx="13" cy="31" r="1.7" fill="#2b2013" opacity="0.55" />
-      <circle cx="18" cy="32.5" r="1.3" fill="#2b2013" opacity="0.4" />
-    </svg>
-  );
-}
-
 const T = {
   hk: {
     brand: "Zero to Growth (ZTG) Studio",
@@ -322,7 +303,7 @@ export default function Home() {
       <div className="sticky top-0 z-20 bg-[#221d17]/85 backdrop-blur border-b border-[#c5a065]/15">
         <div className="max-w-3xl mx-auto flex items-center justify-between px-5 py-2.5">
           <div className="flex items-center gap-2.5 min-w-0">
-            <Logo />
+            <img src="/logo.png" alt="ZTG Studio logo" className="w-10 h-10 object-contain shrink-0" />
             <div className="leading-tight min-w-0">
               <div className="text-[13px] font-bold text-[#e8c98a] truncate">{t.brand}</div>
               <div className="text-[10px] text-white/40">{t.brandSub}</div>
@@ -623,7 +604,7 @@ export default function Home() {
       <section className="px-6 py-12 relative">
         <div className={`max-w-3xl mx-auto ${CARD} p-8 text-center glow-gold`}>
           <div className="flex items-center justify-center gap-2 mb-3">
-            <Logo />
+            <img src="/logo.png" alt="ZTG Studio logo" className="w-9 h-9 object-contain" />
             <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
           </div>
           <p className="text-lg font-bold mb-2 text-[#f7efdd]">{t.ctaLine}</p>
