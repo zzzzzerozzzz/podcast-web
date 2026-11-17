@@ -8,7 +8,7 @@ type Lang = "hk" | "cn";
 
 const T = {
   hk: {
-    badge: "深圳/大灣區商家 · 港客推廣專家",
+    badge: "zerotogrowth",
     h1: "港人北上媒體矩陣",
     tagline: "一句話：深圳商家想做嘅「香港客人」生意，我哋隔住一條深圳河幫你直接觸達佢哋。",
     dateNote: "數據抓取：2026-11-17（Meta 官方 API 實時）",
@@ -131,7 +131,7 @@ const T = {
       "條款：出稿 7 日內；初稿商家預審一次；合作帖按 Meta 政策標註「付費合作」。數據截至 2026-11-17，報價可議。",
   },
   cn: {
-    badge: "深圳/大湾区商家 · 港客推广专家",
+    badge: "zerotogrowth",
     h1: "港人北上媒体矩阵",
     tagline: "一句话：深圳商家想做的「香港客人」生意，我们隔着一条深圳河帮你直接触达他们。",
     dateNote: "数据抓取：2026-11-17（Meta 官方 API 实时）",
@@ -582,11 +582,11 @@ export default function Home() {
           <p className="text-sm text-white/50 mb-8">{t.ctaContact}</p>
           <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
             <div className="bg-white rounded-2xl p-3">
-              <img src="/qr-wechat.jpg" alt="WeChat QR" className="w-full rounded-xl" />
+              <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl bg-white" />
               <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWechat}</p>
             </div>
             <div className="bg-white rounded-2xl p-3">
-              <img src="/qr-whatsapp.jpg" alt="WhatsApp QR" className="w-full rounded-xl" />
+              <img src="/qr-whatsapp.png" alt="WhatsApp QR" className="w-full rounded-xl bg-white" />
               <p className="text-[13px] font-bold text-slate-800 mt-2">{t.qrWa}</p>
             </div>
           </div>
