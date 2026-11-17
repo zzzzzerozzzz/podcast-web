@@ -659,16 +659,17 @@ export default function Home() {
               return (
                 <div
                   key={p.name}
-                  className={`rounded-3xl p-5 backdrop-blur flex flex-col relative ${morandi} ${
+                  className={`h-full rounded-3xl p-5 backdrop-blur flex flex-col relative ${morandi} ${
                     p.star ? "glow-gold" : ""
                   }`}
                 >
                   {p.star ? (
-                    <div className="self-center mb-2 bg-[#f5d98b] text-[#3a2f1c] text-[12px] font-bold rounded-full px-4 py-1 shadow-[0_4px_14px_rgba(0,0,0,0.4)]">
-                      {p.star === "top" ? t.starTop : t.starValue}
+                    <div className="self-center mb-2 bg-[#f5d98b] text-[#3a2f1c] text-[12.5px] font-bold rounded-full px-4 py-1 shadow-[0_4px_14px_rgba(0,0,0,0.4)]">
+                      {p.tag}
                     </div>
-                  ) : null}
-                  <div className="text-[14px] font-semibold text-[#f0b48a] mb-1">{p.tag}</div>
+                  ) : (
+                    <div className="text-[14px] font-semibold text-[#f0b48a] mb-1">{p.tag}</div>
+                  )}
                   <div className="text-[22px] leading-tight font-bold font-mono tabular-nums mb-2.5 text-[#f7efdd]">{p.name}</div>
                   <p className="text-[13px] text-white/55 leading-snug mb-2.5">{p.who}</p>
                   <p className="text-[14.5px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
@@ -697,7 +698,7 @@ export default function Home() {
                   ) : null}
                   <a
                     href="https://wa.me/qr/RFLV47X75BYHI1"
-                    className={`text-center text-sm font-bold rounded-full py-2.5 px-4 ${
+                    className={`mt-auto text-center text-sm font-bold rounded-full py-2.5 px-4 ${
                       p.star
                         ? "bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114]"
                         : "border border-[#c5a065]/40 text-[#e8c98a]"
