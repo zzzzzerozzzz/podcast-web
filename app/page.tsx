@@ -115,7 +115,7 @@ const T = {
     ],
     packages: [
       {
-        tag: "首單體驗",
+        tag: "🔥 首單體驗",
         name: "$688 輕量試水組",
         who: "適合未做過港客推廣、希望以數百元預算測試香港客流反應的單店或新品牌",
         hook: "以數百元成本，快速驗證香港客人對品牌的真實興趣。",
@@ -129,10 +129,10 @@ const T = {
         star: "",
       },
       {
-        tag: "最多餐飲／休閒景點選擇",
+        tag: "⭐ 最多餐飲／休閒景點選擇",
         name: "$1,880 週末爆點短影音組",
         who: "適合主打視覺誘惑（烤肉、烘焙、SPA、特色體驗），希望精準攔截「週五下班即出發」香港客群的商家",
-        hook: "精準把握香港人「週四找資訊、週五做決定、週六北上」的黃金決策期，以短影音引爆週末到店。",
+        hook: "把握香港人『週四找資訊、週五做決定、週六北上』的黃金決策期，以短影音引爆週末到店。",
         expect: "精準短片常態播放約 50,000-150,000 次（單條最高達 25 萬人次）",
         gift: "",
         items: [
@@ -146,10 +146,10 @@ const T = {
         star: "top",
       },
       {
-        tag: "新店／大促首選 · 性價比最高",
+        tag: "🚀 新店／大促首選 · 性價比最高",
         name: "$2,800 全矩陣霸屏方案",
-        who: "適合新店開業、商場活動、展覽盛事，或連鎖品牌單月主推",
-        hook: "不做慢熱推廣：一次覆蓋全香港用戶的 Feed 流，短期內建立開業排隊效應。",
+        who: "新店插旗深圳、大型商場活動、展覽盛事，或連鎖品牌單月主推",
+        hook: "不做慢熱推廣！一次覆蓋全香港用戶的 Feed 流，短期內建立開業排隊效應。",
         items: [
           "3 大 FB 專頁同步分發（38,000+ 精準粉絲同步鋪量）",
           "雙 IG 帳號同步發布（@cantonesefoodtravelguide + @chinatravelhack 觸及年輕探店客群）",
@@ -161,7 +161,7 @@ const T = {
         star: "value",
       },
       {
-        tag: "品牌季度簽約首選",
+        tag: "📅 品牌季度簽約首選",
         name: "$3,880／月 長效增長代運營",
         who: "適合拒絕「熱鬧一個週末便歸於平淡」、希望建立長期香港客流基本盤的品牌",
         hook: "告別一次性曝光，每月多頻次植入港人生活圈，讓香港人過關第一時間想起你。",
@@ -172,16 +172,16 @@ const T = {
           "月度官方 API 數據復盤報告＋港人到店導流關鍵字優化",
           "免費贈送「港人到店路線指引＋口岸交通指南」宣傳模板",
         ],
-        value: "3 個月起簽",
+        value: "季度簽約特惠：HK$9,800／季（立減近 $1,800）｜3 個月起簽",
         expect: "",
-        gift: "季度簽約特惠：HK$9,800／季（立減近 $1,800）",
+        gift: "",
         star: "",
       },
     ],
     payNote: "支持港幣／人民幣對公或對私結算 ｜ 短影音由商家提供素材，工作室全包港式粵語配音、字幕及精剪（如需派員深圳實拍探店可另加購） ｜ 初稿 100% 商家預審確認",
     starTop: "最多商家選擇",
     starValue: "性價比最高",
-    bookNow: "立即預約此方案",
+    bookNow: "⚡ 立即預約此方案",
     addons:
       "加購：素材授權 +30-50%",
     ctaLine: "掃碼即時查詢 · 24 小時內回覆",
@@ -301,7 +301,7 @@ const T = {
     ],
     packages: [
       {
-        tag: "首单体验",
+        tag: "🔥 首单体验",
         name: "$688 轻量试水组",
         who: "适合未做过港客推广、希望以数百元预算测试香港客流反应的单店或新品牌",
         hook: "以数百元成本，快速验证香港客人对你品牌的真实兴趣。",
@@ -315,10 +315,10 @@ const T = {
         star: "",
       },
       {
-        tag: "最多餐饮／休闲景点选择",
+        tag: "⭐ 最多餐饮／休闲景点选择",
         name: "$1,880 周末爆点短影音组",
         who: "适合主打视觉诱惑（烤肉、烘焙、SPA、特色体验），希望精准拦截「周五下班即出发」香港客群的商家",
-        hook: "精准把握香港人「周四找资讯、周五做决定、周六北上」的黄金决策期，以短影音引爆周末到店。",
+        hook: "把握香港人『周四找资讯、周五做决定、周六北上』的黄金决策期，以短影音引爆周末到店。",
         expect: "精准短片常态播放约 50,000-150,000 次（单条最高达 25 万人次）",
         gift: "",
         items: [
@@ -332,10 +332,10 @@ const T = {
         star: "top",
       },
       {
-        tag: "新店／大促首选 · 性价比最高",
+        tag: "🚀 新店／大促首选 · 性价比最高",
         name: "$2,800 全矩阵霸屏方案",
-        who: "适合新店开业、商场活动、展览盛事，或连锁品牌单月主推",
-        hook: "不做慢热推广：一次覆盖全香港用户的 Feed 流，短期内建立开业排队效应。",
+        who: "新店插旗深圳、大型商场活动、展览盛事，或连锁品牌单月主推",
+        hook: "不做慢热推广！一次覆盖全香港用户的 Feed 流，短期内建立开业排队效应。",
         items: [
           "3 大 FB 专页同步分发（38,000+ 精准粉丝同步铺量）",
           "双 IG 帐号同步发布（@cantonesefoodtravelguide + @chinatravelhack 触及年轻探店客群）",
@@ -347,7 +347,7 @@ const T = {
         star: "value",
       },
       {
-        tag: "品牌季度签约首选",
+        tag: "📅 品牌季度签约首选",
         name: "$3,880／月 长效增长代运营",
         who: "适合拒绝「热闹一个周末便归于平淡」、希望建立长期香港客流基本盘的品牌",
         hook: "告别一次性曝光，每月多频次植入港人生活圈，让香港人过关第一时间想起你。",
@@ -358,15 +358,15 @@ const T = {
           "月度官方 API 数据复盘报告＋港人到店导流关键字优化",
           "免费赠送「港人到店路线指引＋口岸交通指南」宣传模板",
         ],
-        value: "3 个月起签",
+        value: "季度签约特惠：HK$9,800／季（立减近 $1,800）｜3 个月起签",
         expect: "",
-        gift: "季度签约特惠：HK$9,800／季（立减近 $1,800）",
+        gift: "",
         star: "",
       },
     ],
     starTop: "最多商家选择",
     starValue: "性价比最高",
-    bookNow: "立即预约此方案",
+    bookNow: "⚡ 立即预约此方案",
     payNote: "支持港币／人民币对公或对私结算 ｜ 短影音由商家提供素材，工作室全包港式粤语配音、字幕及精剪（如需派员深圳实拍探店可另加购） ｜ 初稿 100% 商家预审确认",
     addons: "加购：素材授权 +30-50%",
     ctaLine: "扫码即时查询 · 24 小时内回复",
@@ -455,7 +455,7 @@ export default function Home() {
       {/* Hero — 滿版圖疊字（ref: Havenly）＋統計列懸浮疊底邊（ref: AV portfolio） */}
       <section className="relative min-h-[76svh] flex items-center overflow-hidden">
         <img src="/scenes/hero-shenzhen.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#181310]/95 via-[#1d1712]/80 to-[#221d17]/40" />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,14,23,0.75) 0%, rgba(10,14,23,0.88) 100%)" }} />
         <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-24 md:pb-28 w-full">
           <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
             {t.reelsBadge}
@@ -585,7 +585,7 @@ export default function Home() {
       </section>
 
       {/* Case study */}
-      <section className="px-6 section-screen">
+      <section className="px-6 py-20 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
           <div className={`${CARD} p-5`}>
@@ -604,9 +604,9 @@ export default function Home() {
           <div className="mt-16 md:mt-20">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
           {t.topPosts.filter((p) => p.hot).map((p) => (
-            <div key={p.name} className="glass-card featured rounded-[1.4rem] overflow-hidden grid md:grid-cols-[1fr_1.15fr] mb-6 group">
+            <div key={p.name} className="glass-card featured rounded-[1.4rem] overflow-hidden grid md:grid-cols-[1.15fr_1fr] mb-6 group items-center">
               <div className="overflow-hidden">
-                <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.04] transition-transform duration-500" />
+                <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-video group-hover:scale-[1.04] transition-transform duration-500" />
               </div>
               <div className="p-6 md:p-7 flex flex-col justify-center">
                 <div className="text-[12px] font-bold tracking-[0.2em] text-[#c5a065] mb-2">TOP 1</div>
