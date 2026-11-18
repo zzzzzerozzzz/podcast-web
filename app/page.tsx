@@ -736,7 +736,7 @@ export default function Home() {
       </section>
 
       {/* Lineup — 左圖右表（ref: Lunora newsletter） */}
-      <section className="px-6 py-20 md:py-28">
+      <section className="px-6 pt-20 pb-10 md:py-28">
         <div className="max-w-6xl mx-auto">
         <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-8 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
         <div className="grid md:grid-cols-[1fr_2.6fr] gap-8 items-center">
