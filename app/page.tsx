@@ -452,7 +452,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative px-6 pt-12 pb-10">
-        <div className="max-w-5xl mx-auto lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10">
+        <div className="max-w-5xl mx-auto lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
             <p className="text-[15px] text-[#e9dcc2]/80 mb-2">{t.tagline}</p>
