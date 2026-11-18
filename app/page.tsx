@@ -579,7 +579,7 @@ export default function Home() {
             <div className="flex w-11 h-11 rounded-full bg-[#241e18] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10 mx-auto my-1 md:my-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
               {t.vs}
             </div>
-            <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] p-5 glow-gold">
+            <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] p-5">
               <h3 className="font-bold text-[#e8c98a] text-[15px] mb-2">{t.cpmRightTitle}</h3>
               <p className="text-[15.5px] text-[#f3ead9]/80 leading-relaxed">{t.cpmRightBody}</p>
             </div>
@@ -786,7 +786,7 @@ export default function Home() {
       <section className="px-6 section-screen">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
-          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 px-6 py-3.5 mb-8 glow-gold text-center">
+          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 px-6 py-3.5 mb-8 text-center">
             <p className="text-[16px] md:text-[17px] font-bold text-[#f5d98b] tracking-wide">{t.qBannerTitle}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-5 md:gap-6 mb-8">
@@ -886,11 +886,11 @@ export default function Home() {
           <p className="text-2xl md:text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#f5d98b] via-[#e8c98a] to-[#c5a065] bg-clip-text text-transparent">{t.ctaLine}</p>
           <p className="text-[15px] text-white/65 mb-8">{t.ctaContact}</p>
           <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-6">
-            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45 glow-gold">
+            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45">
               <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl" />
               <p className="text-[14px] font-bold text-[#4a3b22] mt-2">{t.qrWechat}</p>
             </div>
-            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45 glow-gold">
+            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45">
               <img src="/qr-whatsapp.png" alt="WhatsApp QR" className="w-full rounded-xl" />
               <p className="text-[14px] font-bold text-[#4a3b22] mt-2">{t.qrWa}</p>
             </div>
