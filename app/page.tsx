@@ -84,14 +84,14 @@ const T = {
       "單條推廣帖帶動大量「交通／票價」私訊查詢，全部引導至場館資訊與港人交通路線（福田／羅湖→11 號線後海站）。觀看數超過粉絲數，代表平台演算法作出額外推流。",
     topTitle: "近30日代表作（真實數據）",
     topPosts: [
-      { img: "/posts/p1.jpg", name: "深圳科技地標帖", likes: 2640, shares: 4267, hot: true },
-      { img: "/posts/p2.jpg", name: "廣州北京路帖", likes: 2047, shares: 3026 },
-      { img: "/posts/p3.jpg", name: "深圳森林商場帖", likes: 854, shares: 214 },
-      { img: "/posts/p4.jpg", name: "地鐵6號線帖", likes: 772, shares: 94 },
-      { img: "/posts/p5.jpg", name: "鹽田一日遊帖", likes: 593, shares: 97 },
+      { img: "/posts/p1.jpg", name: "深圳科技地標帖", reach: 290000, likes: 2640, shares: 4267, hot: true },
+      { img: "/posts/p2.jpg", name: "廣州北京路帖", reach: 250000, likes: 2047, shares: 3026 },
+      { img: "/posts/p3.jpg", name: "深圳森林商場帖", reach: 190000, likes: 854, shares: 214 },
+      { img: "/posts/p5.jpg", name: "鹽田一日遊帖", reach: 93000, likes: 593, shares: 97 },
     ],
     likeWord: "讚",
     shareWord: "分享",
+    reachWord: "接觸人數",
     lineupTitle: "媒體陣容",
     lineupHead: ["媒體", "粉絲", "定位"],
     lineup: [
@@ -287,14 +287,14 @@ const T = {
       "单条推广帖带动大量「交通／票价」私信查询，全部引导至场馆信息与港人交通路线（福田／罗湖→11 号线后海站）。观看数超过粉丝数，代表平台算法作出额外推流。",
     topTitle: "近30日代表作（真实数据）",
     topPosts: [
-      { img: "/posts/p1.jpg", name: "深圳科技地标帖", likes: 2640, shares: 4267, hot: true },
-      { img: "/posts/p2.jpg", name: "广州北京路帖", likes: 2047, shares: 3026 },
-      { img: "/posts/p3.jpg", name: "深圳森林商场帖", likes: 854, shares: 214 },
-      { img: "/posts/p4.jpg", name: "地铁6号线帖", likes: 772, shares: 94 },
-      { img: "/posts/p5.jpg", name: "盐田一日游帖", likes: 593, shares: 97 },
+      { img: "/posts/p1.jpg", name: "深圳科技地标帖", reach: 290000, likes: 2640, shares: 4267, hot: true },
+      { img: "/posts/p2.jpg", name: "广州北京路帖", reach: 250000, likes: 2047, shares: 3026 },
+      { img: "/posts/p3.jpg", name: "深圳森林商场帖", reach: 190000, likes: 854, shares: 214 },
+      { img: "/posts/p5.jpg", name: "盐田一日游帖", reach: 93000, likes: 593, shares: 97 },
     ],
     likeWord: "赞",
     shareWord: "分享",
+    reachWord: "接触人数",
     lineupTitle: "媒体阵容",
     lineupHead: ["媒体", "粉丝", "定位"],
     lineup: [
@@ -444,6 +444,8 @@ export default function Home() {
   };
 
   const t = T[lang];
+  const wan = (n: number) =>
+    n >= 10000 ? `${(n / 10000).toFixed(n % 10000 === 0 ? 0 : 1).replace(/\.0$/, "")}萬` : n.toLocaleString();
   const dashImgs = ["/dash-gba.jpg", "/dash-sz.jpg"];
   const stepImgs = ["/scenes/step-brief.jpg", "/scenes/step-shoot.jpg", "/scenes/step-launch.jpg"];
 
@@ -550,8 +552,8 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-[2fr_3fr] gap-10 items-stretch">
           <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group min-h-[380px]">
-            <img src="/scenes/bbq-wide.jpg" alt="深圳燒烤餐廳晚市" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
-            <span className="absolute bottom-3 left-3 bg-[#181310]/85 text-[11px] text-[#e8c98a] rounded-full px-3 py-1">深圳 · 晚市實景氛圍</span>
+            <img src="/scenes/crowd-dongmen.jpg" alt="深圳東門食街人流實景" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+            <span className="absolute bottom-3 left-3 bg-[#181310]/85 text-[11px] text-[#e8c98a] rounded-full px-3 py-1">深圳東門 · 週末實景</span>
           </div>
           <div>
           <div className="grid gap-6">
@@ -600,7 +602,7 @@ export default function Home() {
               <div key={s.n} className="glass-card rounded-[1.3rem] overflow-hidden group">
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img src={stepImgs[i]} alt={s.t} className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#181310] via-[#181310]/25 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#181310] via-[#181310]/35 to-transparent" />
                   <span className="absolute left-4 bottom-3 text-[13px] font-bold tracking-[0.22em] text-[#f5d98b]">{s.n}</span>
                 </div>
                 <div className="p-5">
@@ -694,21 +696,21 @@ export default function Home() {
               <div className="p-6 md:p-7 flex flex-col justify-center">
                 <div className="text-[12px] font-bold tracking-[0.2em] text-[#c5a065] mb-2">TOP 1</div>
                 <div className="text-xl font-bold text-[#f7efdd] mb-4">{p.name}</div>
-                <div className="flex items-end gap-6">
+                <div className="flex items-end gap-5 flex-wrap">
                   <div>
-                    <div className="text-4xl font-bold font-mono tabular-nums text-[#f0b48a] leading-none">{p.shares.toLocaleString()}</div>
-                    <div className="text-[12px] text-white/60 mt-1.5">{t.shareWord} · 裂變觸及</div>
+                    <div className="text-5xl font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</div>
+                    <div className="text-[12px] text-white/60 mt-1.5">{t.reachWord}</div>
                   </div>
-                  <div>
-                    <div className="text-2xl font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{p.likes.toLocaleString()}</div>
+                  <div className="pb-1">
+                    <div className="text-xl font-bold font-mono tabular-nums text-[#f0b48a] leading-none">{p.shares.toLocaleString()}</div>
+                    <div className="text-[12px] text-white/60 mt-1.5">{t.shareWord}</div>
+                  </div>
+                  <div className="pb-1">
+                    <div className="text-xl font-bold font-mono tabular-nums text-white/75 leading-none">{p.likes.toLocaleString()}</div>
                     <div className="text-[12px] text-white/60 mt-1.5">{t.likeWord}</div>
                   </div>
                 </div>
                 <div className="mt-5">
-                  <div className="flex justify-between text-[12px] text-white/60 mb-1.5">
-                    <span>{t.shareWord} {p.shares.toLocaleString()}</span>
-                    <span>{t.likeWord} {p.likes.toLocaleString()}</span>
-                  </div>
                   <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
                     <div className="h-full bg-gradient-to-r from-[#f0b48a] to-[#f0955c] rounded-full" style={{ width: `${(p.shares / (p.shares + p.likes)) * 100}%` }} />
                   </div>
@@ -717,7 +719,7 @@ export default function Home() {
               </div>
             </div>
           ))}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
             {t.topPosts.filter((p) => !p.hot).map((p) => (
               <div key={p.name} className="glass-card rounded-[1.2rem] overflow-hidden group">
                 <div className="overflow-hidden">
@@ -725,11 +727,13 @@ export default function Home() {
                 </div>
                 <div className="p-4">
                   <div className="font-semibold text-[14px] text-[#f3ead9] mb-2 truncate">{p.name}</div>
+                  <div className="text-[22px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</div>
+                  <div className="text-[11px] text-white/55 mt-1 mb-2">{t.reachWord}</div>
                   <div className="flex gap-2 flex-wrap">
-                    <span className="text-[12px] bg-white/10 rounded-full px-2.5 py-0.5 text-white/65">
+                    <span className="text-[11px] bg-white/10 rounded-full px-2 py-0.5 text-white/60">
                       {t.likeWord} {p.likes.toLocaleString()}
                     </span>
-                    <span className="text-[12px] bg-[#f0955c]/20 text-[#f0b48a] rounded-full px-2.5 py-0.5 font-semibold">
+                    <span className="text-[11px] bg-[#f0955c]/20 text-[#f0b48a] rounded-full px-2 py-0.5 font-semibold">
                       {t.shareWord} {p.shares.toLocaleString()}
                     </span>
                   </div>
@@ -783,7 +787,7 @@ export default function Home() {
       </section>
 
       {/* Pricing — Morandi cards */}
-      <section className="px-6 section-screen">
+      <section id="pricing" className="px-6 section-screen scroll-mt-24">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
           <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 px-6 py-3.5 mb-8 text-center">
