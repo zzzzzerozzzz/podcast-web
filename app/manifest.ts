@@ -2,13 +2,13 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: "港人北上媒体矩阵",
-        short_name: "北上媒体矩阵",
-        description: "深圳·大湾区商家触达香港消费者的最直接渠道。",
+        name: "港人北上媒體矩陣",
+        short_name: "北上媒體矩陣",
+        description: "深圳·大灣區商家觸達香港消費者的最直接渠道。",
         start_url: "/",
         display: "standalone",
-        background_color: "#0f2b5b",
-        theme_color: "#0f2b5b",
+        background_color: "#221d17",
+        theme_color: "#c5a065",
         icons: [
             {
                 src: "/icon-192x192.png",

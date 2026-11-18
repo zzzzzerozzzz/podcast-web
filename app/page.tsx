@@ -64,7 +64,7 @@ const T = {
     ],
     bigLine: "28 天，兩個專頁，在香港人的屏幕上出現了八百七十九萬次。",
     dashSum:
-      "兩頁合計：28 天 879 萬次瀏覽、30.2 萬次互動、新增 13,827 位追蹤者；日均 31 萬次曝光，且近 30 日以 92 帖的月產量持續增長。",
+      "兩頁合計：30.2 萬次互動、新增 13,827 位追蹤者；日均 31 萬次曝光，近 30 日以 92 帖的月產量持續增長。",
     cpmTitle: "性價比對決",
     cpmLeftTitle: "傳統 Meta 廣告",
     cpmLeftBody:
@@ -190,6 +190,23 @@ const T = {
     qrWa: "WhatsApp 掃碼",
     qrWaBtn: "💬 點擊此處直接開啟 WhatsApp 諮詢",
     mailLabel: "電郵",
+    proofKicker: "合作保障",
+    proof: [
+      { v: "6", l: "個官方帳號同步發布" },
+      { v: "100%", l: "初稿商家預審，不通過不上線" },
+      { v: "7 日", l: "出稿 · 14 日交後台數據" },
+    ],
+    stepsTitle: "三步交付流程",
+    stepsKicker: "確認之後，平均 3–5 個工作日上線",
+    steps: [
+      { n: "01", t: "寫稿", b: "按港人語境出稿，你審稿；不通過不改稿，不上線。" },
+      { n: "02", t: "拍攝", b: "商家提供素材或店內實拍，我們包剪輯、港式配音、字幕。" },
+      { n: "03", t: "投放", b: "雙專頁＋群組同步，7 日後交回後台數據報告。" },
+    ],
+    stepsNote: "全流程你只需要做兩件事：確認稿、確認片。",
+    moreItems: "＋ 另含 {n} 項，詳見下方單項價目",
+    dashCapName: "Meta 商務套件 · 創作者管理中心",
+    dashCapDate: "截圖 2026-11-17",
     footer:
       "條款：7 日內出稿；初稿經商家預審；合作帖文按 Meta 政策標註「付費合作」。數據截至 2026-11-17，價格可議。",
   },
@@ -250,7 +267,7 @@ const T = {
     ],
     bigLine: "28 天，两个专页，在香港人的屏幕上出现了八百七十九万次。",
     dashSum:
-      "两页合计：28 天 879 万次浏览、30.2 万次互动、新增 13,827 位追踪者；日均 31 万次曝光，且近 30 日以 92 帖的月产量持续增长。",
+      "两页合计：30.2 万次互动、新增 13,827 位追踪者；日均 31 万次曝光，近 30 日以 92 帖的月产量持续增长。",
     cpmTitle: "性价比对决",
     cpmLeftTitle: "传统 Meta 广告",
     cpmLeftBody:
@@ -375,6 +392,23 @@ const T = {
     qrWa: "WhatsApp 扫码",
     qrWaBtn: "💬 点击此处直接开启 WhatsApp 咨询",
     mailLabel: "邮箱",
+    proofKicker: "合作保障",
+    proof: [
+      { v: "6", l: "个官方账号同步发布" },
+      { v: "100%", l: "初稿商家预审，不通过不上线" },
+      { v: "7 日", l: "出稿 · 14 日交后台数据" },
+    ],
+    stepsTitle: "三步交付流程",
+    stepsKicker: "确认之后，平均 3–5 个工作日上线",
+    steps: [
+      { n: "01", t: "写稿", b: "按港人语境出稿，你审稿；不通过不改稿，不上线。" },
+      { n: "02", t: "拍摄", b: "商家提供素材或店内实拍，我们包剪辑、港式配音、字幕。" },
+      { n: "03", t: "投放", b: "双专页＋群组同步，7 日后交回后台数据报告。" },
+    ],
+    stepsNote: "全流程你只需要做两件事：确认稿、确认片。",
+    moreItems: "＋ 另含 {n} 项，详见下方单项价目",
+    dashCapName: "Meta 商务套件 · 创作者管理中心",
+    dashCapDate: "截图 2026-11-17",
     footer:
       "条款：7 日内出稿；初稿经商家预审；合作帖文按 Meta 政策标注「付费合作」。数据截至 2026-11-17，价格可议。",
   },
@@ -405,22 +439,24 @@ export default function Home() {
     setLang(l);
     try {
       window.localStorage.setItem("mk-lang", l);
+      document.documentElement.lang = l === "hk" ? "zh-Hant-HK" : "zh-Hans-CN";
     } catch {}
   };
 
   const t = T[lang];
   const dashImgs = ["/dash-gba.jpg", "/dash-sz.jpg"];
+  const stepImgs = ["/scenes/step-brief.jpg", "/scenes/step-shoot.jpg", "/scenes/step-launch.jpg"];
 
   return (
-    <main className="min-h-screen text-[#f3ead9] relative overflow-hidden">
+    <main className="min-h-screen text-[#f3ead9] relative overflow-x-clip">
       {/* Warm glows + paper grain */}
       <div className="pointer-events-none absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#c5a065]/15 blur-[150px]" />
-      <div className="pointer-events-none absolute top-1/3 -right-52 w-[500px] h-[500px] rounded-full bg-[#e07b39]/10 blur-[160px]" />
-      <div className="pointer-events-none absolute bottom-10 left-1/5 w-[440px] h-[440px] rounded-full bg-[#9db88a]/10 blur-[150px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-52 w-[500px] h-[500px] rounded-full bg-[#e07b39]/[0.08] blur-[160px]" />
+      <div className="pointer-events-none absolute bottom-10 left-1/5 w-[440px] h-[440px] rounded-full bg-[#c5a065]/[0.08] blur-[150px]" />
 
       {/* Header */}
-      <div className="sticky top-0 z-20 bg-[#0c0f17]/85 backdrop-blur border-b border-[#c5a065]/15">
-        <div className="max-w-5xl mx-auto flex items-center justify-between px-5 py-2.5">
+      <div className="sticky top-0 z-20 bg-[#1b1712]/90 backdrop-blur-md border-b border-[#c5a065]/25">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-2.5">
           <div className="flex items-center gap-2.5 min-w-0">
             <img src="/logo.png" alt="ZTG Studio logo" className="w-10 h-10 object-contain shrink-0" />
             <div className="leading-tight min-w-0">
@@ -456,21 +492,38 @@ export default function Home() {
       <section className="relative min-h-[76svh] flex items-center overflow-hidden">
         <img src="/scenes/hero-shenzhen.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#181310]/95 via-[#1d1712]/80 to-[#221d17]/40" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-24 md:pb-28 w-full">
-          <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
-            {t.reelsBadge}
-          </span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-[#f7efdd] max-w-xl text-left">{t.h1}</h1>
-          <p className="text-[16px] text-[#e9dcc2]/85 mb-2 max-w-lg text-left">{t.tagline}</p>
-          <p className="text-xs text-white/55 mb-7">{t.dateNote}</p>
-          <div className="flex gap-3 flex-col sm:flex-row">
-            <a href="https://wa.me/qr/RFLV47X75BYHI1" className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
-              {t.ctaLine}
-            </a>
-            <a href="#pricing" className="text-center border border-[#e8c98a]/50 text-[#e8c98a] font-bold rounded-full px-7 py-3.5 text-sm backdrop-blur">
-              {t.priceTitle}
-            </a>
+        <div className="relative max-w-6xl mx-auto px-6 pt-10 md:pt-16 pb-24 md:pb-28 w-full md:grid md:grid-cols-[1.12fr_0.88fr] md:items-center md:gap-12">
+          <div>
+            <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[12.5px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
+              {t.reelsBadge}
+            </span>
+            <h1 className="text-[38px] sm:text-5xl md:text-[56px] font-bold mb-4 tracking-normal leading-[1.12] text-[#f7efdd] max-w-xl text-left">{t.h1}</h1>
+            <p className="text-[17px] text-[#e9dcc2]/85 mb-2.5 max-w-lg text-left leading-relaxed">{t.tagline}</p>
+            <p className="text-[12.5px] text-white/55 mb-7">{t.dateNote}</p>
+            <div className="flex gap-3 flex-col sm:flex-row">
+              <a href="https://wa.me/qr/RFLV47X75BYHI1" className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
+                {t.ctaLine}
+              </a>
+              <a href="#pricing" className="text-center border border-[#e8c98a]/50 text-[#e8c98a] font-bold rounded-full px-7 py-3.5 text-sm transition hover:bg-[#e8c98a]/10">
+                {t.priceTitle}
+              </a>
+            </div>
           </div>
+
+          {/* Social proof card — fills the empty sky */}
+          <aside className="hidden md:block">
+            <div className="rounded-[1.5rem] border border-[#e8c98a]/25 bg-[#1b1712]/75 p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)]">
+              <div className="text-[11px] font-bold tracking-[0.22em] text-[#c5a065] mb-5">{t.proofKicker}</div>
+              <div className="space-y-4">
+                {t.proof.map((pr) => (
+                  <div key={pr.l} className="flex items-baseline justify-between gap-3 border-b border-[#e8c98a]/12 pb-3 last:border-0 last:pb-0">
+                    <span className="text-[26px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{pr.v}</span>
+                    <span className="text-[13px] text-white/60 text-right">{pr.l}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
       <section className="relative px-6 -mt-14 md:-mt-16 mb-4">
@@ -480,7 +533,7 @@ export default function Home() {
               <div key={s.label} className="text-center">
                 <div className="text-[36px] md:text-[40px] leading-none font-bold font-mono tabular-nums text-[#f5d98b]">
                   {s.value}
-                  {s.up ? <span className="text-[#b9d4a8] text-lg ml-1">↗</span> : null}
+                  {s.up ? <span className="text-[#e8c98a] text-lg ml-1">↗</span> : null}
                 </div>
                 <div className="text-[12.5px] text-white/60 mt-2.5">{s.label}</div>
               </div>
@@ -492,13 +545,13 @@ export default function Home() {
       {/* Selling points — 左圖右文 40/60（ref: Lunora） */}
       <section className="px-6 py-20 md:py-28">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold pl-3 mb-10 border-l-4 border-[#c5a065] text-[#f7efdd]">
+          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-10 border-l-4 border-[#c5a065] text-[#f7efdd]">
             {t.sellingTitle}
           </h2>
           <div className="grid md:grid-cols-[2fr_3fr] gap-10 items-stretch">
           <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group min-h-[380px]">
             <img src="/scenes/bbq-wide.jpg" alt="深圳燒烤餐廳晚市" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
-            <span className="absolute bottom-3 left-3 bg-[#181310]/80 backdrop-blur text-[11px] text-[#e8c98a] rounded-full px-3 py-1">深圳 · 晚市實景氛圍</span>
+            <span className="absolute bottom-3 left-3 bg-[#181310]/85 text-[11px] text-[#e8c98a] rounded-full px-3 py-1">深圳 · 晚市實景氛圍</span>
           </div>
           <div>
           <div className="grid gap-6">
@@ -506,7 +559,7 @@ export default function Home() {
               const [num, rest] = p.title.split("｜");
               return (
                 <div key={p.title} className="glass-card rounded-2xl p-6 relative overflow-hidden">
-                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c5a065] via-[#e8c98a] to-[#38bdf8]" />
+                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c5a065]/70 via-[#e8c98a] to-[#c5a065]/70" />
                   <div className="font-mono text-[13px] text-[#c5a065] tracking-[0.2em] mb-2.5">{num}</div>
                   <h3 className="text-[19px] font-bold leading-snug mb-3 text-[#f7efdd]">{rest}</h3>
                   <p className="text-[15px] text-white/70 leading-relaxed">{p.body}</p>
@@ -517,16 +570,16 @@ export default function Home() {
         </div>
           </div>
           <div className="mt-12">
-          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
+          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
           <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch relative">
-            <div className="rounded-3xl border border-white/10 bg-[#26211a]/60 backdrop-blur p-5">
+            <div className="rounded-3xl border border-white/10 bg-[#2a241c]/80 p-5">
               <h3 className="font-bold text-[#e0896a] text-[15px] mb-2">{t.cpmLeftTitle}</h3>
               <p className="text-[15.5px] text-white/70 leading-relaxed">{t.cpmLeftBody}</p>
             </div>
             <div className="flex w-11 h-11 rounded-full bg-[#241e18] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10 mx-auto my-1 md:my-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
               {t.vs}
             </div>
-            <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] backdrop-blur p-5 glow-gold">
+            <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] p-5 glow-gold">
               <h3 className="font-bold text-[#e8c98a] text-[15px] mb-2">{t.cpmRightTitle}</h3>
               <p className="text-[15.5px] text-[#f3ead9]/80 leading-relaxed">{t.cpmRightBody}</p>
             </div>
@@ -535,59 +588,89 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dashboards in polaroid frames */}
-      <section className="px-6 section-screen">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
-          <div className="grid sm:grid-cols-2 gap-10">
-            {t.dashes.map((d, i) => (
-              <div key={d.name} className="relative">
-                <div className={`relative mx-auto w-full max-w-[280px] ${i === 0 ? "md:-rotate-2" : "md:rotate-2"}`}>
-                  {/* tape */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#e8c98a]/40 rotate-[-4deg] rounded-sm z-10 backdrop-blur-sm" />
-                  <div className="bg-[#faf6ec] rounded-[28px] p-3 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)]">
-                    <img src={dashImgs[i]} alt={d.name} className="w-full rounded-xl aspect-[9/18] object-cover object-top" />
-                    <p className="text-center text-[13px] font-semibold text-[#6b5a3e] mt-2.5 truncate">
-                      ✦ {d.name} ✦
-                    </p>
-                  </div>
-                  <div className="absolute -right-3 top-8 bg-[#f5d98b] text-[#3a2f1c] text-[13px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(245,217,139,0.45)] rotate-3">
-                    {d.float1}
-                  </div>
-                  <div className="absolute -left-3 bottom-14 bg-[#b9d4a8] text-[#26301c] text-[13px] font-bold rounded-full px-3 py-1.5 shadow-[0_0_18px_rgba(185,212,168,0.4)] -rotate-2">
-                    {d.float2}
-                  </div>
+      {/* Three-step process — breather between proof blocks */}
+      <section className="px-6 pb-20 md:pb-28">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-9">
+            <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.stepsTitle}</h2>
+            <p className="text-[14px] text-white/55 md:pb-1.5">{t.stepsKicker}</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {t.steps.map((s, i) => (
+              <div key={s.n} className="glass-card rounded-[1.3rem] overflow-hidden group">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img src={stepImgs[i]} alt={s.t} className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#181310] via-[#181310]/25 to-transparent" />
+                  <span className="absolute left-4 bottom-3 text-[13px] font-bold tracking-[0.22em] text-[#f5d98b]">{s.n}</span>
                 </div>
-                <div className="mt-8 text-center">
-                  <p className="text-xs text-white/55 mb-3">{d.fans}</p>
-                  <div className="grid grid-cols-3 gap-2 max-w-xs mx-auto">
-                    {d.nums.map((n) => (
-                      <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
-                        <div className="text-[15px] font-bold font-mono tabular-nums text-[#f5d98b]">{n.v}</div>
-                        <div className="text-[10px] text-white/60">{n.l}</div>
-                      </div>
-                    ))}
-                  </div>
+                <div className="p-5">
+                  <h3 className="text-[19px] font-bold text-[#f7efdd] mb-2">{s.t}</h3>
+                  <p className="text-[14.5px] text-white/65 leading-relaxed">{s.b}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-sm text-white/70 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
+          <p className="text-center text-[14px] text-[#e8c98a] mt-7">{t.stepsNote}</p>
         </div>
-          <div className="mt-10 md:mt-14 text-center relative">
-            <span className="absolute -left-2 top-2 text-[#c5a065]/50 text-3xl hidden md:block">✦</span>
-            <span className="absolute right-4 bottom-6 text-[#38bdf8]/40 text-2xl hidden md:block">✦</span>
-            <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[22vw] md:text-[7.5rem]">
-              879<span className="text-[0.42em]">萬</span>
-            </div>
-            <p className="text-[15px] text-white/70 mt-4">{t.bigLine}</p>
-          </div>
       </section>
+
+      {/* Dashboards — real backend screenshot, readable crop */}
+      <section className="px-6 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-8 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+            <figure className="rounded-[1.4rem] border border-[#c5a065]/25 bg-[#2a241c]/80 p-3 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)]">
+              <img src="/dash-gba-crop.png" alt="Meta 商務套件 28 天後台數據" className="w-full rounded-[1rem] block" />
+              <figcaption className="flex items-center justify-between gap-3 text-[11.5px] text-white/45 px-1 pt-2.5">
+                <span>{t.dashCapName}</span>
+                <span className="shrink-0">{t.dashCapDate}</span>
+              </figcaption>
+            </figure>
+            <div>
+              {t.dashes.map((d) => (
+                <div key={d.name} className="rounded-2xl border border-[#e8c98a]/15 bg-white/[0.04] p-4 mb-3 last:mb-0">
+                  <div className="flex items-baseline justify-between gap-3 mb-3">
+                    <span className="text-[13.5px] font-semibold text-[#f3ead9]">{d.name}</span>
+                    <span className="text-[12px] text-white/45 shrink-0">{d.fans}</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {d.nums.map((n) => (
+                      <div key={n.l}>
+                        <div className="text-[19px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{n.v}</div>
+                        <div className="text-[11px] text-white/50 mt-1.5">{n.l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              <p className="text-[14.5px] text-white/65 leading-relaxed mt-4">{t.dashSum}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 879萬 — the single big number moment */}
+      <section className="px-6 pb-14 md:pb-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[19vw] md:text-[6.5rem]">
+            879<span className="text-[0.42em]">萬</span>
+          </div>
+          <p className="text-[15px] text-white/65 mt-4">{t.bigLine}</p>
+        </div>
+      </section>
+      {/* Transition — the walkway HK people actually take */}
+      <div className="relative h-[30vh] md:h-[42vh] overflow-hidden">
+        <img src="/scenes/bay-band.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#221d17] via-[#221d17]/10 to-[#221d17]" />
+        <div className="absolute inset-x-0 bottom-8 md:bottom-12">
+          <p className="max-w-6xl mx-auto px-6 text-[12px] tracking-[0.18em] text-[#e8c98a]/80">深圳灣公園 · 週末的香港人</p>
+        </div>
+      </div>
 
       {/* Case study */}
       <section className="px-6 section-screen">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
           <div className={`${CARD} p-5`}>
             <h3 className="font-semibold text-[15px] mb-1 text-[#f3ead9]">{t.caseName}</h3>
             <div className="grid grid-cols-3 gap-2 my-4">
@@ -601,8 +684,8 @@ export default function Home() {
             <p className="text-[15.5px] text-white/60 leading-relaxed">{t.caseBody}</p>
           </div>
         </div>
-          <div className="mt-16 md:mt-20">
-          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
+        <div className="max-w-6xl mx-auto mt-16 md:mt-20">
+          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
           {t.topPosts.filter((p) => p.hot).map((p) => (
             <div key={p.name} className="glass-card featured rounded-[1.4rem] overflow-hidden grid md:grid-cols-[1fr_1.15fr] mb-6 group">
               <div className="overflow-hidden">
@@ -634,7 +717,7 @@ export default function Home() {
               </div>
             </div>
           ))}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {t.topPosts.filter((p) => !p.hot).map((p) => (
               <div key={p.name} className="glass-card rounded-[1.2rem] overflow-hidden group">
                 <div className="overflow-hidden">
@@ -659,13 +742,14 @@ export default function Home() {
 
       {/* Lineup — 左圖右表（ref: Lunora newsletter） */}
       <section className="px-6 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_2.6fr] gap-8 items-center">
+        <div className="max-w-6xl mx-auto">
+        <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-8 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
+        <div className="grid md:grid-cols-[1fr_2.6fr] gap-8 items-center">
         <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group hidden md:block">
-          <img src="/scenes/border-tall.jpg" alt="口岸北上人流" className="w-full object-cover aspect-[3/4] group-hover:scale-[1.03] transition-transform duration-500" />
-          <span className="absolute bottom-3 left-3 bg-[#181310]/80 backdrop-blur text-[11px] text-[#e8c98a] rounded-full px-3 py-1">週末 · 北上人流</span>
+          <img src="/scenes/border-real.jpg" alt="福田口岸抵達大堂實景" className="w-full object-cover aspect-[3/4] group-hover:scale-[1.03] transition-transform duration-500" />
+          <span className="absolute bottom-3 left-3 bg-[#181310]/85 text-[11px] text-[#e8c98a] rounded-full px-3 py-1">福田口岸 · 抵達大堂</span>
         </div>
         <div>
-          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
           <div className="overflow-hidden">
             <table className="w-full text-[15px]">
               <thead>
@@ -695,27 +779,28 @@ export default function Home() {
           </div>
         </div>
         </div>
+        </div>
       </section>
 
       {/* Pricing — Morandi cards */}
       <section className="px-6 section-screen">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
-          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 backdrop-blur px-6 py-4 mb-6 glow-gold text-center">
-            <p className="text-[19px] font-bold text-[#f5d98b] tracking-wide">{t.qBannerTitle}</p>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
+          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 px-6 py-3.5 mb-8 glow-gold text-center">
+            <p className="text-[16px] md:text-[17px] font-bold text-[#f5d98b] tracking-wide">{t.qBannerTitle}</p>
           </div>
-          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-5 mb-6">
+          <div className="grid sm:grid-cols-2 gap-5 md:gap-6 mb-8">
             {t.packages.map((p) => {
               const morandi =
                 p.star === "top"
                   ? "featured bg-[#e8c9a8]/15 border-2 border-[#e8c98a]/60"
                   : p.star === "value"
-                    ? "featured bg-[#b8c9a8]/12 border-2 border-[#b9d4a8]/60"
+                    ? "featured bg-[#e8c98a]/[0.12] border-2 border-[#e8c98a]/55"
                     : "bg-[#d9c7a7]/[0.07] border border-[#c5a065]/20";
               return (
                 <div
                   key={p.name}
-                  className={`h-full rounded-3xl p-5 backdrop-blur flex flex-col relative ${morandi} ${
+                  className={`h-full rounded-3xl p-6 flex flex-col relative ${morandi} ${
                     p.star ? "glow-gold" : ""
                   }`}
                 >
@@ -728,11 +813,11 @@ export default function Home() {
                       <span className="text-[14px] font-semibold text-[#f0b48a]">{p.tag}</span>
                     )}
                   </div>
-                  <div className="h-[56px] mb-2 flex items-start">
-                    <span className="text-[22px] leading-tight font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
+                  <div className="mb-2.5 flex items-baseline gap-2">
+                    <span className="text-[27px] leading-none font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
                   </div>
                   <p className="text-[13px] text-white/70 leading-snug mb-2.5">{p.who}</p>
-                  <p className="text-[14.5px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
+                  <p className="text-[14.5px] text-[#e8c98a]/90 leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
                     「{p.hook}」
                   </p>
                   {p.expect ? (
@@ -741,20 +826,25 @@ export default function Home() {
                     </p>
                   ) : null}
                   {p.gift ? (
-                    <p className="text-[13.5px] text-[#b9d4a8] font-bold bg-[#b9d4a8]/10 border border-[#b9d4a8]/25 rounded-xl px-3 py-2 mb-3.5">
+                    <p className="text-[13.5px] text-[#e8c98a] font-bold bg-[#e8c98a]/10 border border-[#e8c98a]/25 rounded-xl px-3 py-2 mb-3.5">
                       {p.gift}
                     </p>
                   ) : null}
-                  <ul className="space-y-2 mb-3.5 flex-1">
-                    {p.items.map((i) => (
+                  <ul className="space-y-2 mb-3.5">
+                    {p.items.slice(0, 4).map((i) => (
                       <li key={i} className="text-[14px] text-white/65 leading-snug flex gap-1.5">
                         <span className="text-[#c5a065] shrink-0">✦</span>
                         <span>{i}</span>
                       </li>
                     ))}
+                    {p.items.length > 4 ? (
+                      <li className="text-[12.5px] text-white/40 leading-snug pt-0.5">
+                        {t.moreItems.replace("{n}", String(p.items.length - 4))}
+                      </li>
+                    ) : null}
                   </ul>
                   {p.value ? (
-                    <p className="text-[13px] text-[#b9d4a8] font-semibold mb-3.5">{p.value}</p>
+                    <p className="text-[13px] text-[#e8c98a] font-semibold mb-3.5">{p.value}</p>
                   ) : null}
                   <a
                     href="https://wa.me/qr/RFLV47X75BYHI1"
@@ -787,8 +877,8 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 section-screen relative">
-        <div className={`max-w-5xl mx-auto ${CARD} p-8 text-center glow-gold`}>
+      <section className="px-6 py-20 md:py-28 relative">
+        <div className={`max-w-2xl mx-auto ${CARD} p-8 text-center glow-gold`}>
           <div className="flex items-center justify-center gap-2 mb-3">
             <img src="/logo.png" alt="ZTG Studio logo" className="w-9 h-9 object-contain" />
             <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
@@ -821,7 +911,7 @@ export default function Home() {
       </section>
 
       <footer className="px-6 py-6 border-t border-[#c5a065]/15">
-        <p className="max-w-5xl mx-auto text-[12px] text-white/35 text-center">{t.footer}</p>
+        <p className="max-w-6xl mx-auto text-[12px] text-white/35 text-center">{t.footer}</p>
       </footer>
     </main>
   );

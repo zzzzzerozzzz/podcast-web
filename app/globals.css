@@ -127,20 +127,18 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    background-color: #221d17;
+  }
+
   body {
-  background-color: #221d17;
-  background-image:
-    radial-gradient(circle at 20% 15%, rgba(197, 160, 101, 0.10) 0%, transparent 45%),
-    radial-gradient(circle at 80% 25%, rgba(224, 123, 57, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 50% 78%, rgba(157, 184, 138, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 12% 80%, rgba(56, 189, 248, 0.04) 0%, transparent 40%);
-  background-attachment: fixed;
-}
+    background-color: transparent;
+  }
 }
 /* Neon agency theme — added 2026-11-17 */
 @keyframes glowBreath {
-  0%, 100% { box-shadow: 0 0 16px rgba(45, 212, 160, 0.30); }
-  50% { box-shadow: 0 0 34px rgba(45, 212, 160, 0.65); }
+  0%, 100% { box-shadow: 0 0 16px rgba(197, 160, 101, 0.28); }
+  50% { box-shadow: 0 0 32px rgba(232, 201, 138, 0.55); }
 }
 .glow-breath { animation: glowBreath 2.8s ease-in-out infinite; }
 
@@ -155,22 +153,23 @@
 }
 
 /* Depth glassmorphism — added 2026-11-17 (ZERO spec) */
-body {
-  background-color: #221d17;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-image:
     radial-gradient(at 12% 12%, rgba(197, 160, 101, 0.13) 0px, transparent 48%),
-    radial-gradient(at 70% 6%, rgba(56, 189, 248, 0.05) 0px, transparent 40%),
-    radial-gradient(at 8% 82%, rgba(56, 189, 248, 0.03) 0px, transparent 36%),
+    radial-gradient(at 70% 6%, rgba(224, 160, 100, 0.05) 0px, transparent 40%),
+    radial-gradient(at 8% 82%, rgba(224, 160, 100, 0.04) 0px, transparent 36%),
     radial-gradient(at 85% 45%, rgba(224, 123, 57, 0.07) 0px, transparent 42%),
-    radial-gradient(at 50% 88%, rgba(157, 184, 138, 0.06) 0px, transparent 46%);
-  background-attachment: fixed;
+    radial-gradient(at 50% 88%, rgba(197, 160, 101, 0.06) 0px, transparent 46%);
 }
 .glass-card {
-  background: rgba(255, 255, 255, 0.04) !important;
-  backdrop-filter: blur(16px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background: rgba(255, 255, 255, 0.065) !important;
+  border: 1px solid rgba(232, 201, 138, 0.14) !important;
+  border-top: 1px solid rgba(248, 232, 198, 0.20) !important;
   border-radius: 20px !important;
   box-shadow:
     0 16px 36px 0 rgba(0, 0, 0, 0.4),
@@ -191,7 +190,7 @@ body {
 
 
 /* taste-skill: one section per screen + hover underline */
-.section-screen { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+.section-screen { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: stretch; }
 @media (max-width: 640px) { .section-screen { min-height: auto; padding-top: 4.5rem; padding-bottom: 4.5rem; } }
 .u-draw { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .35s ease; }
 .u-draw:hover { background-size: 100% 1px; }
