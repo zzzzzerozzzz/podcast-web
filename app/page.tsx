@@ -21,6 +21,7 @@ const T = {
       { value: "12,000", label: "私域群組成員" },
     ],
     reelsLine: "短影音（Reels）傳播力：單條最高曝光突破 250,000+ 人次（演算法自然外溢破圈，突破粉絲數限制）",
+    reelsBadge: "🔥 爆款 Reel 單條最高曝光 250,000+ 人次 ｜ 演算法自然破圈",
     sellingTitle: "為什麼選擇我們（三項差異化優勢）",
     points: [
       {
@@ -206,6 +207,7 @@ const T = {
       { value: "12,000", label: "私域群组成员" },
     ],
     reelsLine: "短影音（Reels）传播力：单条最高曝光突破 250,000+ 人次（算法自然外溢破圈，突破粉丝数限制）",
+    reelsBadge: "🔥 爆款 Reel 单条最高曝光 250,000+ 人次 ｜ 算法自然破圈",
     sellingTitle: "为什么选择我们（三项差异化优势）",
     points: [
       {
@@ -451,26 +453,24 @@ export default function Home() {
       </div>
 
       {/* Hero */}
-      <section className="relative px-6 pt-12 pb-10">
-        <div className="max-w-5xl mx-auto lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
-            <p className="text-[15px] text-[#e9dcc2]/80 mb-2">{t.tagline}</p>
-            <p className="text-xs text-white/35 mb-8 lg:mb-0">{t.dateNote}</p>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
+      <section className="relative px-6 pt-14 pb-12">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-[#f7efdd]">{t.h1}</h1>
+          <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[14px] font-bold rounded-full px-5 py-2 mb-4 text-[#241c11]">
+            {t.reelsBadge}
+          </span>
+          <p className="text-[15px] text-[#e9dcc2]/80 mb-1">{t.tagline}</p>
+          <p className="text-xs text-white/35 mb-10">{t.dateNote}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {t.stats.map((s) => (
-              <div key={s.label} className={`${CARD} px-4 py-5 text-center glow-gold`}>
-                <div className="text-[26px] leading-none font-bold font-mono tabular-nums text-[#f5d98b]">
+              <div key={s.label} className={`${CARD} px-4 py-7 text-center glow-gold`}>
+                <div className="text-[38px] md:text-[42px] leading-none font-bold font-mono tabular-nums text-[#f5d98b]">
                   {s.value}
-                  {s.up ? <span className="text-[#b9d4a8] text-base ml-1">↗</span> : null}
+                  {s.up ? <span className="text-[#b9d4a8] text-xl ml-1">↗</span> : null}
                 </div>
-                <div className="text-[11.5px] text-[#94a3b8] mt-2">{s.label}</div>
+                <div className="text-[13px] text-white/70 mt-3">{s.label}</div>
               </div>
             ))}
-          </div>
-          <div className={`${CARD} mt-4 px-5 py-3.5 text-center col-span-full`}>
-            <p className="text-[15px] text-[#f5d98b] font-semibold leading-relaxed">{t.reelsLine}</p>
           </div>
         </div>
       </section>
@@ -481,11 +481,12 @@ export default function Home() {
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">
             {t.sellingTitle}
           </h2>
-          <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+          <div className="grid gap-6 md:grid-cols-3">
             {t.points.map((p) => {
               const [num, rest] = p.title.split("｜");
               return (
-                <div key={p.title} className="border-t border-white/15 pt-6">
+                <div key={p.title} className="glass-card rounded-2xl p-6 relative overflow-hidden">
+                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c5a065] via-[#e8c98a] to-[#38bdf8]" />
                   <div className="font-mono text-[13px] text-[#c5a065] tracking-[0.2em] mb-2.5">{num}</div>
                   <h3 className="text-[19px] font-bold leading-snug mb-3 text-[#f7efdd]">{rest}</h3>
                   <p className="text-[15px] text-white/55 leading-relaxed">{p.body}</p>
