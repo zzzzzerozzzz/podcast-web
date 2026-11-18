@@ -92,6 +92,7 @@ const T = {
     likeWord: "讚",
     shareWord: "分享",
     reachWord: "接觸人數",
+    shareNote: "內容被香港人主動轉發，平台演算法隨之擴大分發。",
     lineupTitle: "媒體陣容",
     lineupHead: ["媒體", "粉絲", "定位"],
     lineup: [
@@ -295,6 +296,7 @@ const T = {
     likeWord: "赞",
     shareWord: "分享",
     reachWord: "接触人数",
+    shareNote: "内容被香港人主动转发，平台算法随之扩大分发。",
     lineupTitle: "媒体阵容",
     lineupHead: ["媒体", "粉丝", "定位"],
     lineup: [
@@ -471,7 +473,7 @@ export default function Home() {
               className={`px-4 py-1 rounded-full border transition text-sm ${
                 lang === "hk"
                   ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
-                  : "text-white/65 border-white/15"
+                  : "text-[#c2b6a3] border-white/15"
               }`}
             >
               繁
@@ -481,7 +483,7 @@ export default function Home() {
               className={`ml-2 px-4 py-1 rounded-full border transition text-sm ${
                 lang === "cn"
                   ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
-                  : "text-white/65 border-white/15"
+                  : "text-[#c2b6a3] border-white/15"
               }`}
             >
               簡
@@ -501,7 +503,7 @@ export default function Home() {
             </span>
             <h1 className="text-[38px] sm:text-5xl md:text-[56px] font-bold mb-4 tracking-normal leading-[1.12] text-[#f7efdd] max-w-xl text-left">{t.h1}</h1>
             <p className="text-[17px] text-[#e9dcc2]/85 mb-2.5 max-w-lg text-left leading-relaxed">{t.tagline}</p>
-            <p className="text-[12.5px] text-white/55 mb-7">{t.dateNote}</p>
+            <p className="text-[12.5px] text-[#b0a594] mb-7">{t.dateNote}</p>
             <div className="flex gap-3 flex-col sm:flex-row">
               <a href="https://wa.me/qr/RFLV47X75BYHI1" className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
                 {t.ctaLine}
@@ -520,7 +522,7 @@ export default function Home() {
                 {t.proof.map((pr) => (
                   <div key={pr.l} className="flex items-baseline justify-between gap-3 border-b border-[#e8c98a]/12 pb-3 last:border-0 last:pb-0">
                     <span className="text-[26px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{pr.v}</span>
-                    <span className="text-[13px] text-white/60 text-right">{pr.l}</span>
+                    <span className="text-[13px] text-[#b9ad9a] text-right">{pr.l}</span>
                   </div>
                 ))}
               </div>
@@ -537,7 +539,7 @@ export default function Home() {
                   {s.value}
                   {s.up ? <span className="text-[#e8c98a] text-lg ml-1">↗</span> : null}
                 </div>
-                <div className="text-[12.5px] text-white/60 mt-2.5">{s.label}</div>
+                <div className="text-[12.5px] text-[#b9ad9a] mt-2.5">{s.label}</div>
               </div>
             ))}
           </div>
@@ -564,7 +566,7 @@ export default function Home() {
                   <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c5a065]/70 via-[#e8c98a] to-[#c5a065]/70" />
                   <div className="font-mono text-[13px] text-[#c5a065] tracking-[0.2em] mb-2.5">{num}</div>
                   <h3 className="text-[19px] font-bold leading-snug mb-3 text-[#f7efdd]">{rest}</h3>
-                  <p className="text-[15px] text-white/70 leading-relaxed">{p.body}</p>
+                  <p className="text-[15px] text-[#cbbfad] leading-relaxed">{p.body}</p>
                 </div>
               );
             })}
@@ -576,7 +578,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch relative">
             <div className="rounded-3xl border border-white/10 bg-[#2a241c]/80 p-5">
               <h3 className="font-bold text-[#e0896a] text-[15px] mb-2">{t.cpmLeftTitle}</h3>
-              <p className="text-[15.5px] text-white/70 leading-relaxed">{t.cpmLeftBody}</p>
+              <p className="text-[15.5px] text-[#cbbfad] leading-relaxed">{t.cpmLeftBody}</p>
             </div>
             <div className="flex w-11 h-11 rounded-full bg-[#241e18] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10 mx-auto my-1 md:my-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
               {t.vs}
@@ -595,7 +597,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-9">
             <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.stepsTitle}</h2>
-            <p className="text-[14px] text-white/55 md:pb-1.5">{t.stepsKicker}</p>
+            <p className="text-[14px] text-[#b0a594] md:pb-1.5">{t.stepsKicker}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {t.steps.map((s, i) => (
@@ -607,7 +609,7 @@ export default function Home() {
                 </div>
                 <div className="p-5">
                   <h3 className="text-[19px] font-bold text-[#f7efdd] mb-2">{s.t}</h3>
-                  <p className="text-[14.5px] text-white/65 leading-relaxed">{s.b}</p>
+                  <p className="text-[14.5px] text-[#c2b6a3] leading-relaxed">{s.b}</p>
                 </div>
               </div>
             ))}
@@ -620,32 +622,32 @@ export default function Home() {
       <section className="px-6 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-8 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
-          <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-            <figure className="rounded-[1.4rem] border border-[#c5a065]/25 bg-[#2a241c]/80 p-3 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)]">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-stretch">
+            <figure className="rounded-[1.4rem] border border-[#c5a065]/25 bg-[#2a241c]/80 p-3 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)] flex flex-col justify-center">
               <img src="/dash-gba-crop.png" alt="Meta 商務套件 28 天後台數據" className="w-full rounded-[1rem] block" />
-              <figcaption className="flex items-center justify-between gap-3 text-[11.5px] text-white/45 px-1 pt-2.5">
+              <figcaption className="flex items-center justify-between gap-3 text-[11.5px] text-[#9c9282] px-1 pt-2.5">
                 <span>{t.dashCapName}</span>
                 <span className="shrink-0">{t.dashCapDate}</span>
               </figcaption>
             </figure>
-            <div>
+            <div className="flex flex-col justify-between h-full">
               {t.dashes.map((d) => (
-                <div key={d.name} className="rounded-2xl border border-[#e8c98a]/15 bg-white/[0.04] p-4 mb-3 last:mb-0">
+                <div key={d.name} className="rounded-2xl border border-[#e8c98a]/15 bg-white/[0.04] px-5 py-5 md:py-6 flex-1 flex flex-col justify-center mb-3 last:mb-0">
                   <div className="flex items-baseline justify-between gap-3 mb-3">
                     <span className="text-[13.5px] font-semibold text-[#f3ead9]">{d.name}</span>
-                    <span className="text-[12px] text-white/45 shrink-0">{d.fans}</span>
+                    <span className="text-[12px] text-[#9c9282] shrink-0">{d.fans}</span>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
                     {d.nums.map((n) => (
                       <div key={n.l}>
-                        <div className="text-[19px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{n.v}</div>
-                        <div className="text-[11px] text-white/50 mt-1.5">{n.l}</div>
+                        <div className="text-[24px] md:text-[27px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{n.v}</div>
+                        <div className="text-[11px] text-[#a89d8b] mt-1.5">{n.l}</div>
                       </div>
                     ))}
                   </div>
                 </div>
               ))}
-              <p className="text-[14.5px] text-white/65 leading-relaxed mt-4">{t.dashSum}</p>
+              <p className="text-[14.5px] text-[#c2b6a3] leading-relaxed mt-4">{t.dashSum}</p>
             </div>
           </div>
         </div>
@@ -657,7 +659,7 @@ export default function Home() {
           <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[19vw] md:text-[6.5rem]">
             879<span className="text-[0.42em]">萬</span>
           </div>
-          <p className="text-[15px] text-white/65 mt-4">{t.bigLine}</p>
+          <p className="text-[15px] text-[#c2b6a3] mt-4">{t.bigLine}</p>
         </div>
       </section>
       {/* Transition — the walkway HK people actually take */}
@@ -679,11 +681,11 @@ export default function Home() {
               {t.caseNums.map((n) => (
                 <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
                   <div className="text-base font-bold font-mono tabular-nums text-[#f5d98b]">{n.v}</div>
-                  <div className="text-[10px] text-white/60">{n.l}</div>
+                  <div className="text-[10px] text-[#b9ad9a]">{n.l}</div>
                 </div>
               ))}
             </div>
-            <p className="text-[15.5px] text-white/60 leading-relaxed">{t.caseBody}</p>
+            <p className="text-[15.5px] text-[#b9ad9a] leading-relaxed">{t.caseBody}</p>
           </div>
         </div>
         <div className="max-w-6xl mx-auto mt-16 md:mt-20">
@@ -696,26 +698,17 @@ export default function Home() {
               <div className="p-6 md:p-7 flex flex-col justify-center">
                 <div className="text-[12px] font-bold tracking-[0.2em] text-[#c5a065] mb-2">TOP 1</div>
                 <div className="text-xl font-bold text-[#f7efdd] mb-4">{p.name}</div>
-                <div className="flex items-end gap-5 flex-wrap">
+                <div className="flex items-end gap-6 flex-wrap">
                   <div>
                     <div className="text-5xl font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</div>
-                    <div className="text-[12px] text-white/60 mt-1.5">{t.reachWord}</div>
+                    <div className="text-[12px] text-[#b9ad9a] mt-1.5">{t.reachWord}</div>
                   </div>
                   <div className="pb-1">
-                    <div className="text-xl font-bold font-mono tabular-nums text-[#f0b48a] leading-none">{p.shares.toLocaleString()}</div>
-                    <div className="text-[12px] text-white/60 mt-1.5">{t.shareWord}</div>
-                  </div>
-                  <div className="pb-1">
-                    <div className="text-xl font-bold font-mono tabular-nums text-white/75 leading-none">{p.likes.toLocaleString()}</div>
-                    <div className="text-[12px] text-white/60 mt-1.5">{t.likeWord}</div>
+                    <div className="text-3xl font-bold font-mono tabular-nums text-[#f0a08a] leading-none">{p.likes.toLocaleString()}</div>
+                    <div className="text-[12px] text-[#b9ad9a] mt-1.5">{t.likeWord}</div>
                   </div>
                 </div>
-                <div className="mt-5">
-                  <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-[#f0b48a] to-[#f0955c] rounded-full" style={{ width: `${(p.shares / (p.shares + p.likes)) * 100}%` }} />
-                  </div>
-                  <p className="text-[13px] text-white/60 mt-3">分享次數達讚好 1.6 倍——內容被香港人主動轉發，平台演算法隨之擴大分發。</p>
-                </div>
+                <p className="text-[13px] text-[#b9ad9a] mt-5">{t.shareNote}</p>
               </div>
             </div>
           ))}
@@ -728,14 +721,10 @@ export default function Home() {
                 <div className="p-4">
                   <div className="font-semibold text-[14px] text-[#f3ead9] mb-2 truncate">{p.name}</div>
                   <div className="text-[22px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</div>
-                  <div className="text-[11px] text-white/55 mt-1 mb-2">{t.reachWord}</div>
-                  <div className="flex gap-2 flex-wrap">
-                    <span className="text-[11px] bg-white/10 rounded-full px-2 py-0.5 text-white/60">
-                      {t.likeWord} {p.likes.toLocaleString()}
-                    </span>
-                    <span className="text-[11px] bg-[#f0955c]/20 text-[#f0b48a] rounded-full px-2 py-0.5 font-semibold">
-                      {t.shareWord} {p.shares.toLocaleString()}
-                    </span>
+                  <div className="text-[11px] text-[#b0a594] mt-1 mb-2">{t.reachWord}</div>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-[16px] font-bold font-mono tabular-nums text-[#f0a08a]">{p.likes.toLocaleString()}</span>
+                    <span className="text-[11px] text-[#b0a594]">{t.likeWord}</span>
                   </div>
                 </div>
               </div>
@@ -757,7 +746,7 @@ export default function Home() {
           <div className="overflow-hidden">
             <table className="w-full text-[15px]">
               <thead>
-                <tr className="bg-white/[0.04] text-left text-white/70">
+                <tr className="bg-white/[0.04] text-left text-[#cbbfad]">
                   <th className="px-4 py-3">{t.lineupHead[0]}</th>
                   <th className="px-4 py-3">{t.lineupHead[1]}</th>
                   <th className="px-4 py-3 hidden md:table-cell">{t.lineupHead[2]}</th>
@@ -768,14 +757,14 @@ export default function Home() {
                   <tr key={m.name} className="border-t border-white/5">
                     <td className="px-4 py-3">{m.name}</td>
                     <td className="px-4 py-3 font-bold font-mono tabular-nums text-[#f5d98b] whitespace-nowrap">{m.fans}</td>
-                    <td className="px-4 py-3 text-white/60 hidden md:table-cell">{m.note}</td>
+                    <td className="px-4 py-3 text-[#b9ad9a] hidden md:table-cell">{m.note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <div className="md:hidden px-4 pb-4 space-y-1.5">
               {t.lineup.map((m) => (
-                <p key={m.name} className="text-[12.5px] text-white/55">
+                <p key={m.name} className="text-[12.5px] text-[#b0a594]">
                   · {m.name}：{m.note}
                 </p>
               ))}
@@ -820,7 +809,7 @@ export default function Home() {
                   <div className="mb-2.5 flex items-baseline gap-2">
                     <span className="text-[27px] leading-none font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
                   </div>
-                  <p className="text-[13px] text-white/70 leading-snug mb-2.5">{p.who}</p>
+                  <p className="text-[13px] text-[#cbbfad] leading-snug mb-2.5">{p.who}</p>
                   <p className="text-[14.5px] text-[#e8c98a]/90 leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
                     「{p.hook}」
                   </p>
@@ -836,13 +825,13 @@ export default function Home() {
                   ) : null}
                   <ul className="space-y-2 mb-3.5">
                     {p.items.slice(0, 4).map((i) => (
-                      <li key={i} className="text-[14px] text-white/65 leading-snug flex gap-1.5">
+                      <li key={i} className="text-[14px] text-[#c2b6a3] leading-snug flex gap-1.5">
                         <span className="text-[#c5a065] shrink-0">✦</span>
                         <span>{i}</span>
                       </li>
                     ))}
                     {p.items.length > 4 ? (
-                      <li className="text-[12.5px] text-white/40 leading-snug pt-0.5">
+                      <li className="text-[12.5px] text-[#948a7a] leading-snug pt-0.5">
                         {t.moreItems.replace("{n}", String(p.items.length - 4))}
                       </li>
                     ) : null}
@@ -866,7 +855,7 @@ export default function Home() {
           </div>
           <p className="text-center text-[14.5px] text-[#e8c98a] mb-4 font-semibold">{t.payNote}</p>
           <div className={`${CARD} p-2`}>
-            <div className="px-3 pt-2 pb-1 text-sm text-white/70">{t.singleTitle}</div>
+            <div className="px-3 pt-2 pb-1 text-sm text-[#cbbfad]">{t.singleTitle}</div>
             <div className="grid md:grid-cols-2 gap-x-6">
               {t.singles.map(([k, v]) => (
                 <div key={k} className="flex justify-between items-baseline gap-4 px-3 py-2.5 border-b border-white/5">
@@ -876,7 +865,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <p className="text-[13.5px] text-white/55 mt-3">{t.addons}</p>
+          <p className="text-[13.5px] text-[#b0a594] mt-3">{t.addons}</p>
         </div>
       </section>
 
@@ -888,7 +877,7 @@ export default function Home() {
             <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
           </div>
           <p className="text-2xl md:text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#f5d98b] via-[#e8c98a] to-[#c5a065] bg-clip-text text-transparent">{t.ctaLine}</p>
-          <p className="text-[15px] text-white/65 mb-8">{t.ctaContact}</p>
+          <p className="text-[15px] text-[#c2b6a3] mb-8">{t.ctaContact}</p>
           <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-6">
             <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45">
               <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl" />
