@@ -551,7 +551,7 @@ export default function Home() {
           </div>
           <p className="text-sm text-white/55 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
         </div>
-          <div className="mt-16 md:mt-20 text-center">
+          <div className="mt-10 md:mt-14 text-center">
             <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[22vw] md:text-[7.5rem]">
               879<span className="text-[0.42em]">萬</span>
             </div>
