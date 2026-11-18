@@ -433,7 +433,7 @@ export default function Home() {
               className={`px-4 py-1 rounded-full border transition text-sm ${
                 lang === "hk"
                   ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
-                  : "text-white/50 border-white/15"
+                  : "text-white/65 border-white/15"
               }`}
             >
               繁
@@ -443,7 +443,7 @@ export default function Home() {
               className={`ml-2 px-4 py-1 rounded-full border transition text-sm ${
                 lang === "cn"
                   ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
-                  : "text-white/50 border-white/15"
+                  : "text-white/65 border-white/15"
               }`}
             >
               簡
@@ -453,27 +453,27 @@ export default function Home() {
       </div>
 
       {/* Hero — 滿版圖疊字（ref: Havenly）＋統計列懸浮疊底邊（ref: AV portfolio） */}
-      <section className="relative min-h-[92svh] flex items-center overflow-hidden">
+      <section className="relative min-h-[76svh] flex items-center overflow-hidden">
         <img src="/scenes/hero-shenzhen.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#181310]/95 via-[#1d1712]/80 to-[#221d17]/40" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-40 w-full">
+        <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-24 md:pb-28 w-full">
           <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[13px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
             {t.reelsBadge}
           </span>
           <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-[#f7efdd] max-w-xl text-left">{t.h1}</h1>
           <p className="text-[16px] text-[#e9dcc2]/85 mb-2 max-w-lg text-left">{t.tagline}</p>
-          <p className="text-xs text-white/40 mb-7">{t.dateNote}</p>
-          <div className="flex gap-3 flex-wrap">
-            <a href="https://wa.me/qr/RFLV47X75BYHI1" className="bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
+          <p className="text-xs text-white/55 mb-7">{t.dateNote}</p>
+          <div className="flex gap-3 flex-col sm:flex-row">
+            <a href="https://wa.me/qr/RFLV47X75BYHI1" className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
               {t.ctaLine}
             </a>
-            <a href="#pricing" className="border border-[#e8c98a]/50 text-[#e8c98a] font-bold rounded-full px-7 py-3 text-sm backdrop-blur">
+            <a href="#pricing" className="text-center border border-[#e8c98a]/50 text-[#e8c98a] font-bold rounded-full px-7 py-3.5 text-sm backdrop-blur">
               {t.priceTitle}
             </a>
           </div>
         </div>
       </section>
-      <section className="relative px-6 -mt-20 mb-4">
+      <section className="relative px-6 -mt-14 md:-mt-16 mb-4">
         <div className="max-w-6xl mx-auto">
           <div className={`${CARD} rounded-[1.6rem] px-6 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 glow-gold`}>
             {t.stats.map((s) => (
@@ -495,9 +495,9 @@ export default function Home() {
           <h2 className="text-2xl font-bold pl-3 mb-10 border-l-4 border-[#c5a065] text-[#f7efdd]">
             {t.sellingTitle}
           </h2>
-          <div className="grid md:grid-cols-[2fr_3fr] gap-10 items-start">
-          <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group">
-            <img src="/scenes/bbq-wide.jpg" alt="深圳燒烤餐廳晚市" className="w-full object-cover aspect-[16/10] group-hover:scale-[1.03] transition-transform duration-500" />
+          <div className="grid md:grid-cols-[2fr_3fr] gap-10 items-stretch">
+          <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group min-h-[380px]">
+            <img src="/scenes/bbq-wide.jpg" alt="深圳燒烤餐廳晚市" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             <span className="absolute bottom-3 left-3 bg-[#181310]/80 backdrop-blur text-[11px] text-[#e8c98a] rounded-full px-3 py-1">深圳 · 晚市實景氛圍</span>
           </div>
           <div>
@@ -509,18 +509,19 @@ export default function Home() {
                   <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c5a065] via-[#e8c98a] to-[#38bdf8]" />
                   <div className="font-mono text-[13px] text-[#c5a065] tracking-[0.2em] mb-2.5">{num}</div>
                   <h3 className="text-[19px] font-bold leading-snug mb-3 text-[#f7efdd]">{rest}</h3>
-                  <p className="text-[15px] text-white/55 leading-relaxed">{p.body}</p>
+                  <p className="text-[15px] text-white/70 leading-relaxed">{p.body}</p>
                 </div>
               );
             })}
           </div>
         </div>
+          </div>
           <div className="mt-12">
-          <h2 className="text-xl font-bold pl-3 mb-5 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
+          <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
           <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch relative">
             <div className="rounded-3xl border border-white/10 bg-[#26211a]/60 backdrop-blur p-5">
               <h3 className="font-bold text-[#e0896a] text-[15px] mb-2">{t.cpmLeftTitle}</h3>
-              <p className="text-[15.5px] text-white/55 leading-relaxed">{t.cpmLeftBody}</p>
+              <p className="text-[15.5px] text-white/70 leading-relaxed">{t.cpmLeftBody}</p>
             </div>
             <div className="flex w-11 h-11 rounded-full bg-[#241e18] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10 mx-auto my-1 md:my-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
               {t.vs}
@@ -531,8 +532,7 @@ export default function Home() {
             </div>
           </div>
           </div>
-          </div>
-          </div>
+        </div>
       </section>
 
       {/* Dashboards in polaroid frames */}
@@ -559,12 +559,12 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-8 text-center">
-                  <p className="text-xs text-white/40 mb-3">{d.fans}</p>
+                  <p className="text-xs text-white/55 mb-3">{d.fans}</p>
                   <div className="grid grid-cols-3 gap-2 max-w-xs mx-auto">
                     {d.nums.map((n) => (
                       <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
                         <div className="text-[15px] font-bold font-mono tabular-nums text-[#f5d98b]">{n.v}</div>
-                        <div className="text-[10px] text-white/45">{n.l}</div>
+                        <div className="text-[10px] text-white/60">{n.l}</div>
                       </div>
                     ))}
                   </div>
@@ -572,7 +572,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-sm text-white/55 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
+          <p className="text-sm text-white/70 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
         </div>
           <div className="mt-10 md:mt-14 text-center relative">
             <span className="absolute -left-2 top-2 text-[#c5a065]/50 text-3xl hidden md:block">✦</span>
@@ -580,7 +580,7 @@ export default function Home() {
             <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[22vw] md:text-[7.5rem]">
               879<span className="text-[0.42em]">萬</span>
             </div>
-            <p className="text-[15px] text-white/55 mt-4">{t.bigLine}</p>
+            <p className="text-[15px] text-white/70 mt-4">{t.bigLine}</p>
           </div>
       </section>
 
@@ -594,7 +594,7 @@ export default function Home() {
               {t.caseNums.map((n) => (
                 <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
                   <div className="text-base font-bold font-mono tabular-nums text-[#f5d98b]">{n.v}</div>
-                  <div className="text-[10px] text-white/45">{n.l}</div>
+                  <div className="text-[10px] text-white/60">{n.l}</div>
                 </div>
               ))}
             </div>
@@ -604,9 +604,9 @@ export default function Home() {
           <div className="mt-16 md:mt-20">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
           {t.topPosts.filter((p) => p.hot).map((p) => (
-            <div key={p.name} className="glass-card featured rounded-[1.4rem] overflow-hidden grid md:grid-cols-[2fr_3fr] mb-6 group">
+            <div key={p.name} className="glass-card featured rounded-[1.4rem] overflow-hidden grid md:grid-cols-[1fr_1.15fr] mb-6 group">
               <div className="overflow-hidden">
-                <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-[16/11] group-hover:scale-[1.04] transition-transform duration-500" />
+                <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.04] transition-transform duration-500" />
               </div>
               <div className="p-6 md:p-7 flex flex-col justify-center">
                 <div className="text-[12px] font-bold tracking-[0.2em] text-[#c5a065] mb-2">TOP 1</div>
@@ -614,12 +614,22 @@ export default function Home() {
                 <div className="flex items-end gap-6">
                   <div>
                     <div className="text-4xl font-bold font-mono tabular-nums text-[#f0b48a] leading-none">{p.shares.toLocaleString()}</div>
-                    <div className="text-[12px] text-white/55 mt-1.5">{t.shareWord} · 裂變觸及</div>
+                    <div className="text-[12px] text-white/60 mt-1.5">{t.shareWord} · 裂變觸及</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{p.likes.toLocaleString()}</div>
-                    <div className="text-[12px] text-white/55 mt-1.5">{t.likeWord}</div>
+                    <div className="text-[12px] text-white/60 mt-1.5">{t.likeWord}</div>
                   </div>
+                </div>
+                <div className="mt-5">
+                  <div className="flex justify-between text-[12px] text-white/60 mb-1.5">
+                    <span>{t.shareWord} {p.shares.toLocaleString()}</span>
+                    <span>{t.likeWord} {p.likes.toLocaleString()}</span>
+                  </div>
+                  <div className="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-[#f0b48a] to-[#f0955c] rounded-full" style={{ width: `${(p.shares / (p.shares + p.likes)) * 100}%` }} />
+                  </div>
+                  <p className="text-[13px] text-white/60 mt-3">分享次數達讚好 1.6 倍——內容被香港人主動轉發，平台演算法隨之擴大分發。</p>
                 </div>
               </div>
             </div>
@@ -648,7 +658,7 @@ export default function Home() {
       </section>
 
       {/* Lineup — 左圖右表（ref: Lunora newsletter） */}
-      <section className="px-6 py-16 md:py-24">
+      <section className="px-6 py-20 md:py-28">
         <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_2.6fr] gap-8 items-center">
         <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group hidden md:block">
           <img src="/scenes/border-tall.jpg" alt="口岸北上人流" className="w-full object-cover aspect-[3/4] group-hover:scale-[1.03] transition-transform duration-500" />
@@ -659,7 +669,7 @@ export default function Home() {
           <div className="overflow-hidden">
             <table className="w-full text-[15px]">
               <thead>
-                <tr className="bg-white/[0.04] text-left text-white/55">
+                <tr className="bg-white/[0.04] text-left text-white/70">
                   <th className="px-4 py-3">{t.lineupHead[0]}</th>
                   <th className="px-4 py-3">{t.lineupHead[1]}</th>
                   <th className="px-4 py-3 hidden md:table-cell">{t.lineupHead[2]}</th>
@@ -670,14 +680,14 @@ export default function Home() {
                   <tr key={m.name} className="border-t border-white/5">
                     <td className="px-4 py-3">{m.name}</td>
                     <td className="px-4 py-3 font-bold font-mono tabular-nums text-[#f5d98b] whitespace-nowrap">{m.fans}</td>
-                    <td className="px-4 py-3 text-white/45 hidden md:table-cell">{m.note}</td>
+                    <td className="px-4 py-3 text-white/60 hidden md:table-cell">{m.note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <div className="md:hidden px-4 pb-4 space-y-1.5">
               {t.lineup.map((m) => (
-                <p key={m.name} className="text-[12.5px] text-white/40">
+                <p key={m.name} className="text-[12.5px] text-white/55">
                   · {m.name}：{m.note}
                 </p>
               ))}
@@ -721,7 +731,7 @@ export default function Home() {
                   <div className="h-[56px] mb-2 flex items-start">
                     <span className="text-[22px] leading-tight font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
                   </div>
-                  <p className="text-[13px] text-white/55 leading-snug mb-2.5">{p.who}</p>
+                  <p className="text-[13px] text-white/70 leading-snug mb-2.5">{p.who}</p>
                   <p className="text-[14.5px] text-[#e8c98a]/90 italic leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
                     「{p.hook}」
                   </p>
@@ -762,7 +772,7 @@ export default function Home() {
           </div>
           <p className="text-center text-[14.5px] text-[#e8c98a] mb-4 font-semibold">{t.payNote}</p>
           <div className={`${CARD} p-2`}>
-            <div className="px-3 pt-2 pb-1 text-sm text-white/55">{t.singleTitle}</div>
+            <div className="px-3 pt-2 pb-1 text-sm text-white/70">{t.singleTitle}</div>
             <div className="grid md:grid-cols-2 gap-x-6">
               {t.singles.map(([k, v]) => (
                 <div key={k} className="flex justify-between items-baseline gap-4 px-3 py-2.5 border-b border-white/5">
@@ -772,7 +782,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <p className="text-[13.5px] text-white/40 mt-3">{t.addons}</p>
+          <p className="text-[13.5px] text-white/55 mt-3">{t.addons}</p>
         </div>
       </section>
 
@@ -784,8 +794,8 @@ export default function Home() {
             <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
           </div>
           <p className="text-2xl md:text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#f5d98b] via-[#e8c98a] to-[#c5a065] bg-clip-text text-transparent">{t.ctaLine}</p>
-          <p className="text-[15px] text-white/50 mb-8">{t.ctaContact}</p>
-          <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
+          <p className="text-[15px] text-white/65 mb-8">{t.ctaContact}</p>
+          <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-6">
             <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45 glow-gold">
               <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl" />
               <p className="text-[14px] font-bold text-[#4a3b22] mt-2">{t.qrWechat}</p>
