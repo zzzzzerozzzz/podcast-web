@@ -494,11 +494,7 @@ export default function Home() {
             })}
           </div>
         </div>
-      </section>
-
-      {/* CPM VS */}
-      <section className="px-6 section-screen">
-        <div className="max-w-5xl mx-auto">
+          <div className="mt-16 md:mt-20">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
           <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch relative">
             <div className="rounded-3xl border border-white/10 bg-[#26211a]/60 backdrop-blur p-5">
@@ -513,7 +509,7 @@ export default function Home() {
               <p className="text-[15.5px] text-[#f3ead9]/80 leading-relaxed">{t.cpmRightBody}</p>
             </div>
           </div>
-        </div>
+          </div>
       </section>
 
       {/* Dashboards in polaroid frames */}
@@ -555,16 +551,12 @@ export default function Home() {
           </div>
           <p className="text-sm text-white/55 mt-10 max-w-xl mx-auto text-center leading-relaxed">{t.dashSum}</p>
         </div>
-      </section>
-
-      {/* Type moment */}
-      <section className="px-6 section-screen">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[26vw] md:text-[10rem]">
-            879<span className="text-[0.42em]">萬</span>
+          <div className="mt-16 md:mt-20 text-center">
+            <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[22vw] md:text-[7.5rem]">
+              879<span className="text-[0.42em]">萬</span>
+            </div>
+            <p className="text-[15px] text-white/55 mt-4">{t.bigLine}</p>
           </div>
-          <p className="text-[15px] text-white/55 mt-5">{t.bigLine}</p>
-        </div>
       </section>
 
       {/* Case study */}
@@ -584,11 +576,7 @@ export default function Home() {
             <p className="text-[15.5px] text-white/60 leading-relaxed">{t.caseBody}</p>
           </div>
         </div>
-      </section>
-
-      {/* Top posts polaroid wall */}
-      <section className="px-6 section-screen">
-        <div className="max-w-5xl mx-auto">
+          <div className="mt-16 md:mt-20">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {t.topPosts.map((p, i) => (
@@ -610,21 +598,21 @@ export default function Home() {
                       {t.likeWord} {p.likes.toLocaleString()}
                     </span>
                     <span className="text-[11px] bg-[#f0955c]/20 text-[#f0b48a] rounded-full px-2.5 py-0.5 font-semibold">
-                      🔥 {t.shareWord} {p.shares.toLocaleString()}
+                      {t.shareWord} {p.shares.toLocaleString()}
                     </span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+          </div>
       </section>
 
       {/* Lineup */}
-      <section className="px-6 section-screen">
+      <section className="px-6 py-16 md:py-24">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
-          <div className={`${CARD} overflow-hidden`}>
+          <div className="overflow-hidden">
             <table className="w-full text-[15px]">
               <thead>
                 <tr className="bg-white/[0.04] text-left text-white/55">
