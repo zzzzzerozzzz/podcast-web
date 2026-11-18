@@ -152,11 +152,11 @@
 body {
   background-color: #221d17;
   background-image:
-    radial-gradient(at 12% 12%, rgba(197, 160, 101, 0.26) 0px, transparent 50%),
-    radial-gradient(at 70% 6%, rgba(56, 189, 248, 0.10) 0px, transparent 42%),
-    radial-gradient(at 8% 82%, rgba(56, 189, 248, 0.05) 0px, transparent 38%),
-    radial-gradient(at 85% 45%, rgba(224, 123, 57, 0.12) 0px, transparent 45%),
-    radial-gradient(at 50% 88%, rgba(157, 184, 138, 0.10) 0px, transparent 50%);
+    radial-gradient(at 12% 12%, rgba(197, 160, 101, 0.13) 0px, transparent 48%),
+    radial-gradient(at 70% 6%, rgba(56, 189, 248, 0.05) 0px, transparent 40%),
+    radial-gradient(at 8% 82%, rgba(56, 189, 248, 0.03) 0px, transparent 36%),
+    radial-gradient(at 85% 45%, rgba(224, 123, 57, 0.07) 0px, transparent 42%),
+    radial-gradient(at 50% 88%, rgba(157, 184, 138, 0.06) 0px, transparent 46%);
   background-attachment: fixed;
 }
 .glass-card {
@@ -182,3 +182,10 @@ body {
   border: 1px solid rgba(232, 201, 138, 0.45) !important;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 155, 92, 0.22) !important;
 }
+
+
+/* taste-skill: one section per screen + hover underline */
+.section-screen { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+@media (max-width: 640px) { .section-screen { min-height: auto; padding-top: 4.5rem; padding-bottom: 4.5rem; } }
+.u-draw { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .35s ease; }
+.u-draw:hover { background-size: 100% 1px; }

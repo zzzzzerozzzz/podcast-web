@@ -61,6 +61,7 @@ const T = {
         float2: "414萬瀏覽",
       },
     ],
+    bigLine: "28 天，兩個專頁，在香港人的屏幕上出現了八百七十九萬次。",
     dashSum:
       "兩頁合計：28 天 879 萬次瀏覽、30.2 萬次互動、新增 13,827 位追蹤者；日均 31 萬次曝光，且近 30 日以 92 帖的月產量持續增長。",
     cpmTitle: "性價比對決",
@@ -245,6 +246,7 @@ const T = {
         float2: "414万浏览",
       },
     ],
+    bigLine: "28 天，两个专页，在香港人的屏幕上出现了八百七十九万次。",
     dashSum:
       "两页合计：28 天 879 万次浏览、30.2 万次互动、新增 13,827 位追踪者；日均 31 万次曝光，且近 30 日以 92 帖的月产量持续增长。",
     cpmTitle: "性价比对决",
@@ -413,7 +415,6 @@ export default function Home() {
       <div className="pointer-events-none absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#c5a065]/15 blur-[150px]" />
       <div className="pointer-events-none absolute top-1/3 -right-52 w-[500px] h-[500px] rounded-full bg-[#e07b39]/10 blur-[160px]" />
       <div className="pointer-events-none absolute bottom-10 left-1/5 w-[440px] h-[440px] rounded-full bg-[#9db88a]/10 blur-[150px]" />
-      <div className="pointer-events-none fixed inset-0 paper-grain opacity-[0.05] mix-blend-overlay" />
 
       {/* Header */}
       <div className="sticky top-0 z-20 bg-[#0c0f17]/85 backdrop-blur border-b border-[#c5a065]/15">
@@ -475,24 +476,28 @@ export default function Home() {
       </section>
 
       {/* Selling points */}
-      <section className="px-6 py-8">
+      <section className="px-6 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">
             {t.sellingTitle}
           </h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {t.points.map((p) => (
-              <div key={p.title} className={`${CARD} p-5`}>
-                <h3 className="font-semibold text-[15px] mb-2 text-[#f3ead9]">{p.title}</h3>
-                <p className="text-[15.5px] text-white/60 leading-relaxed">{p.body}</p>
-              </div>
-            ))}
+          <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+            {t.points.map((p) => {
+              const [num, rest] = p.title.split("｜");
+              return (
+                <div key={p.title} className="border-t border-white/15 pt-6">
+                  <div className="font-mono text-[13px] text-[#c5a065] tracking-[0.2em] mb-2.5">{num}</div>
+                  <h3 className="text-[19px] font-bold leading-snug mb-3 text-[#f7efdd]">{rest}</h3>
+                  <p className="text-[15px] text-white/55 leading-relaxed">{p.body}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* CPM VS */}
-      <section className="px-6 py-8">
+      <section className="px-6 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
           <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch relative">
@@ -512,7 +517,7 @@ export default function Home() {
       </section>
 
       {/* Dashboards in polaroid frames */}
-      <section className="px-6 py-8">
+      <section className="px-6 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
           <div className="grid sm:grid-cols-2 gap-10">
@@ -552,8 +557,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Type moment */}
+      <section className="px-6 section-screen">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[26vw] md:text-[10rem]">
+            879<span className="text-[0.42em]">萬</span>
+          </div>
+          <p className="text-[15px] text-white/55 mt-5">{t.bigLine}</p>
+        </div>
+      </section>
+
       {/* Case study */}
-      <section className="px-6 py-8">
+      <section className="px-6 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
           <div className={`${CARD} p-5`}>
@@ -572,7 +587,7 @@ export default function Home() {
       </section>
 
       {/* Top posts polaroid wall */}
-      <section className="px-6 py-8">
+      <section className="px-6 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -585,7 +600,9 @@ export default function Home() {
                     : "border-[#c5a065]/20 bg-[#2a241c]/70"
                 } ${i % 2 === 0 ? "md:-rotate-1" : "md:rotate-1"}`}
               >
-                <img src={p.img} alt={p.name} className="w-16 h-16 rounded-2xl object-cover shrink-0 border border-white/10" />
+                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white/10">
+                  <img src={p.img} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
+                </div>
                 <div className="min-w-0 flex-1">
                   <div className="font-semibold text-[14px] truncate text-[#f3ead9]">{p.name}</div>
                   <div className="flex gap-2 mt-1.5 flex-wrap">
@@ -604,7 +621,7 @@ export default function Home() {
       </section>
 
       {/* Lineup */}
-      <section className="px-6 py-8">
+      <section className="px-6 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
           <div className={`${CARD} overflow-hidden`}>
@@ -638,7 +655,7 @@ export default function Home() {
       </section>
 
       {/* Pricing — Morandi cards */}
-      <section className="px-6 py-8">
+      <section className="px-6 section-screen">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
           <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 backdrop-blur px-6 py-4 mb-6 glow-gold text-center">
@@ -727,7 +744,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-12 relative">
+      <section className="px-6 section-screen relative">
         <div className={`max-w-5xl mx-auto ${CARD} p-8 text-center glow-gold`}>
           <div className="flex items-center justify-center gap-2 mb-3">
             <img src="/logo.png" alt="ZTG Studio logo" className="w-9 h-9 object-contain" />
@@ -753,7 +770,7 @@ export default function Home() {
           </a>
           <p className="text-sm">
             {t.mailLabel}：
-            <a href="mailto:ZEROWONG5@GMAIL.COM" className="underline font-bold text-[#e8c98a]">
+            <a href="mailto:ZEROWONG5@GMAIL.COM" className="u-draw font-bold text-[#e8c98a]">
               ZEROWONG5@GMAIL.COM
             </a>
           </p>
