@@ -603,26 +603,40 @@ export default function Home() {
         </div>
           <div className="mt-16 md:mt-20">
           <h2 className="text-2xl font-bold pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {t.topPosts.map((p, i) => (
-              <div
-                key={p.name}
-                className={`rounded-3xl p-4 backdrop-blur border flex items-center gap-4 ${
-                  p.hot
-                    ? "border-[#c5a065]/60 bg-[#c5a065]/[0.06]"
-                    : "border-[#c5a065]/20 bg-[#2a241c]/70"
-                } ${i % 2 === 0 ? "md:-rotate-1" : "md:rotate-1"}`}
-              >
-                <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white/10">
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]" />
+          {t.topPosts.filter((p) => p.hot).map((p) => (
+            <div key={p.name} className="glass-card featured rounded-[1.4rem] overflow-hidden grid md:grid-cols-[2fr_3fr] mb-6 group">
+              <div className="overflow-hidden">
+                <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-[16/11] group-hover:scale-[1.04] transition-transform duration-500" />
+              </div>
+              <div className="p-6 md:p-7 flex flex-col justify-center">
+                <div className="text-[12px] font-bold tracking-[0.2em] text-[#c5a065] mb-2">TOP 1</div>
+                <div className="text-xl font-bold text-[#f7efdd] mb-4">{p.name}</div>
+                <div className="flex items-end gap-6">
+                  <div>
+                    <div className="text-4xl font-bold font-mono tabular-nums text-[#f0b48a] leading-none">{p.shares.toLocaleString()}</div>
+                    <div className="text-[12px] text-white/55 mt-1.5">{t.shareWord} · 裂變觸及</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{p.likes.toLocaleString()}</div>
+                    <div className="text-[12px] text-white/55 mt-1.5">{t.likeWord}</div>
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-[14px] truncate text-[#f3ead9]">{p.name}</div>
-                  <div className="flex gap-2 mt-1.5 flex-wrap">
-                    <span className="text-[11px] bg-white/10 rounded-full px-2.5 py-0.5 text-white/65">
+              </div>
+            </div>
+          ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {t.topPosts.filter((p) => !p.hot).map((p) => (
+              <div key={p.name} className="glass-card rounded-[1.2rem] overflow-hidden group">
+                <div className="overflow-hidden">
+                  <img src={p.img} alt={p.name} className="w-full object-cover aspect-[4/3] group-hover:scale-[1.05] transition-transform duration-500" />
+                </div>
+                <div className="p-4">
+                  <div className="font-semibold text-[14px] text-[#f3ead9] mb-2 truncate">{p.name}</div>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="text-[12px] bg-white/10 rounded-full px-2.5 py-0.5 text-white/65">
                       {t.likeWord} {p.likes.toLocaleString()}
                     </span>
-                    <span className="text-[11px] bg-[#f0955c]/20 text-[#f0b48a] rounded-full px-2.5 py-0.5 font-semibold">
+                    <span className="text-[12px] bg-[#f0955c]/20 text-[#f0b48a] rounded-full px-2.5 py-0.5 font-semibold">
                       {t.shareWord} {p.shares.toLocaleString()}
                     </span>
                   </div>
