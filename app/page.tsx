@@ -22,7 +22,8 @@ const T = {
     ],
     reelsLine: "短影音（Reels）傳播力：單條最高曝光突破 250,000+ 人次（演算法自然外溢破圈，突破粉絲數限制）",
     reelsBadge: "🔥 爆款 Reel 單條最高曝光 250,000+ 人次 ｜ 演算法自然破圈",
-    sellingTitle: "為什麼選擇我們（三項差異化優勢）",
+    sellingTitle: "為什麼選擇我們",
+    sellingSub: "（三項差異化優勢）",
     points: [
       {
         title: "01 精準觸達｜粉絲正是「正在決定去哪裡消費的香港人」",
@@ -82,7 +83,7 @@ const T = {
     ],
     caseBody:
       "單條推廣帖帶動大量「交通／票價」私訊查詢，全部引導至場館資訊與港人交通路線（福田／羅湖→11 號線後海站）。觀看數超過粉絲數，代表平台演算法作出額外推流。",
-    topTitle: "近30日代表作（真實數據）",
+    topTitle: "近 30 日代表作（真實數據）",
     topPosts: [
       { img: "/posts/p1.jpg", name: "深圳科技地標帖", reach: 290000, likes: 2640, shares: 4267, hot: true },
       { img: "/posts/p2.jpg", name: "廣州北京路帖", reach: 250000, likes: 2047, shares: 3026 },
@@ -226,7 +227,8 @@ const T = {
     ],
     reelsLine: "短影音（Reels）传播力：单条最高曝光突破 250,000+ 人次（算法自然外溢破圈，突破粉丝数限制）",
     reelsBadge: "🔥 爆款 Reel 单条最高曝光 250,000+ 人次 ｜ 算法自然破圈",
-    sellingTitle: "为什么选择我们（三项差异化优势）",
+    sellingTitle: "为什么选择我们",
+    sellingSub: "（三项差异化优势）",
     points: [
       {
         title: "01 精准触达｜粉丝就是「正在决定去哪消费的香港人」",
@@ -286,7 +288,7 @@ const T = {
     ],
     caseBody:
       "单条推广帖带动大量「交通／票价」私信查询，全部引导至场馆信息与港人交通路线（福田／罗湖→11 号线后海站）。观看数超过粉丝数，代表平台算法作出额外推流。",
-    topTitle: "近30日代表作（真实数据）",
+    topTitle: "近 30 日代表作（真实数据）",
     topPosts: [
       { img: "/posts/p1.jpg", name: "深圳科技地标帖", reach: 290000, likes: 2640, shares: 4267, hot: true },
       { img: "/posts/p2.jpg", name: "广州北京路帖", reach: 250000, likes: 2047, shares: 3026 },
@@ -550,10 +552,10 @@ export default function Home() {
       <section className="px-6 py-20 md:py-28">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-10 border-l-4 border-[#c5a065] text-[#f7efdd]">
-            {t.sellingTitle}
+            {t.sellingTitle}<span className="hidden sm:inline">{t.sellingSub}</span>
           </h2>
           <div className="grid md:grid-cols-[2fr_3fr] gap-10 items-stretch">
-          <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group min-h-[380px]">
+          <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group min-h-[240px] md:min-h-[380px]">
             <img src="/scenes/crowd-dongmen.jpg" alt="深圳東門食街人流實景" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
             <span className="absolute bottom-3 left-3 bg-[#181310]/85 text-[11px] text-[#e8c98a] rounded-full px-3 py-1">深圳東門 · 週末實景</span>
           </div>
@@ -755,20 +757,16 @@ export default function Home() {
               <tbody>
                 {t.lineup.map((m) => (
                   <tr key={m.name} className="border-t border-white/5">
-                    <td className="px-4 py-3">{m.name}</td>
-                    <td className="px-4 py-3 font-bold font-mono tabular-nums text-[#f5d98b] whitespace-nowrap">{m.fans}</td>
+                    <td className="px-4 py-3 align-top">
+                      <div>{m.name}</div>
+                      <div className="md:hidden text-[12.5px] font-normal text-[#b0a594] mt-1 leading-snug">{m.note}</div>
+                    </td>
+                    <td className="px-4 py-3 align-top font-bold font-mono tabular-nums text-[#f5d98b] whitespace-nowrap">{m.fans}</td>
                     <td className="px-4 py-3 text-[#b9ad9a] hidden md:table-cell">{m.note}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <div className="md:hidden px-4 pb-4 space-y-1.5">
-              {t.lineup.map((m) => (
-                <p key={m.name} className="text-[12.5px] text-[#b0a594]">
-                  · {m.name}：{m.note}
-                </p>
-              ))}
-            </div>
           </div>
         </div>
         </div>
@@ -779,7 +777,7 @@ export default function Home() {
       <section id="pricing" className="px-6 section-screen scroll-mt-24">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
-          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 px-6 py-3.5 mb-8 text-center">
+          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 px-4 md:px-6 py-3.5 mb-8 text-center text-[13.5px] sm:text-[15px] md:text-base">
             <p className="text-[16px] md:text-[17px] font-bold text-[#f5d98b] tracking-wide">{t.qBannerTitle}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-5 md:gap-6 mb-8">
@@ -797,7 +795,7 @@ export default function Home() {
                     p.star ? "glow-gold" : ""
                   }`}
                 >
-                  <div className="h-[34px] mb-1.5 flex items-center justify-center shrink-0">
+                  <div className="h-[34px] mb-1.5 flex items-center justify-start shrink-0">
                     {p.star ? (
                       <span className="bg-[#f5d98b] text-[#3a2f1c] text-[12.5px] font-bold rounded-full px-5 py-1.5 shadow-[0_4px_14px_rgba(0,0,0,0.4)]">
                         {p.tag}
@@ -807,7 +805,7 @@ export default function Home() {
                     )}
                   </div>
                   <div className="mb-2.5 flex items-baseline gap-2">
-                    <span className="text-[27px] leading-none font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
+                    <span className="text-[23px] sm:text-[27px] leading-none font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
                   </div>
                   <p className="text-[13px] text-[#cbbfad] leading-snug mb-2.5">{p.who}</p>
                   <p className="text-[14.5px] text-[#e8c98a]/90 leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
