@@ -8,7 +8,7 @@ type Lang = "hk" | "cn";
 
 // 一旦有 +852 號碼，只需填這裡（例如 "85291234567"），全站 7 個 CTA 會自動變成
 // click-to-chat：https://wa.me/85291234567?text=...  未填則沿用現有 QR 連結。
-const WA_NUMBER = "";
+const WA_NUMBER = "85266925445";
 const WA_QR = "https://wa.me/qr/RFLV47X75BYHI1";
 const waLink = (msg?: string) =>
   WA_NUMBER
@@ -199,6 +199,7 @@ const T = {
     addons:
       "加購：素材授權 +30-50%",
     ctaLine: "掃碼即時查詢 · 24 小時內回覆",
+    ctaHero: "WhatsApp 直接問價",
     ctaContact: "香港團隊 · 繁簡雙語 · 服務深圳／大灣區商家及香港品牌",
     qrWechat: "微信掃碼聯絡",
     qrWa: "WhatsApp 掃碼",
@@ -406,6 +407,7 @@ const T = {
     payNote: "支持港币／人民币对公或对私结算 ｜ 短影音由商家提供素材，工作室全包港式粤语配音、字幕及精剪（如需派员深圳实拍探店可另加购） ｜ 初稿 100% 商家预审确认",
     addons: "加购：素材授权 +30-50%",
     ctaLine: "扫码即时查询 · 24 小时内回复",
+    ctaHero: "WhatsApp 直接问价",
     ctaContact: "香港团队 · 繁简双语 · 服务深圳／大湾区商家及香港品牌",
     qrWechat: "微信扫码联络",
     qrWa: "WhatsApp 扫码",
@@ -540,7 +542,7 @@ export default function Home() {
             <p className="text-[12.5px] text-[#b0a594] mb-7">{t.dateNote}</p>
             <div className="flex gap-3 flex-col sm:flex-row">
               <a href={waLink(`${t.h1}｜我想了解報價`)} className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
-                {t.ctaLine}
+                {t.ctaHero}
               </a>
               <a href="#pricing" className="text-center border border-[#e8c98a]/50 text-[#e8c98a] font-bold rounded-full px-7 py-3.5 text-sm transition hover:bg-[#e8c98a]/10">
                 {t.priceTitle}
