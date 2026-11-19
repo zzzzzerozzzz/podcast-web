@@ -953,7 +953,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-20 md:py-28 relative">
+      <section className="px-6 pt-12 pb-16 md:pt-16 md:pb-20 relative">
         <div className={`max-w-2xl mx-auto ${CARD} p-8 text-center glow-gold`}>
           <div className="flex items-center justify-center gap-2 mb-3">
             <img src="/logo.png" alt="ZTG Studio logo" className="w-9 h-9 object-contain" />
