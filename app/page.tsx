@@ -22,11 +22,11 @@ const T = {
     badge: "zerotogrowth",
     h1: "港人北上媒體矩陣",
     tagline: "深圳／大灣區商家想爭取的香港客源，由我們的媒體矩陣直接觸達。",
-    dateNote: "數據抓取：2026-11-17（Meta 官方 API 實時）",
+    dateNote: "數據抓取：2026-11-19（Meta 官方 API 實時）",
     stats: [
-      { value: "38,178", label: "矩陣總粉絲", up: true },
+      { value: "39,318", label: "矩陣總粉絲", up: true },
       { value: "879萬", label: "28日瀏覽·兩大專頁", up: true },
-      { value: "4,267", label: "單帖最高分享" },
+      { value: "2,112", label: "單帖最高讚好" },
       { value: "12,000", label: "私域群組成員" },
     ],
     reelsLine: "短影音（Reels）傳播力：單條最高曝光突破 250,000+ 人次（演算法自然外溢破圈，突破粉絲數限制）",
@@ -40,7 +40,7 @@ const T = {
       },
       {
         title: "02 爆款裂變｜內容被香港人主動轉發，演算法二次放大",
-        body: "原創 Reel 短影音常規播放量達 5-15 萬次，單條最高 25 萬次曝光；配合 Facebook／Instagram 演算法二次擴散，單帖最高分享 4,267 次，觸及遠超粉絲數，直達尚未追蹤你的香港消費者。",
+        body: "原創 Reel 短影音常規播放量達 5-15 萬次，單條最高 25 萬次曝光；配合 Facebook／Instagram 演算法二次擴散，單帖最高 2,112 個讚好，觸及遠超粉絲數，直達尚未追蹤你的香港消費者。",
       },
       {
         title: "03 私域直達｜12,000 人北上交流群組直達＋可置頂",
@@ -51,7 +51,7 @@ const T = {
     dashes: [
       {
         name: "大灣區北上攻略情報站",
-        fans: "12,094 追蹤",
+        fans: "12,792 追蹤",
         nums: [
           { v: "465萬", l: "瀏覽（28日）↑160%" },
           { v: "147,595", l: "互動 ↑56%" },
@@ -62,7 +62,7 @@ const T = {
       },
       {
         name: "深圳美食住宿｜港人北上攻略",
-        fans: "7,135 追蹤",
+        fans: "7,575 追蹤",
         nums: [
           { v: "414萬", l: "瀏覽（28日）↑293%" },
           { v: "154,612", l: "互動 ↑233%" },
@@ -106,9 +106,9 @@ const T = {
     lineupTitle: "媒體陣容",
     lineupHead: ["媒體", "粉絲", "定位"],
     lineup: [
-      { name: "大灣區北上攻略情報站", fans: "12,094", note: "大灣區美食旅遊攻略與影片" },
-      { name: "廣東美食旅遊攻略", fans: "10,469", note: "廣東省深度美食旅遊指南（高權重老牌專頁）" },
-      { name: "深圳美食住宿｜港人北上攻略", fans: "7,135", note: "深圳美食與住宿專頁（28日 +708% 增長中）" },
+      { name: "大灣區北上攻略情報站", fans: "12,792", note: "大灣區美食旅遊攻略與影片" },
+      { name: "廣東美食旅遊攻略", fans: "10,471", note: "廣東省深度美食旅遊指南（老牌專頁）" },
+      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", note: "深圳美食與住宿專頁（28 日 +708% 增長中）" },
       { name: "FB群組·深圳食玩買｜廣州美食｜港人北上交流", fans: "約12,000", note: "私域直達＋可置頂" },
       { name: "IG @cantonesefoodtravelguide", fans: "4,775", note: "廣東/深圳影片同步（兩個月 +36%）" },
       { name: "IG @chinatravelhack", fans: "3,705", note: "中國旅遊影片同步（兩個月 +24%）" },
@@ -231,11 +231,11 @@ const T = {
     badge: "zerotogrowth",
     h1: "港人北上媒体矩阵",
     tagline: "深圳／大湾区商家想争取的香港客源，由我们的媒体矩阵直接触达。",
-    dateNote: "数据抓取：2026-11-17（Meta 官方 API 实时）",
+    dateNote: "数据抓取：2026-11-19（Meta 官方 API 实时）",
     stats: [
-      { value: "38,178", label: "矩阵总粉丝", up: true },
+      { value: "39,318", label: "矩阵总粉丝", up: true },
       { value: "879万", label: "28日浏览·两大专页", up: true },
-      { value: "4,267", label: "单帖最高分享" },
+      { value: "2,112", label: "单帖最高赞好" },
       { value: "12,000", label: "私域群组成员" },
     ],
     reelsLine: "短影音（Reels）传播力：单条最高曝光突破 250,000+ 人次（算法自然外溢破圈，突破粉丝数限制）",
@@ -249,7 +249,7 @@ const T = {
       },
       {
         title: "02 爆款裂变｜内容被香港人转发，算法暴力推流",
-        body: "原创 Reel 短影音常规播放量达 5-15 万次，单条最高 25 万次曝光；配合 Facebook／Instagram 算法二次扩散，单帖最高分享 4,267 次，触达远超粉丝数，直达尚未关注你的香港消费者。",
+        body: "原创 Reel 短影音常规播放量达 5-15 万次，单条最高 25 万次曝光；配合 Facebook／Instagram 算法二次扩散，单帖最高 2,112 个赞好，触达远超粉丝数，直达尚未关注你的香港消费者。",
       },
       {
         title: "03 私域直达｜12,000 人北上交流群组直达＋可置顶",
@@ -260,7 +260,7 @@ const T = {
     dashes: [
       {
         name: "大湾区北上攻略情报站",
-        fans: "12,094 追踪",
+        fans: "12,792 追踪",
         nums: [
           { v: "465万", l: "浏览（28日）↑160%" },
           { v: "147,595", l: "互动 ↑56%" },
@@ -271,7 +271,7 @@ const T = {
       },
       {
         name: "深圳美食住宿｜港人北上攻略",
-        fans: "7,135 追踪",
+        fans: "7,575 追踪",
         nums: [
           { v: "414万", l: "浏览（28日）↑293%" },
           { v: "154,612", l: "互动 ↑233%" },
@@ -315,9 +315,9 @@ const T = {
     lineupTitle: "媒体阵容",
     lineupHead: ["媒体", "粉丝", "定位"],
     lineup: [
-      { name: "大湾区北上攻略情报站", fans: "12,094", note: "大湾区美食旅游攻略与影片" },
-      { name: "广东美食旅游攻略", fans: "10,469", note: "广东省深度美食旅游指南（高权重老牌专页）" },
-      { name: "深圳美食住宿｜港人北上攻略", fans: "7,135", note: "深圳美食与住宿专页（28日 +708% 增长中）" },
+      { name: "大湾区北上攻略情报站", fans: "12,792", note: "大湾区美食旅游攻略与影片" },
+      { name: "广东美食旅游攻略", fans: "10,471", note: "广东省深度美食旅游指南（老牌专页）" },
+      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", note: "深圳美食与住宿专页（28 日 +708% 增长中）" },
       { name: "FB群组·深圳食玩买｜广州美食｜港人北上交流", fans: "约12,000", note: "私域直达＋可置顶" },
       { name: "IG @cantonesefoodtravelguide", fans: "4,775", note: "广东/深圳影片同步（两个月 +36%）" },
       { name: "IG @chinatravelhack", fans: "3,705", note: "中国旅游影片同步（两个月 +24%）" },
@@ -548,6 +548,14 @@ export default function Home() {
                 {t.priceTitle}
               </a>
             </div>
+            {/* 手機版：把桌面右側的「合作保障」壓成一行 chip，填補下半版空白 */}
+            <div className="md:hidden flex flex-wrap gap-x-4 gap-y-1.5 mt-6">
+              {t.proof.map((x) => (
+                <span key={x.v} className="text-[12px] text-[#c2b6a3]">
+                  <b className="text-[#f5d98b] font-bold">{x.v}</b> {x.l}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Social proof card — fills the empty sky */}
@@ -629,23 +637,26 @@ export default function Home() {
       </section>
 
       {/* Three-step process — breather between proof blocks */}
-      <section className="px-6 pb-20 md:pb-28">
+      <section className="px-6 pb-12 md:pb-28">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-9">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6 md:mb-9">
             <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.stepsTitle}</h2>
             <p className="text-[14px] text-[#b0a594] md:pb-1.5">{t.stepsKicker}</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-3 md:gap-5">
             {t.steps.map((s, i) => (
-              <div key={s.n} className="glass-card rounded-[1.3rem] overflow-hidden group">
-                <div className="relative aspect-[16/10] overflow-hidden">
+              <div key={s.n} className="glass-card rounded-[1.1rem] md:rounded-[1.3rem] overflow-hidden group flex md:block">
+                <div className="relative hidden md:block md:w-full md:aspect-[16/10] overflow-hidden">
                   <img src={stepImgs[i]} alt={s.t} className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#181310] via-[#181310]/35 to-transparent" />
                   <span className="absolute left-4 bottom-3 text-[13px] font-bold tracking-[0.22em] text-[#f5d98b]">{s.n}</span>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-[19px] font-bold text-[#f7efdd] mb-2">{s.t}</h3>
-                  <p className="text-[14.5px] text-[#c2b6a3] leading-relaxed">{s.b}</p>
+                <div className="p-4 md:p-5 min-w-0 flex items-start gap-3 md:block">
+                  <span className="md:hidden shrink-0 w-9 h-9 rounded-full border border-[#c5a065]/35 bg-[#c5a065]/12 text-[12px] font-bold text-[#f5d98b] flex items-center justify-center">{s.n}</span>
+                  <div className="min-w-0">
+                    <h3 className="text-[16px] md:text-[19px] font-bold text-[#f7efdd] mb-1 md:mb-2">{s.t}</h3>
+                    <p className="text-[13px] md:text-[14.5px] text-[#c2b6a3] leading-[1.55] md:leading-relaxed">{s.b}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -748,18 +759,20 @@ export default function Home() {
               </div>
             </div>
           ))}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
             {t.topPosts.filter((p) => !p.hot).map((p) => (
-              <div key={p.name} className="glass-card rounded-[1.2rem] overflow-hidden group">
-                <div className="overflow-hidden">
-                  <img src={p.img} alt={p.name} className="w-full object-cover aspect-[4/3] group-hover:scale-[1.05] transition-transform duration-500" />
+              <div key={p.name} className="glass-card rounded-[1rem] sm:rounded-[1.2rem] overflow-hidden group flex sm:block">
+                <div className="overflow-hidden shrink-0 w-[104px] sm:w-full">
+                  <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-[1/1] sm:aspect-[4/3] group-hover:scale-[1.05] transition-transform duration-500" />
                 </div>
-                <div className="p-4">
-                  <div className="font-semibold text-[14px] text-[#f3ead9] mb-2 truncate">{p.name}</div>
-                  <div className="text-[22px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</div>
-                  <div className="text-[11px] text-[#b0a594] mt-1 mb-2">{t.reachWord}</div>
-                  <div className="flex items-baseline gap-1.5">
-                    <span className="text-[16px] font-bold font-mono tabular-nums text-[#f0a08a]">{p.likes.toLocaleString()}</span>
+                <div className="p-3.5 sm:p-4 min-w-0 flex flex-col justify-center sm:block">
+                  <div className="font-semibold text-[13.5px] sm:text-[14px] text-[#f3ead9] mb-1.5 sm:mb-2 truncate">{p.name}</div>
+                  <div className="flex items-baseline gap-2 sm:block">
+                    <span className="text-[19px] sm:text-[22px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</span>
+                    <span className="text-[11px] text-[#b0a594] sm:block sm:mt-1">{t.reachWord}</span>
+                  </div>
+                  <div className="flex items-baseline gap-1.5 sm:mt-2">
+                    <span className="text-[14px] sm:text-[16px] font-bold font-mono tabular-nums text-[#f0a08a]">{p.likes.toLocaleString()}</span>
                     <span className="text-[11px] text-[#b0a594]">{t.likeWord}</span>
                   </div>
                 </div>
