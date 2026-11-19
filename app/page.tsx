@@ -105,13 +105,14 @@ const T = {
     shareNote: "內容被香港人主動轉發，平台演算法隨之擴大分發。",
     lineupTitle: "媒體陣容",
     lineupHead: ["媒體", "粉絲", "定位"],
+    lineupNote: "主力頁每日可出多帖、演算法分發最穩；補位頁題材對口時補量（平台限制期間每日 1 帖），不計入必達交付。",
     lineup: [
-      { name: "大灣區北上攻略情報站", fans: "12,792", note: "大灣區美食旅遊攻略與影片" },
-      { name: "廣東美食旅遊攻略", fans: "10,471", note: "廣東省深度美食旅遊指南（老牌專頁）" },
-      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", note: "深圳美食與住宿專頁（28 日 +708% 增長中）" },
-      { name: "FB群組·深圳食玩買｜廣州美食｜港人北上交流", fans: "約12,000", note: "私域直達＋可置頂" },
-      { name: "IG @cantonesefoodtravelguide", fans: "4,775", note: "廣東/深圳影片同步（兩個月 +36%）" },
-      { name: "IG @chinatravelhack", fans: "3,705", note: "中國旅遊影片同步（兩個月 +24%）" },
+      { name: "大灣區北上攻略情報站", fans: "12,792", tier: "主力", note: "大灣區美食旅遊攻略與影片" },
+      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", tier: "主力", note: "深圳美食與住宿專頁（28 日 +708% 增長中）" },
+      { name: "廣東美食旅遊攻略", fans: "10,471", tier: "補位", note: "廣東省深度美食旅遊指南（老牌專頁，題材對口時補量）" },
+      { name: "FB群組·深圳食玩買｜廣州美食｜港人北上交流", fans: "約12,000", tier: "私域", note: "私域直達＋可置頂" },
+      { name: "@cantonesefoodtravelguide", fans: "4,775", tier: "IG", note: "廣東/深圳影片同步（兩個月 +36%）" },
+      { name: "@chinatravelhack", fans: "3,705", tier: "IG", note: "中國旅遊影片同步（兩個月 +24%）" },
     ],
     priceTitle: "合作方案（HK$）",
     qBannerTitle: "季度優惠｜預付 3 個月全部套餐一律 85 折",
@@ -162,7 +163,7 @@ const T = {
         who: "適合新店開業、商場活動、展覽盛事，或連鎖品牌單月主推",
         hook: "不做慢熱推廣：一次覆蓋全香港用戶的 Feed 流，短期內建立開業排隊效應。",
         items: [
-          "3 個 FB 專頁同步分發（FB 粉絲 30,838，連 2 個 IG 帳號合共 39,318）",
+          "2 大主力 FB 專頁同步（20,367 粉絲）＋補位專頁 10,471（題材對口時補量）＋雙 IG 8,480",
           "雙 IG 帳號同步發布（@cantonesefoodtravelguide + @chinatravelhack 觸及年輕探店客群）",
           "12,000 人交流群組「精華置頂」整整 7 天（佔據私域全週入口）",
           "內建裂變機制：文案引導標記好友與主動轉發",
@@ -314,13 +315,14 @@ const T = {
     shareNote: "内容被香港人主动转发，平台算法随之扩大分发。",
     lineupTitle: "媒体阵容",
     lineupHead: ["媒体", "粉丝", "定位"],
+    lineupNote: "主力页每日可出多帖、算法分发最稳；补位页题材对口时补量（平台限制期间每日 1 帖），不计入必达交付。",
     lineup: [
-      { name: "大湾区北上攻略情报站", fans: "12,792", note: "大湾区美食旅游攻略与影片" },
-      { name: "广东美食旅游攻略", fans: "10,471", note: "广东省深度美食旅游指南（老牌专页）" },
-      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", note: "深圳美食与住宿专页（28 日 +708% 增长中）" },
-      { name: "FB群组·深圳食玩买｜广州美食｜港人北上交流", fans: "约12,000", note: "私域直达＋可置顶" },
-      { name: "IG @cantonesefoodtravelguide", fans: "4,775", note: "广东/深圳影片同步（两个月 +36%）" },
-      { name: "IG @chinatravelhack", fans: "3,705", note: "中国旅游影片同步（两个月 +24%）" },
+      { name: "大湾区北上攻略情报站", fans: "12,792", tier: "主力", note: "大湾区美食旅游攻略与影片" },
+      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", tier: "主力", note: "深圳美食与住宿专页（28 日 +708% 增长中）" },
+      { name: "广东美食旅游攻略", fans: "10,471", tier: "补位", note: "广东省深度美食旅游指南（老牌专页，题材对口时补量）" },
+      { name: "FB群组·深圳食玩买｜广州美食｜港人北上交流", fans: "约12,000", tier: "私域", note: "私域直达＋可置顶" },
+      { name: "@cantonesefoodtravelguide", fans: "4,775", tier: "IG", note: "广东/深圳影片同步（两个月 +36%）" },
+      { name: "@chinatravelhack", fans: "3,705", tier: "IG", note: "中国旅游影片同步（两个月 +24%）" },
     ],
     priceTitle: "合作方案（HK$）",
     qBannerTitle: "季度優惠｜預付 3 個月全部套餐一律 85 折",
@@ -371,7 +373,7 @@ const T = {
         who: "适合新店开业、商场活动、展览盛事，或连锁品牌单月主推",
         hook: "不做慢热推广：一次覆盖全香港用户的 Feed 流，短期内建立开业排队效应。",
         items: [
-          "3 个 FB 专页同步分发（FB 粉丝 30,838，连 2 个 IG 账号合共 39,318）",
+          "2 大主力 FB 专页同步（20,367 粉丝）＋补位专页 10,471（题材对口时补量）＋双 IG 8,480",
           "双 IG 帐号同步发布（@cantonesefoodtravelguide + @chinatravelhack 触及年轻探店客群）",
           "12,000 人交流群组「精华置顶」整整 7 天（占据私域全周入口）",
           "内建裂变机制：文案引导标记好友与主动转发",
@@ -805,8 +807,17 @@ export default function Home() {
                 {t.lineup.map((m) => (
                   <tr key={m.name} className="border-t border-white/5">
                     <td className="px-4 py-3 align-top">
-                      <div>{m.name}</div>
-                      <div className="md:hidden text-[12.5px] font-normal text-[#b0a594] mt-1 leading-snug">{m.note}</div>
+                      <div className="flex items-start gap-2">
+                        <span className={`mt-0.5 shrink-0 text-[10.5px] font-bold rounded px-1.5 py-0.5 border ${
+                          m.tier === "主力"
+                            ? "text-[#f5d98b] border-[#c5a065]/45 bg-[#c5a065]/15"
+                            : m.tier === "私域"
+                            ? "text-[#f0a08a] border-[#f0a08a]/35 bg-[#f0a08a]/10"
+                            : "text-[#a89d8b] border-white/12 bg-white/[0.04]"
+                        }`}>{m.tier}</span>
+                        <span className="min-w-0">{m.name}</span>
+                      </div>
+                      <div className="md:hidden text-[12.5px] font-normal text-[#b0a594] mt-1 leading-snug pl-[3.1rem]">{m.note}</div>
                     </td>
                     <td className="px-4 py-3 align-top font-bold font-mono tabular-nums text-[#f5d98b] whitespace-nowrap">{m.fans}</td>
                     <td className="px-4 py-3 text-[#b9ad9a] hidden md:table-cell">{m.note}</td>
@@ -815,6 +826,7 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+          <p className="text-[13px] text-[#b9ad9a] leading-relaxed mt-4 max-w-2xl">{t.lineupNote}</p>
         </div>
         </div>
         </div>
