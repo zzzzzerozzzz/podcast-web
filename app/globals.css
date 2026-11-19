@@ -190,7 +190,7 @@ body::before {
 
 
 /* taste-skill: one section per screen + hover underline */
-.section-screen { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; align-items: stretch; }
+.section-screen { min-height: min(100svh, 820px); display: flex; flex-direction: column; justify-content: center; align-items: stretch; }
 @media (max-width: 640px) { .section-screen { min-height: auto; padding-top: 4.5rem; padding-bottom: 4.5rem; } }
 .u-draw { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .35s ease; }
 .u-draw:hover { background-size: 100% 1px; }
