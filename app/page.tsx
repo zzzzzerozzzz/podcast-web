@@ -21,7 +21,7 @@ const T = {
     brandSub: "跨境新媒體引流工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒體矩陣",
-    tagline: "深圳／大灣區商家想爭取的香港客源，由我們的媒體矩陣直接觸達。",
+    tagline: "香港人每個週末都在決定去哪吃、去哪玩。你要做的，是在他決定之前出現。",
     dateNote: "數據抓取：2026-11-19（Meta 官方 API 實時）",
     stats: [
       { value: "39,318", label: "矩陣總粉絲", up: true },
@@ -114,6 +114,10 @@ const T = {
       { name: "@cantonesefoodtravelguide", fans: "4,775", tier: "IG", note: "廣東/深圳影片同步（兩個月 +36%）" },
       { name: "@chinatravelhack", fans: "3,705", tier: "IG", note: "中國旅遊影片同步（兩個月 +24%）" },
     ],
+    midCtaTitle: "唔確定邊個方案啱你？問一句就得。",
+    midCtaBody: "講低你間店做咩、想幾時開始，我哋會覆你一份建議：要幾錢、做幾多帖、預期見到咩數。24 小時內回覆，問完不一定要落單。",
+    midCtaBtn: "WhatsApp 問一句",
+    midCtaMsg: "港人北上媒體矩陣｜想問邊個方案適合我",
     priceTitle: "合作方案（HK$）",
     qBannerTitle: "季度優惠｜預付 3 個月全部套餐一律 85 折",
     singleTitle: "單項價目",
@@ -231,7 +235,7 @@ const T = {
     brandSub: "跨境新媒体引流工作室",
     badge: "zerotogrowth",
     h1: "港人北上媒体矩阵",
-    tagline: "深圳／大湾区商家想争取的香港客源，由我们的媒体矩阵直接触达。",
+    tagline: "香港人每个周末都在决定去哪吃、去哪玩。你要做的，是在他决定之前出现。",
     dateNote: "数据抓取：2026-11-19（Meta 官方 API 实时）",
     stats: [
       { value: "39,318", label: "矩阵总粉丝", up: true },
@@ -324,6 +328,10 @@ const T = {
       { name: "@cantonesefoodtravelguide", fans: "4,775", tier: "IG", note: "广东/深圳影片同步（两个月 +36%）" },
       { name: "@chinatravelhack", fans: "3,705", tier: "IG", note: "中国旅游影片同步（两个月 +24%）" },
     ],
+    midCtaTitle: "不确定哪个方案适合你？问一句就行。",
+    midCtaBody: "说一下你的店做什么、想什么时候开始，我们会回你一份建议：要多少钱、做多少帖、预期看到什么数。24 小时内回覆，问完不一定要下单。",
+    midCtaBtn: "WhatsApp 问一句",
+    midCtaMsg: "港人北上媒体矩阵｜想问哪个方案适合我",
     priceTitle: "合作方案（HK$）",
     qBannerTitle: "季度優惠｜預付 3 個月全部套餐一律 85 折",
     singleTitle: "单项价目",
@@ -531,10 +539,10 @@ export default function Home() {
       </div>
 
       {/* Hero — 滿版圖疊字（ref: Havenly）＋統計列懸浮疊底邊（ref: AV portfolio） */}
-      <section className="relative min-h-[76svh] flex items-center overflow-hidden">
-        <img src="/scenes/hero-shenzhen.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <section className="relative min-h-[520px] md:min-h-[620px] max-h-[760px] flex items-center overflow-hidden">
+        <img src="/scenes/hero-shenzhen.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-[center_42%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#181310]/95 via-[#1d1712]/80 to-[#221d17]/40" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-10 md:pt-16 pb-24 md:pb-28 w-full md:grid md:grid-cols-[1.12fr_0.88fr] md:items-center md:gap-12">
+        <div className="relative max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-14 md:pb-16 w-full md:grid md:grid-cols-[1.12fr_0.88fr] md:items-center md:gap-12">
           <div>
             <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[12.5px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
               {t.reelsBadge}
@@ -712,7 +720,7 @@ export default function Home() {
         </div>
       </section>
       {/* Transition — the walkway HK people actually take */}
-      <div className="relative h-[30vh] md:h-[42vh] overflow-hidden">
+      <div className="relative h-[170px] md:h-[230px] overflow-hidden">
         <img src="/scenes/bay-band.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#221d17] via-[#221d17]/10 to-[#221d17]" />
         <div className="absolute inset-x-0 bottom-8 md:bottom-12">
@@ -761,7 +769,7 @@ export default function Home() {
               </div>
             </div>
           ))}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
             {t.topPosts.filter((p) => !p.hot).map((p) => (
               <div key={p.name} className="glass-card rounded-[1rem] sm:rounded-[1.2rem] overflow-hidden group flex sm:block">
                 <div className="overflow-hidden shrink-0 w-[104px] sm:w-full">
@@ -829,6 +837,24 @@ export default function Home() {
           <p className="text-[13px] text-[#b9ad9a] leading-relaxed mt-4 max-w-2xl">{t.lineupNote}</p>
         </div>
         </div>
+        </div>
+      </section>
+
+      {/* Mid CTA — catch the "interested but unsure" reader before the price wall */}
+      <section className="px-6 pt-2 pb-4 md:pb-8">
+        <div className="max-w-6xl mx-auto rounded-3xl border border-[#c5a065]/30 bg-[#c5a065]/[0.06] px-6 md:px-10 py-7 md:py-9 flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
+          <div className="flex-1">
+            <p className="text-[19px] md:text-[23px] font-bold text-[#f7efdd] mb-2 leading-snug">{t.midCtaTitle}</p>
+            <p className="text-[13.5px] md:text-[14.5px] text-[#b9ad9a] leading-relaxed">{t.midCtaBody}</p>
+          </div>
+          <a
+            href={waLink(t.midCtaMsg)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#e8b479] to-[#f0c48a] text-[#2a1d10] font-bold text-[15px] px-7 py-3.5 hover:brightness-105 transition"
+          >
+            {t.midCtaBtn}
+          </a>
         </div>
       </section>
 
