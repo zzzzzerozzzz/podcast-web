@@ -6,6 +6,15 @@ import { useEffect, useState } from "react";
 
 type Lang = "hk" | "cn";
 
+// 一旦有 +852 號碼，只需填這裡（例如 "85291234567"），全站 7 個 CTA 會自動變成
+// click-to-chat：https://wa.me/85291234567?text=...  未填則沿用現有 QR 連結。
+const WA_NUMBER = "";
+const WA_QR = "https://wa.me/qr/RFLV47X75BYHI1";
+const waLink = (msg?: string) =>
+  WA_NUMBER
+    ? `https://wa.me/${WA_NUMBER}${msg ? `?text=${encodeURIComponent(msg)}` : ""}`
+    : WA_QR;
+
 const T = {
   hk: {
     brand: "Zero to Growth Studio",
@@ -184,6 +193,9 @@ const T = {
     starTop: "最多商家選擇",
     starValue: "性價比最高",
     bookNow: "立即預約此方案",
+    stickyTitle: "想知幾錢？直接問",
+    stickyNote: "24 小時內回覆 · 香港團隊",
+    stickyBtn: "WhatsApp 問價",
     addons:
       "加購：素材授權 +30-50%",
     ctaLine: "掃碼即時查詢 · 24 小時內回覆",
@@ -388,6 +400,9 @@ const T = {
     starTop: "最多商家选择",
     starValue: "性价比最高",
     bookNow: "立即预约此方案",
+    stickyTitle: "想知道多少钱？直接问",
+    stickyNote: "24 小时内回复 · 香港团队",
+    stickyBtn: "WhatsApp 问价",
     payNote: "支持港币／人民币对公或对私结算 ｜ 短影音由商家提供素材，工作室全包港式粤语配音、字幕及精剪（如需派员深圳实拍探店可另加购） ｜ 初稿 100% 商家预审确认",
     addons: "加购：素材授权 +30-50%",
     ctaLine: "扫码即时查询 · 24 小时内回复",
@@ -426,6 +441,23 @@ const ORANGE = "#f0955c";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("hk");
+  const [showBar, setShowBar] = useState(false);
+
+  // 手機浮動問價條：過了首屏才出現，並在快到頁尾時收起（避免遮住 CTA 卡）
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const bottom = document.body.scrollHeight - window.innerHeight;
+      setShowBar(y > 620 && y < bottom - 620);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const saved = typeof window !== "undefined" ? window.localStorage.getItem("mk-lang") : null;
@@ -507,7 +539,7 @@ export default function Home() {
             <p className="text-[17px] text-[#e9dcc2]/85 mb-2.5 max-w-lg text-left leading-relaxed">{t.tagline}</p>
             <p className="text-[12.5px] text-[#b0a594] mb-7">{t.dateNote}</p>
             <div className="flex gap-3 flex-col sm:flex-row">
-              <a href="https://wa.me/qr/RFLV47X75BYHI1" className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
+              <a href={waLink(`${t.h1}｜我想了解報價`)} className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
                 {t.ctaLine}
               </a>
               <a href="#pricing" className="text-center border border-[#e8c98a]/50 text-[#e8c98a] font-bold rounded-full px-7 py-3.5 text-sm transition hover:bg-[#e8c98a]/10">
@@ -838,7 +870,7 @@ export default function Home() {
                     <p className="text-[13px] text-[#e8c98a] font-semibold mb-3.5">{p.value}</p>
                   ) : null}
                   <a
-                    href="https://wa.me/qr/RFLV47X75BYHI1"
+                    href={waLink(`${p.name}｜想了解詳情`)}
                     className={`mt-auto text-center text-sm font-bold rounded-full py-2.5 px-4 ${
                       p.star
                         ? "bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114]"
@@ -887,7 +919,7 @@ export default function Home() {
             </div>
           </div>
           <a
-            href="https://wa.me/qr/RFLV47X75BYHI1"
+            href={waLink(`${t.h1}｜我想了解報價`)}
             className="inline-block bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-8 py-3 text-sm mb-4 shadow-[0_0_20px_rgba(232,155,92,0.4)]"
           >
             {t.qrWaBtn}
@@ -900,6 +932,29 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* 手機浮動問價條 — 83% 流量在手機，任何位置都能一按問價 */}
+      <div
+        className={`md:hidden fixed inset-x-0 bottom-0 z-40 transition-all duration-300 ${
+          showBar ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
+        }`}
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
+        <div className="mx-3 mb-3 rounded-2xl border border-[#c5a065]/35 bg-[#1b1712]/95 backdrop-blur-md px-3 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.55)]">
+          <div className="flex items-center gap-3">
+            <div className="min-w-0 flex-1">
+              <p className="text-[12.5px] font-bold text-[#f7efdd] leading-tight">{t.stickyTitle}</p>
+              <p className="text-[11px] text-[#a89d8b] leading-tight mt-0.5">{t.stickyNote}</p>
+            </div>
+            <a
+              href={waLink(`${t.h1}｜我想了解報價`)}
+              className="shrink-0 bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-5 py-2.5 text-[13px] whitespace-nowrap"
+            >
+              {t.stickyBtn}
+            </a>
+          </div>
+        </div>
+      </div>
 
       <footer className="px-6 py-6 border-t border-[#c5a065]/15">
         <p className="max-w-6xl mx-auto text-[12px] text-white/35 text-center">{t.footer}</p>
