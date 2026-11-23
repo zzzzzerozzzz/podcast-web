@@ -18,49 +18,50 @@
 }
 
 :root {
-  /* Zero to Growth — Warm Lifestyle Creator Editorial Palette */
-  --background: #FAF7F2;
-  --foreground: #1F271E;
-  --surface: #FFFFFF;
-  --surface-oat: #F2ECE1;
-  --primary: #2C3E26;
-  --primary-foreground: #FAF7F2;
-  --accent: #D46B34;
-  --accent-foreground: #FFFFFF;
-  --gold: #C59B56;
-  --border: #E6DEC8;
-  --muted: #636B5E;
+  /* Zero to Growth — Refined Warm Espresso & Champagne Gold Editorial Palette */
+  --background: #161310;
+  --foreground: #F4ECE0;
+  --surface: #211C16;
+  --surface-elevated: #2A241C;
+  --primary: #E8C98A;
+  --primary-foreground: #1B1611;
+  --accent: #E89B5C;
+  --accent-foreground: #24190F;
+  --gold: #C5A065;
+  --border: rgba(232, 201, 138, 0.16);
+  --muted: #B6A996;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #FAF7F2;
-    color: #1F271E;
+    background-color: #161310;
+    color: #F4ECE0;
   }
 
   body {
-    background-color: #FAF7F2;
-    color: #1F271E;
+    background-color: #161310;
+    color: #F4ECE0;
     overflow-x: clip;
   }
 
   ::selection {
-    background-color: rgba(212, 107, 52, 0.22);
-    color: #1F271E;
+    background-color: rgba(232, 201, 138, 0.28);
+    color: #FFF9EE;
   }
 }
 
-/* Subtle tactile paper texture for editorial warmth */
+/* Subtle tactile warm paper grain */
 .editorial-grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.032'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
-/* Editorial card surface with subtle depth */
+/* Refined dark espresso card with crisp champagne hairline (no cheesy pulsing glow) */
 .creator-card {
-  background-color: #FFFFFF;
-  border: 1px solid #E6DEC8;
-  box-shadow: 0 12px 32px -18px rgba(31, 39, 30, 0.14);
+  background: linear-gradient(180deg, rgba(42, 36, 28, 0.88) 0%, rgba(30, 25, 20, 0.92) 100%);
+  border: 1px solid rgba(232, 201, 138, 0.15);
+  border-top: 1px solid rgba(245, 217, 139, 0.24);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.3s ease;
@@ -68,8 +69,8 @@
 
 .creator-card:hover {
   transform: translateY(-4px);
-  border-color: #D2C4A6;
-  box-shadow: 0 22px 44px -20px rgba(31, 39, 30, 0.2);
+  border-color: rgba(232, 201, 138, 0.34);
+  box-shadow: 0 26px 52px -22px rgba(0, 0, 0, 0.82);
 }
 
 /* Kinetic marquee */

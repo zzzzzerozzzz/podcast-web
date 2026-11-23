@@ -24,7 +24,7 @@ export function ScrollProgressBar() {
     <motion.div
       aria-hidden="true"
       style={{ scaleX }}
-      className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2C3E26] via-[#D46B34] to-[#C59B56] origin-left z-50 pointer-events-none"
+      className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#C5A065] via-[#F5D98B] to-[#E89B5C] origin-left z-50 pointer-events-none"
     />
   );
 }
@@ -169,7 +169,7 @@ export function ParallaxFrame({ src, alt, caption, className = "" }: ParallaxFra
         className="w-full h-full object-cover will-change-transform"
       />
       {caption ? (
-        <span className="absolute bottom-3.5 left-3.5 bg-[#1B2419]/80 backdrop-blur-md text-[#FAF7F2] text-[11.5px] font-medium px-3.5 py-1.5 rounded-full border border-[#FAF7F2]/15">
+        <span className="absolute bottom-3.5 left-3.5 bg-[#161310]/85 backdrop-blur-md text-[#E8C98A] text-[11.5px] font-medium px-3.5 py-1.5 rounded-full border border-[#E8C98A]/25">
           {caption}
         </span>
       ) : null}
@@ -184,14 +184,14 @@ interface MarqueeStripProps {
 export function MarqueeStrip({ items }: MarqueeStripProps) {
   const doubled = [...items, ...items];
   return (
-    <div className="relative overflow-hidden bg-[#1B2419] text-[#FAF7F2] py-4 border-y border-[#FAF7F2]/10 select-none">
+    <div className="relative overflow-hidden bg-[#1D1813] text-[#F4ECE0] py-4 border-y border-[#E8C98A]/18 select-none">
       <div className="marquee-track flex items-center gap-6 whitespace-nowrap w-max">
         {doubled.map((item, idx) => (
           <div key={`${item}-${idx}`} className="inline-flex items-center gap-6">
-            <span className="text-[13.5px] md:text-[14.5px] font-medium tracking-wide text-[#F3ECE0]">
+            <span className="text-[13.5px] md:text-[14.5px] font-medium tracking-wide text-[#EFE4D2]">
               {item}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D46B34]" aria-hidden="true" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E89B5C]" aria-hidden="true" />
           </div>
         ))}
       </div>

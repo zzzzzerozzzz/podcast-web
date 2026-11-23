@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
         description: "深圳·大灣區商家觸達香港消費者的最直接渠道。",
         start_url: "/",
         display: "standalone",
-        background_color: "#FAF7F2",
-        theme_color: "#2C3E26",
+        background_color: "#161310",
+        theme_color: "#C5A065",
         icons: [
             {
                 src: "/icon-192x192.png",
