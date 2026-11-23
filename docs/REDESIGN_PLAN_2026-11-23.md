@@ -78,11 +78,14 @@
 - 打包完整離線備份壓縮檔 `podcast-web-backup-2026-11-23.zip`。
 - 新增本改版計畫文件 `docs/REDESIGN_PLAN_2026-11-23.md` 並推送至 GitHub。
 
-### Stage 2 — 全面重新排版、視覺與動態實作（進行中）
-- 規劃修改檔案：
-  - `app/layout.tsx`：載入 `Noto Sans TC`、`Noto Serif TC`、`Outfit`，更新最新 SEO / OpenGraph 資訊與暖米白主題色。
-  - `app/globals.css`：導入暖調生活誌色彩變數、移除舊版 `.glow-gold` 與過時設定、新增跑馬燈動畫與細緻滾動樣式。
-  - `lib/site-data.ts`：獨立管理繁／簡雙語文案、最新媒體陣容與真實連結、代表作、報價方案與 FAQ 資料。
-  - `components/BrandLogo.tsx`：現代極簡有機葉芽 SVG Logo 元件。
-  - `components/MotionPrimitives.tsx`：封裝計數跳表（Count-Up）、捲動進場動畫、視差容器與進度條。
-  - `app/page.tsx`：全面重新排版為「暖調生活誌 × 質感 Blogger 動態風」互動頁面。
+### Stage 2 — 全面重新排版、視覺與動態實作（✅ 已完成並通過 Build 驗證）
+- **已完成修改與新增檔案**：
+  - `app/layout.tsx`：正式載入 `Noto Sans TC`、`Noto Serif TC`、`Outfit` 字體；更新最新 SEO / OpenGraph 資訊（40,980+ 公開粉絲、12,000 私域群組）與暖米白主題色 `#FAF7F2`。
+  - `app/manifest.ts`：同步更新 PWA 主題色為 `#FAF7F2` / `#2C3E26`。
+  - `app/globals.css`：導入「暖調生活誌 × 質感 Blogger」色彩系統、細緻紙紋質感、俐落卡片懸浮陰影與無限跑馬燈動畫，移除舊版 `.glow-gold` 與深棕背景設定。
+  - `lib/site-data.ts`：集中管理繁／簡雙語文案、最新 6 個可點擊媒體渠道與最新粉絲數（32,500 FB ＋ 8,480 IG ＝ 40,980）、代表作、報價方案與 5 題 B2B FAQ，並全面修正簡體殘留、內部 A/B/C 代號與文案語病。
+  - `components/BrandLogo.tsx`：重繪現代極簡有機葉芽幾何 SVG Logo，取代舊版模糊藤蔓圖片。
+  - `components/MotionPrimitives.tsx`：以 `framer-motion` 封裝頂部閱讀進度條、大標題遮罩滑出、數字滾動計數跳表（Count-Up）、價格彈簧跳變、滾動視差相框與雙向無限跑馬燈。
+  - `components/HeroReelShowcase.tsx`：打造首屏右側 9:16 創作者爆款動態輪播手機卡（含自動播放進度條、點擊切換與浮動戰績氣泡）。
+  - `app/page.tsx`：全面重新排版為暖米白＋深墨橄欖反轉節奏頁面，新增動態橫條成本對比、Meta 後台佐證燈箱、代表作詳情燈箱、單月⇄季付 85 折互動切換與 FAQ 手風琴。
+- **驗證結果**：`npm run build`（Next.js 16 Turbopack + TypeScript 檢查）編譯與靜態預渲染全數通過。

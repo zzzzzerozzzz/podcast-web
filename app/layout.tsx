@@ -1,25 +1,43 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Lora } from "next/font/google";
+import { Noto_Sans_TC, Noto_Serif_TC, Outfit } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
+const notoSansTC = Noto_Sans_TC({
   variable: "--font-sans",
-  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  preload: false,
   display: "swap",
 });
 
-const lora = Lora({
+const notoSerifTC = Noto_Serif_TC({
   variable: "--font-serif",
+  weight: ["600", "700", "900"],
+  preload: false,
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://podcast-web-seven.vercel.app"),
-  title: "港人北上媒體矩陣｜深圳・大灣區商家推廣",
+  title: "Zero to Growth｜港人北上媒體矩陣・深圳大灣區美食旅遊推廣",
   description:
-    "3 個 FB 專頁＋12,000 人港人北上交流群組＋2 個 IG。28 天 879 萬瀏覽、30 萬互動。深圳／大灣區商家觸達香港消費者最直接的渠道。",
-  keywords: ["香港客源", "港人北上", "深圳推廣", "大灣區營銷", "Facebook 廣告", "小紅書", "IG 推廣"],
+    "香港本土美食旅遊內容工作室：3 大 FB 專頁（32,500 粉絲）＋ 2 個 IG（8,480 粉絲）＋ 12,000 人北上私域群組。28 日 879 萬真實瀏覽，幫深圳與大灣區商家精準觸達週末北上香港客。",
+  keywords: [
+    "香港客源",
+    "港人北上",
+    "深圳推廣",
+    "大灣區營銷",
+    "香港KOL",
+    "深圳探店",
+    "Facebook 推廣",
+    "IG Reels",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -27,9 +45,9 @@ export const metadata: Metadata = {
     alternateLocale: ["zh_CN"],
     url: "/",
     siteName: "Zero to Growth Studio",
-    title: "港人北上媒體矩陣｜深圳・大灣區商家推廣",
+    title: "Zero to Growth｜港人北上媒體矩陣・深圳大灣區美食旅遊推廣",
     description:
-      "38,178 粉絲、28 天 879 萬瀏覽、12,000 人港人群組。用香港人自己嘅帳號，幫深圳商家搵到香港客。",
+      "40,980+ 公開粉絲、28 日 879 萬真實瀏覽、12,000 人港人交流群。用港人真正愛看、主動轉發的內容，把你的好店帶到香港人眼前。",
     images: [
       {
         url: "/og.png",
@@ -41,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "港人北上媒體矩陣｜深圳・大灣區商家推廣",
-    description: "38,178 粉絲、28 天 879 萬瀏覽、12,000 人港人群組。",
+    title: "Zero to Growth｜港人北上媒體矩陣・深圳大灣區商家推廣",
+    description: "40,980+ 公開粉絲、28 日 879 萬瀏覽、12,000 人港人北上交流群。",
     images: ["/og.png"],
   },
   robots: { index: true, follow: true },
@@ -51,7 +69,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#221d17",
+  themeColor: "#FAF7F2",
 };
 
 export default function RootLayout({
@@ -63,7 +81,7 @@ export default function RootLayout({
     <html lang="zh-Hant-HK" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${outfit.variable} ${lora.variable} antialiased font-sans bg-[#221d17] text-[#f3ead9]`}
+        className={`${notoSansTC.variable} ${notoSerifTC.variable} ${outfit.variable} antialiased font-sans bg-[#FAF7F2] text-[#1F271E]`}
       >
         {children}
       </body>

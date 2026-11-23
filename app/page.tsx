@@ -2,459 +2,73 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import { useEffect, useState } from "react";
-
-type Lang = "hk" | "cn";
-
-// 一旦有 +852 號碼，只需填這裡（例如 "85291234567"），全站 7 個 CTA 會自動變成
-// click-to-chat：https://wa.me/85291234567?text=...  未填則沿用現有 QR 連結。
-const WA_NUMBER = "85266925445";
-const WA_QR = "https://wa.me/qr/RFLV47X75BYHI1";
-const waLink = (msg?: string) =>
-  WA_NUMBER
-    ? `https://wa.me/${WA_NUMBER}${msg ? `?text=${encodeURIComponent(msg)}` : ""}`
-    : WA_QR;
-
-const T = {
-  hk: {
-    brand: "Zero to Growth Studio",
-    brandSub: "跨境新媒體引流工作室",
-    badge: "zerotogrowth",
-    h1: "港人北上媒體矩陣",
-    tagline: "香港人每個週末都在決定去哪吃、去哪玩。你要做的，是在他決定之前出現。",
-    dateNote: "數據抓取：2026-11-19（Meta 官方 API 實時）",
-    stats: [
-      { value: "39,318", label: "矩陣總粉絲", up: true },
-      { value: "879萬", label: "28日瀏覽·兩大專頁", up: true },
-      { value: "2,112", label: "單帖最高讚好" },
-      { value: "12,000", label: "私域群組成員" },
-    ],
-    reelsLine: "短影音（Reels）傳播力：單條最高曝光突破 250,000+ 人次（演算法自然外溢破圈，突破粉絲數限制）",
-    reelsBadge: "🔥 爆款 Reel 單條最高曝光 250,000+ 人次 ｜ 演算法自然破圈",
-    sellingTitle: "為什麼選擇我們",
-    sellingSub: "（三項差異化優勢）",
-    points: [
-      {
-        title: "01 精準觸達｜粉絲正是「正在決定去哪裡消費的香港人」",
-        body: "北上消費決策週期為：週四計劃、週五蒐集資訊、週六日出發（依自家 174 帖數據實證）。你的廣告帖，正好出現在他們蒐集資訊的那一刻。",
-      },
-      {
-        title: "02 爆款裂變｜內容被香港人主動轉發，演算法二次放大",
-        body: "原創 Reel 短影音常規播放量達 5-15 萬次，單條最高 25 萬次曝光；配合 Facebook／Instagram 演算法二次擴散，單帖最高 2,112 個讚好，觸及遠超粉絲數，直達尚未追蹤你的香港消費者。",
-      },
-      {
-        title: "03 私域直達｜12,000 人北上交流群組直達＋可置頂",
-        body: "除專頁帖文外，群組帖文可直達 12,000 名活躍討論「去哪吃、去哪玩」的香港會員，並可置頂 7-14 天持續曝光，這是付費廣告無法買到的資源。",
-      },
-    ],
-    dashTitle: "後台實錄：28 天增長（兩大專頁官方數據）",
-    dashes: [
-      {
-        name: "大灣區北上攻略情報站",
-        fans: "12,792 追蹤",
-        nums: [
-          { v: "465萬", l: "瀏覽（28日）↑160%" },
-          { v: "147,595", l: "互動 ↑56%" },
-          { v: "+7,497", l: "新追蹤 ↑233%" },
-        ],
-        float1: "465萬瀏覽",
-        float2: "↑160%",
-      },
-      {
-        name: "深圳美食住宿｜港人北上攻略",
-        fans: "7,575 追蹤",
-        nums: [
-          { v: "414萬", l: "瀏覽（28日）↑293%" },
-          { v: "154,612", l: "互動 ↑233%" },
-          { v: "+6,330", l: "新追蹤 ↑708%" },
-        ],
-        float1: "+708% 增長中",
-        float2: "414萬瀏覽",
-      },
-    ],
-    bigLine: "28 天，兩個專頁，在香港人的屏幕上出現了八百七十九萬次。",
-    dashSum:
-      "兩頁合計：30.2 萬次互動、新增 13,827 位追蹤者；日均 31 萬次曝光，近 30 日以 92 帖的月產量持續增長。",
-    cpmTitle: "性價比對決",
-    cpmLeftTitle: "傳統 Meta 廣告",
-    cpmLeftBody:
-      "CPM（每千次曝光）約 HK$80，另加代理費 12-20%。以單場 10-20 萬次曝光計，媒體費 HK$8,000-16,000，連代理費實際支出約 HK$9,000-19,200；受眾設定與素材製作仍要自行處理。",
-    cpmRightTitle: "本矩陣推廣",
-    cpmRightBody:
-      "對比之下，$2,800 全矩陣方案已包 3 個 FB 專頁＋2 個 IG 帳號＋12,000 人私域群組，毋須另付媒體費；折算每千次港客觸達只約 HK$0.3 起，還帶著老牌專頁的信任度。",
-    vs: "VS",
-    caseTitle: "實績案例：深圳灣展覽推廣",
-    caseName: "史前星球恐龍展（深圳灣萬象城 BASE）· 2026-09",
-    caseNums: [
-      { v: "13,186", l: "觀看（2日）" },
-      { v: "85", l: "條留言查詢" },
-      { v: "1.3×", l: "觀看 ÷ 粉絲數" },
-    ],
-    caseBody:
-      "單條推廣帖帶動大量「交通／票價」私訊查詢，全部引導至場館資訊與港人交通路線（福田／羅湖→11 號線後海站）。觀看數超過粉絲數，代表平台演算法作出額外推流。",
-    topTitle: "近 30 日代表作（真實數據）",
-    topPosts: [
-      { img: "/posts/p1.jpg", name: "深圳科技地標帖", reach: 290000, likes: 2640, shares: 4267, hot: true },
-      { img: "/posts/p2.jpg", name: "廣州北京路帖", reach: 250000, likes: 2047, shares: 3026 },
-      { img: "/posts/p3.jpg", name: "深圳森林商場帖", reach: 190000, likes: 854, shares: 214 },
-      { img: "/posts/p5.jpg", name: "鹽田一日遊帖", reach: 93000, likes: 593, shares: 97 },
-    ],
-    likeWord: "讚",
-    shareWord: "分享",
-    reachWord: "接觸人數",
-    shareNote: "內容被香港人主動轉發，平台演算法隨之擴大分發。",
-    lineupTitle: "媒體陣容",
-    lineupHead: ["媒體", "粉絲", "定位"],
-    lineupNote: "主力頁每日可出多帖、演算法分發最穩；補位頁題材對口時補量（平台限制期間每日 1 帖），不計入必達交付。",
-    lineup: [
-      { name: "大灣區北上攻略情報站", fans: "12,792", tier: "主力", note: "大灣區美食旅遊攻略與影片" },
-      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", tier: "主力", note: "深圳美食與住宿專頁（28 日 +708% 增長中）" },
-      { name: "廣東美食旅遊攻略", fans: "10,471", tier: "補位", note: "廣東省深度美食旅遊指南（老牌專頁，題材對口時補量）" },
-      { name: "FB群組·深圳食玩買｜廣州美食｜港人北上交流", fans: "約12,000", tier: "私域", note: "私域直達＋可置頂" },
-      { name: "@cantonesefoodtravelguide", fans: "4,775", tier: "IG", note: "廣東/深圳影片同步（兩個月 +36%）" },
-      { name: "@chinatravelhack", fans: "3,705", tier: "IG", note: "中國旅遊影片同步（兩個月 +24%）" },
-    ],
-    midCtaTitle: "唔確定邊個方案啱你？問一句就得。",
-    midCtaBody: "講低你間店做咩、想幾時開始，我哋會覆你一份建議：要幾錢、做幾多帖、預期見到咩數。24 小時內回覆，問完不一定要落單。",
-    midCtaBtn: "WhatsApp 問一句",
-    midCtaMsg: "港人北上媒體矩陣｜想問邊個方案適合我",
-    priceTitle: "合作方案（HK$）",
-    qBannerTitle: "季度優惠｜預付 3 個月全部套餐一律 85 折",
-    singleTitle: "單項價目",
-    singles: [
-      ["專頁圖文帖（1專頁1帖）", "$500-800"],
-      ["專頁影片帖 Reel（60-90 秒，含配音與字幕）", "$800-1,500"],
-      ["探店合作（商家提供餐飲或門票）", "互惠＋$300-600"],
-      ["群組情報帖（12,000成員直達）", "$300-800"],
-      ["群組置頂 7 天／14 天", "+$600／+$1,000"],
-      ["IG 同步加購", "+$200/帖"],
-      ["上門拍攝（限深圳，東莞 +$400）", "$1,200／次"],
-    ],
-    packages: [
-      {
-        tag: "首單體驗",
-        name: "$588 輕量試水組",
-        who: "適合未做過港客推廣、想用最低成本驗證香港客流反應的單店或新品牌",
-        hook: "一個平台 $196，全站最便宜的入場價。",
-        specs: [
-          ["出文", "1 次"],
-          ["投放平台", "3 個"],
-          ["每個平台", "$196"],
-        ],
-        items: [
-          "FB 專頁深度圖文 1 帖（大灣區攻略站或廣東老牌專頁，道地港式語境）",
-          "同品牌 IG 同步 1 帖（同一條內容，不另收費）",
-          "12,000 人私域交流群情報帖 1 帖（第 3 個平台）",
-          "初稿 100% 商家預審，不通過不上線",
-        ],
-        value: "限首單一次",
-        star: "",
-      },
-      {
-        tag: "趕活動 · 兩星期上線",
-        name: "$1,680 雙週爆點組",
-        who: "適合新店開幕、期間限定、節慶活動，要在兩星期內把消息推出去的商家",
-        hook: "兩星期 3 條內容上線，每個平台 $280。",
-        specs: [
-          ["出文", "3 次"],
-          ["投放平台", "6 個"],
-          ["每個平台", "$280"],
-          ["每次出文", "$560"],
-        ],
-        items: [
-          "1 條粵語配音短影音（Reel）＋ 2 篇深度圖文，兩星期內全部發布",
-          "素材你提供：手機拍 3–5 段就夠（我們附拍攝清單）",
-          "全套後製：港式粵語配音、繁體字幕、節奏剪輯、圖文排版",
-          "12,000 人私域群組精華置頂 3 天",
-        ],
-        value: "",
-        star: "",
-      },
-      {
-        tag: "最多人揀 · 性價比最高",
-        name: "$2,800 全月霸屏組",
-        who: "適合新店開業、商場活動、展覽盛事，或連鎖品牌單月主推",
-        hook: "全月每星期都有新內容，每個平台只要 $233。",
-        specs: [
-          ["出文", "6 次"],
-          ["投放平台", "12 個"],
-          ["每個平台", "$233"],
-          ["每次出文", "$467"],
-        ],
-        items: [
-          "3 條 Reel ＋ 3 篇圖文，三個品牌（A／B／C）全部用上，月容量用盡",
-          "每個品牌每兩星期只出 1 次 —— 不洗版，但全月都有你的內容在跑",
-          "12,000 人私域群組 2 帖，全月置頂",
-          "月度 Meta 官方 API 數據復盤報告",
-        ],
-        value: "月上限 12 個平台（A 4 ＋ B 4 ＋ C 2 ＋ 群組 2）",
-        star: "top",
-      },
-    ],
-    payNote: "素材由商家提供（手機拍 3–5 段即可）｜我們負責寫稿、粵語配音、繁體字幕、剪輯、排版與投放｜上門拍攝為加購項（+$1,200／次，限深圳，東莞 +$400）｜初稿 100% 商家預審確認",
-    starTop: "最多商家選擇",
-    starValue: "性價比最高",
-    bookNow: "立即預約此方案",
-    stickyTitle: "想知幾錢？直接問",
-    stickyNote: "24 小時內回覆 · 香港團隊",
-    stickyBtn: "WhatsApp 問價",
-    addons:
-      "加購：素材授權 +30-50%",
-    ctaLine: "掃碼即時查詢 · 24 小時內回覆",
-    ctaHero: "WhatsApp 直接問價",
-    ctaContact: "香港團隊 · 繁簡雙語 · 服務深圳／大灣區商家及香港品牌",
-    qrWechat: "微信掃碼聯絡",
-    qrWa: "WhatsApp 掃碼",
-    qrWaBtn: "💬 點擊此處直接開啟 WhatsApp 諮詢",
-    mailLabel: "電郵",
-    proofKicker: "合作保障",
-    proof: [
-      { v: "6", l: "個官方帳號同步發布" },
-      { v: "100%", l: "初稿商家預審，不通過不上線" },
-      { v: "7 日", l: "出稿 · 14 日交後台數據" },
-    ],
-    stepsTitle: "三步交付流程",
-    stepsKicker: "確認之後，平均 3–5 個工作日上線",
-    steps: [
-      { n: "01", t: "寫稿", b: "按港人語境出稿，你審稿；不通過不改稿，不上線。" },
-      { n: "02", t: "拍攝", b: "商家提供素材或店內實拍，我們包剪輯、港式配音、字幕。" },
-      { n: "03", t: "投放", b: "雙專頁＋群組同步，7 日後交回後台數據報告。" },
-    ],
-    stepsNote: "全流程你只需要做兩件事：確認稿、確認片。",
-    moreItems: "＋ 另含 {n} 項，詳見下方單項價目",
-    dashCapName: "Meta 商務套件 · 創作者管理中心",
-    dashCapDate: "截圖 2026-11-17",
-    footer:
-      "條款：7 日內出稿；初稿經商家預審；合作帖文按 Meta 政策標註「付費合作」。數據截至 2026-11-17，價格可議。",
-  },
-  cn: {
-    brand: "Zero to Growth Studio",
-    brandSub: "跨境新媒体引流工作室",
-    badge: "zerotogrowth",
-    h1: "港人北上媒体矩阵",
-    tagline: "香港人每个周末都在决定去哪吃、去哪玩。你要做的，是在他决定之前出现。",
-    dateNote: "数据抓取：2026-11-19（Meta 官方 API 实时）",
-    stats: [
-      { value: "39,318", label: "矩阵总粉丝", up: true },
-      { value: "879万", label: "28日浏览·两大专页", up: true },
-      { value: "2,112", label: "单帖最高赞好" },
-      { value: "12,000", label: "私域群组成员" },
-    ],
-    reelsLine: "短影音（Reels）传播力：单条最高曝光突破 250,000+ 人次（算法自然外溢破圈，突破粉丝数限制）",
-    reelsBadge: "🔥 爆款 Reel 单条最高曝光 250,000+ 人次 ｜ 算法自然破圈",
-    sellingTitle: "为什么选择我们",
-    sellingSub: "（三项差异化优势）",
-    points: [
-      {
-        title: "01 精准触达｜粉丝就是「正在决定去哪消费的香港人」",
-        body: "北上消费决策周期为：周四计划、周五搜集资讯、周六日出发（依自家 174 帖数据实证）。你的广告帖，正好出现在他们搜集资讯的那一刻。",
-      },
-      {
-        title: "02 爆款裂变｜内容被香港人转发，算法暴力推流",
-        body: "原创 Reel 短影音常规播放量达 5-15 万次，单条最高 25 万次曝光；配合 Facebook／Instagram 算法二次扩散，单帖最高 2,112 个赞好，触达远超粉丝数，直达尚未关注你的香港消费者。",
-      },
-      {
-        title: "03 私域直达｜12,000 人北上交流群组直达＋可置顶",
-        body: "除专页帖文外，群组帖文可直达 12,000 名活跃讨论「去哪吃、去哪玩」的香港会员，并可置顶 7-14 天持续曝光，这是付费广告无法买到的资源。",
-      },
-    ],
-    dashTitle: "后台实录：28 天增长（两大专页官方数据）",
-    dashes: [
-      {
-        name: "大湾区北上攻略情报站",
-        fans: "12,792 追踪",
-        nums: [
-          { v: "465万", l: "浏览（28日）↑160%" },
-          { v: "147,595", l: "互动 ↑56%" },
-          { v: "+7,497", l: "新追踪 ↑233%" },
-        ],
-        float1: "465万浏览",
-        float2: "↑160%",
-      },
-      {
-        name: "深圳美食住宿｜港人北上攻略",
-        fans: "7,575 追踪",
-        nums: [
-          { v: "414万", l: "浏览（28日）↑293%" },
-          { v: "154,612", l: "互动 ↑233%" },
-          { v: "+6,330", l: "新追踪 ↑708%" },
-        ],
-        float1: "+708% 增长中",
-        float2: "414万浏览",
-      },
-    ],
-    bigLine: "28 天，两个专页，在香港人的屏幕上出现了八百七十九万次。",
-    dashSum:
-      "两页合计：30.2 万次互动、新增 13,827 位追踪者；日均 31 万次曝光，近 30 日以 92 帖的月产量持续增长。",
-    cpmTitle: "性价比对决",
-    cpmLeftTitle: "传统 Meta 广告",
-    cpmLeftBody:
-      "CPM（每千次曝光）约 HK$80，另加代理费 12-20%。以单场 10-20 万次曝光计，媒体费 HK$8,000-16,000，连代理费实际支出约 HK$9,000-19,200；受众设定与素材制作仍要自行处理。",
-    cpmRightTitle: "本矩阵推广",
-    cpmRightBody:
-      "对比之下，$2,800 全矩阵方案已包 3 个 FB 专页＋2 个 IG 账号＋12,000 人私域群组，毋须另付媒体费；折算每千次港客触达只约 HK$0.3 起，还带着老牌专页的信任度。",
-    vs: "VS",
-    caseTitle: "实绩案例：深圳湾展览推广",
-    caseName: "史前星球恐龙展（深圳湾万象城 BASE）· 2026-09",
-    caseNums: [
-      { v: "13,186", l: "观看（2日）" },
-      { v: "85", l: "条留言查询" },
-      { v: "1.3×", l: "观看 ÷ 粉丝数" },
-    ],
-    caseBody:
-      "单条推广帖带动大量「交通／票价」私信查询，全部引导至场馆信息与港人交通路线（福田／罗湖→11 号线后海站）。观看数超过粉丝数，代表平台算法作出额外推流。",
-    topTitle: "近 30 日代表作（真实数据）",
-    topPosts: [
-      { img: "/posts/p1.jpg", name: "深圳科技地标帖", reach: 290000, likes: 2640, shares: 4267, hot: true },
-      { img: "/posts/p2.jpg", name: "广州北京路帖", reach: 250000, likes: 2047, shares: 3026 },
-      { img: "/posts/p3.jpg", name: "深圳森林商场帖", reach: 190000, likes: 854, shares: 214 },
-      { img: "/posts/p5.jpg", name: "盐田一日游帖", reach: 93000, likes: 593, shares: 97 },
-    ],
-    likeWord: "赞",
-    shareWord: "分享",
-    reachWord: "接触人数",
-    shareNote: "内容被香港人主动转发，平台算法随之扩大分发。",
-    lineupTitle: "媒体阵容",
-    lineupHead: ["媒体", "粉丝", "定位"],
-    lineupNote: "主力页每日可出多帖、算法分发最稳；补位页题材对口时补量（平台限制期间每日 1 帖），不计入必达交付。",
-    lineup: [
-      { name: "大湾区北上攻略情报站", fans: "12,792", tier: "主力", note: "大湾区美食旅游攻略与影片" },
-      { name: "深圳美食住宿｜港人北上攻略", fans: "7,575", tier: "主力", note: "深圳美食与住宿专页（28 日 +708% 增长中）" },
-      { name: "广东美食旅游攻略", fans: "10,471", tier: "补位", note: "广东省深度美食旅游指南（老牌专页，题材对口时补量）" },
-      { name: "FB群组·深圳食玩买｜广州美食｜港人北上交流", fans: "约12,000", tier: "私域", note: "私域直达＋可置顶" },
-      { name: "@cantonesefoodtravelguide", fans: "4,775", tier: "IG", note: "广东/深圳影片同步（两个月 +36%）" },
-      { name: "@chinatravelhack", fans: "3,705", tier: "IG", note: "中国旅游影片同步（两个月 +24%）" },
-    ],
-    midCtaTitle: "不确定哪个方案适合你？问一句就行。",
-    midCtaBody: "说一下你的店做什么、想什么时候开始，我们会回你一份建议：要多少钱、做多少帖、预期看到什么数。24 小时内回覆，问完不一定要下单。",
-    midCtaBtn: "WhatsApp 问一句",
-    midCtaMsg: "港人北上媒体矩阵｜想问哪个方案适合我",
-    priceTitle: "合作方案（HK$）",
-    qBannerTitle: "季度優惠｜預付 3 個月全部套餐一律 85 折",
-    singleTitle: "单项价目",
-    singles: [
-      ["专页图文帖（1专页1帖）", "$500-800"],
-      ["专页影片帖 Reel（60-90 秒，含配音与字幕）", "$800-1,500"],
-      ["探店合作（商家提供餐饮或门票）", "互惠＋$300-600"],
-      ["群组情报帖（12,000成员直达）", "$300-800"],
-      ["群组置顶 7 天／14 天", "+$600／+$1,000"],
-      ["IG 同步加购", "+$200/帖"],
-      ["上门拍摄（限深圳，东莞 +$400）", "$1,200／次"],
-    ],
-    packages: [
-      {
-        tag: "首单体验",
-        name: "$588 轻量试水组",
-        who: "适合未做过港客推广、想用最低成本验证香港客流反应的单店或新品牌",
-        hook: "一个平台 $196，全站最便宜的入场价。",
-        specs: [
-          ["出文", "1 次"],
-          ["投放平台", "3 个"],
-          ["每个平台", "$196"],
-        ],
-        items: [
-          "FB 专页深度图文 1 帖（大湾区攻略站或广东老牌专页，地道港式语境）",
-          "同品牌 IG 同步 1 帖（同一条内容，不另收费）",
-          "12,000 人私域交流群情报帖 1 帖（第 3 个平台）",
-          "初稿 100% 商家预审，不通过不上线",
-        ],
-        value: "限首单一次",
-        star: "",
-      },
-      {
-        tag: "赶活动 · 两星期上线",
-        name: "$1,680 双周爆点组",
-        who: "适合新店开幕、期间限定、节庆活动，要在两星期内把消息推出去的商家",
-        hook: "两星期 3 条内容上线，每个平台 $280。",
-        specs: [
-          ["出文", "3 次"],
-          ["投放平台", "6 个"],
-          ["每个平台", "$280"],
-          ["每次出文", "$560"],
-        ],
-        items: [
-          "1 条粤语配音短影音（Reel）＋ 2 篇深度图文，两星期内全部发布",
-          "素材你提供：手机拍 3–5 段就够（我们附拍摄清单）",
-          "全套后制：港式粤语配音、繁体字幕、节奏剪辑、图文排版",
-          "12,000 人私域群组精华置顶 3 天",
-        ],
-        value: "",
-        star: "",
-      },
-      {
-        tag: "最多人拣 · 性价比最高",
-        name: "$2,800 全月霸屏组",
-        who: "适合新店开业、商场活动、展览盛事，或连锁品牌单月主推",
-        hook: "全月每星期都有新内容，每个平台只要 $233。",
-        specs: [
-          ["出文", "6 次"],
-          ["投放平台", "12 个"],
-          ["每个平台", "$233"],
-          ["每次出文", "$467"],
-        ],
-        items: [
-          "3 条 Reel ＋ 3 篇图文，三个品牌（A／B／C）全部用上，月容量用尽",
-          "每个品牌每两星期只出 1 次 —— 不洗版，但全月都有你的内容在跑",
-          "12,000 人私域群组 2 帖，全月置顶",
-          "月度 Meta 官方 API 数据复盘报告",
-        ],
-        value: "月上限 12 个平台（A 4 ＋ B 4 ＋ C 2 ＋ 群组 2）",
-        star: "top",
-      },
-    ],
-    payNote: "素材由商家提供（手机拍 3–5 段即可）｜我们负责写稿、粤语配音、繁体字幕、剪辑、排版与投放｜上门拍摄为加购项（+$1,200／次，限深圳，东莞 +$400）｜初稿 100% 商家预审确认",
-    starTop: "最多商家选择",
-    starValue: "性价比最高",
-    bookNow: "立即预约此方案",
-    stickyTitle: "想知道多少钱？直接问",
-    stickyNote: "24 小时内回复 · 香港团队",
-    stickyBtn: "WhatsApp 问价",
-    addons: "加购：素材授权 +30-50%",
-    ctaLine: "扫码即时查询 · 24 小时内回复",
-    ctaHero: "WhatsApp 直接问价",
-    ctaContact: "香港团队 · 繁简双语 · 服务深圳／大湾区商家及香港品牌",
-    qrWechat: "微信扫码联络",
-    qrWa: "WhatsApp 扫码",
-    qrWaBtn: "💬 点击此处直接开启 WhatsApp 咨询",
-    mailLabel: "邮箱",
-    proofKicker: "合作保障",
-    proof: [
-      { v: "6", l: "个官方账号同步发布" },
-      { v: "100%", l: "初稿商家预审，不通过不上线" },
-      { v: "7 日", l: "出稿 · 14 日交后台数据" },
-    ],
-    stepsTitle: "三步交付流程",
-    stepsKicker: "确认之后，平均 3–5 个工作日上线",
-    steps: [
-      { n: "01", t: "写稿", b: "按港人语境出稿，你审稿；不通过不改稿，不上线。" },
-      { n: "02", t: "拍摄", b: "商家提供素材或店内实拍，我们包剪辑、港式配音、字幕。" },
-      { n: "03", t: "投放", b: "双专页＋群组同步，7 日后交回后台数据报告。" },
-    ],
-    stepsNote: "全流程你只需要做两件事：确认稿、确认片。",
-    moreItems: "＋ 另含 {n} 项，详见下方单项价目",
-    dashCapName: "Meta 商务套件 · 创作者管理中心",
-    dashCapDate: "截图 2026-11-17",
-    footer:
-      "条款：7 日内出稿；初稿经商家预审；合作帖文按 Meta 政策标注「付费合作」。数据截至 2026-11-17，价格可议。",
-  },
-};
-
-const CARD = "glass-card rounded-3xl";
-const GOLD = "#e8c98a";
-const CREAM = "#f5d98b";
-const SOFTGREEN = "#b9d4a8";
-const ORANGE = "#f0955c";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowUpRight,
+  Check,
+  ChevronDown,
+  Eye,
+  Heart,
+  Mail,
+  MessageCircle,
+  PenTool,
+  Rocket,
+  Share2,
+  ShieldCheck,
+  TrendingUp,
+  Video,
+  X,
+} from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
+import { HeroReelShowcase } from "@/components/HeroReelShowcase";
+import {
+  AnimatedNumber,
+  AnimatedPrice,
+  EASE_EDITORIAL,
+  MarqueeStrip,
+  MaskLine,
+  ParallaxFrame,
+  Reveal,
+  ScrollProgressBar,
+} from "@/components/MotionPrimitives";
+import {
+  SITE_DATA,
+  formatWan,
+  waLink,
+  type Lang,
+  type TopPost,
+} from "@/lib/site-data";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("hk");
-  const [showBar, setShowBar] = useState(false);
+  const [billing, setBilling] = useState<"monthly" | "quarterly">("monthly");
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [selectedPost, setSelectedPost] = useState<TopPost | null>(null);
+  const [showBackendModal, setShowBackendModal] = useState(false);
+  const [showStickyBar, setShowStickyBar] = useState(false);
 
-  // 手機浮動問價條：過了首屏才出現，並在快到頁尾時收起（避免遮住 CTA 卡）
+  // Detect saved language or browser locale
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem("ztg-lang");
+      if (saved === "hk" || saved === "cn") {
+        setLang(saved);
+        return;
+      }
+      const loc = navigator.language || "";
+      if (loc.startsWith("zh-CN") || loc.startsWith("zh-SG")) {
+        setLang("cn");
+      }
+    } catch {}
+  }, []);
+
+  // Show mobile sticky CTA bar after scrolling past hero, hide near bottom contact section
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      const bottom = document.body.scrollHeight - window.innerHeight;
-      setShowBar(y > 620 && y < bottom - 620);
+      const bottom = document.documentElement.scrollHeight - window.innerHeight;
+      setShowStickyBar(y > 560 && y < bottom - 520);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -465,547 +79,1204 @@ export default function Home() {
     };
   }, []);
 
+  // Close modals on Escape key
   useEffect(() => {
-    const saved = typeof window !== "undefined" ? window.localStorage.getItem("mk-lang") : null;
-    if (saved === "hk" || saved === "cn") {
-      setLang(saved);
-      return;
-    }
-    const loc = typeof navigator !== "undefined" ? navigator.language : "";
-    if (loc.startsWith("zh-HK") || loc.startsWith("zh-TW") || loc.startsWith("zh-MO")) {
-      setLang("hk");
-    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedPost(null);
+        setShowBackendModal(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const switchLang = (l: Lang) => {
     setLang(l);
     try {
-      window.localStorage.setItem("mk-lang", l);
+      window.localStorage.setItem("ztg-lang", l);
       document.documentElement.lang = l === "hk" ? "zh-Hant-HK" : "zh-Hans-CN";
     } catch {}
   };
 
-  const t = T[lang];
-  const wan = (n: number) =>
-    n >= 10000 ? `${(n / 10000).toFixed(n % 10000 === 0 ? 0 : 1).replace(/\.0$/, "")}萬` : n.toLocaleString();
-  const dashImgs = ["/dash-gba.jpg", "/dash-sz.jpg"];
-  const stepImgs = ["/scenes/step-brief.jpg", "/scenes/step-shoot.jpg", "/scenes/step-launch.jpg"];
+  const t = SITE_DATA[lang];
+  const stepIcons = [PenTool, Video, Rocket];
 
   return (
-    <main className="min-h-screen text-[#f3ead9] relative overflow-x-clip">
-      {/* Warm glows + paper grain */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-[560px] h-[560px] rounded-full bg-[#c5a065]/15 blur-[150px]" />
-      <div className="pointer-events-none absolute top-1/3 -right-52 w-[500px] h-[500px] rounded-full bg-[#e07b39]/[0.08] blur-[160px]" />
-      <div className="pointer-events-none absolute bottom-10 left-1/5 w-[440px] h-[440px] rounded-full bg-[#c5a065]/[0.08] blur-[150px]" />
+    <div className="min-h-screen bg-[#FAF7F2] text-[#1F271E] editorial-grain relative">
+      <ScrollProgressBar />
 
-      {/* Header */}
-      <div className="sticky top-0 z-20 bg-[#1b1712]/90 backdrop-blur-md border-b border-[#c5a065]/25">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-5 py-2.5">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <img src="/logo.png" alt="ZTG Studio logo" className="w-10 h-10 object-contain shrink-0" />
-            <div className="leading-tight min-w-0">
-              <div className="text-[13px] font-bold text-[#e8c98a] truncate">{t.brand}</div>
+      {/* Sticky Editorial Navigation */}
+      <header className="sticky top-0 z-40 bg-[#FAF7F2]/88 backdrop-blur-md border-b border-[#E6DEC8]">
+        <div className="max-w-6xl mx-auto px-5 md:px-6 h-[68px] flex items-center justify-between gap-4">
+          <a href="#" aria-label={t.brand} className="shrink-0">
+            <BrandLogo subtitle={t.brandSub} compact />
+          </a>
+
+          <nav className="hidden lg:flex items-center gap-7 text-[14px] font-medium text-[#475244]">
+            {t.nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="hover:text-[#1F271E] transition-colors link-underline py-1"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2.5 shrink-0">
+            <div
+              className="inline-flex items-center rounded-full bg-[#EFE9DC] p-0.5 border border-[#E2D8C3]"
+              role="group"
+              aria-label="Language switch"
+            >
+              <button
+                type="button"
+                onClick={() => switchLang("hk")}
+                className={`px-3 py-1 rounded-full text-[12.5px] font-semibold transition-all cursor-pointer ${
+                  lang === "hk"
+                    ? "bg-[#2C3E26] text-[#FAF7F2] shadow-xs"
+                    : "text-[#5C6657] hover:text-[#1F271E]"
+                }`}
+              >
+                繁
+              </button>
+              <button
+                type="button"
+                onClick={() => switchLang("cn")}
+                className={`px-3 py-1 rounded-full text-[12.5px] font-semibold transition-all cursor-pointer ${
+                  lang === "cn"
+                    ? "bg-[#2C3E26] text-[#FAF7F2] shadow-xs"
+                    : "text-[#5C6657] hover:text-[#1F271E]"
+                }`}
+              >
+                簡
+              </button>
             </div>
-          </div>
-          <div className="flex items-center shrink-0">
-            <button
-              onClick={() => switchLang("hk")}
-              className={`px-4 py-1 rounded-full border transition text-sm ${
-                lang === "hk"
-                  ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
-                  : "text-[#c2b6a3] border-white/15"
-              }`}
+
+            <a
+              href={waLink(`${t.brand}｜我想了解港人北上推廣報價`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[#D46B34] hover:bg-[#BE5C28] text-[#FFFFFF] text-[13px] font-bold px-4 py-2 transition-all shadow-[0_8px_20px_-8px_rgba(212,107,52,0.55)]"
             >
-              繁
-            </button>
-            <button
-              onClick={() => switchLang("cn")}
-              className={`ml-2 px-4 py-1 rounded-full border transition text-sm ${
-                lang === "cn"
-                  ? "bg-[#c5a065] text-[#221d17] font-bold border-[#c5a065]"
-                  : "text-[#c2b6a3] border-white/15"
-              }`}
-            >
-              簡
-            </button>
+              <MessageCircle className="w-3.5 h-3.5" />
+              {t.navCta}
+            </a>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Hero — 滿版圖疊字（ref: Havenly）＋統計列懸浮疊底邊（ref: AV portfolio） */}
-      <section className="relative min-h-[520px] md:min-h-[620px] max-h-[760px] flex items-center overflow-hidden">
-        <img src="/scenes/hero-shenzhen.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-[center_42%]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#181310]/95 via-[#1d1712]/80 to-[#221d17]/40" />
-        <div className="relative max-w-6xl mx-auto px-6 pt-10 md:pt-14 pb-14 md:pb-16 w-full md:grid md:grid-cols-[1.12fr_0.88fr] md:items-center md:gap-12">
-          <div>
-            <span className="inline-block bg-gradient-to-r from-[#b8813f] to-[#e0a866] text-[12.5px] font-bold rounded-full px-4 py-1.5 mb-5 text-[#241c11]">
-              {t.reelsBadge}
-            </span>
-            <h1 className="text-[38px] sm:text-5xl md:text-[56px] font-bold mb-4 tracking-normal leading-[1.12] text-[#f7efdd] max-w-xl text-left">{t.h1}</h1>
-            <p className="text-[17px] text-[#e9dcc2]/85 mb-2.5 max-w-lg text-left leading-relaxed">{t.tagline}</p>
-            <p className="text-[12.5px] text-[#b0a594] mb-7">{t.dateNote}</p>
-            <div className="flex gap-3 flex-col sm:flex-row">
-              <a href={waLink(`${t.h1}｜我想了解報價`)} className="text-center bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-7 py-3.5 text-sm shadow-[0_0_24px_rgba(232,155,92,0.35)]">
-                {t.ctaHero}
-              </a>
-              <a href="#pricing" className="text-center border border-[#e8c98a]/50 text-[#e8c98a] font-bold rounded-full px-7 py-3.5 text-sm transition hover:bg-[#e8c98a]/10">
-                {t.priceTitle}
-              </a>
-            </div>
-            {/* 手機版：把桌面右側的「合作保障」壓成一行 chip，填補下半版空白 */}
-            <div className="md:hidden flex flex-wrap gap-x-4 gap-y-1.5 mt-6">
-              {t.proof.map((x) => (
-                <span key={x.v} className="text-[12px] text-[#c2b6a3]">
-                  <b className="text-[#f5d98b] font-bold">{x.v}</b> {x.l}
-                </span>
-              ))}
-            </div>
-          </div>
+      <main>
+        {/* HERO — Editorial Kinetic Left + 9:16 Interactive Creator Reel Deck Right */}
+        <section className="relative pt-10 pb-14 md:pt-16 md:pb-20 overflow-hidden">
+          {/* Soft warm ambient wash (subtle editorial warmth, no neon glow) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-24 right-[-10%] w-[520px] h-[520px] rounded-full bg-[#E8D7B9]/45 blur-[120px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 left-[-8%] w-[420px] h-[420px] rounded-full bg-[#D8E2CE]/45 blur-[110px]"
+          />
 
-          {/* Social proof card — fills the empty sky */}
-          <aside className="hidden md:block">
-            <div className="rounded-[1.5rem] border border-[#e8c98a]/25 bg-[#1b1712]/75 p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)]">
-              <div className="text-[11px] font-bold tracking-[0.22em] text-[#c5a065] mb-5">{t.proofKicker}</div>
-              <div className="space-y-4">
-                {t.proof.map((pr) => (
-                  <div key={pr.l} className="flex items-baseline justify-between gap-3 border-b border-[#e8c98a]/12 pb-3 last:border-0 last:pb-0">
-                    <span className="text-[26px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{pr.v}</span>
-                    <span className="text-[13px] text-[#b9ad9a] text-right">{pr.l}</span>
+          <div className="relative max-w-6xl mx-auto px-5 md:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: EASE_EDITORIAL }}
+                className="text-[11.5px] md:text-[12px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-5"
+              >
+                {t.heroEyebrow}
+              </motion.p>
+
+              <h1 className="font-serif font-bold text-[36px] sm:text-[46px] md:text-[56px] leading-[1.16] tracking-tight text-[#1F271E] mb-6">
+                <MaskLine delay={0.08}>{t.h1Line1}</MaskLine>
+                <MaskLine delay={0.18} className="text-[#2C3E26]">
+                  {t.h1Line2}
+                </MaskLine>
+              </h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.28, ease: EASE_EDITORIAL }}
+                className="text-[16px] md:text-[17.5px] text-[#4C5649] leading-[1.75] max-w-xl mb-4"
+              >
+                {t.tagline}
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.36 }}
+                className="text-[12.5px] text-[#7A8274] mb-8"
+              >
+                {t.dateNote}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.4, ease: EASE_EDITORIAL }}
+                className="flex flex-col sm:flex-row gap-3.5 mb-10"
+              >
+                <a
+                  href={waLink(`${t.brand}｜我想了解港人北上推廣報價`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D46B34] hover:bg-[#BE5C28] text-white font-bold text-[15px] px-7 py-3.5 transition-all shadow-[0_14px_30px_-12px_rgba(212,107,52,0.6)] hover:-translate-y-0.5"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {t.ctaHero}
+                </a>
+                <a
+                  href="#pricing"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FFFFFF] hover:bg-[#F2ECE1] text-[#2C3E26] border border-[#D4CBB6] font-bold text-[15px] px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                >
+                  {t.ctaSecondary}
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </motion.div>
+
+              {/* Editorial Proof Row */}
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.5, ease: EASE_EDITORIAL }}
+                className="grid grid-cols-3 gap-4 pt-6 border-t border-[#E6DEC8] max-w-lg"
+              >
+                {t.heroProof.map((item) => (
+                  <div key={item.l}>
+                    <div className="font-display font-bold text-[20px] md:text-[22px] text-[#2C3E26] leading-none">
+                      {item.v}
+                    </div>
+                    <div className="text-[12px] text-[#636B5E] mt-1.5 leading-snug">
+                      {item.l}
+                    </div>
                   </div>
+                ))}
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.2, ease: EASE_EDITORIAL }}
+            >
+              <HeroReelShowcase
+                posts={t.topPosts}
+                lang={lang}
+                deckLabel={t.reelDeckLabel}
+                deckHint={t.reelDeckHint}
+                badgeTop={t.reelBadgeTop}
+                badgeBottom={t.reelBadgeBottom}
+                reachWord={t.reachWord}
+                likeWord={t.likeWord}
+                shareWord={t.shareWord}
+              />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* KINETIC MARQUEE */}
+        <MarqueeStrip items={t.marqueeItems} />
+
+        {/* 4 KEY METRICS — Animated Count-Up */}
+        <section className="py-12 md:py-16 border-b border-[#E6DEC8] bg-[#FFFFFF]/70">
+          <div className="max-w-6xl mx-auto px-5 md:px-6 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6">
+            {t.stats.map((s, idx) => (
+              <Reveal key={s.label} delay={idx * 0.07} className="lg:border-r lg:last:border-r-0 border-[#E6DEC8] lg:pr-6">
+                <div className="font-display font-extrabold text-[36px] sm:text-[42px] md:text-[46px] leading-none text-[#2C3E26] tracking-tight">
+                  <AnimatedNumber value={s.value} suffix={s.suffix} />
+                </div>
+                <div className="text-[14.5px] font-bold text-[#1F271E] mt-2.5">{s.label}</div>
+                <div className="text-[12.5px] text-[#6A7265] mt-1 leading-relaxed">{s.sub}</div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        {/* WHY US + VISUAL COST COMPARISON */}
+        <section className="py-16 md:py-24">
+          <div className="max-w-6xl mx-auto px-5 md:px-6">
+            <Reveal className="max-w-2xl mb-12">
+              <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-2.5">
+                {t.sellingEyebrow}
+              </p>
+              <h2 className="font-serif font-bold text-[28px] md:text-[38px] leading-[1.24] text-[#1F271E] mb-4">
+                {t.sellingTitle}
+              </h2>
+              <p className="text-[15.5px] text-[#556051] leading-relaxed">{t.sellingLead}</p>
+            </Reveal>
+
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-stretch mb-14">
+              <Reveal className="h-full">
+                <ParallaxFrame
+                  src="/scenes/hero-shenzhen.jpg"
+                  alt={t.sceneCaption}
+                  caption={t.sceneCaption}
+                  className="rounded-[1.75rem] h-full min-h-[280px] lg:min-h-[460px] border border-[#E6DEC8] shadow-[0_24px_50px_-28px_rgba(31,39,30,0.28)]"
+                />
+              </Reveal>
+
+              <div className="flex flex-col justify-between gap-4">
+                {t.points.map((p, idx) => (
+                  <Reveal key={p.num} delay={idx * 0.1}>
+                    <div className="creator-card rounded-[1.5rem] p-6">
+                      <div className="flex items-start gap-4">
+                        <span className="shrink-0 w-10 h-10 rounded-2xl bg-[#F2ECE1] border border-[#E2D8C3] text-[#2C3E26] font-display font-bold text-[14px] flex items-center justify-center">
+                          {p.num}
+                        </span>
+                        <div>
+                          <h3 className="text-[17.5px] font-bold text-[#1F271E] leading-snug mb-2">
+                            {p.title}
+                          </h3>
+                          <p className="text-[14.5px] text-[#586254] leading-relaxed">{p.body}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
-          </aside>
-        </div>
-      </section>
-      <section className="relative px-6 -mt-14 md:-mt-16 mb-4">
-        <div className="max-w-6xl mx-auto">
-          <div className={`${CARD} rounded-[1.6rem] px-6 py-7 grid grid-cols-2 md:grid-cols-4 gap-6 glow-gold`}>
-            {t.stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-[36px] md:text-[40px] leading-none font-bold font-mono tabular-nums text-[#f5d98b]">
-                  {s.value}
-                  {s.up ? <span className="text-[#e8c98a] text-lg ml-1">↗</span> : null}
-                </div>
-                <div className="text-[12.5px] text-[#b9ad9a] mt-2.5">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Selling points — 左圖右文 40/60（ref: Lunora） */}
-      <section className="px-6 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-10 border-l-4 border-[#c5a065] text-[#f7efdd]">
-            {t.sellingTitle}<span className="hidden sm:inline">{t.sellingSub}</span>
-          </h2>
-          <div className="grid md:grid-cols-[2fr_3fr] gap-10 items-stretch">
-          <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group min-h-[240px] md:min-h-[380px]">
-            <img src="/scenes/crowd-dongmen.jpg" alt="深圳東門食街人流實景" className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
-            <span className="absolute bottom-3 left-3 bg-[#181310]/85 text-[11px] text-[#e8c98a] rounded-full px-3 py-1">深圳東門 · 週末實景</span>
-          </div>
-          <div>
-          <div className="grid gap-6">
-            {t.points.map((p) => {
-              const [num, rest] = p.title.split("｜");
-              return (
-                <div key={p.title} className="glass-card rounded-2xl p-6 relative overflow-hidden">
-                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c5a065]/70 via-[#e8c98a] to-[#c5a065]/70" />
-                  <div className="font-mono text-[13px] text-[#c5a065] tracking-[0.2em] mb-2.5">{num}</div>
-                  <h3 className="text-[19px] font-bold leading-snug mb-3 text-[#f7efdd]">{rest}</h3>
-                  <p className="text-[15px] text-[#cbbfad] leading-relaxed">{p.body}</p>
+            {/* Dynamic Visual Cost Comparison Bar Chart */}
+            <Reveal>
+              <div className="rounded-[1.85rem] bg-[#F2ECE1] border border-[#E2D8C3] p-6 md:p-9">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 mb-7">
+                  <div>
+                    <h3 className="font-serif font-bold text-[22px] md:text-[26px] text-[#1F271E]">
+                      {t.cpmTitle}
+                    </h3>
+                    <p className="text-[13.5px] text-[#636B5E] mt-1">{t.cpmSub}</p>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-          </div>
-          <div className="mt-12">
-          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.cpmTitle}</h2>
-          <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch relative">
-            <div className="rounded-3xl border border-white/10 bg-[#2a241c]/80 p-5">
-              <h3 className="font-bold text-[#e0896a] text-[15px] mb-2">{t.cpmLeftTitle}</h3>
-              <p className="text-[15.5px] text-[#cbbfad] leading-relaxed">{t.cpmLeftBody}</p>
-            </div>
-            <div className="flex w-11 h-11 rounded-full bg-[#241e18] border-2 border-[#c5a065]/50 items-center justify-center font-bold text-sm text-[#e8c98a] z-10 mx-auto my-1 md:my-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
-              {t.vs}
-            </div>
-            <div className="rounded-3xl border-2 border-[#c5a065]/70 bg-[#c5a065]/[0.07] p-5">
-              <h3 className="font-bold text-[#e8c98a] text-[15px] mb-2">{t.cpmRightTitle}</h3>
-              <p className="text-[15.5px] text-[#f3ead9]/80 leading-relaxed">{t.cpmRightBody}</p>
-            </div>
-          </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Three-step process — breather between proof blocks */}
-      <section className="px-6 pb-12 md:pb-28">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6 md:mb-9">
-            <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.stepsTitle}</h2>
-            <p className="text-[14px] text-[#b0a594] md:pb-1.5">{t.stepsKicker}</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-3 md:gap-5">
-            {t.steps.map((s, i) => (
-              <div key={s.n} className="glass-card rounded-[1.1rem] md:rounded-[1.3rem] overflow-hidden group flex md:block">
-                <div className="relative hidden md:block md:w-full md:aspect-[16/10] overflow-hidden">
-                  <img src={stepImgs[i]} alt={s.t} className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#181310] via-[#181310]/35 to-transparent" />
-                  <span className="absolute left-4 bottom-3 text-[13px] font-bold tracking-[0.22em] text-[#f5d98b]">{s.n}</span>
-                </div>
-                <div className="p-4 md:p-5 min-w-0 flex items-start gap-3 md:block">
-                  <span className="md:hidden shrink-0 w-9 h-9 rounded-full border border-[#c5a065]/35 bg-[#c5a065]/12 text-[12px] font-bold text-[#f5d98b] flex items-center justify-center">{s.n}</span>
-                  <div className="min-w-0">
-                    <h3 className="text-[16px] md:text-[19px] font-bold text-[#f7efdd] mb-1 md:mb-2">{s.t}</h3>
-                    <p className="text-[13px] md:text-[14.5px] text-[#c2b6a3] leading-[1.55] md:leading-relaxed">{s.b}</p>
+                <div className="grid md:grid-cols-2 gap-5">
+                  {/* Traditional Meta Ad */}
+                  <div className="rounded-2xl bg-[#FFFFFF]/80 border border-[#E4DAC7] p-6 flex flex-col justify-between">
+                    <div>
+                      <div className="text-[13px] font-bold text-[#7A6B5D] mb-2">
+                        {t.cpmTraditional.label}
+                      </div>
+                      <div className="flex items-baseline gap-2 mb-4">
+                        <span className="font-display font-extrabold text-[30px] text-[#8E5341] leading-none">
+                          {t.cpmTraditional.cost}
+                        </span>
+                        <span className="text-[12.5px] text-[#7A6B5D]">{t.cpmTraditional.unit}</span>
+                      </div>
+                      {/* Animated Full Width Bar (High Cost) */}
+                      <div className="h-3 rounded-full bg-[#EFE9DC] overflow-hidden mb-3">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "92%" }}
+                          viewport={{ once: true, amount: 0.4 }}
+                          transition={{ duration: 1, ease: EASE_EDITORIAL }}
+                          className="h-full rounded-full bg-[#C47C64]"
+                        />
+                      </div>
+                      <div className="text-[13px] font-bold text-[#6E493B] mb-2">
+                        {t.cpmTraditional.total}
+                      </div>
+                    </div>
+                    <p className="text-[13.5px] text-[#636B5E] leading-relaxed">
+                      {t.cpmTraditional.desc}
+                    </p>
+                  </div>
+
+                  {/* Creator Matrix */}
+                  <div className="rounded-2xl bg-[#2C3E26] text-[#FAF7F2] p-6 flex flex-col justify-between shadow-[0_20px_40px_-20px_rgba(44,62,38,0.5)]">
+                    <div>
+                      <div className="text-[13px] font-bold text-[#E6C98A] mb-2">
+                        {t.cpmMatrix.label}
+                      </div>
+                      <div className="flex items-baseline gap-2 mb-4">
+                        <span className="font-display font-extrabold text-[30px] text-[#FAF7F2] leading-none">
+                          {t.cpmMatrix.cost}
+                        </span>
+                        <span className="text-[12.5px] text-[#FAF7F2]/75">{t.cpmMatrix.unit}</span>
+                      </div>
+                      {/* Animated Tiny Cost Bar (Ultra High Efficiency) */}
+                      <div className="h-3 rounded-full bg-[#FAF7F2]/15 overflow-hidden mb-3">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "14%" }}
+                          viewport={{ once: true, amount: 0.4 }}
+                          transition={{ duration: 1, delay: 0.15, ease: EASE_EDITORIAL }}
+                          className="h-full rounded-full bg-[#D46B34]"
+                        />
+                      </div>
+                      <div className="text-[13px] font-bold text-[#F3D79B] mb-2">
+                        {t.cpmMatrix.total}
+                      </div>
+                    </div>
+                    <p className="text-[13.5px] text-[#FAF7F2]/82 leading-relaxed">
+                      {t.cpmMatrix.desc}
+                    </p>
                   </div>
                 </div>
               </div>
-            ))}
+            </Reveal>
           </div>
-          <p className="text-center text-[14px] text-[#e8c98a] mt-7">{t.stepsNote}</p>
-        </div>
-      </section>
+        </section>
 
-      {/* Dashboards — real backend screenshot, readable crop */}
-      <section className="px-6 py-16 md:py-24">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-8 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.dashTitle}</h2>
-          <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-stretch">
-            <figure className="rounded-[1.4rem] border border-[#c5a065]/25 bg-[#2a241c]/80 p-3 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)] flex flex-col justify-center">
-              <img src="/dash-gba-crop.png" alt="Meta 商務套件 28 天後台數據" className="w-full rounded-[1rem] block" />
-              <figcaption className="flex items-center justify-between gap-3 text-[11.5px] text-[#9c9282] px-1 pt-2.5">
-                <span>{t.dashCapName}</span>
-                <span className="shrink-0">{t.dashCapDate}</span>
-              </figcaption>
-            </figure>
-            <div className="flex flex-col justify-between h-full">
-              {t.dashes.map((d) => (
-                <div key={d.name} className="rounded-2xl border border-[#e8c98a]/15 bg-white/[0.04] px-5 py-5 md:py-6 flex-1 flex flex-col justify-center mb-3 last:mb-0">
-                  <div className="flex items-baseline justify-between gap-3 mb-3">
-                    <span className="text-[13.5px] font-semibold text-[#f3ead9]">{d.name}</span>
-                    <span className="text-[12px] text-[#9c9282] shrink-0">{d.fans}</span>
+        {/* INVERTED DEEP OLIVE SECTION — 879萬 Verified Backend Growth */}
+        <section
+          id="metrics"
+          className="scroll-mt-20 py-20 md:py-28 bg-[#1B2419] text-[#FAF7F2] relative overflow-hidden"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 right-0 w-[480px] h-[480px] rounded-full bg-[#C59B56]/10 blur-[140px]"
+          />
+          <div className="relative max-w-6xl mx-auto px-5 md:px-6">
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
+              <Reveal>
+                <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#E6C98A] uppercase mb-3">
+                  {t.dashEyebrow}
+                </p>
+                <h2 className="font-serif font-bold text-[28px] md:text-[38px] leading-tight mb-6">
+                  {t.dashTitle}
+                </h2>
+                <div className="font-display font-extrabold text-[72px] sm:text-[96px] leading-[0.95] text-[#F2D59B] tracking-tight mb-5">
+                  <AnimatedNumber value={879} suffix={lang === "hk" ? "萬" : "万"} />
+                </div>
+                <p className="text-[17px] md:text-[18.5px] font-medium text-[#FAF7F2] leading-relaxed mb-3">
+                  {t.bigLine}
+                </p>
+                <p className="text-[14.5px] text-[#FAF7F2]/70 leading-relaxed mb-8">
+                  {t.dashSum}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setShowBackendModal(true)}
+                  className="inline-flex items-center gap-2 rounded-full bg-[#FAF7F2]/10 hover:bg-[#FAF7F2]/18 border border-[#FAF7F2]/20 text-[#FAF7F2] text-[13.5px] font-semibold px-5 py-2.5 transition-all cursor-pointer"
+                >
+                  <ShieldCheck className="w-4 h-4 text-[#E6C98A]" />
+                  {t.dashProofBtn}
+                </button>
+              </Reveal>
+
+              <div className="space-y-5">
+                {t.dashes.map((d, idx) => (
+                  <Reveal key={d.name} delay={idx * 0.12}>
+                    <div className="rounded-[1.6rem] bg-[#FAF7F2]/[0.06] border border-[#FAF7F2]/12 p-6 md:p-7">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                        <div>
+                          <span className="inline-block text-[11px] font-bold tracking-wide text-[#E6C98A] bg-[#E6C98A]/12 border border-[#E6C98A]/25 rounded-full px-2.5 py-0.5 mb-2">
+                            {d.badge}
+                          </span>
+                          <h3 className="text-[17px] font-bold text-[#FAF7F2]">{d.name}</h3>
+                        </div>
+                        <span className="text-[13px] font-display font-semibold text-[#FAF7F2]/70">
+                          {d.fans}
+                        </span>
+                      </div>
+
+                      {/* Animated Growth Momentum Bar */}
+                      <div className="h-1.5 rounded-full bg-[#FAF7F2]/10 overflow-hidden mb-5">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${d.growthPct}%` }}
+                          viewport={{ once: true, amount: 0.4 }}
+                          transition={{ duration: 1.1, delay: idx * 0.15, ease: EASE_EDITORIAL }}
+                          className="h-full rounded-full bg-gradient-to-r from-[#C59B56] to-[#D46B34]"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-3">
+                        {d.nums.map((n) => (
+                          <div
+                            key={n.l}
+                            className="rounded-xl bg-[#FAF7F2]/[0.05] border border-[#FAF7F2]/8 p-3"
+                          >
+                            <div className="font-display font-bold text-[20px] md:text-[24px] text-[#FAF7F2] tabular-nums leading-none">
+                              {n.v}
+                            </div>
+                            <div className="text-[11px] text-[#FAF7F2]/65 mt-1.5">{n.l}</div>
+                            <div className="inline-flex items-center gap-0.5 text-[11.5px] font-bold text-[#8FD48B] mt-1">
+                              <TrendingUp className="w-3 h-3" />
+                              {n.delta}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CASE STUDY & VIRAL WORKS INTERACTIVE GALLERY */}
+        <section id="works" className="scroll-mt-20 py-16 md:py-24">
+          <div className="max-w-6xl mx-auto px-5 md:px-6">
+            {/* Case Study Editorial Strip */}
+            <Reveal className="mb-16">
+              <div className="rounded-[1.85rem] bg-[#FFFFFF] border border-[#E6DEC8] p-6 md:p-9 shadow-[0_20px_45px_-28px_rgba(31,39,30,0.16)]">
+                <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-center">
+                  <div>
+                    <span className="inline-block text-[11.5px] font-bold tracking-[0.16em] text-[#D46B34] uppercase mb-2">
+                      {t.caseLabel}
+                    </span>
+                    <h2 className="font-serif font-bold text-[23px] md:text-[28px] text-[#1F271E] mb-3">
+                      {t.caseName}
+                    </h2>
+                    <p className="text-[15px] text-[#556051] leading-relaxed">{t.caseBody}</p>
                   </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    {d.nums.map((n) => (
-                      <div key={n.l}>
-                        <div className="text-[24px] md:text-[27px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{n.v}</div>
-                        <div className="text-[11px] text-[#a89d8b] mt-1.5">{n.l}</div>
+                  <div className="grid grid-cols-3 gap-3">
+                    {t.caseNums.map((n) => (
+                      <div
+                        key={n.l}
+                        className="rounded-2xl bg-[#FAF7F2] border border-[#E6DEC8] p-4 text-center"
+                      >
+                        <div className="font-display font-extrabold text-[22px] md:text-[26px] text-[#2C3E26] tabular-nums leading-none">
+                          {n.v}
+                        </div>
+                        <div className="text-[11.5px] text-[#636B5E] mt-2 leading-snug">{n.l}</div>
                       </div>
                     ))}
                   </div>
                 </div>
-              ))}
-              <p className="text-[14.5px] text-[#c2b6a3] leading-relaxed mt-4">{t.dashSum}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 879萬 — the single big number moment */}
-      <section className="px-6 pb-14 md:pb-20">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="font-mono font-bold tabular-nums leading-none text-[#f5d98b] text-[19vw] md:text-[6.5rem]">
-            879<span className="text-[0.42em]">萬</span>
-          </div>
-          <p className="text-[15px] text-[#c2b6a3] mt-4">{t.bigLine}</p>
-        </div>
-      </section>
-      {/* Transition — the walkway HK people actually take */}
-      <div className="relative h-[170px] md:h-[230px] overflow-hidden">
-        <img src="/scenes/bay-band.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#221d17] via-[#221d17]/10 to-[#221d17]" />
-        <div className="absolute inset-x-0 bottom-8 md:bottom-12">
-          <p className="max-w-6xl mx-auto px-6 text-[12px] tracking-[0.18em] text-[#e8c98a]/80">深圳灣公園 · 週末的香港人</p>
-        </div>
-      </div>
-
-      {/* Case study */}
-      <section className="px-6 section-screen">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.caseTitle}</h2>
-          <div className={`${CARD} p-5`}>
-            <h3 className="font-semibold text-[15px] mb-1 text-[#f3ead9]">{t.caseName}</h3>
-            <div className="grid grid-cols-3 gap-2 my-4">
-              {t.caseNums.map((n) => (
-                <div key={n.l} className={`${CARD} py-2.5 px-1 text-center`}>
-                  <div className="text-base font-bold font-mono tabular-nums text-[#f5d98b]">{n.v}</div>
-                  <div className="text-[10px] text-[#b9ad9a]">{n.l}</div>
-                </div>
-              ))}
-            </div>
-            <p className="text-[15.5px] text-[#b9ad9a] leading-relaxed">{t.caseBody}</p>
-          </div>
-        </div>
-        <div className="max-w-6xl mx-auto mt-16 md:mt-20">
-          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.topTitle}</h2>
-          {t.topPosts.filter((p) => p.hot).map((p) => (
-            <div key={p.name} className="glass-card featured rounded-[1.4rem] overflow-hidden grid md:grid-cols-[1fr_1.15fr] mb-6 group">
-              <div className="overflow-hidden">
-                <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-[4/3] group-hover:scale-[1.04] transition-transform duration-500" />
               </div>
-              <div className="p-6 md:p-7 flex flex-col justify-center">
-                <div className="text-[12px] font-bold tracking-[0.2em] text-[#c5a065] mb-2">TOP 1</div>
-                <div className="text-xl font-bold text-[#f7efdd] mb-4">{p.name}</div>
-                <div className="flex items-end gap-6 flex-wrap">
-                  <div>
-                    <div className="text-5xl font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</div>
-                    <div className="text-[12px] text-[#b9ad9a] mt-1.5">{t.reachWord}</div>
-                  </div>
-                  <div className="pb-1">
-                    <div className="text-3xl font-bold font-mono tabular-nums text-[#f0a08a] leading-none">{p.likes.toLocaleString()}</div>
-                    <div className="text-[12px] text-[#b9ad9a] mt-1.5">{t.likeWord}</div>
-                  </div>
-                </div>
-                <p className="text-[13px] text-[#b9ad9a] mt-5">{t.shareNote}</p>
-              </div>
-            </div>
-          ))}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
-            {t.topPosts.filter((p) => !p.hot).map((p) => (
-              <div key={p.name} className="glass-card rounded-[1rem] sm:rounded-[1.2rem] overflow-hidden group flex sm:block">
-                <div className="overflow-hidden shrink-0 w-[104px] sm:w-full">
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover aspect-[1/1] sm:aspect-[4/3] group-hover:scale-[1.05] transition-transform duration-500" />
-                </div>
-                <div className="p-3.5 sm:p-4 min-w-0 flex flex-col justify-center sm:block">
-                  <div className="font-semibold text-[13.5px] sm:text-[14px] text-[#f3ead9] mb-1.5 sm:mb-2 truncate">{p.name}</div>
-                  <div className="flex items-baseline gap-2 sm:block">
-                    <span className="text-[19px] sm:text-[22px] font-bold font-mono tabular-nums text-[#f5d98b] leading-none">{wan(p.reach)}</span>
-                    <span className="text-[11px] text-[#b0a594] sm:block sm:mt-1">{t.reachWord}</span>
-                  </div>
-                  <div className="flex items-baseline gap-1.5 sm:mt-2">
-                    <span className="text-[14px] sm:text-[16px] font-bold font-mono tabular-nums text-[#f0a08a]">{p.likes.toLocaleString()}</span>
-                    <span className="text-[11px] text-[#b0a594]">{t.likeWord}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          </div>
-      </section>
+            </Reveal>
 
-      {/* Lineup — 左圖右表（ref: Lunora newsletter） */}
-      <section className="px-6 pt-20 pb-10 md:py-28">
-        <div className="max-w-6xl mx-auto">
-        <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-8 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.lineupTitle}</h2>
-        <div className="grid md:grid-cols-[1fr_2.6fr] gap-8 items-center">
-        <div className="relative rounded-[1.4rem] overflow-hidden border border-white/10 group hidden md:block">
-          <img src="/scenes/border-real.jpg" alt="福田口岸抵達大堂實景" className="w-full object-cover aspect-[3/4] group-hover:scale-[1.03] transition-transform duration-500" />
-          <span className="absolute bottom-3 left-3 bg-[#181310]/85 text-[11px] text-[#e8c98a] rounded-full px-3 py-1">福田口岸 · 抵達大堂</span>
-        </div>
-        <div>
-          <div className="overflow-hidden">
-            <table className="w-full text-[15px]">
-              <thead>
-                <tr className="bg-white/[0.04] text-left text-[#cbbfad]">
-                  <th className="px-4 py-3">{t.lineupHead[0]}</th>
-                  <th className="px-4 py-3">{t.lineupHead[1]}</th>
-                  <th className="px-4 py-3 hidden md:table-cell">{t.lineupHead[2]}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {t.lineup.map((m) => (
-                  <tr key={m.name} className="border-t border-white/5">
-                    <td className="px-4 py-3 align-top">
-                      <div className="flex items-start gap-2">
-                        <span className={`mt-0.5 shrink-0 text-[10.5px] font-bold rounded px-1.5 py-0.5 border ${
-                          m.tier === "主力"
-                            ? "text-[#f5d98b] border-[#c5a065]/45 bg-[#c5a065]/15"
-                            : m.tier === "私域"
-                            ? "text-[#f0a08a] border-[#f0a08a]/35 bg-[#f0a08a]/10"
-                            : "text-[#a89d8b] border-white/12 bg-white/[0.04]"
-                        }`}>{m.tier}</span>
-                        <span className="min-w-0">{m.name}</span>
+            {/* Viral Works Gallery */}
+            <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-9">
+              <div>
+                <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-2">
+                  {t.worksEyebrow}
+                </p>
+                <h2 className="font-serif font-bold text-[28px] md:text-[36px] text-[#1F271E]">
+                  {t.topTitle}
+                </h2>
+              </div>
+              <p className="text-[13.5px] text-[#6A7265]">{t.topSub}</p>
+            </Reveal>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {t.topPosts.map((post, idx) => (
+                <Reveal key={post.id} delay={idx * 0.08}>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPost(post)}
+                    className="group w-full text-left creator-card rounded-[1.5rem] overflow-hidden flex flex-col cursor-pointer"
+                  >
+                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1B2419]">
+                      <img
+                        src={post.img}
+                        alt={post.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#161D15] via-[#161D15]/25 to-transparent" />
+                      <span
+                        className={`absolute top-3.5 left-3.5 text-[11px] font-bold px-3 py-1 rounded-full ${
+                          post.hot
+                            ? "bg-[#D46B34] text-white"
+                            : "bg-[#FAF7F2]/92 text-[#1F271E]"
+                        }`}
+                      >
+                        {post.tag}
+                      </span>
+                      <div className="absolute bottom-3.5 inset-x-4 text-[#FAF7F2]">
+                        <div className="text-[11px] text-[#E6C98A] font-medium mb-0.5">
+                          {post.platform}
+                        </div>
+                        <div className="font-bold text-[16px] leading-snug">{post.name}</div>
                       </div>
-                      <div className="md:hidden text-[12.5px] font-normal text-[#b0a594] mt-1 leading-snug pl-[3.1rem]">{m.note}</div>
-                    </td>
-                    <td className="px-4 py-3 align-top font-bold font-mono tabular-nums text-[#f5d98b] whitespace-nowrap">{m.fans}</td>
-                    <td className="px-4 py-3 text-[#b9ad9a] hidden md:table-cell">{m.note}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-[13px] text-[#b9ad9a] leading-relaxed mt-4 max-w-2xl">{t.lineupNote}</p>
-        </div>
-        </div>
-        </div>
-      </section>
+                    </div>
 
-      {/* Mid CTA — catch the "interested but unsure" reader before the price wall */}
-      <section className="px-6 pt-2 pb-4 md:pb-8">
-        <div className="max-w-6xl mx-auto rounded-3xl border border-[#c5a065]/30 bg-[#c5a065]/[0.06] px-6 md:px-10 py-7 md:py-9 flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
-          <div className="flex-1">
-            <p className="text-[19px] md:text-[23px] font-bold text-[#f7efdd] mb-2 leading-snug">{t.midCtaTitle}</p>
-            <p className="text-[13.5px] md:text-[14.5px] text-[#b9ad9a] leading-relaxed">{t.midCtaBody}</p>
+                    <div className="p-4 bg-[#FFFFFF] flex-1 flex flex-col justify-between">
+                      <div className="grid grid-cols-3 gap-2 text-center py-1">
+                        <div>
+                          <div className="font-display font-bold text-[16px] text-[#2C3E26] tabular-nums">
+                            {formatWan(post.reach, lang)}
+                          </div>
+                          <div className="text-[11px] text-[#7A8274]">{t.reachWord}</div>
+                        </div>
+                        <div className="border-x border-[#EFE9DC]">
+                          <div className="font-display font-bold text-[16px] text-[#D46B34] tabular-nums">
+                            {post.likes.toLocaleString()}
+                          </div>
+                          <div className="text-[11px] text-[#7A8274]">{t.likeWord}</div>
+                        </div>
+                        <div>
+                          <div className="font-display font-bold text-[16px] text-[#1F271E] tabular-nums">
+                            {post.shares.toLocaleString()}
+                          </div>
+                          <div className="text-[11px] text-[#7A8274]">{t.shareWord}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </Reveal>
+              ))}
+            </div>
           </div>
-          <a
-            href={waLink(t.midCtaMsg)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#e8b479] to-[#f0c48a] text-[#2a1d10] font-bold text-[15px] px-7 py-3.5 hover:brightness-105 transition"
-          >
-            {t.midCtaBtn}
-          </a>
-        </div>
-      </section>
+        </section>
 
-      {/* Pricing — Morandi cards */}
-      <section id="pricing" className="px-6 section-screen scroll-mt-24">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-[26px] md:text-[34px] font-bold leading-snug pl-3 mb-6 border-l-4 border-[#c5a065] text-[#f7efdd]">{t.priceTitle}</h2>
-          <div className="rounded-3xl border-2 border-[#e8c98a]/70 bg-gradient-to-r from-[#c5a065]/25 via-[#e8c98a]/15 to-[#c5a065]/25 px-4 md:px-6 py-3.5 mb-8 text-center text-[13.5px] sm:text-[15px] md:text-base">
-            <p className="text-[16px] md:text-[17px] font-bold text-[#f5d98b] tracking-wide">{t.qBannerTitle}</p>
+        {/* SCENIC PARALLAX BAND — Shenzhen Bay */}
+        <div className="relative h-[190px] md:h-[250px] overflow-hidden border-y border-[#E6DEC8]">
+          <ParallaxFrame
+            src="/scenes/bay-band.jpg"
+            alt={t.sceneCaption}
+            className="w-full h-full"
+          />
+          <div className="absolute inset-0 bg-[#1B2419]/30 pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-6 md:bottom-8 pointer-events-none">
+            <div className="max-w-6xl mx-auto px-5 md:px-6 flex items-center justify-between text-[#FAF7F2]">
+              <span className="text-[12.5px] font-medium tracking-[0.18em] uppercase drop-shadow">
+                {t.sceneCaption}
+              </span>
+            </div>
           </div>
-          <div className="grid gap-5 md:grid-cols-3 md:gap-6 mb-8">
-            {t.packages.map((p) => {
-              const morandi =
-                p.star === "top"
-                  ? "featured bg-[#e8c9a8]/15 border-2 border-[#e8c98a]/60"
-                  : p.star === "value"
-                    ? "featured bg-[#e8c98a]/[0.12] border-2 border-[#e8c98a]/55"
-                    : "bg-[#d9c7a7]/[0.07] border border-[#c5a065]/20";
-              return (
-                <div
-                  key={p.name}
-                  className={`h-full rounded-3xl p-6 flex flex-col relative ${morandi} ${
-                    p.star ? "glow-gold" : ""
+        </div>
+
+        {/* MEDIA LINEUP — Clickable Real Channels */}
+        <section id="lineup" className="scroll-mt-20 py-16 md:py-24 bg-[#F2ECE1]/70">
+          <div className="max-w-6xl mx-auto px-5 md:px-6">
+            <Reveal className="max-w-2xl mb-10">
+              <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-2">
+                {t.lineupEyebrow}
+              </p>
+              <h2 className="font-serif font-bold text-[28px] md:text-[36px] text-[#1F271E] mb-3">
+                {t.lineupTitle}
+              </h2>
+              <p className="text-[15px] text-[#556051] leading-relaxed">{t.lineupSub}</p>
+            </Reveal>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {t.lineup.map((ch, idx) => (
+                <Reveal key={ch.name} delay={idx * 0.06}>
+                  <a
+                    href={ch.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group creator-card rounded-2xl p-5 flex items-start justify-between gap-4 h-full"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span
+                          className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                            ch.tier === "主力"
+                              ? "bg-[#2C3E26] text-[#FAF7F2] border-[#2C3E26]"
+                              : ch.tier === "私域"
+                              ? "bg-[#D46B34]/12 text-[#B85420] border-[#D46B34]/30"
+                              : "bg-[#F2ECE1] text-[#4E594A] border-[#DCD2BD]"
+                          }`}
+                        >
+                          {ch.tier}
+                        </span>
+                        <span className="text-[11.5px] text-[#7A8274] font-medium">
+                          {ch.platform}
+                        </span>
+                      </div>
+                      <h3 className="text-[16px] font-bold text-[#1F271E] group-hover:text-[#D46B34] transition-colors leading-snug mb-1.5">
+                        {ch.name}
+                      </h3>
+                      <p className="text-[13.5px] text-[#5D6759] leading-relaxed">{ch.note}</p>
+                    </div>
+
+                    <div className="shrink-0 text-right flex flex-col items-end justify-between self-stretch">
+                      <div>
+                        <div className="font-display font-extrabold text-[22px] text-[#2C3E26] tabular-nums leading-none">
+                          {ch.fans}
+                        </div>
+                      </div>
+                      <span className="mt-4 inline-flex items-center gap-1 text-[12px] font-semibold text-[#D46B34] group-hover:translate-x-0.5 transition-transform">
+                        {t.lineupVisit}
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.2}>
+              <p className="text-[13px] text-[#6A7265] mt-5 leading-relaxed">{t.lineupNote}</p>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* THREE-STEP DELIVERY WORKFLOW */}
+        <section className="py-16 md:py-24">
+          <div className="max-w-6xl mx-auto px-5 md:px-6">
+            <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-12">
+              <div>
+                <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-2">
+                  {t.stepsEyebrow}
+                </p>
+                <h2 className="font-serif font-bold text-[28px] md:text-[36px] text-[#1F271E]">
+                  {t.stepsTitle}
+                </h2>
+              </div>
+              <p className="text-[14px] text-[#636B5E]">{t.stepsKicker}</p>
+            </Reveal>
+
+            <div className="grid md:grid-cols-3 gap-5 mb-14">
+              {t.steps.map((step, idx) => {
+                const Icon = stepIcons[idx] ?? Rocket;
+                return (
+                  <Reveal key={step.n} delay={idx * 0.1}>
+                    <div className="creator-card rounded-[1.6rem] p-7 h-full flex flex-col">
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="w-12 h-12 rounded-2xl bg-[#2C3E26] text-[#FAF7F2] flex items-center justify-center">
+                          <Icon className="w-5 h-5" />
+                        </span>
+                        <span className="font-display font-extrabold text-[34px] text-[#E6DEC8] leading-none">
+                          {step.n}
+                        </span>
+                      </div>
+                      <h3 className="text-[19px] font-bold text-[#1F271E] mb-2.5">{step.t}</h3>
+                      <p className="text-[14.5px] text-[#586254] leading-relaxed">{step.b}</p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            {/* Mid CTA Banner */}
+            <Reveal>
+              <div className="rounded-[1.85rem] bg-[#2C3E26] text-[#FAF7F2] p-7 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-[0_24px_50px_-24px_rgba(44,62,38,0.55)]">
+                <div className="max-w-2xl">
+                  <h3 className="font-serif font-bold text-[22px] md:text-[26px] leading-snug mb-2">
+                    {t.midCtaTitle}
+                  </h3>
+                  <p className="text-[14.5px] text-[#FAF7F2]/78 leading-relaxed">{t.midCtaBody}</p>
+                </div>
+                <a
+                  href={waLink(t.midCtaMsg)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-[#D46B34] hover:bg-[#E07A43] text-white font-bold text-[15px] px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {t.midCtaBtn}
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* PRICING WITH INTERACTIVE MONTHLY / QUARTERLY 85折 TOGGLE */}
+        <section id="pricing" className="scroll-mt-20 py-16 md:py-24 bg-[#F2ECE1]/65 border-y border-[#E6DEC8]">
+          <div className="max-w-6xl mx-auto px-5 md:px-6">
+            <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+              <div>
+                <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-2">
+                  {t.priceEyebrow}
+                </p>
+                <h2 className="font-serif font-bold text-[28px] md:text-[38px] text-[#1F271E] mb-2">
+                  {t.priceTitle}
+                </h2>
+                <p className="text-[15px] text-[#556051]">{t.priceSub}</p>
+              </div>
+
+              {/* Interactive Spring Billing Switch */}
+              <div className="inline-flex items-center self-start md:self-auto bg-[#FFFFFF] border border-[#DDD3BE] rounded-full p-1.5 shadow-xs">
+                <button
+                  type="button"
+                  onClick={() => setBilling("monthly")}
+                  className={`relative px-4 py-2 rounded-full text-[13.5px] font-bold transition-colors cursor-pointer ${
+                    billing === "monthly" ? "text-[#FAF7F2]" : "text-[#586254]"
                   }`}
                 >
-                  <div className="h-[34px] mb-1.5 flex items-center justify-start shrink-0">
-                    {p.star ? (
-                      <span className="bg-[#f5d98b] text-[#3a2f1c] text-[12.5px] font-bold rounded-full px-5 py-1.5 shadow-[0_4px_14px_rgba(0,0,0,0.4)]">
-                        {p.tag}
-                      </span>
-                    ) : (
-                      <span className="text-[14px] font-semibold text-[#f0b48a]">{p.tag}</span>
-                    )}
-                  </div>
-                  <div className="mb-2.5 flex items-baseline gap-2">
-                    <span className="text-[23px] sm:text-[27px] leading-none font-bold font-mono tabular-nums text-[#f7efdd]">{p.name}</span>
-                  </div>
-                  <p className="text-[13px] text-[#cbbfad] leading-snug mb-3">{p.who}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {p.specs.map(([k, v]) => (
-                      <span
-                        key={k}
-                        className="text-[11.5px] leading-none rounded-full border border-[#c5a065]/35 bg-[#c5a065]/10 px-2.5 py-1.5 text-[#b0a594]"
-                      >
-                        {k} <b className="text-[#f5d98b] font-bold">{v}</b>
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-[14.5px] text-[#e8c98a]/90 leading-relaxed border-l-2 border-[#c5a065]/40 pl-2.5 mb-3.5">
-                    「{p.hook}」
-                  </p>
-                  <ul className="space-y-2 mb-3.5">
-                    {p.items.slice(0, 4).map((i) => (
-                      <li key={i} className="text-[14px] text-[#c2b6a3] leading-snug flex gap-1.5">
-                        <span className="text-[#c5a065] shrink-0">✦</span>
-                        <span>{i}</span>
-                      </li>
-                    ))}
-                    {p.items.length > 4 ? (
-                      <li className="text-[12.5px] text-[#948a7a] leading-snug pt-0.5">
-                        {t.moreItems.replace("{n}", String(p.items.length - 4))}
-                      </li>
-                    ) : null}
-                  </ul>
-                  {p.value ? (
-                    <p className="text-[13px] text-[#e8c98a] font-semibold mb-3.5">{p.value}</p>
+                  {billing === "monthly" ? (
+                    <motion.span
+                      layoutId="billing-pill"
+                      transition={{ type: "spring", stiffness: 360, damping: 28 }}
+                      className="absolute inset-0 rounded-full bg-[#2C3E26]"
+                    />
                   ) : null}
-                  <a
-                    href={waLink(`${p.name}｜想了解詳情`)}
-                    className={`mt-auto text-center text-sm font-bold rounded-full py-2.5 px-4 ${
-                      p.star
-                        ? "bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114]"
-                        : "border border-[#c5a065]/40 text-[#e8c98a]"
+                  <span className="relative z-10">{t.billingMonthly}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setBilling("quarterly")}
+                  className={`relative px-4 py-2 rounded-full text-[13.5px] font-bold transition-colors inline-flex items-center gap-1.5 cursor-pointer ${
+                    billing === "quarterly" ? "text-[#FAF7F2]" : "text-[#586254]"
+                  }`}
+                >
+                  {billing === "quarterly" ? (
+                    <motion.span
+                      layoutId="billing-pill"
+                      transition={{ type: "spring", stiffness: 360, damping: 28 }}
+                      className="absolute inset-0 rounded-full bg-[#D46B34]"
+                    />
+                  ) : null}
+                  <span className="relative z-10">{t.billingQuarterly}</span>
+                  <span
+                    className={`relative z-10 text-[10.5px] px-2 py-0.5 rounded-full font-extrabold ${
+                      billing === "quarterly"
+                        ? "bg-[#FAF7F2] text-[#D46B34]"
+                        : "bg-[#D46B34]/15 text-[#D46B34]"
                     }`}
                   >
-                    {t.bookNow}
+                    {t.billingBadge}
+                  </span>
+                </button>
+              </div>
+            </Reveal>
+
+            <div className="grid lg:grid-cols-3 gap-6 mb-10 items-stretch">
+              {t.packages.map((pkg, idx) => {
+                const discounted = Math.round(pkg.monthlyPrice * 0.85);
+                const shownPrice = billing === "quarterly" ? discounted : pkg.monthlyPrice;
+                const totalSaved = (pkg.monthlyPrice - discounted) * 3;
+                const isFeatured = Boolean(pkg.featured);
+
+                return (
+                  <Reveal key={pkg.id} delay={idx * 0.08} className="h-full">
+                    <div
+                      className={`h-full rounded-[1.8rem] p-7 flex flex-col transition-all duration-300 ${
+                        isFeatured
+                          ? "bg-[#2C3E26] text-[#FAF7F2] border-2 border-[#2C3E26] shadow-[0_28px_60px_-24px_rgba(44,62,38,0.55)] lg:-translate-y-2"
+                          : "bg-[#FFFFFF] text-[#1F271E] border border-[#E6DEC8] shadow-[0_14px_34px_-22px_rgba(31,39,30,0.16)]"
+                      }`}
+                    >
+                      <div className="mb-3">
+                        <span
+                          className={`inline-block text-[12px] font-bold rounded-full px-3.5 py-1 ${
+                            isFeatured
+                              ? "bg-[#E6C98A] text-[#1F271E]"
+                              : "bg-[#F2ECE1] text-[#D46B34]"
+                          }`}
+                        >
+                          {pkg.tag}
+                        </span>
+                      </div>
+
+                      <h3 className="font-serif font-bold text-[22px] mb-2">{pkg.name}</h3>
+
+                      <div className="flex items-baseline gap-2 mb-1">
+                        <AnimatedPrice
+                          price={shownPrice}
+                          className={`font-display font-extrabold text-[40px] leading-none ${
+                            isFeatured ? "text-[#FAF7F2]" : "text-[#2C3E26]"
+                          }`}
+                        />
+                        <span
+                          className={`text-[13px] ${
+                            isFeatured ? "text-[#FAF7F2]/70" : "text-[#7A8274]"
+                          }`}
+                        >
+                          HKD {billing === "quarterly" ? t.perMonth : ""}
+                        </span>
+                      </div>
+
+                      <div className="min-h-[22px] mb-4">
+                        {billing === "quarterly" ? (
+                          <span
+                            className={`text-[12px] font-semibold ${
+                              isFeatured ? "text-[#E6C98A]" : "text-[#D46B34]"
+                            }`}
+                          >
+                            {t.quarterlySavePrefix}
+                            {totalSaved.toLocaleString()} · {t.quarterlyNote}
+                          </span>
+                        ) : (
+                          <span
+                            className={`text-[12px] ${
+                              isFeatured ? "text-[#FAF7F2]/60" : "text-[#7A8274]"
+                            }`}
+                          >
+                            {pkg.footnote}
+                          </span>
+                        )}
+                      </div>
+
+                      <p
+                        className={`text-[13.5px] leading-relaxed mb-4 ${
+                          isFeatured ? "text-[#FAF7F2]/80" : "text-[#586254]"
+                        }`}
+                      >
+                        {pkg.who}
+                      </p>
+
+                      {/* Spec chips */}
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {pkg.specs.map(([k, v]) => (
+                          <span
+                            key={k}
+                            className={`text-[11.5px] rounded-full px-2.5 py-1 border ${
+                              isFeatured
+                                ? "bg-[#FAF7F2]/10 border-[#FAF7F2]/18 text-[#FAF7F2]/80"
+                                : "bg-[#FAF7F2] border-[#E6DEC8] text-[#5C6657]"
+                            }`}
+                          >
+                            {k}{" "}
+                            <strong
+                              className={isFeatured ? "text-[#F2D59B]" : "text-[#2C3E26]"}
+                            >
+                              {v}
+                            </strong>
+                          </span>
+                        ))}
+                      </div>
+
+                      <p
+                        className={`text-[13.5px] font-medium pl-3 border-l-2 mb-5 leading-relaxed ${
+                          isFeatured
+                            ? "border-[#E6C98A] text-[#F2D59B]"
+                            : "border-[#D46B34] text-[#2C3E26]"
+                        }`}
+                      >
+                        「{pkg.hook}」
+                      </p>
+
+                      <ul className="space-y-2.5 mb-7">
+                        {pkg.items.map((item) => (
+                          <li key={item} className="flex items-start gap-2.5 text-[13.5px] leading-snug">
+                            <Check
+                              className={`w-4 h-4 shrink-0 mt-0.5 ${
+                                isFeatured ? "text-[#E6C98A]" : "text-[#D46B34]"
+                              }`}
+                            />
+                            <span className={isFeatured ? "text-[#FAF7F2]/88" : "text-[#424C3F]"}>
+                              {item}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <a
+                        href={waLink(
+                          `${pkg.name}（${billing === "quarterly" ? "季付85折" : "單月"} $${shownPrice}）｜想了解詳情`
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`mt-auto w-full text-center rounded-full py-3 px-5 text-[14px] font-bold transition-all ${
+                          isFeatured
+                            ? "bg-[#D46B34] hover:bg-[#E07A43] text-white"
+                            : "bg-[#2C3E26] hover:bg-[#22301D] text-[#FAF7F2]"
+                        }`}
+                      >
+                        {t.bookNow}
+                      </a>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            <Reveal>
+              <p className="text-center text-[13.5px] font-medium text-[#475244] mb-6 leading-relaxed">
+                {t.payNote}
+              </p>
+
+              {/* Single-Item Rate Table */}
+              <div className="rounded-[1.5rem] bg-[#FFFFFF] border border-[#E6DEC8] p-5 md:p-7">
+                <div className="text-[14px] font-bold text-[#2C3E26] mb-4">{t.singleTitle}</div>
+                <div className="grid md:grid-cols-2 gap-x-8">
+                  {t.singles.map(([item, price]) => (
+                    <div
+                      key={item}
+                      className="flex items-baseline justify-between gap-4 py-3 border-b border-[#EFE9DC]"
+                    >
+                      <span className="text-[14px] text-[#3F493C]">{item}</span>
+                      <span className="font-display font-bold text-[14.5px] text-[#D46B34] whitespace-nowrap tabular-nums">
+                        {price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[12.5px] text-[#7A8274] mt-4">{t.addons}</p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* B2B FAQ ACCORDION */}
+        <section id="faq" className="scroll-mt-20 py-16 md:py-24">
+          <div className="max-w-4xl mx-auto px-5 md:px-6">
+            <Reveal className="text-center mb-10">
+              <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-2">
+                {t.faqEyebrow}
+              </p>
+              <h2 className="font-serif font-bold text-[28px] md:text-[36px] text-[#1F271E]">
+                {t.faqTitle}
+              </h2>
+            </Reveal>
+
+            <div className="space-y-3">
+              {t.faqs.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <Reveal key={faq.q} delay={idx * 0.05}>
+                    <div className="rounded-2xl bg-[#FFFFFF] border border-[#E6DEC8] overflow-hidden">
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaq(isOpen ? null : idx)}
+                        aria-expanded={isOpen}
+                        className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left cursor-pointer"
+                      >
+                        <span className="font-bold text-[15.5px] text-[#1F271E] leading-snug">
+                          {faq.q}
+                        </span>
+                        <motion.span
+                          animate={{ rotate: isOpen ? 180 : 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="shrink-0 w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#E6DEC8] flex items-center justify-center text-[#2C3E26]"
+                        >
+                          <ChevronDown className="w-4 h-4" />
+                        </motion.span>
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {isOpen ? (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: EASE_EDITORIAL }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-6 pb-5 text-[14.5px] text-[#556051] leading-relaxed border-t border-[#F2ECE1] pt-3.5">
+                              {faq.a}
+                            </div>
+                          </motion.div>
+                        ) : null}
+                      </AnimatePresence>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* FINAL CONTACT CTA CARD */}
+        <section className="pb-20 md:pb-24 px-5 md:px-6">
+          <Reveal>
+            <div className="max-w-3xl mx-auto rounded-[2rem] bg-[#FFFFFF] border border-[#E6DEC8] p-7 md:p-11 text-center shadow-[0_28px_60px_-28px_rgba(31,39,30,0.18)]">
+              <div className="flex justify-center mb-4">
+                <BrandLogo />
+              </div>
+              <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#D46B34] uppercase mb-2">
+                {t.ctaEyebrow}
+              </p>
+              <h2 className="font-serif font-bold text-[26px] md:text-[34px] text-[#1F271E] leading-snug mb-2.5">
+                {t.ctaLine}
+              </h2>
+              <p className="text-[14.5px] text-[#636B5E] mb-8">{t.ctaContact}</p>
+
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 max-w-md mx-auto mb-7">
+                <div className="rounded-2xl bg-[#FAF7F2] p-3.5 border border-[#E6DEC8]">
+                  <img
+                    src="/qr-wechat.png"
+                    alt={t.qrWechat}
+                    className="w-full rounded-xl bg-white p-1"
+                  />
+                  <p className="text-[13px] font-bold text-[#2C3E26] mt-2.5">{t.qrWechat}</p>
+                </div>
+                <div className="rounded-2xl bg-[#FAF7F2] p-3.5 border border-[#E6DEC8]">
+                  <img
+                    src="/qr-whatsapp.png"
+                    alt={t.qrWa}
+                    className="w-full rounded-xl bg-white p-1"
+                  />
+                  <p className="text-[13px] font-bold text-[#2C3E26] mt-2.5">{t.qrWa}</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center gap-4">
+                <a
+                  href={waLink(`${t.brand}｜我想了解港人北上推廣報價`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D46B34] hover:bg-[#BE5C28] text-white font-bold text-[15px] px-8 py-3.5 transition-all shadow-[0_14px_30px_-12px_rgba(212,107,52,0.55)]"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {t.qrWaBtn}
+                </a>
+                <p className="text-[13.5px] text-[#636B5E] inline-flex items-center gap-1.5">
+                  <Mail className="w-4 h-4 text-[#2C3E26]" />
+                  {t.mailLabel}：
+                  <a
+                    href="mailto:ZEROWONG5@GMAIL.COM"
+                    className="font-display font-bold text-[#2C3E26] link-underline"
+                  >
+                    ZEROWONG5@GMAIL.COM
                   </a>
-                </div>
-              );
-            })}
-          </div>
-          <p className="text-center text-[14.5px] text-[#e8c98a] mb-4 font-semibold">{t.payNote}</p>
-          <div className={`${CARD} p-2`}>
-            <div className="px-3 pt-2 pb-1 text-sm text-[#cbbfad]">{t.singleTitle}</div>
-            <div className="grid md:grid-cols-2 gap-x-6">
-              {t.singles.map(([k, v]) => (
-                <div key={k} className="flex justify-between items-baseline gap-4 px-3 py-2.5 border-b border-white/5">
-                  <span className="text-sm">{k}</span>
-                  <span className="text-sm font-bold font-mono tabular-nums text-[#f0b48a] whitespace-nowrap">{v}</span>
-                </div>
-              ))}
+                </p>
+              </div>
             </div>
-          </div>
-          <p className="text-[13.5px] text-[#b0a594] mt-3">{t.addons}</p>
-        </div>
-      </section>
+          </Reveal>
+        </section>
+      </main>
 
-      {/* CTA */}
-      <section className="px-6 pt-12 pb-16 md:pt-16 md:pb-20 relative">
-        <div className={`max-w-2xl mx-auto ${CARD} p-8 text-center glow-gold`}>
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <img src="/logo.png" alt="ZTG Studio logo" className="w-9 h-9 object-contain" />
-            <span className="text-[13px] text-[#e8c98a] font-bold">{t.brand}</span>
-          </div>
-          <p className="text-2xl md:text-3xl font-extrabold mb-2 bg-gradient-to-r from-[#f5d98b] via-[#e8c98a] to-[#c5a065] bg-clip-text text-transparent">{t.ctaLine}</p>
-          <p className="text-[15px] text-[#c2b6a3] mb-8">{t.ctaContact}</p>
-          <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-6">
-            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45">
-              <img src="/qr-wechat.png" alt="WeChat QR" className="w-full rounded-xl" />
-              <p className="text-[14px] font-bold text-[#4a3b22] mt-2">{t.qrWechat}</p>
-            </div>
-            <div className="bg-[#faf6ec] rounded-[1.35rem] p-3 border border-[#c5a065]/45">
-              <img src="/qr-whatsapp.png" alt="WhatsApp QR" className="w-full rounded-xl" />
-              <p className="text-[14px] font-bold text-[#4a3b22] mt-2">{t.qrWa}</p>
-            </div>
-          </div>
-          <a
-            href={waLink(`${t.h1}｜我想了解報價`)}
-            className="inline-block bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-8 py-3 text-sm mb-4 shadow-[0_0_20px_rgba(232,155,92,0.4)]"
-          >
-            {t.qrWaBtn}
-          </a>
-          <p className="text-sm">
-            {t.mailLabel}：
-            <a href="mailto:ZEROWONG5@GMAIL.COM" className="u-draw font-bold text-[#e8c98a]">
-              ZEROWONG5@GMAIL.COM
-            </a>
-          </p>
+      {/* Footer */}
+      <footer className="border-t border-[#E6DEC8] bg-[#F2ECE1]/70 py-7 px-5">
+        <div className="max-w-6xl mx-auto text-center text-[12.5px] text-[#6A7265] leading-relaxed">
+          {t.footer}
         </div>
-      </section>
+      </footer>
 
-      {/* 手機浮動問價條 — 83% 流量在手機，任何位置都能一按問價 */}
+      {/* Mobile Floating WhatsApp Bar */}
       <div
         className={`md:hidden fixed inset-x-0 bottom-0 z-40 transition-all duration-300 ${
-          showBar ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
+          showStickyBar
+            ? "translate-y-0 opacity-100"
+            : "translate-y-full opacity-0 pointer-events-none"
         }`}
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        <div className="mx-3 mb-3 rounded-2xl border border-[#c5a065]/35 bg-[#1b1712]/95 backdrop-blur-md px-3 py-2.5 shadow-[0_10px_30px_rgba(0,0,0,0.55)]">
-          <div className="flex items-center gap-3">
-            <div className="min-w-0 flex-1">
-              <p className="text-[12.5px] font-bold text-[#f7efdd] leading-tight">{t.stickyTitle}</p>
-              <p className="text-[11px] text-[#a89d8b] leading-tight mt-0.5">{t.stickyNote}</p>
-            </div>
-            <a
-              href={waLink(`${t.h1}｜我想了解報價`)}
-              className="shrink-0 bg-gradient-to-r from-[#e89b5c] to-[#f0b48a] text-[#2e2114] font-bold rounded-full px-5 py-2.5 text-[13px] whitespace-nowrap"
-            >
-              {t.stickyBtn}
-            </a>
+        <div className="mx-3 mb-3 rounded-2xl bg-[#1B2419]/95 backdrop-blur-md border border-[#FAF7F2]/15 px-3.5 py-2.5 shadow-[0_14px_30px_rgba(27,36,25,0.35)] flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-[12.5px] font-bold text-[#FAF7F2] truncate">{t.stickyTitle}</p>
+            <p className="text-[11px] text-[#FAF7F2]/70 truncate">{t.stickyNote}</p>
           </div>
+          <a
+            href={waLink(`${t.brand}｜我想了解報價`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-[#D46B34] text-white font-bold text-[12.5px] px-4 py-2 whitespace-nowrap"
+          >
+            <MessageCircle className="w-3.5 h-3.5" />
+            {t.stickyBtn}
+          </a>
         </div>
       </div>
 
-      <footer className="px-6 py-6 border-t border-[#c5a065]/15">
-        <p className="max-w-6xl mx-auto text-[12px] text-white/35 text-center">{t.footer}</p>
-      </footer>
-    </main>
+      {/* Modal: Viral Post Detail Lightbox */}
+      <AnimatePresence>
+        {selectedPost ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPost(null)}
+            className="fixed inset-0 z-50 bg-[#1B2419]/75 backdrop-blur-sm p-4 flex items-center justify-center"
+          >
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0, y: 16 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.96, opacity: 0, y: 12 }}
+              transition={{ duration: 0.28, ease: EASE_EDITORIAL }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-2xl rounded-[1.8rem] bg-[#FAF7F2] border border-[#E6DEC8] overflow-hidden shadow-2xl grid sm:grid-cols-2"
+            >
+              <div className="relative aspect-[4/4] sm:aspect-auto bg-[#1B2419]">
+                <img
+                  src={selectedPost.img}
+                  alt={selectedPost.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <span className="text-[11.5px] font-bold text-[#D46B34] bg-[#D46B34]/12 px-3 py-1 rounded-full">
+                      {selectedPost.tag}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedPost(null)}
+                      aria-label="Close"
+                      className="w-8 h-8 rounded-full bg-[#EFE9DC] flex items-center justify-center text-[#1F271E] cursor-pointer"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <div className="text-[12px] text-[#7A8274] mb-1">{selectedPost.platform}</div>
+                  <h3 className="font-serif font-bold text-[22px] text-[#1F271E] mb-3">
+                    {selectedPost.name}
+                  </h3>
+                  <p className="text-[14px] text-[#556051] leading-relaxed mb-5">
+                    {selectedPost.caption}
+                  </p>
+                </div>
+
+                <div>
+                  <div className="grid grid-cols-3 gap-2 mb-5">
+                    <div className="rounded-xl bg-[#FFFFFF] border border-[#E6DEC8] p-2.5 text-center">
+                      <Eye className="w-3.5 h-3.5 text-[#2C3E26] mx-auto mb-1" />
+                      <div className="font-display font-bold text-[15px] text-[#1F271E]">
+                        {formatWan(selectedPost.reach, lang)}
+                      </div>
+                      <div className="text-[10.5px] text-[#7A8274]">{t.reachWord}</div>
+                    </div>
+                    <div className="rounded-xl bg-[#FFFFFF] border border-[#E6DEC8] p-2.5 text-center">
+                      <Heart className="w-3.5 h-3.5 text-[#D46B34] mx-auto mb-1" />
+                      <div className="font-display font-bold text-[15px] text-[#1F271E]">
+                        {selectedPost.likes.toLocaleString()}
+                      </div>
+                      <div className="text-[10.5px] text-[#7A8274]">{t.likeWord}</div>
+                    </div>
+                    <div className="rounded-xl bg-[#FFFFFF] border border-[#E6DEC8] p-2.5 text-center">
+                      <Share2 className="w-3.5 h-3.5 text-[#2C3E26] mx-auto mb-1" />
+                      <div className="font-display font-bold text-[15px] text-[#1F271E]">
+                        {selectedPost.shares.toLocaleString()}
+                      </div>
+                      <div className="text-[10.5px] text-[#7A8274]">{t.shareWord}</div>
+                    </div>
+                  </div>
+                  <a
+                    href={waLink(`看過你們的「${selectedPost.name}」，想了解同款推廣合作`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#2C3E26] hover:bg-[#22301D] text-[#FAF7F2] font-bold text-[13.5px] py-3"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    {t.ctaHero}
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      {/* Modal: Meta Backend Official Screenshot Proof */}
+      <AnimatePresence>
+        {showBackendModal ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowBackendModal(false)}
+            className="fixed inset-0 z-50 bg-[#1B2419]/75 backdrop-blur-sm p-4 flex items-center justify-center"
+          >
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0, y: 14 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.96, opacity: 0, y: 10 }}
+              transition={{ duration: 0.25, ease: EASE_EDITORIAL }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-xl rounded-[1.8rem] bg-[#FAF7F2] border border-[#E6DEC8] p-6 shadow-2xl"
+            >
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 className="font-serif font-bold text-[19px] text-[#1F271E]">
+                    {t.dashModalTitle}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowBackendModal(false)}
+                  aria-label="Close"
+                  className="w-8 h-8 rounded-full bg-[#EFE9DC] flex items-center justify-center text-[#1F271E] cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-[#E6DEC8] bg-white p-2 mb-4">
+                <img
+                  src="/dash-gba-crop.png"
+                  alt="Meta Business Suite 28-day analytics"
+                  className="w-full rounded-xl"
+                />
+              </div>
+              <p className="text-[13px] text-[#636B5E] leading-relaxed">{t.dashModalNote}</p>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </div>
   );
 }
