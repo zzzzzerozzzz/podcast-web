@@ -100,13 +100,13 @@ export default function Home() {
   const stepIcons = [PenTool, Video, Rocket];
 
   return (
-    <div className="min-h-screen bg-[#161310] text-[#F4ECE0] editorial-grain relative">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#161310] text-[#F4ECE0] editorial-grain relative">
       <ScrollProgressBar />
 
       {/* Sticky Editorial Navigation */}
-      <header className="sticky top-0 z-40 bg-[#161310]/88 backdrop-blur-md border-b border-[#E8C98A]/18">
-        <div className="max-w-6xl mx-auto px-5 md:px-6 h-[68px] flex items-center justify-between gap-4">
-          <a href="#" aria-label={t.brand} className="shrink-0">
+      <header className="sticky top-0 z-40 bg-[#161310]/90 backdrop-blur-md border-b border-[#E8C98A]/18">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 h-[60px] md:h-[68px] flex items-center justify-between gap-3">
+          <a href="#" aria-label={t.brand} className="shrink-0 min-w-0">
             <BrandLogo subtitle={t.brandSub} compact />
           </a>
 
@@ -156,7 +156,7 @@ export default function Home() {
               href={waLink(`${t.brand}｜我想了解港人北上推廣報價`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[#E89B5C] hover:bg-[#F0AD74] text-[#24190F] text-[13px] font-bold px-4 py-2 transition-all shadow-[0_8px_22px_-8px_rgba(232,155,92,0.5)]"
+              className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-[#E89B5C] hover:bg-[#F0AD74] text-[#24190F] text-[13px] font-bold px-4 py-2 transition-all shadow-[0_8px_22px_-8px_rgba(232,155,92,0.5)]"
             >
               <MessageCircle className="w-3.5 h-3.5" />
               {t.navCta}
@@ -166,8 +166,8 @@ export default function Home() {
       </header>
 
       <main>
-        {/* HERO — Vibrant Full-Bleed Golden-Hour Shenzhen + Ken Burns Motion + Kinetic Copy + 9:16 Reel Deck */}
-        <section className="relative pt-12 pb-24 md:pt-16 md:pb-28 overflow-hidden">
+        {/* HERO — Vibrant Full-Bleed Golden-Hour Shenzhen + Ken Burns Motion + Kinetic Copy + Adaptive Reel Showcase */}
+        <section className="relative pt-8 pb-16 sm:pt-12 sm:pb-20 md:pt-16 md:pb-28 overflow-hidden">
           {/* Vibrant Shenzhen skyline with slow cinematic Ken Burns zoom */}
           <motion.img
             src="/scenes/hero-shenzhen.jpg"
@@ -180,25 +180,25 @@ export default function Home() {
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#16120E]/92 via-[#1C1611]/78 to-[#1D1712]/48"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-[#16120E]/92 via-[#1C1611]/82 to-[#1D1712]/52"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#161310] to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#161310] to-transparent"
           />
 
-          <div className="relative max-w-6xl mx-auto px-5 md:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-12 items-center">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-5 md:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-12 items-center">
             <div>
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: EASE_EDITORIAL }}
-                className="text-[11.5px] md:text-[12px] font-display font-bold tracking-[0.22em] text-[#F5D98B] uppercase mb-5"
+                className="text-[11px] sm:text-[12px] font-display font-bold tracking-[0.18em] sm:tracking-[0.22em] text-[#F5D98B] uppercase mb-3.5 sm:mb-5"
               >
                 {t.heroEyebrow}
               </motion.p>
 
-              <h1 className="font-serif font-bold text-[36px] sm:text-[46px] md:text-[56px] leading-[1.16] tracking-tight text-[#F7EFDD] mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+              <h1 className="font-serif font-bold text-[32px] sm:text-[44px] md:text-[56px] leading-[1.18] sm:leading-[1.16] tracking-tight text-[#F7EFDD] mb-4 sm:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
                 <MaskLine delay={0.08}>{t.h1Line1}</MaskLine>
                 <MaskLine delay={0.18} className="text-[#F5D98B]">
                   {t.h1Line2}
@@ -209,7 +209,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.28, ease: EASE_EDITORIAL }}
-                className="text-[16px] md:text-[17.5px] text-[#EDE1CE] leading-[1.75] max-w-xl mb-4"
+                className="text-[15px] sm:text-[16.5px] md:text-[17.5px] text-[#EDE1CE] leading-[1.7] sm:leading-[1.75] max-w-xl mb-3 sm:mb-4"
               >
                 {t.tagline}
               </motion.p>
@@ -218,7 +218,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.36 }}
-                className="text-[12.5px] text-[#C8BCA9] mb-8"
+                className="text-[12px] text-[#C8BCA9] mb-6 sm:mb-8"
               >
                 {t.dateNote}
               </motion.p>
@@ -227,7 +227,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.4, ease: EASE_EDITORIAL }}
-                className="flex flex-col sm:flex-row gap-3.5 mb-10"
+                className="grid grid-cols-1 sm:flex sm:flex-row gap-3 mb-7 sm:mb-10"
               >
                 <motion.a
                   whileHover={{ scale: 1.03, y: -2 }}
@@ -256,14 +256,14 @@ export default function Home() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.5, ease: EASE_EDITORIAL }}
-                className="grid grid-cols-3 gap-4 pt-6 border-t border-[#E8C98A]/25 max-w-lg"
+                className="grid grid-cols-3 gap-3 sm:gap-4 pt-5 sm:pt-6 border-t border-[#E8C98A]/25 max-w-lg"
               >
                 {t.heroProof.map((item) => (
                   <div key={item.l}>
-                    <div className="font-display font-bold text-[20px] md:text-[22px] text-[#F5D98B] leading-none">
+                    <div className="font-display font-bold text-[18px] sm:text-[20px] md:text-[22px] text-[#F5D98B] leading-none">
                       {item.v}
                     </div>
-                    <div className="text-[12px] text-[#D8CBB7] mt-1.5 leading-snug">
+                    <div className="text-[11px] sm:text-[12px] text-[#D8CBB7] mt-1.5 leading-snug">
                       {item.l}
                     </div>
                   </div>
@@ -272,7 +272,7 @@ export default function Home() {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 24 }}
+              initial={{ opacity: 0, scale: 0.96, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.2, ease: EASE_EDITORIAL }}
             >
@@ -292,20 +292,24 @@ export default function Home() {
         </section>
 
         {/* 4 KEY METRICS — Floating Overlapping Glass Card with Staggered Count-Up */}
-        <section className="relative z-20 px-5 md:px-6 -mt-12 md:-mt-16 mb-10">
+        <section className="relative z-20 px-4 sm:px-5 md:px-6 -mt-8 sm:-mt-12 md:-mt-16 mb-8 sm:mb-10">
           <div className="max-w-6xl mx-auto">
-            <div className="creator-card rounded-[1.8rem] px-6 py-7 md:px-8 md:py-8 grid grid-cols-2 lg:grid-cols-4 gap-y-7 gap-x-6 backdrop-blur-md">
+            <div className="creator-card rounded-[1.5rem] sm:rounded-[1.8rem] px-4 py-5 sm:px-6 sm:py-7 md:px-8 md:py-8 grid grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-4 sm:gap-y-7 sm:gap-x-6 backdrop-blur-md">
               {t.stats.map((s, idx) => (
                 <Reveal
                   key={s.label}
                   delay={idx * 0.08}
                   className="lg:border-r lg:last:border-r-0 border-[#E8C98A]/18 lg:pr-6"
                 >
-                  <div className="font-display font-extrabold text-[34px] sm:text-[40px] md:text-[44px] leading-none text-[#F5D98B] tracking-tight">
+                  <div className="font-display font-extrabold text-[28px] sm:text-[38px] md:text-[44px] leading-none text-[#F5D98B] tracking-tight">
                     <AnimatedNumber value={s.value} suffix={s.suffix} />
                   </div>
-                  <div className="text-[14.5px] font-bold text-[#F7EFDD] mt-2.5">{s.label}</div>
-                  <div className="text-[12px] text-[#B8AB98] mt-1 leading-relaxed">{s.sub}</div>
+                  <div className="text-[13.5px] sm:text-[14.5px] font-bold text-[#F7EFDD] mt-2">
+                    {s.label}
+                  </div>
+                  <div className="text-[11.5px] sm:text-[12px] text-[#B8AB98] mt-1 leading-relaxed">
+                    {s.sub}
+                  </div>
                 </Reveal>
               ))}
             </div>
@@ -501,17 +505,17 @@ export default function Home() {
                         />
                       </div>
 
-                      <div className="grid grid-cols-3 gap-3">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-3">
                         {d.nums.map((n) => (
                           <div
                             key={n.l}
-                            className="rounded-xl bg-[#161310]/65 border border-[#E8C98A]/12 p-3"
+                            className="rounded-xl bg-[#161310]/65 border border-[#E8C98A]/12 p-2.5 sm:p-3"
                           >
-                            <div className="font-display font-bold text-[20px] md:text-[24px] text-[#F5D98B] tabular-nums leading-none">
+                            <div className="font-display font-bold text-[16px] sm:text-[20px] md:text-[24px] text-[#F5D98B] tabular-nums leading-none">
                               {n.v}
                             </div>
-                            <div className="text-[11px] text-[#A89B88] mt-1.5">{n.l}</div>
-                            <div className="inline-flex items-center gap-0.5 text-[11.5px] font-bold text-[#B9D4A8] mt-1">
+                            <div className="text-[10.5px] sm:text-[11px] text-[#A89B88] mt-1.5">{n.l}</div>
+                            <div className="inline-flex items-center gap-0.5 text-[11px] sm:text-[11.5px] font-bold text-[#B9D4A8] mt-1">
                               <TrendingUp className="w-3 h-3" />
                               {n.delta}
                             </div>
@@ -527,30 +531,30 @@ export default function Home() {
         </section>
 
         {/* CASE STUDY & VIRAL WORKS INTERACTIVE GALLERY */}
-        <section id="works" className="scroll-mt-20 py-16 md:py-24">
-          <div className="max-w-6xl mx-auto px-5 md:px-6">
-            <Reveal className="mb-16">
-              <div className="creator-card rounded-[1.85rem] p-6 md:p-9">
-                <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-center">
+        <section id="works" className="scroll-mt-20 py-14 md:py-24">
+          <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6">
+            <Reveal className="mb-12 md:mb-16">
+              <div className="creator-card rounded-[1.5rem] sm:rounded-[1.85rem] p-5 sm:p-6 md:p-9">
+                <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 md:gap-8 items-center">
                   <div>
                     <span className="inline-block text-[11.5px] font-bold tracking-[0.16em] text-[#E89B5C] uppercase mb-2">
                       {t.caseLabel}
                     </span>
-                    <h2 className="font-serif font-bold text-[23px] md:text-[28px] text-[#F7EFDD] mb-3">
+                    <h2 className="font-serif font-bold text-[21px] sm:text-[23px] md:text-[28px] text-[#F7EFDD] mb-3">
                       {t.caseName}
                     </h2>
-                    <p className="text-[15px] text-[#C2B5A2] leading-relaxed">{t.caseBody}</p>
+                    <p className="text-[14.5px] sm:text-[15px] text-[#C2B5A2] leading-relaxed">{t.caseBody}</p>
                   </div>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     {t.caseNums.map((n) => (
                       <div
                         key={n.l}
-                        className="rounded-2xl bg-[#161310]/70 border border-[#E8C98A]/16 p-4 text-center"
+                        className="rounded-xl sm:rounded-2xl bg-[#161310]/70 border border-[#E8C98A]/16 p-3 sm:p-4 text-center"
                       >
-                        <div className="font-display font-extrabold text-[22px] md:text-[26px] text-[#F5D98B] tabular-nums leading-none">
+                        <div className="font-display font-extrabold text-[18px] sm:text-[22px] md:text-[26px] text-[#F5D98B] tabular-nums leading-none">
                           {n.v}
                         </div>
-                        <div className="text-[11.5px] text-[#B8AB98] mt-2 leading-snug">{n.l}</div>
+                        <div className="text-[10.5px] sm:text-[11.5px] text-[#B8AB98] mt-1.5 sm:mt-2 leading-snug">{n.l}</div>
                       </div>
                     ))}
                   </div>
@@ -558,25 +562,25 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-9">
+            <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-2 mb-7 sm:mb-9">
               <div>
                 <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#E8C98A] uppercase mb-2">
                   {t.worksEyebrow}
                 </p>
-                <h2 className="font-serif font-bold text-[28px] md:text-[36px] text-[#F7EFDD]">
+                <h2 className="font-serif font-bold text-[26px] sm:text-[28px] md:text-[36px] text-[#F7EFDD]">
                   {t.topTitle}
                 </h2>
               </div>
-              <p className="text-[13.5px] text-[#A89B88]">{t.topSub}</p>
+              <p className="text-[13px] sm:text-[13.5px] text-[#A89B88]">{t.topSub}</p>
             </Reveal>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
               {t.topPosts.map((post, idx) => (
                 <Reveal key={post.id} delay={idx * 0.08}>
                   <button
                     type="button"
                     onClick={() => setSelectedPost(post)}
-                    className="group w-full text-left creator-card rounded-[1.5rem] overflow-hidden flex flex-col cursor-pointer"
+                    className="group w-full text-left creator-card rounded-[1.2rem] sm:rounded-[1.5rem] overflow-hidden flex flex-col cursor-pointer"
                   >
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1D1813]">
                       <img
@@ -586,7 +590,7 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#161310] via-[#161310]/30 to-transparent" />
                       <span
-                        className={`absolute top-3.5 left-3.5 text-[11px] font-bold px-3 py-1 rounded-full ${
+                        className={`absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full ${
                           post.hot
                             ? "bg-[#E89B5C] text-[#24190F]"
                             : "bg-[#161310]/85 text-[#F5D98B] border border-[#E8C98A]/30"
@@ -594,33 +598,35 @@ export default function Home() {
                       >
                         {post.tag}
                       </span>
-                      <div className="absolute bottom-3.5 inset-x-4 text-[#F7EFDD]">
-                        <div className="text-[11px] text-[#E8C98A] font-medium mb-0.5">
+                      <div className="absolute bottom-2.5 inset-x-3 sm:bottom-3.5 sm:inset-x-4 text-[#F7EFDD]">
+                        <div className="text-[10px] sm:text-[11px] text-[#E8C98A] font-medium mb-0.5 truncate">
                           {post.platform}
                         </div>
-                        <div className="font-bold text-[16px] leading-snug">{post.name}</div>
+                        <div className="font-bold text-[13.5px] sm:text-[16px] leading-snug line-clamp-2">
+                          {post.name}
+                        </div>
                       </div>
                     </div>
 
-                    <div className="p-4 bg-[#1E1914] flex-1 flex flex-col justify-between">
-                      <div className="grid grid-cols-3 gap-2 text-center py-1">
+                    <div className="p-2.5 sm:p-4 bg-[#1E1914] flex-1 flex flex-col justify-between">
+                      <div className="grid grid-cols-3 gap-1 sm:gap-2 text-center py-0.5 sm:py-1">
                         <div>
-                          <div className="font-display font-bold text-[16px] text-[#F5D98B] tabular-nums">
+                          <div className="font-display font-bold text-[13px] sm:text-[16px] text-[#F5D98B] tabular-nums">
                             {formatWan(post.reach, lang)}
                           </div>
-                          <div className="text-[11px] text-[#A89B88]">{t.reachWord}</div>
+                          <div className="text-[9.5px] sm:text-[11px] text-[#A89B88]">{t.reachWord}</div>
                         </div>
                         <div className="border-x border-[#E8C98A]/12">
-                          <div className="font-display font-bold text-[16px] text-[#F0A08A] tabular-nums">
+                          <div className="font-display font-bold text-[13px] sm:text-[16px] text-[#F0A08A] tabular-nums">
                             {post.likes.toLocaleString()}
                           </div>
-                          <div className="text-[11px] text-[#A89B88]">{t.likeWord}</div>
+                          <div className="text-[9.5px] sm:text-[11px] text-[#A89B88]">{t.likeWord}</div>
                         </div>
                         <div>
-                          <div className="font-display font-bold text-[16px] text-[#F4ECE0] tabular-nums">
+                          <div className="font-display font-bold text-[13px] sm:text-[16px] text-[#F4ECE0] tabular-nums">
                             {post.shares.toLocaleString()}
                           </div>
-                          <div className="text-[11px] text-[#A89B88]">{t.shareWord}</div>
+                          <div className="text-[9.5px] sm:text-[11px] text-[#A89B88]">{t.shareWord}</div>
                         </div>
                       </div>
                     </div>
@@ -810,11 +816,11 @@ export default function Home() {
               </div>
 
               {/* Interactive Spring Billing Switch */}
-              <div className="inline-flex items-center self-start md:self-auto bg-[#262019] border border-[#E8C98A]/28 rounded-full p-1.5">
+              <div className="inline-flex items-center self-start md:self-auto bg-[#262019] border border-[#E8C98A]/28 rounded-full p-1 sm:p-1.5 max-w-full">
                 <button
                   type="button"
                   onClick={() => setBilling("monthly")}
-                  className={`relative px-4 py-2 rounded-full text-[13.5px] font-bold transition-colors cursor-pointer ${
+                  className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[12.5px] sm:text-[13.5px] font-bold transition-colors cursor-pointer whitespace-nowrap ${
                     billing === "monthly" ? "text-[#1D1711]" : "text-[#C2B5A2]"
                   }`}
                 >
@@ -830,7 +836,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setBilling("quarterly")}
-                  className={`relative px-4 py-2 rounded-full text-[13.5px] font-bold transition-colors inline-flex items-center gap-1.5 cursor-pointer ${
+                  className={`relative px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[12.5px] sm:text-[13.5px] font-bold transition-colors inline-flex items-center gap-1.5 cursor-pointer whitespace-nowrap ${
                     billing === "quarterly" ? "text-[#24190F]" : "text-[#C2B5A2]"
                   }`}
                 >
@@ -843,7 +849,7 @@ export default function Home() {
                   ) : null}
                   <span className="relative z-10">{t.billingQuarterly}</span>
                   <span
-                    className={`relative z-10 text-[10.5px] px-2 py-0.5 rounded-full font-extrabold ${
+                    className={`relative z-10 text-[10px] sm:text-[10.5px] px-1.5 sm:px-2 py-0.5 rounded-full font-extrabold ${
                       billing === "quarterly"
                         ? "bg-[#24190F] text-[#F5D98B]"
                         : "bg-[#E89B5C]/20 text-[#F0B482]"
@@ -1103,7 +1109,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#E8C98A]/15 bg-[#120F0D] py-7 px-5">
+      <footer className="border-t border-[#E8C98A]/15 bg-[#120F0D] pt-7 pb-24 md:pb-7 px-5">
         <div className="max-w-6xl mx-auto text-center text-[12.5px] text-[#9A8E7D] leading-relaxed">
           {t.footer}
         </div>

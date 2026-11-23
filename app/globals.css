@@ -37,12 +37,15 @@
     scroll-behavior: smooth;
     background-color: #161310;
     color: #F4ECE0;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   body {
     background-color: #161310;
     color: #F4ECE0;
     overflow-x: clip;
+    max-width: 100%;
   }
 
   ::selection {
