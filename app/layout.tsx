@@ -24,7 +24,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://podcast-web-seven.vercel.app"),
+  metadataBase: new URL("https://zerotogrowth.app"),
   title: "Zero to Growth｜港人北上媒體矩陣・深圳大灣區美食旅遊推廣",
   description:
     "香港本土美食旅遊內容工作室：3 大 FB 專頁（32,500 粉絲）＋ 2 個 IG（8,480 粉絲）＋ 12,000 人北上私域群組。28 日 879 萬真實瀏覽，幫深圳與大灣區商家精準觸達週末北上香港客。",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
       "40,980+ 公開粉絲、28 日 879 萬真實瀏覽、12,000 人港人交流群。用港人真正愛看、主動轉發的內容，把你的好店帶到香港人眼前。",
     images: [
       {
-        url: "/og.png",
+        url: "/og.jpg",
         width: 1200,
         height: 630,
         alt: "港人北上媒體矩陣 — Zero to Growth Studio",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zero to Growth｜港人北上媒體矩陣・深圳大灣區商家推廣",
     description: "40,980+ 公開粉絲、28 日 879 萬瀏覽、12,000 人港人北上交流群。",
-    images: ["/og.png"],
+    images: ["/og.jpg"],
   },
   robots: { index: true, follow: true },
 };
