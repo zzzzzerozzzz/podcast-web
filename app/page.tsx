@@ -298,7 +298,7 @@ export default function Home() {
               {t.stats.map((s, idx) => (
                 <Reveal
                   key={s.label}
-                  delay={idx * 0.08}
+                  delay={idx * 0.05}
                   className="lg:border-r lg:last:border-r-0 border-[#E8C98A]/18 lg:pr-6"
                 >
                   <div className="font-display font-extrabold text-[28px] sm:text-[38px] md:text-[44px] leading-none text-[#F5D98B] tracking-tight">
@@ -344,7 +344,7 @@ export default function Home() {
 
               <div className="flex flex-col justify-between gap-4">
                 {t.points.map((p, idx) => (
-                  <Reveal key={p.num} delay={idx * 0.1}>
+                  <Reveal key={p.num} delay={idx * 0.07}>
                     <div className="creator-card rounded-[1.5rem] p-6">
                       <div className="flex items-start gap-4">
                         <span className="shrink-0 w-10 h-10 rounded-2xl bg-[#C5A065]/15 border border-[#E8C98A]/30 text-[#F5D98B] font-display font-bold text-[14px] flex items-center justify-center">
@@ -481,7 +481,7 @@ export default function Home() {
 
               <div className="space-y-5">
                 {t.dashes.map((d, idx) => (
-                  <Reveal key={d.name} delay={idx * 0.12}>
+                  <Reveal key={d.name} delay={idx * 0.07}>
                     <div className="creator-card rounded-[1.6rem] p-6 md:p-7">
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                         <div>
@@ -576,7 +576,7 @@ export default function Home() {
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
               {t.topPosts.map((post, idx) => (
-                <Reveal key={post.id} delay={idx * 0.08}>
+                <Reveal key={post.id} delay={idx * 0.05}>
                   <button
                     type="button"
                     onClick={() => setSelectedPost(post)}
@@ -712,7 +712,7 @@ export default function Home() {
                   </>
                 );
                 return (
-                  <Reveal key={ch.name} delay={idx * 0.06}>
+                  <Reveal key={ch.name} delay={idx * 0.05}>
                     {ch.url ? (
                       <a
                         href={ch.url}
@@ -732,7 +732,7 @@ export default function Home() {
               })}
             </div>
 
-            <Reveal delay={0.2}>
+            <Reveal delay={0.12}>
               <p className="text-[13px] text-[#A89B88] mt-5 leading-relaxed">{t.lineupNote}</p>
             </Reveal>
           </div>
@@ -757,7 +757,7 @@ export default function Home() {
               {t.steps.map((step, idx) => {
                 const Icon = stepIcons[idx] ?? Rocket;
                 return (
-                  <Reveal key={step.n} delay={idx * 0.1}>
+                  <Reveal key={step.n} delay={idx * 0.07}>
                     <div className="creator-card rounded-[1.6rem] p-7 h-full flex flex-col">
                       <div className="flex items-center justify-between mb-6">
                         <span className="w-12 h-12 rounded-2xl bg-[#C5A065]/18 border border-[#E8C98A]/30 text-[#F5D98B] flex items-center justify-center">
@@ -869,7 +869,7 @@ export default function Home() {
                 const isFeatured = Boolean(pkg.featured);
 
                 return (
-                  <Reveal key={pkg.id} delay={idx * 0.08} className="h-full">
+                  <Reveal key={pkg.id} delay={idx * 0.05} className="h-full">
                     <div
                       className={`h-full rounded-[1.8rem] p-7 flex flex-col transition-all duration-300 ${
                         isFeatured

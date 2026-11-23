@@ -36,13 +36,13 @@ interface RevealProps {
   y?: number;
 }
 
-export function Reveal({ children, className = "", delay = 0, y = 26 }: RevealProps) {
+export function Reveal({ children, className = "", delay = 0, y = 16 }: RevealProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.14 }}
-      transition={{ duration: 0.7, delay, ease: EASE_EDITORIAL }}
+      viewport={{ once: true, amount: 0.14, margin: "0px 0px 8% 0px" }}
+      transition={{ duration: 0.45, delay, ease: EASE_EDITORIAL }}
       className={className}
     >
       {children}
@@ -83,7 +83,7 @@ export function AnimatedNumber({
   value,
   suffix = "",
   prefix = "",
-  durationMs = 1250,
+  durationMs = 900,
   className = "",
 }: AnimatedNumberProps) {
   const ref = useRef<HTMLSpanElement>(null);

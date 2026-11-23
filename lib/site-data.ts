@@ -249,7 +249,7 @@ export const SITE_DATA = {
       },
       {
         name: "廣東美食旅遊攻略",
-        fans: "10,000",
+        fans: "約 10,000",
         fansNum: 10000,
         tier: "補位",
         platform: "Facebook 專頁",
@@ -628,7 +628,7 @@ export const SITE_DATA = {
       },
       {
         name: "广东美食旅游攻略",
-        fans: "10,000",
+        fans: "约 10,000",
         fansNum: 10000,
         tier: "补位",
         platform: "Facebook 专页",
