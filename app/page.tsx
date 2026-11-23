@@ -662,14 +662,9 @@ export default function Home() {
             </Reveal>
 
             <div className="grid md:grid-cols-2 gap-4">
-              {t.lineup.map((ch, idx) => (
-                <Reveal key={ch.name} delay={idx * 0.06}>
-                  <a
-                    href={ch.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group creator-card rounded-2xl p-5 flex items-start justify-between gap-4 h-full"
-                  >
+              {t.lineup.map((ch, idx) => {
+                const content = (
+                  <>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
                         <span
@@ -687,7 +682,11 @@ export default function Home() {
                           {ch.platform}
                         </span>
                       </div>
-                      <h3 className="text-[16px] font-bold text-[#F7EFDD] group-hover:text-[#F5D98B] transition-colors leading-snug mb-1.5">
+                      <h3
+                        className={`text-[16px] font-bold text-[#F7EFDD] leading-snug mb-1.5 ${
+                          ch.url ? "group-hover:text-[#F5D98B] transition-colors" : ""
+                        }`}
+                      >
                         {ch.name}
                       </h3>
                       <p className="text-[13.5px] text-[#B8AB98] leading-relaxed">{ch.note}</p>
@@ -697,14 +696,34 @@ export default function Home() {
                       <div className="font-display font-extrabold text-[22px] text-[#F5D98B] tabular-nums leading-none">
                         {ch.fans}
                       </div>
-                      <span className="mt-4 inline-flex items-center gap-1 text-[12px] font-semibold text-[#E89B5C] group-hover:translate-x-0.5 transition-transform">
-                        {t.lineupVisit}
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </span>
+                      {ch.url ? (
+                        <span className="mt-4 inline-flex items-center gap-1 text-[12px] font-semibold text-[#E89B5C] group-hover:translate-x-0.5 transition-transform">
+                          {t.lineupVisit}
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </span>
+                      ) : null}
                     </div>
-                  </a>
-                </Reveal>
-              ))}
+                  </>
+                );
+                return (
+                  <Reveal key={ch.name} delay={idx * 0.06}>
+                    {ch.url ? (
+                      <a
+                        href={ch.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group creator-card rounded-2xl p-5 flex items-start justify-between gap-4 h-full"
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <div className="creator-card rounded-2xl p-5 flex items-start justify-between gap-4 h-full">
+                        {content}
+                      </div>
+                    )}
+                  </Reveal>
+                );
+              })}
             </div>
 
             <Reveal delay={0.2}>

@@ -27,7 +27,7 @@ export interface MediaChannel {
   tier: "主力" | "補位" | "补位" | "私域" | "IG";
   platform: "Facebook 專頁" | "Facebook 专页" | "Facebook 群組" | "Facebook 群组" | "Instagram";
   note: string;
-  url: string;
+  url?: string;
 }
 
 export interface PricingPackage {
@@ -272,7 +272,6 @@ export const SITE_DATA = {
         tier: "IG",
         platform: "Instagram",
         note: "廣東／深圳短影音同步發布，鎖定年輕香港消費群（兩月 +36%）",
-        url: "https://www.instagram.com/cantonesefoodtravelguide/",
       },
       {
         name: "@chinatravelhack",
@@ -281,7 +280,6 @@ export const SITE_DATA = {
         tier: "IG",
         platform: "Instagram",
         note: "中國旅遊與口岸攻略短影音同步（兩月 +24%）",
-        url: "https://www.instagram.com/chinatravelhack/",
       },
     ] as MediaChannel[],
     stepsEyebrow: "SIMPLE WORKFLOW",
@@ -653,7 +651,6 @@ export const SITE_DATA = {
         tier: "IG",
         platform: "Instagram",
         note: "广东／深圳短视频同步发布，锁定年轻香港消费群（两月 +36%）",
-        url: "https://www.instagram.com/cantonesefoodtravelguide/",
       },
       {
         name: "@chinatravelhack",
@@ -662,7 +659,6 @@ export const SITE_DATA = {
         tier: "IG",
         platform: "Instagram",
         note: "中国旅游与口岸攻略短视频同步（两月 +24%）",
-        url: "https://www.instagram.com/chinatravelhack/",
       },
     ] as MediaChannel[],
     stepsEyebrow: "SIMPLE WORKFLOW",
