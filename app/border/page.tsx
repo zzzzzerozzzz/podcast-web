@@ -60,7 +60,7 @@ function getStatusMeta(code: number | null, lang: "hk" | "cn") {
   if (code === 99) {
     return {
       label: lang === "hk" ? "非服務時段" : "非服务时段",
-      short: lang === "hk" ? "已關閉" : "已关闭",
+      short: lang === "hk" ? "未開放" : "未开放",
       dot: "bg-[#7B7266]",
       pill: "bg-white/[0.05] text-[#9E9383] border-white/10",
       rank: 4,
