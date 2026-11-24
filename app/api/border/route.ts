@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 300; // Refresh every 5 minutes
+export const dynamic = "force-dynamic"; // 每次請求即時取數：唔用 ISR，避免快取住 null 天氣／舊等候時間
 
 const IMMD_RESIDENT_URL =
   "https://secure1.info.gov.hk/immd/mobileapps/2bb9ae17/data/CPQueueTimeR.json";
@@ -127,9 +127,12 @@ export async function GET() {
 
   try {
     const res = await fetch(IMMD_RESIDENT_URL, {
-      next: { revalidate: 300 },
-      signal: AbortSignal.timeout(6000),
-      headers: { Accept: "application/json" },
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "Mozilla/5.0 (compatible; zerotogrowth.app/1.0; +https://zerotogrowth.app)",
+      },
     });
     if (res.ok) {
       rawImmd = await res.json();
@@ -147,8 +150,12 @@ export async function GET() {
 
   try {
     const wRes = await fetch(HKO_WEATHER_URL, {
-      next: { revalidate: 600 },
-      signal: AbortSignal.timeout(5000),
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "Mozilla/5.0 (compatible; zerotogrowth.app/1.0; +https://zerotogrowth.app)",
+      },
     });
     if (wRes.ok) {
       const wJson = await wRes.json();
