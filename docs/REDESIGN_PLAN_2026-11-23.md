@@ -101,3 +101,10 @@
   - `components/HeroReelShowcase.tsx`：手機／平板（`< lg`）改用專屬滿版 `16:11` 互動作品卡＋獨立頂部爆款條與底部圓點切換器，徹底解決原本 9:16 迷你手機框過高以及浮動標籤遮擋「實測爆款動態預覽」標題的問題；桌面版浮動標籤亦同步上移避免任何重疊。
   - `app/globals.css` & `app/page.tsx`：為 `html`、`body` 與根容器補齊 `overflow-x: clip; max-width: 100%`，防止 Android Chrome 因水平溢出誤縮放整頁；手機頂部導覽列收起多餘按鈕（`hidden md:inline-flex`），讓字體與空間更乾淨清晰。
   - 調整手機首屏垂直間距、4 項數據卡字級、後台 3 欄數字格內距、報價區「單月⇄季付 85 折」單行緊湊排版、將爆款代表作改為手機 2 欄小紅書／IG 畫廊格，並為手機頁尾增加 `pb-24` 避免被底部浮動 WhatsApp 條遮住。
+
+### Stage 5 — 升級「C 端工具著數 ＋ B 端商務合作」雙引擎多頁架構（2026-11-24）
+- 參考 31 萬人群組網站引流與變現邏輯，新增三大功能分頁與全站共用導覽列（[SiteShell.tsx](file:///home/antigravity/zzzzzerozzzz/podcast-web/components/SiteShell.tsx)）：
+  1. **`/border`（實時口岸等候時間看板）**：新增伺服器端 API 代理 `app/api/border/route.ts`，正式串接香港入境處官方陸路口岸開放數據（`CPQueueTimeR.json`，8 大口岸）與香港天文台實時氣溫，支援「北上出境／返港入境」一鍵排序、最暢通口岸推薦及底部導流至 `/deals` 與 `/guides`。
+  2. **`/deals`（北上優惠碼與高客單 VIP 專屬預約）**：集中資料於 `lib/deals-data.ts`，上半部設牙科／配鏡／水療溫泉／全身體檢 1對1 WhatsApp 預約通道（便於開 3 人私隱小群抽成）；下半部設可篩選聯盟著數、一鍵複製優惠碼及香港信用卡法定忠告（之後只需貼入正式聯盟連結即可生效）。
+  3. **`/guides` 及 `/guides/[slug]`（港人北上實測攻略庫）**：集中資料於 `lib/guides-data.ts`，支援城市分類篩選、內建 6 篇高搜尋量示範攻略（福田酒店、深圳地標、廣州北京路、過夜水療、北上神卡、口岸交通），每篇附「由香港點去」交通盒與著數轉換引導。
+- 同步將 `app/layout.tsx` 的 `metadataBase` 更新為 `https://zerotogrowth.app`。

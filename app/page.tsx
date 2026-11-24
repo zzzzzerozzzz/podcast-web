@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { HeroReelShowcase } from "@/components/HeroReelShowcase";
+import { SiteFooter, SiteHeader, useSiteLang } from "@/components/SiteShell";
 import {
   AnimatedNumber,
   AnimatedPrice,
@@ -30,37 +31,21 @@ import {
   MaskLine,
   ParallaxFrame,
   Reveal,
-  ScrollProgressBar,
 } from "@/components/MotionPrimitives";
 import {
   SITE_DATA,
   formatWan,
   waLink,
-  type Lang,
   type TopPost,
 } from "@/lib/site-data";
 
 export default function Home() {
-  const [lang, setLang] = useState<Lang>("hk");
+  const [lang, switchLang] = useSiteLang();
   const [billing, setBilling] = useState<"monthly" | "quarterly">("monthly");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [selectedPost, setSelectedPost] = useState<TopPost | null>(null);
   const [showBackendModal, setShowBackendModal] = useState(false);
   const [showStickyBar, setShowStickyBar] = useState(false);
-
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem("ztg-lang");
-      if (saved === "hk" || saved === "cn") {
-        setLang(saved);
-        return;
-      }
-      const loc = navigator.language || "";
-      if (loc.startsWith("zh-CN") || loc.startsWith("zh-SG")) {
-        setLang("cn");
-      }
-    } catch {}
-  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -88,82 +73,12 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const switchLang = (l: Lang) => {
-    setLang(l);
-    try {
-      window.localStorage.setItem("ztg-lang", l);
-      document.documentElement.lang = l === "hk" ? "zh-Hant-HK" : "zh-Hans-CN";
-    } catch {}
-  };
-
   const t = SITE_DATA[lang];
   const stepIcons = [PenTool, Video, Rocket];
 
   return (
     <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#161310] text-[#F4ECE0] editorial-grain relative">
-      <ScrollProgressBar />
-
-      {/* Sticky Editorial Navigation */}
-      <header className="sticky top-0 z-40 bg-[#161310]/90 backdrop-blur-md border-b border-[#E8C98A]/18">
-        <div className="max-w-6xl mx-auto px-4 md:px-6 h-[60px] md:h-[68px] flex items-center justify-between gap-3">
-          <a href="#" aria-label={t.brand} className="shrink-0 min-w-0">
-            <BrandLogo subtitle={t.brandSub} compact />
-          </a>
-
-          <nav className="hidden lg:flex items-center gap-7 text-[14px] font-medium text-[#C8BCA9]">
-            {t.nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="hover:text-[#F5D98B] transition-colors link-underline py-1"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2.5 shrink-0">
-            <div
-              className="inline-flex items-center rounded-full bg-[#241E18] p-0.5 border border-[#E8C98A]/22"
-              role="group"
-              aria-label="Language switch"
-            >
-              <button
-                type="button"
-                onClick={() => switchLang("hk")}
-                className={`px-3 py-1 rounded-full text-[12.5px] font-semibold transition-all cursor-pointer ${
-                  lang === "hk"
-                    ? "bg-[#C5A065] text-[#1A1510] shadow-xs"
-                    : "text-[#B8AB98] hover:text-[#F7EFDD]"
-                }`}
-              >
-                繁
-              </button>
-              <button
-                type="button"
-                onClick={() => switchLang("cn")}
-                className={`px-3 py-1 rounded-full text-[12.5px] font-semibold transition-all cursor-pointer ${
-                  lang === "cn"
-                    ? "bg-[#C5A065] text-[#1A1510] shadow-xs"
-                    : "text-[#B8AB98] hover:text-[#F7EFDD]"
-                }`}
-              >
-                簡
-              </button>
-            </div>
-
-            <a
-              href={waLink(`${t.brand}｜我想了解港人北上推廣報價`)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-[#E89B5C] hover:bg-[#F0AD74] text-[#24190F] text-[13px] font-bold px-4 py-2 transition-all shadow-[0_8px_22px_-8px_rgba(232,155,92,0.5)]"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              {t.navCta}
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader lang={lang} switchLang={switchLang} />
 
       <main>
         {/* HERO — Vibrant Full-Bleed Golden-Hour Shenzhen + Ken Burns Motion + Kinetic Copy + Adaptive Reel Showcase */}
@@ -1109,11 +1024,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#E8C98A]/15 bg-[#120F0D] pt-7 pb-24 md:pb-7 px-5">
-        <div className="max-w-6xl mx-auto text-center text-[12.5px] text-[#9A8E7D] leading-relaxed">
-          {t.footer}
-        </div>
-      </footer>
+      <SiteFooter lang={lang} />
 
       {/* Mobile Floating WhatsApp Bar */}
       <div
