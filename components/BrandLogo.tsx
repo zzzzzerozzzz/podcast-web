@@ -7,10 +7,10 @@ interface BrandLogoProps {
 
 export function BrandLogo({ subtitle, compact = false }: BrandLogoProps) {
   return (
-    <div className="inline-flex items-center gap-2.5 select-none">
+    <div className="inline-flex items-center gap-2 sm:gap-2.5 select-none min-w-0 max-w-full">
       <div
-        className={`relative flex items-center justify-center rounded-xl transition-transform duration-300 bg-[#272119] border border-[#E8C98A]/30 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.65)] ${
-          compact ? "w-9 h-9" : "w-10 h-10"
+        className={`relative flex items-center justify-center rounded-xl transition-transform duration-300 bg-[#272119] border border-[#E8C98A]/30 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.65)] shrink-0 ${
+          compact ? "w-8 h-8 sm:w-9 sm:h-9" : "w-10 h-10"
         }`}
       >
         <svg

@@ -52,11 +52,11 @@ export default function GuideDetailPage() {
           </p>
 
           {/* Hero Cover */}
-          <div className="relative aspect-[16/9] rounded-[1.6rem] overflow-hidden border border-[#E8C98A]/20 mb-7">
+          <div className="relative aspect-[16/9] rounded-[1.6rem] overflow-hidden border border-[#E8C98A]/20 mb-7 photo-sheen">
             <img
               src={article.img}
               alt={article.title[lang]}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover ken-burns-a"
             />
           </div>
 

@@ -27,10 +27,11 @@ import {
   AnimatedNumber,
   AnimatedPrice,
   EASE_EDITORIAL,
-  MarqueeStrip,
+  LivingImage,
   MaskLine,
   ParallaxFrame,
   Reveal,
+  VisualReelStrip,
 } from "@/components/MotionPrimitives";
 import {
   SITE_DATA,
@@ -81,17 +82,14 @@ export default function Home() {
       <SiteHeader lang={lang} switchLang={switchLang} />
 
       <main>
-        {/* HERO — Vibrant Full-Bleed Golden-Hour Shenzhen + Ken Burns Motion + Kinetic Copy + Adaptive Reel Showcase */}
-        <section className="relative pt-8 pb-16 sm:pt-12 sm:pb-20 md:pt-16 md:pb-28 overflow-hidden">
-          {/* Vibrant Shenzhen skyline with slow cinematic Ken Burns zoom */}
-          <motion.img
+        {/* HERO — Vibrant Full-Bleed Golden-Hour Shenzhen + Continuous Cinema Motion + Kinetic Copy + Adaptive Reel Showcase */}
+        <section className="relative pt-7 pb-16 sm:pt-12 sm:pb-20 md:pt-16 md:pb-28 overflow-hidden">
+          {/* Vibrant Shenzhen skyline with continuous living Ken Burns drift */}
+          <img
             src="/scenes/hero-shenzhen.jpg"
             alt=""
             aria-hidden="true"
-            initial={{ scale: 1.08 }}
-            animate={{ scale: 1.0 }}
-            transition={{ duration: 14, ease: "easeOut" }}
-            className="pointer-events-none absolute inset-0 w-full h-full object-cover object-[center_42%]"
+            className="pointer-events-none absolute inset-0 w-full h-full object-cover object-[center_42%] ken-burns-a"
           />
           <div
             aria-hidden="true"
@@ -103,17 +101,18 @@ export default function Home() {
           />
 
           <div className="relative max-w-6xl mx-auto px-4 sm:px-5 md:px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-12 items-center">
-            <div>
-              <motion.p
+            <div className="min-w-0">
+              <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: EASE_EDITORIAL }}
-                className="text-[11px] sm:text-[12px] font-display font-bold tracking-[0.18em] sm:tracking-[0.22em] text-[#F5D98B] uppercase mb-3.5 sm:mb-5"
+                className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-display font-bold tracking-[0.14em] sm:tracking-[0.2em] text-[#F5D98B] uppercase mb-3.5 sm:mb-5 max-w-full"
               >
-                {t.heroEyebrow}
-              </motion.p>
+                <span className="w-6 h-[1.5px] bg-[#E89B5C] shrink-0" aria-hidden="true" />
+                <span className="truncate">{t.heroEyebrow}</span>
+              </motion.div>
 
-              <h1 className="font-serif font-bold text-[32px] sm:text-[44px] md:text-[56px] leading-[1.18] sm:leading-[1.16] tracking-tight text-[#F7EFDD] mb-4 sm:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+              <h1 className="font-serif font-bold text-[30px] sm:text-[44px] md:text-[56px] leading-[1.18] sm:leading-[1.16] tracking-tight text-[#F7EFDD] mb-4 sm:mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
                 <MaskLine delay={0.08}>{t.h1Line1}</MaskLine>
                 <MaskLine delay={0.18} className="text-[#F5D98B]">
                   {t.h1Line2}
@@ -124,7 +123,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.28, ease: EASE_EDITORIAL }}
-                className="text-[15px] sm:text-[16.5px] md:text-[17.5px] text-[#EDE1CE] leading-[1.7] sm:leading-[1.75] max-w-xl mb-3 sm:mb-4"
+                className="text-[14.5px] sm:text-[16.5px] md:text-[17.5px] text-[#EDE1CE] leading-[1.7] sm:leading-[1.75] max-w-xl mb-3 sm:mb-4"
               >
                 {t.tagline}
               </motion.p>
@@ -133,7 +132,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.36 }}
-                className="text-[12px] text-[#C8BCA9] mb-6 sm:mb-8"
+                className="text-[12px] text-[#C8BCA9] mb-5 sm:mb-7"
               >
                 {t.dateNote}
               </motion.p>
@@ -142,7 +141,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.4, ease: EASE_EDITORIAL }}
-                className="grid grid-cols-1 sm:flex sm:flex-row gap-3 mb-7 sm:mb-10"
+                className="flex flex-col sm:flex-row gap-3 mb-6 sm:mb-8 w-full"
               >
                 <motion.a
                   whileHover={{ scale: 1.03, y: -2 }}
@@ -150,19 +149,19 @@ export default function Home() {
                   href={waLink(`${t.brand}｜我想了解港人北上推廣報價`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#E89B5C] to-[#F0B482] text-[#24190F] font-bold text-[15px] px-7 py-3.5 shadow-[0_14px_30px_-10px_rgba(232,155,92,0.55)]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#E89B5C] to-[#F0B482] text-[#24190F] font-bold text-[14.5px] sm:text-[15px] px-6 sm:px-7 py-3.5 shadow-[0_14px_30px_-10px_rgba(232,155,92,0.55)]"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4 shrink-0" />
                   {t.ctaHero}
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   href="#pricing"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1C1712]/75 backdrop-blur-md hover:bg-[#2A221A] text-[#F5D98B] border border-[#E8C98A]/45 font-bold text-[15px] px-7 py-3.5 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1C1712]/75 backdrop-blur-md hover:bg-[#2A221A] text-[#F5D98B] border border-[#E8C98A]/45 font-bold text-[14.5px] sm:text-[15px] px-6 sm:px-7 py-3.5 transition-colors"
                 >
                   {t.ctaSecondary}
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="w-4 h-4 shrink-0" />
                 </motion.a>
               </motion.div>
 
@@ -171,11 +170,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.5, ease: EASE_EDITORIAL }}
-                className="grid grid-cols-3 gap-3 sm:gap-4 pt-5 sm:pt-6 border-t border-[#E8C98A]/25 max-w-lg"
+                className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-5 sm:pt-6 border-t border-[#E8C98A]/25 max-w-lg"
               >
                 {t.heroProof.map((item) => (
-                  <div key={item.l}>
-                    <div className="font-display font-bold text-[18px] sm:text-[20px] md:text-[22px] text-[#F5D98B] leading-none">
+                  <div key={item.l} className="min-w-0">
+                    <div className="font-display font-bold text-[17px] sm:text-[20px] md:text-[22px] text-[#F5D98B] leading-none">
                       {item.v}
                     </div>
                     <div className="text-[11px] sm:text-[12px] text-[#D8CBB7] mt-1.5 leading-snug">
@@ -184,12 +183,31 @@ export default function Home() {
                   </div>
                 ))}
               </motion.div>
+
+              {/* In-page B2B quick jump pills */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.58 }}
+                className="hidden sm:flex flex-wrap items-center gap-2 mt-6"
+              >
+                {t.nav.map((anchor) => (
+                  <a
+                    key={anchor.href}
+                    href={anchor.href}
+                    className="text-[12px] font-medium text-[#D2C5B1] hover:text-[#F5D98B] bg-[#161310]/60 hover:bg-[#241E18] border border-[#E8C98A]/20 rounded-full px-3 py-1 transition-colors"
+                  >
+                    {anchor.label}
+                  </a>
+                ))}
+              </motion.div>
             </div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.2, ease: EASE_EDITORIAL }}
+              className="min-w-0 w-full"
             >
               <HeroReelShowcase
                 posts={t.topPosts}
@@ -206,7 +224,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4 KEY METRICS — Floating Overlapping Glass Card with Staggered Count-Up */}
+        {/* 4 KEY METRICS — Floating Overlapping Glass Card with Safe Count-Up */}
         <section className="relative z-20 px-4 sm:px-5 md:px-6 -mt-8 sm:-mt-12 md:-mt-16 mb-8 sm:mb-10">
           <div className="max-w-6xl mx-auto">
             <div className="creator-card rounded-[1.5rem] sm:rounded-[1.8rem] px-4 py-5 sm:px-6 sm:py-7 md:px-8 md:py-8 grid grid-cols-2 lg:grid-cols-4 gap-y-5 gap-x-4 sm:gap-y-7 sm:gap-x-6 backdrop-blur-md">
@@ -214,15 +232,15 @@ export default function Home() {
                 <Reveal
                   key={s.label}
                   delay={idx * 0.05}
-                  className="lg:border-r lg:last:border-r-0 border-[#E8C98A]/18 lg:pr-6"
+                  className="min-w-0 lg:border-r lg:last:border-r-0 border-[#E8C98A]/18 lg:pr-6"
                 >
-                  <div className="font-display font-extrabold text-[28px] sm:text-[38px] md:text-[44px] leading-none text-[#F5D98B] tracking-tight">
+                  <div className="font-display font-extrabold text-[26px] sm:text-[38px] md:text-[44px] leading-none text-[#F5D98B] tracking-tight">
                     <AnimatedNumber value={s.value} suffix={s.suffix} />
                   </div>
-                  <div className="text-[13.5px] sm:text-[14.5px] font-bold text-[#F7EFDD] mt-2">
+                  <div className="text-[13px] sm:text-[14.5px] font-bold text-[#F7EFDD] mt-2">
                     {s.label}
                   </div>
-                  <div className="text-[11.5px] sm:text-[12px] text-[#B8AB98] mt-1 leading-relaxed">
+                  <div className="text-[11px] sm:text-[12px] text-[#B8AB98] mt-1 leading-relaxed">
                     {s.sub}
                   </div>
                 </Reveal>
@@ -231,46 +249,72 @@ export default function Home() {
           </div>
         </section>
 
-        {/* KINETIC MARQUEE */}
-        <MarqueeStrip items={t.marqueeItems} />
+        {/* LIVING VISUAL REEL FILMSTRIP — Real Shenzhen / HK Editorial Photography in Motion */}
+        <VisualReelStrip scenes={t.filmstripScenes} tickerItems={t.marqueeItems} />
 
-        {/* WHY US + VISUAL COST COMPARISON */}
+        {/* WHY US + EDITORIAL PHOTO COLLAGE + VISUAL COST COMPARISON */}
         <section className="py-16 md:py-24">
-          <div className="max-w-6xl mx-auto px-5 md:px-6">
-            <Reveal className="max-w-2xl mb-12">
-              <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#E8C98A] uppercase mb-2.5">
-                {t.sellingEyebrow}
+          <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6">
+            <Reveal className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-12">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2.5 text-[12px] font-bold text-[#E8C98A] mb-3">
+                  <span className="w-7 h-[1.5px] bg-[#E89B5C]" aria-hidden="true" />
+                  <span>{lang === "hk" ? "港人週末消費節奏" : "港人周末消费节奏"}</span>
+                </div>
+                <h2 className="font-serif font-bold text-[27px] sm:text-[32px] md:text-[38px] leading-[1.24] text-[#F7EFDD]">
+                  {t.sellingTitle}
+                </h2>
+              </div>
+              <p className="text-[14.5px] sm:text-[15.5px] text-[#C6B9A6] leading-relaxed max-w-md">
+                {t.sellingLead}
               </p>
-              <h2 className="font-serif font-bold text-[28px] md:text-[38px] leading-[1.24] text-[#F7EFDD] mb-4">
-                {t.sellingTitle}
-              </h2>
-              <p className="text-[15.5px] text-[#C6B9A6] leading-relaxed">{t.sellingLead}</p>
             </Reveal>
 
-            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-stretch mb-14">
-              <Reveal className="h-full">
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-12 items-center mb-16">
+              {/* Asymmetric Living Photo Collage — real Shenzhen BBQ hall + floating Futian night plaza */}
+              <Reveal className="relative pb-8 sm:pb-10">
                 <ParallaxFrame
-                  src="/scenes/hero-shenzhen.jpg"
-                  alt={t.sceneCaption}
-                  caption={t.sceneCaption}
-                  className="rounded-[1.75rem] h-full min-h-[280px] lg:min-h-[460px] border border-[#E8C98A]/20 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.85)]"
+                  src="/scenes/bbq-wide.jpg"
+                  alt={lang === "hk" ? "深圳炭火燒肉夜宵實拍" : "深圳炭火烧肉夜宵实拍"}
+                  caption={
+                    lang === "hk"
+                      ? "深圳實景探店 · 週五晚黃金決策檔"
+                      : "深圳实景探店 · 周五晚黄金决策档"
+                  }
+                  className="rounded-[1.6rem] h-[270px] sm:h-[360px] lg:h-[440px] border border-[#E8C98A]/22 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.85)]"
                 />
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="hidden sm:block absolute -right-3 bottom-0 w-[48%] aspect-[16/10] rounded-2xl overflow-hidden border-2 border-[#E8C98A]/35 shadow-[0_22px_44px_-14px_rgba(0,0,0,0.9)] bg-[#1C1712]"
+                >
+                  <LivingImage
+                    src="/scenes/mall-wide.jpg"
+                    alt={lang === "hk" ? "福田夜商圈氛圍" : "福田夜商圈氛围"}
+                    variant="b"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#161310]/80 via-transparent to-transparent" />
+                  <span className="absolute bottom-2 left-2.5 text-[10.5px] font-bold text-[#F5D98B]">
+                    {lang === "hk" ? "福田夜商圈實況" : "福田夜商圈实况"}
+                  </span>
+                </motion.div>
               </Reveal>
 
-              <div className="flex flex-col justify-between gap-4">
+              {/* Editorial numbered list with clean hairline dividers (replaces repetitive boxed grid) */}
+              <div className="divide-y divide-[#E8C98A]/16 border-y border-[#E8C98A]/16">
                 {t.points.map((p, idx) => (
                   <Reveal key={p.num} delay={idx * 0.07}>
-                    <div className="creator-card rounded-[1.5rem] p-6">
-                      <div className="flex items-start gap-4">
-                        <span className="shrink-0 w-10 h-10 rounded-2xl bg-[#C5A065]/15 border border-[#E8C98A]/30 text-[#F5D98B] font-display font-bold text-[14px] flex items-center justify-center">
-                          {p.num}
-                        </span>
-                        <div>
-                          <h3 className="text-[17.5px] font-bold text-[#F7EFDD] leading-snug mb-2">
-                            {p.title}
-                          </h3>
-                          <p className="text-[14.5px] text-[#C2B5A2] leading-relaxed">{p.body}</p>
-                        </div>
+                    <div className="group py-6 sm:py-7 flex items-start gap-4 sm:gap-5 transition-colors hover:bg-white/[0.015] px-2 -mx-2 rounded-xl">
+                      <span className="shrink-0 font-display font-extrabold text-[28px] sm:text-[32px] leading-none text-[#E8C98A]/55 group-hover:text-[#F5D98B] transition-colors tabular-nums">
+                        {p.num}
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="text-[17px] sm:text-[18.5px] font-bold text-[#F7EFDD] leading-snug mb-2">
+                          {p.title}
+                        </h3>
+                        <p className="text-[14px] sm:text-[14.5px] text-[#C2B5A2] leading-relaxed">
+                          {p.body}
+                        </p>
                       </div>
                     </div>
                   </Reveal>
@@ -497,11 +541,12 @@ export default function Home() {
                     onClick={() => setSelectedPost(post)}
                     className="group w-full text-left creator-card rounded-[1.2rem] sm:rounded-[1.5rem] overflow-hidden flex flex-col cursor-pointer"
                   >
-                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1D1813]">
-                      <img
+                    <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1D1813] photo-sheen">
+                      <LivingImage
                         src={post.img}
                         alt={post.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        variant={idx % 2 === 0 ? "a" : "b"}
+                        className="group-hover:scale-110 transition-transform duration-700 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#161310] via-[#161310]/30 to-transparent" />
                       <span
@@ -552,17 +597,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SCENIC PARALLAX BAND — Shenzhen Bay */}
-        <div className="relative h-[190px] md:h-[250px] overflow-hidden border-y border-[#E8C98A]/18">
+        {/* SCENIC PARALLAX BAND — Editorial Spread Interlude */}
+        <div className="relative h-[220px] md:h-[290px] overflow-hidden border-y border-[#E8C98A]/18">
           <ParallaxFrame
             src="/scenes/bay-band.jpg"
             alt={t.sceneCaption}
             className="w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#161310]/65 via-transparent to-[#161310]/75 pointer-events-none" />
-          <div className="absolute inset-x-0 bottom-6 md:bottom-8 pointer-events-none">
-            <div className="max-w-6xl mx-auto px-5 md:px-6 flex items-center justify-between text-[#F5D98B]">
-              <span className="text-[12.5px] font-medium tracking-[0.18em] uppercase drop-shadow">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#161310]/70 via-[#161310]/35 to-[#161310]/85 pointer-events-none" />
+          <div className="absolute inset-0 flex items-center pointer-events-none">
+            <div className="max-w-6xl mx-auto w-full px-5 md:px-6">
+              <p className="font-serif font-bold text-[22px] sm:text-[28px] md:text-[34px] text-[#F7EFDD] leading-snug max-w-2xl drop-shadow-[0_4px_18px_rgba(0,0,0,0.65)]">
+                {lang === "hk"
+                  ? "「週四計劃、週五睇片、週六過關消費。」"
+                  : "「周四计划、周五看片、周六过关消费。」"}
+              </p>
+              <span className="inline-block mt-2.5 text-[11.5px] font-medium tracking-[0.18em] uppercase text-[#F5D98B]/90 drop-shadow">
                 {t.sceneCaption}
               </span>
             </div>
@@ -668,23 +718,26 @@ export default function Home() {
               <p className="text-[14px] text-[#B8AB98]">{t.stepsKicker}</p>
             </Reveal>
 
-            <div className="grid md:grid-cols-3 gap-5 mb-14">
+            <div className="relative grid md:grid-cols-3 gap-8 md:gap-10 mb-14 pt-2">
+              {/* Connecting hairline rail on desktop */}
+              <div
+                aria-hidden="true"
+                className="hidden md:block absolute top-8 left-10 right-10 h-px bg-gradient-to-r from-[#E8C98A]/45 via-[#E89B5C]/45 to-[#E8C98A]/15"
+              />
               {t.steps.map((step, idx) => {
                 const Icon = stepIcons[idx] ?? Rocket;
                 return (
-                  <Reveal key={step.n} delay={idx * 0.07}>
-                    <div className="creator-card rounded-[1.6rem] p-7 h-full flex flex-col">
-                      <div className="flex items-center justify-between mb-6">
-                        <span className="w-12 h-12 rounded-2xl bg-[#C5A065]/18 border border-[#E8C98A]/30 text-[#F5D98B] flex items-center justify-center">
-                          <Icon className="w-5 h-5" />
-                        </span>
-                        <span className="font-display font-extrabold text-[34px] text-[#E8C98A]/22 leading-none">
-                          {step.n}
-                        </span>
-                      </div>
-                      <h3 className="text-[19px] font-bold text-[#F7EFDD] mb-2.5">{step.t}</h3>
-                      <p className="text-[14.5px] text-[#C2B5A2] leading-relaxed">{step.b}</p>
+                  <Reveal key={step.n} delay={idx * 0.08} className="relative">
+                    <div className="flex items-center gap-3.5 mb-5">
+                      <span className="relative z-10 w-12 h-12 rounded-2xl bg-[#221C16] border border-[#E8C98A]/35 text-[#F5D98B] flex items-center justify-center shadow-[0_10px_24px_-10px_rgba(0,0,0,0.8)]">
+                        <Icon className="w-5 h-5" />
+                      </span>
+                      <span className="font-display font-extrabold text-[34px] text-[#E8C98A]/32 leading-none">
+                        {step.n}
+                      </span>
                     </div>
+                    <h3 className="text-[19px] font-bold text-[#F7EFDD] mb-2.5">{step.t}</h3>
+                    <p className="text-[14.5px] text-[#C2B5A2] leading-relaxed">{step.b}</p>
                   </Reveal>
                 );
               })}

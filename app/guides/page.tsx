@@ -60,11 +60,13 @@ export default function GuidesPage() {
                 href={`/guides/${article.slug}`}
                 className="group creator-card rounded-[1.5rem] overflow-hidden flex flex-col h-full"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1D1813]">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1D1813] photo-sheen">
                   <img
                     src={article.img}
                     alt={article.title[lang]}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${
+                      idx % 2 === 0 ? "ken-burns-a" : "ken-burns-b"
+                    }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#161310] via-transparent to-transparent" />
                   <div className="absolute top-3 left-3 flex items-center gap-1.5">

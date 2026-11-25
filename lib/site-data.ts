@@ -65,7 +65,7 @@ export const SITE_DATA = {
     h1Line2: "在決定前先看見你。",
     tagline:
       "我們是香港本土美食旅遊團隊，經營 3 個 FB 專頁、2 個 IG 及 12,000 人北上交流群，用港人愛看、肯轉發的內容，把深圳與大灣區好店帶到香港客人眼前。",
-    dateNote: "Meta 官方後台實測數據 · 更新至 2026-11-24",
+    dateNote: "Meta 官方後台實測數據 · 更新至 2026-11-25",
     ctaHero: "WhatsApp 直接問價",
     ctaSecondary: "瀏覽合作方案",
     heroProof: [
@@ -75,14 +75,23 @@ export const SITE_DATA = {
     ],
     reelDeckLabel: "實測爆款動態預覽",
     reelDeckHint: "點擊切換作品",
-    reelBadgeTop: "單條最高曝光 250,000+",
+    reelBadgeTop: "單條最高曝光 29萬+",
     reelBadgeBottom: "演算法自然外溢破圈",
+    filmstripScenes: [
+      { img: "/scenes/bbq-wide.jpg", label: "深圳深夜炭火燒肉實拍", tag: "美食探店" },
+      { img: "/posts/p1.jpg", label: "崗廈北「深圳之眼」29萬曝光", tag: "TOP 1 爆款" },
+      { img: "/scenes/mall-wide.jpg", label: "福田夜市露台商圈氛圍", tag: "商場推廣" },
+      { img: "/guides/guide-spa-shenzhen.jpg", label: "24小時過夜水療水果任食", tag: "週末鬆一鬆" },
+      { img: "/posts/p2.jpg", label: "廣州北京路 25萬瀏覽路線", tag: "大灣區" },
+      { img: "/scenes/border-real.jpg", label: "福田口岸實測過關直駁", tag: "口岸情報" },
+      { img: "/posts/p5.jpg", label: "鹽田海濱一日遊 9.3萬觸及", tag: "實測攻略" },
+    ],
     marqueeItems: [
       "大灣區週末探店",
       "28日 879萬真實瀏覽",
       "40,980+ 公開矩陣粉絲",
       "12,000人 港人私域群組",
-      "單條 Reel 最高 25萬+ 曝光",
+      "單條最高 29萬+ 自然曝光",
       "粵語原聲配音 · 港式地道語境",
       "深圳美食 · 商場展覽 · 酒店民宿",
       "初稿 100% 商家預審",
@@ -90,7 +99,7 @@ export const SITE_DATA = {
     stats: [
       { value: 40980, suffix: "+", label: "公開矩陣總粉絲", sub: "3 大 FB 專頁 32,500 ＋ 2 個 IG 8,480" },
       { value: 879, suffix: "萬", label: "28 日總瀏覽量", sub: "兩大主力專頁 Meta 官方實測" },
-      { value: 25, suffix: "萬+", label: "單條爆款 Reel 曝光", sub: "演算法自然破圈，超越粉絲數" },
+      { value: 29, suffix: "萬+", label: "單條爆款自然曝光", sub: "演算法自然破圈，超越粉絲數" },
       { value: 12000, suffix: "", label: "私域北上交流群", sub: "高活躍港人週末消費決策社群" },
     ],
     sellingEyebrow: "WHY CREATOR MATRIX",
@@ -272,6 +281,7 @@ export const SITE_DATA = {
         tier: "IG",
         platform: "Instagram",
         note: "廣東／深圳短影音同步發布，鎖定年輕香港消費群（兩月 +36%）",
+        url: "https://www.instagram.com/cantonesefoodtravelguide/",
       },
       {
         name: "@chinatravelhack",
@@ -426,7 +436,7 @@ export const SITE_DATA = {
     stickyNote: "香港團隊 · 24 小時內回覆",
     stickyBtn: "WhatsApp 問價",
     footer:
-      "初稿經商家預審確認後上線；商業合作帖文依 Meta 官方政策標註。支援月度／季度長期合作與品牌客製方案。數據更新至 2026-11-24。",
+      "初稿經商家預審確認後上線；商業合作帖文依 Meta 官方政策標註。支援月度／季度長期合作與品牌客製方案。數據更新至 2026-11-25。",
   },
   cn: {
     brand: "Zero to Growth",
@@ -444,7 +454,7 @@ export const SITE_DATA = {
     h1Line2: "在决定前先看见你。",
     tagline:
       "我们是香港本土美食旅游团队，运营 3 个 FB 专页、2 个 IG 及 12,000 人北上交流群，用港人爱看、肯转发的内容，把深圳与大湾区好店带到香港客人眼前。",
-    dateNote: "Meta 官方后台实测数据 · 更新至 2026-11-24",
+    dateNote: "Meta 官方后台实测数据 · 更新至 2026-11-25",
     ctaHero: "WhatsApp 直接问价",
     ctaSecondary: "浏览合作方案",
     heroProof: [
@@ -454,14 +464,23 @@ export const SITE_DATA = {
     ],
     reelDeckLabel: "实测爆款动态预览",
     reelDeckHint: "点击切换作品",
-    reelBadgeTop: "单条最高曝光 250,000+",
+    reelBadgeTop: "单条最高曝光 29万+",
     reelBadgeBottom: "算法自然外溢破圈",
+    filmstripScenes: [
+      { img: "/scenes/bbq-wide.jpg", label: "深圳深夜炭火烧肉实拍", tag: "美食探店" },
+      { img: "/posts/p1.jpg", label: "岗厦北「深圳之眼」29万曝光", tag: "TOP 1 爆款" },
+      { img: "/scenes/mall-wide.jpg", label: "福田夜市露台商圈氛围", tag: "商场推广" },
+      { img: "/guides/guide-spa-shenzhen.jpg", label: "24小时过夜水疗水果任吃", tag: "周末放松" },
+      { img: "/posts/p2.jpg", label: "广州北京路 25万浏览路线", tag: "大湾区" },
+      { img: "/scenes/border-real.jpg", label: "福田口岸实测过关直驳", tag: "口岸情报" },
+      { img: "/posts/p5.jpg", label: "盐田海滨一日游 9.3万触及", tag: "实测攻略" },
+    ],
     marqueeItems: [
       "大湾区周末探店",
       "28日 879万真实浏览",
       "40,980+ 公开矩阵粉丝",
       "12,000人 港人私域群组",
-      "单条 Reel 最高 25万+ 曝光",
+      "单条最高 29万+ 自然曝光",
       "粤语原声配音 · 港式地道语境",
       "深圳美食 · 商场展览 · 酒店民宿",
       "初稿 100% 商家预审",
@@ -469,7 +488,7 @@ export const SITE_DATA = {
     stats: [
       { value: 40980, suffix: "+", label: "公开矩阵总粉丝", sub: "3 大 FB 专页 32,500 ＋ 2 个 IG 8,480" },
       { value: 879, suffix: "万", label: "28 日总浏览量", sub: "两大主力专页 Meta 官方实测" },
-      { value: 25, suffix: "万+", label: "单条爆款 Reel 曝光", sub: "算法自然破圈，超越粉丝数" },
+      { value: 29, suffix: "万+", label: "单条爆款自然曝光", sub: "算法自然破圈，超越粉丝数" },
       { value: 12000, suffix: "", label: "私域北上交流群", sub: "高活跃港人周末消费决策社群" },
     ],
     sellingEyebrow: "WHY CREATOR MATRIX",
@@ -651,6 +670,7 @@ export const SITE_DATA = {
         tier: "IG",
         platform: "Instagram",
         note: "广东／深圳短视频同步发布，锁定年轻香港消费群（两月 +36%）",
+        url: "https://www.instagram.com/cantonesefoodtravelguide/",
       },
       {
         name: "@chinatravelhack",
@@ -805,7 +825,7 @@ export const SITE_DATA = {
     stickyNote: "香港团队 · 24 小时内回复",
     stickyBtn: "WhatsApp 问价",
     footer:
-      "初稿经商家预审确认后上线；商业合作帖文依 Meta 官方政策标注。支持月度／季度长期合作与品牌定制方案。数据更新至 2026-11-24。",
+      "初稿经商家预审确认后上线；商业合作帖文依 Meta 官方政策标注。支持月度／季度长期合作与品牌定制方案。数据更新至 2026-11-25。",
   },
 };
 

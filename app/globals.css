@@ -54,45 +54,132 @@
   }
 }
 
-/* Subtle tactile warm paper grain */
+/* Subtle tactile warm film grain */
 .editorial-grain {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.032'/%3E%3C/svg%3E");
 }
 
-/* Refined dark espresso card with crisp champagne hairline (no cheesy pulsing glow) */
+/* Refined dark espresso surface */
 .creator-card {
-  background: linear-gradient(180deg, rgba(42, 36, 28, 0.88) 0%, rgba(30, 25, 20, 0.92) 100%);
-  border: 1px solid rgba(232, 201, 138, 0.15);
-  border-top: 1px solid rgba(245, 217, 139, 0.24);
-  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+  background: linear-gradient(180deg, rgba(40, 34, 26, 0.86) 0%, rgba(28, 23, 18, 0.94) 100%);
+  border: 1px solid rgba(232, 201, 138, 0.14);
+  border-top: 1px solid rgba(245, 217, 139, 0.22);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.72);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.3s ease;
 }
 
 .creator-card:hover {
   transform: translateY(-4px);
   border-color: rgba(232, 201, 138, 0.34);
-  box-shadow: 0 26px 52px -22px rgba(0, 0, 0, 0.82);
+  box-shadow: 0 28px 56px -22px rgba(0, 0, 0, 0.86);
 }
 
-/* Kinetic marquee */
-@keyframes marqueeScroll {
+/* Organic living cinema Ken Burns drift for photography */
+@keyframes kenBurnsA {
   0% {
-    transform: translateX(0%);
+    transform: scale(1.02) translate3d(0%, 0%, 0);
+  }
+  50% {
+    transform: scale(1.09) translate3d(-1.8%, -1.2%, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: scale(1.02) translate3d(0%, 0%, 0);
+  }
+}
+
+@keyframes kenBurnsB {
+  0% {
+    transform: scale(1.07) translate3d(-1.2%, 0.8%, 0);
+  }
+  50% {
+    transform: scale(1.01) translate3d(1.4%, -1%, 0);
+  }
+  100% {
+    transform: scale(1.07) translate3d(-1.2%, 0.8%, 0);
+  }
+}
+
+.ken-burns-a {
+  animation: kenBurnsA 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.ken-burns-b {
+  animation: kenBurnsB 21s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Living Reel audio equalizer bars */
+@keyframes eqPulse {
+  0%, 100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar-1 {
+  animation: eqPulse 0.9s ease-in-out infinite;
+}
+.eq-bar-2 {
+  animation: eqPulse 0.65s ease-in-out 0.18s infinite;
+}
+.eq-bar-3 {
+  animation: eqPulse 1.05s ease-in-out 0.34s infinite;
+}
+
+/* Kinetic visual filmstrip & marquee */
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .marquee-track {
-  animation: marqueeScroll 30s linear infinite;
+  animation: marqueeScroll 32s linear infinite;
   will-change: transform;
 }
 
-.marquee-track:hover {
+.filmstrip-track {
+  animation: marqueeScroll 42s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover,
+.filmstrip-track:hover {
   animation-play-state: paused;
+}
+
+/* Subtle champagne sheen sweep on hover */
+.photo-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(245, 217, 139, 0.12) 48%,
+    transparent 76%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.group:hover .photo-sheen::after,
+.photo-sheen:hover::after {
+  transform: translateX(120%);
 }
 
 /* Editorial underline hover */
@@ -109,8 +196,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
+  .marquee-track,
+  .filmstrip-track,
+  .ken-burns-a,
+  .ken-burns-b,
+  .eq-bar-1,
+  .eq-bar-2,
+  .eq-bar-3 {
+    animation: none !important;
   }
   html {
     scroll-behavior: auto;

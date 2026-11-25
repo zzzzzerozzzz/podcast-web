@@ -155,10 +155,9 @@ export const AFFILIATE_DEALS: AffiliateDeal[] = [
       hk: "精選近福田口岸、深圳灣萬象城、前海及澳門路氹高評分酒店，預訂即享即時確認與免費取消選項。",
       cn: "精选近福田口岸、深圳湾万象城、前海及澳门路氹高评分酒店，预订即享即时确认与免费取消选项。",
     },
-    code: "ZTG2026",
     url: "#coming-soon-trip",
     ready: false,
-    ctaLabel: { hk: "查看酒店特價（即將接入連結）", cn: "查看酒店特价（即将接入链接）" },
+    ctaLabel: { hk: "WhatsApp 問最新酒店優惠（籌備中）", cn: "WhatsApp 问最新酒店优惠（筹备中）" },
   },
   {
     id: "deal-spa-klook",
@@ -173,10 +172,9 @@ export const AFFILIATE_DEALS: AffiliateDeal[] = [
       hk: "出發前網上買定套票一般比現場平 10%–25%，即買即出二維碼，免去現場內地手機認證煩惱。",
       cn: "出发前网上买好套票一般比现场便宜 10%–25%，即买即出二维码，免去现场内地手机认证烦恼。",
     },
-    code: "KLOOKZTG",
     url: "#coming-soon-klook",
     ready: false,
-    ctaLabel: { hk: "搶購玩樂門票（即將接入連結）", cn: "抢购玩乐门票（即将接入链接）" },
+    ctaLabel: { hk: "WhatsApp 問最新門票團購（籌備中）", cn: "WhatsApp 问最新门票团购（筹备中）" },
   },
   {
     id: "deal-card-gba",
