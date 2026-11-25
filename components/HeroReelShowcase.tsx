@@ -204,7 +204,7 @@ export function HeroReelShowcase({
             <img
               src={nextPost.img}
               alt=""
-              loading="lazy"
+              loading="eager"
               decoding="async"
               className="w-full h-full object-cover opacity-70 saturate-[0.85]"
             />

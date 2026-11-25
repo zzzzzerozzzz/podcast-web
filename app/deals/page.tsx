@@ -133,13 +133,17 @@ export default function DealsPage() {
           </div>
         </section>
 
-        {/* SECTION B: Affiliate Deals & Promo Codes */}
+        {/* SECTION B: Affiliate Deals & Partner Offers */}
         <section className="mb-14">
           <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-7">
             <div>
               <div className="inline-flex items-center gap-2 text-[12px] font-bold text-[#E8C98A] mb-2">
-                <Gift className="w-4 h-4 text-[#E89B5C]" />
-                AFFILIATE DEALS & PROMO CODES
+                <Gift className="w-4 h-4 text-[#E89B5C]" aria-hidden="true" />
+                <span>
+                  {lang === "hk"
+                    ? "出發前精選著數 · 陸續接入中"
+                    : "出发前精选优惠 · 陆续接入中"}
+                </span>
               </div>
               <h2 className="font-serif font-bold text-[24px] sm:text-[30px] text-[#F7EFDD] mb-1.5">
                 {c.affTitle}
@@ -154,7 +158,8 @@ export default function DealsPage() {
                   key={item.id}
                   type="button"
                   onClick={() => setTab(item.id)}
-                  className={`relative px-3.5 py-1.5 rounded-full text-[12.5px] font-bold transition-colors cursor-pointer ${
+                  aria-pressed={tab === item.id}
+                  className={`relative px-3.5 min-h-[40px] rounded-full text-[12.5px] font-bold transition-colors duration-150 cursor-pointer active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-[#F5D98B] ${
                     tab === item.id
                       ? "bg-[#E8C98A] text-[#1D1711]"
                       : "bg-[#241E18] text-[#C2B5A2] border border-[#E8C98A]/20 hover:text-[#F7EFDD]"

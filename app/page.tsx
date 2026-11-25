@@ -173,6 +173,22 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+
+              {/* Compact B2B in-page section quick jump (desktop/tablet) */}
+              <nav
+                aria-label={lang === "hk" ? "頁內快速導覽" : "页内快速导航"}
+                className="hidden sm:flex flex-wrap items-center gap-1.5 mt-5"
+              >
+                {t.nav.map((anchor) => (
+                  <a
+                    key={anchor.href}
+                    href={anchor.href}
+                    className="inline-flex items-center text-[12px] font-medium text-[#D8CCB9] hover:text-[#F5D98B] bg-[#161310]/68 hover:bg-[#241E18] border border-[#E8C98A]/20 rounded-full px-3 min-h-[32px] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-[#F5D98B]"
+                  >
+                    {anchor.label}
+                  </a>
+                ))}
+              </nav>
             </div>
 
             <div className="min-w-0 w-full">

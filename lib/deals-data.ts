@@ -222,7 +222,7 @@ export function getDealsCopy(lang: Lang) {
         vipSub: "唔使喺公開大群暴露私隱！撳入去直接 WhatsApp 聯絡，我們為你開啟 3 人專屬小群對接良心商家並跟進報價。",
         vipBtn: "WhatsApp 領取專屬福利",
         affTitle: "北上出發前必備：酒店・門票・神卡優惠",
-        affSub: "點擊複製優惠碼或前往預訂（連結陸續更新中，歡迎先收藏本頁）",
+        affSub: "精選酒店、門票與神卡合作陸續接入中，歡迎先收藏本頁或 WhatsApp 問最新團購",
         tabs: [
           { id: "all", label: "全部著數" },
           { id: "hotel", label: "酒店住宿" },
@@ -246,7 +246,7 @@ export function getDealsCopy(lang: Lang) {
         vipSub: "无需在公开大群暴露隐私！点击直接 WhatsApp 联络，我们为你开启 3 人专属小群对接良心商家并跟进报价。",
         vipBtn: "WhatsApp 领取专属福利",
         affTitle: "北上出发前必备：酒店・门票・神卡优惠",
-        affSub: "点击复制优惠码或前往预订（链接陆续更新中，欢迎先收藏本页）",
+        affSub: "精选酒店、门票与神卡合作陆续接入中，欢迎先收藏本页或 WhatsApp 问最新团购",
         tabs: [
           { id: "all", label: "全部优惠" },
           { id: "hotel", label: "酒店住宿" },
