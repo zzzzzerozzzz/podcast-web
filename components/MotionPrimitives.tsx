@@ -12,7 +12,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 
-export const EASE_EDITORIAL = [0.22, 1, 0.36, 1] as const;
+export const EASE_EDITORIAL = [0.23, 1, 0.32, 1] as const;
 
 export function ScrollProgressBar() {
   const { scrollYProgress } = useScroll();
@@ -38,13 +38,13 @@ interface RevealProps {
   y?: number;
 }
 
-export function Reveal({ children, className = "", delay = 0, y = 16 }: RevealProps) {
+export function Reveal({ children, className = "", delay = 0, y = 12 }: RevealProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: "some", margin: "0px 0px 8% 0px" }}
-      transition={{ duration: 0.45, delay, ease: EASE_EDITORIAL }}
+      viewport={{ once: true, amount: "some", margin: "0px 0px 10% 0px" }}
+      transition={{ duration: 0.34, delay: Math.min(delay, 0.16), ease: EASE_EDITORIAL }}
       className={className}
     >
       {children}
@@ -63,9 +63,9 @@ export function MaskLine({ children, delay = 0, className = "" }: MaskLineProps)
     <span className={`block overflow-hidden ${className}`}>
       <motion.span
         className="block"
-        initial={{ y: "105%", opacity: 0.25 }}
+        initial={{ y: "24%", opacity: 0.92 }}
         animate={{ y: "0%", opacity: 1 }}
-        transition={{ duration: 0.78, delay, ease: EASE_EDITORIAL }}
+        transition={{ duration: 0.48, delay, ease: EASE_EDITORIAL }}
       >
         {children}
       </motion.span>
@@ -83,13 +83,13 @@ interface AnimatedNumberProps {
 
 /**
  * Always renders the real target value initially (SSR / crawler / screenshot safe — never shows 0!),
- * then runs a crisp kinetic roll-up from 72% -> 100% once it enters the viewport on client.
+ * then runs a crisp kinetic roll-up from 78% -> 100% once it enters the viewport on client.
  */
 export function AnimatedNumber({
   value,
   suffix = "",
   prefix = "",
-  durationMs = 750,
+  durationMs = 620,
   className = "",
 }: AnimatedNumberProps) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -103,13 +103,16 @@ export function AnimatedNumber({
 
   useEffect(() => {
     if (!inView || hasAnimated.current) return;
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       setDisplay(value);
       hasAnimated.current = true;
       return;
     }
     hasAnimated.current = true;
-    const from = Math.round(value * 0.72);
+    const from = Math.round(value * 0.78);
     let frame = 0;
     const start = performance.now();
     const tick = (now: number) => {
@@ -147,10 +150,10 @@ export function AnimatedPrice({ price, className = "" }: AnimatedPriceProps) {
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={price}
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: 16, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -20, opacity: 0 }}
-          transition={{ duration: 0.32, ease: EASE_EDITORIAL }}
+          exit={{ y: -16, opacity: 0 }}
+          transition={{ duration: 0.22, ease: EASE_EDITORIAL }}
           className="inline-block tabular-nums"
         >
           ${price.toLocaleString()}
@@ -165,14 +168,35 @@ interface LivingImageProps {
   alt: string;
   variant?: "a" | "b";
   className?: string;
+  loading?: "eager" | "lazy";
+  animate?: boolean;
 }
 
-export function LivingImage({ src, alt, variant = "a", className = "" }: LivingImageProps) {
+/**
+ * Viewport-aware image that automatically pauses Ken Burns motion when scrolled off-screen.
+ */
+export function LivingImage({
+  src,
+  alt,
+  variant = "a",
+  className = "",
+  loading = "lazy",
+  animate = true,
+}: LivingImageProps) {
+  const ref = useRef<HTMLImageElement>(null);
+  const inView = useInView(ref, { amount: 0.05 });
+
   return (
     <img
+      ref={ref}
       src={src}
       alt={alt}
-      className={`w-full h-full object-cover ${variant === "a" ? "ken-burns-a" : "ken-burns-b"} ${className}`}
+      loading={loading}
+      decoding="async"
+      style={animate ? { animationPlayState: inView ? "running" : "paused" } : undefined}
+      className={`w-full h-full object-cover ${
+        animate ? (variant === "a" ? "ken-burns-a" : "ken-burns-b") : ""
+      } ${className}`}
     />
   );
 }
@@ -182,35 +206,30 @@ interface ParallaxFrameProps {
   alt: string;
   caption?: string;
   className?: string;
-  living?: boolean;
 }
 
-export function ParallaxFrame({
-  src,
-  alt,
-  caption,
-  className = "",
-  living = true,
-}: ParallaxFrameProps) {
+export function ParallaxFrame({ src, alt, caption, className = "" }: ParallaxFrameProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.04, 1.1]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1.03, 1.08]);
 
   return (
     <div ref={ref} className={`relative overflow-hidden photo-sheen ${className}`}>
-      <motion.div style={{ y, scale }} className="w-full h-full will-change-transform">
+      <motion.div style={{ y, scale }} className="w-full h-full">
         <img
           src={src}
           alt={alt}
-          className={`w-full h-full object-cover ${living ? "ken-burns-a" : ""}`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover"
         />
       </motion.div>
       {caption ? (
-        <span className="absolute bottom-3.5 left-3.5 z-10 bg-[#161310]/82 backdrop-blur-md text-[#E8C98A] text-[11.5px] font-medium px-3.5 py-1.5 rounded-full border border-[#E8C98A]/25">
+        <span className="absolute bottom-3.5 left-3.5 z-10 bg-[#161310]/85 backdrop-blur-md text-[#E8C98A] text-[11.5px] font-medium px-3.5 py-1.5 rounded-full border border-[#E8C98A]/25">
           {caption}
         </span>
       ) : null}
@@ -226,17 +245,20 @@ export interface FilmstripScene {
 
 export function VisualReelStrip({
   scenes,
-  tickerItems,
 }: {
   scenes: FilmstripScene[];
-  tickerItems: string[];
+  tickerItems?: string[];
 }) {
+  const stripRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(stripRef, { amount: 0.05 });
   const doubledScenes = [...scenes, ...scenes];
-  const doubledTicker = [...tickerItems, ...tickerItems];
 
   return (
-    <div className="relative overflow-hidden border-y border-[#E8C98A]/16 bg-[#1A1511] select-none">
-      {/* Living photography filmstrip */}
+    <div
+      ref={stripRef}
+      className="relative overflow-hidden border-y border-[#E8C98A]/16 bg-[#1A1511] select-none"
+    >
+      {/* Living photography filmstrip (pauses automatically when scrolled off-screen or hovered) */}
       <div className="relative py-5 md:py-6 overflow-hidden">
         <div
           aria-hidden="true"
@@ -247,7 +269,10 @@ export function VisualReelStrip({
           className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-20 z-10 bg-gradient-to-l from-[#1A1511] to-transparent"
         />
 
-        <div className="filmstrip-track flex items-center gap-3.5 sm:gap-4 w-max px-2">
+        <div
+          className="filmstrip-track flex items-center gap-3.5 sm:gap-4 w-max px-2"
+          style={{ animationPlayState: inView ? "running" : "paused" }}
+        >
           {doubledScenes.map((scene, idx) => (
             <div
               key={`${scene.label}-${idx}`}
@@ -256,31 +281,17 @@ export function VisualReelStrip({
               <img
                 src={scene.img}
                 alt={scene.label}
-                className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${
-                  idx % 2 === 0 ? "ken-burns-a" : "ken-burns-b"
-                }`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#14100C]/90 via-[#14100C]/20 to-transparent" />
-              <span className="absolute top-2.5 left-2.5 text-[10px] font-bold tracking-wide bg-[#161310]/78 backdrop-blur-sm text-[#F5D98B] border border-[#E8C98A]/28 rounded-full px-2.5 py-0.5">
+              <span className="absolute top-2.5 left-2.5 text-[10px] font-bold tracking-wide bg-[#161310]/80 backdrop-blur-sm text-[#F5D98B] border border-[#E8C98A]/28 rounded-full px-2.5 py-0.5">
                 {scene.tag}
               </span>
               <div className="absolute bottom-2.5 inset-x-3 text-[12.5px] font-bold text-[#F7EFDD] truncate drop-shadow">
                 {scene.label}
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Slim editorial ticker strip underneath */}
-      <div className="border-t border-[#E8C98A]/12 bg-[#16120E] py-2.5 overflow-hidden">
-        <div className="marquee-track flex items-center gap-6 whitespace-nowrap w-max">
-          {doubledTicker.map((item, idx) => (
-            <div key={`${item}-${idx}`} className="inline-flex items-center gap-6">
-              <span className="text-[12px] sm:text-[13px] font-medium tracking-wide text-[#D8CCB9]">
-                {item}
-              </span>
-              <span className="w-1 h-1 rounded-full bg-[#E89B5C]" aria-hidden="true" />
             </div>
           ))}
         </div>
@@ -294,10 +305,18 @@ interface MarqueeStripProps {
 }
 
 export function MarqueeStrip({ items }: MarqueeStripProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.05 });
   const doubled = [...items, ...items];
   return (
-    <div className="relative overflow-hidden bg-[#1D1813] text-[#F4ECE0] py-3.5 border-y border-[#E8C98A]/18 select-none">
-      <div className="marquee-track flex items-center gap-6 whitespace-nowrap w-max">
+    <div
+      ref={ref}
+      className="relative overflow-hidden bg-[#1D1813] text-[#F4ECE0] py-3.5 border-y border-[#E8C98A]/18 select-none"
+    >
+      <div
+        className="marquee-track flex items-center gap-6 whitespace-nowrap w-max"
+        style={{ animationPlayState: inView ? "running" : "paused" }}
+      >
         {doubled.map((item, idx) => (
           <div key={`${item}-${idx}`} className="inline-flex items-center gap-6">
             <span className="text-[13px] md:text-[14px] font-medium tracking-wide text-[#EFE4D2]">

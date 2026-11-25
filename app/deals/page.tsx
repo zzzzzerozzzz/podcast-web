@@ -42,12 +42,9 @@ export default function DealsPage() {
     <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#161310] text-[#F4ECE0] editorial-grain">
       <SiteHeader lang={lang} switchLang={switchLang} />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 pt-8 pb-16 md:pt-12 md:pb-24">
-        {/* Page Header */}
-        <Reveal className="mb-10 md:mb-12">
-          <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#E8C98A] uppercase mb-2.5">
-            {c.eyebrow}
-          </p>
+      <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 pt-8 pb-16 md:pt-12 md:pb-24">
+        {/* Page Header (instant first-paint) */}
+        <div className="mb-10 md:mb-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
             <div>
               <h1 className="font-serif font-bold text-[30px] sm:text-[40px] md:text-[46px] leading-tight text-[#F7EFDD] mb-3">
@@ -59,14 +56,14 @@ export default function DealsPage() {
             </div>
             <Link
               href="/border"
-              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#241E18] hover:bg-[#2F2720] border border-[#E8C98A]/30 text-[#F5D98B] text-[13.5px] font-bold px-5 py-2.5 transition-colors self-start lg:self-auto"
+              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#241E18] hover:bg-[#2F2720] border border-[#E8C98A]/30 text-[#F5D98B] text-[13.5px] font-bold px-5 min-h-[44px] transition-colors duration-150 active:scale-[0.97] self-start lg:self-auto focus-visible:outline-2 focus-visible:outline-[#F5D98B]"
             >
-              <Radio className="w-4 h-4 text-[#65C466]" />
+              <Radio className="w-4 h-4 text-[#65C466]" aria-hidden="true" />
               {c.borderLink}
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
-        </Reveal>
+        </div>
 
         {/* SECTION A: High-Ticket VIP 1-on-1 Concierge Funnel */}
         <section className="mb-16 md:mb-20">

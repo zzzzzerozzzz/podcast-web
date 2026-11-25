@@ -21,11 +21,8 @@ export default function GuidesPage() {
     <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#161310] text-[#F4ECE0] editorial-grain">
       <SiteHeader lang={lang} switchLang={switchLang} />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 pt-8 pb-16 md:pt-12 md:pb-24">
-        <Reveal className="mb-8 md:mb-10">
-          <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#E8C98A] uppercase mb-2.5">
-            {c.eyebrow}
-          </p>
+      <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 pt-8 pb-16 md:pt-12 md:pb-24">
+        <div className="mb-8 md:mb-10">
           <h1 className="font-serif font-bold text-[30px] sm:text-[40px] md:text-[46px] leading-tight text-[#F7EFDD] mb-3">
             {c.title}
           </h1>
@@ -39,8 +36,9 @@ export default function GuidesPage() {
               <button
                 key={t.id}
                 type="button"
+                aria-pressed={city === t.id}
                 onClick={() => setCity(t.id)}
-                className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all cursor-pointer ${
+                className={`px-4 min-h-[44px] rounded-full text-[13px] font-bold transition-colors duration-150 active:scale-[0.97] cursor-pointer focus-visible:outline-2 focus-visible:outline-[#F5D98B] ${
                   city === t.id
                     ? "bg-[#E8C98A] text-[#1D1711]"
                     : "bg-[#241E18] text-[#C2B5A2] border border-[#E8C98A]/20 hover:text-[#F7EFDD]"
@@ -50,23 +48,23 @@ export default function GuidesPage() {
               </button>
             ))}
           </div>
-        </Reveal>
+        </div>
 
         {/* Guides Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
           {filtered.map((article, idx) => (
-            <Reveal key={article.slug} delay={idx * 0.05} className="h-full">
+            <Reveal key={article.slug} delay={idx * 0.04} className="h-full">
               <Link
                 href={`/guides/${article.slug}`}
-                className="group creator-card rounded-[1.5rem] overflow-hidden flex flex-col h-full"
+                className="group creator-card rounded-2xl overflow-hidden flex flex-col h-full active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-[#F5D98B]"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#1D1813] photo-sheen">
                   <img
                     src={article.img}
                     alt={article.title[lang]}
-                    className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ${
-                      idx % 2 === 0 ? "ken-burns-a" : "ken-burns-b"
-                    }`}
+                    loading={idx < 3 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#161310] via-transparent to-transparent" />
                   <div className="absolute top-3 left-3 flex items-center gap-1.5">

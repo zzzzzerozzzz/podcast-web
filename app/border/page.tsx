@@ -137,17 +137,13 @@ export default function BorderPage() {
     <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#161310] text-[#F4ECE0] editorial-grain">
       <SiteHeader lang={lang} switchLang={switchLang} />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 pt-8 pb-16 md:pt-12 md:pb-24">
-        {/* Header Hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE_EDITORIAL }}
-          className="mb-8 md:mb-10"
-        >
-          <p className="text-[11.5px] font-display font-bold tracking-[0.22em] text-[#E8C98A] uppercase mb-2.5">
-            LIVE BORDER MONITOR · 香港入境處開放數據
-          </p>
+      <main id="main-content" className="max-w-6xl mx-auto px-4 sm:px-5 md:px-6 pt-8 pb-16 md:pt-12 md:pb-24">
+        {/* Header Hero (instant first-paint) */}
+        <div className="mb-8 md:mb-10">
+          <div className="inline-flex items-center gap-2 text-[12px] font-bold text-[#E8C98A] mb-2.5">
+            <span className="w-6 h-[1.5px] bg-[#E89B5C]" aria-hidden="true" />
+            <span>{lang === "hk" ? "香港入境處即時開放數據" : "香港入境处实时开放数据"}</span>
+          </div>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
             <div>
               <h1 className="font-serif font-bold text-[30px] sm:text-[40px] md:text-[46px] leading-tight text-[#F7EFDD] mb-2.5">
@@ -163,9 +159,9 @@ export default function BorderPage() {
             {/* Live Weather + Refresh Pill */}
             <div className="flex flex-wrap items-center gap-2.5 shrink-0">
               {data?.weather?.temp !== null && data?.weather?.temp !== undefined ? (
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#241E18] border border-[#E8C98A]/22 px-4 py-2 text-[13px] text-[#F5D98B]">
-                  <CloudSun className="w-4 h-4 text-[#E89B5C]" />
-                  <span>
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#241E18] border border-[#E8C98A]/22 px-4 min-h-[44px] text-[13px] text-[#F5D98B]">
+                  <CloudSun className="w-4 h-4 text-[#E89B5C]" aria-hidden="true" />
+                  <span className="tabular-nums">
                     {lang === "hk" ? "香港氣溫" : "香港气温"} {data.weather.temp}°C
                     {data.weather.humidity ? ` · 濕度 ${data.weather.humidity}%` : ""}
                   </span>
@@ -176,27 +172,23 @@ export default function BorderPage() {
                 type="button"
                 onClick={() => loadData(true)}
                 disabled={refreshing}
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#241E18] hover:bg-[#2F2720] border border-[#E8C98A]/30 text-[#F5D98B] text-[13px] font-bold px-4 py-2 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#241E18] hover:bg-[#2F2720] border border-[#E8C98A]/30 text-[#F5D98B] text-[13px] font-bold px-4 min-h-[44px] transition-colors duration-150 active:scale-[0.97] cursor-pointer focus-visible:outline-2 focus-visible:outline-[#F5D98B]"
               >
-                <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? "animate-spin" : ""}`} />
+                <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? "animate-spin" : ""}`} aria-hidden="true" />
                 {lang === "hk" ? "即時更新" : "实时刷新"}
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Direction Switcher + Live Timestamp */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.08, ease: EASE_EDITORIAL }}
-          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6"
-        >
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="inline-flex items-center self-start bg-[#241E18] border border-[#E8C98A]/25 rounded-full p-1">
             <button
               type="button"
               onClick={() => setDirection("dep")}
-              className={`relative px-4 py-2 rounded-full text-[13px] font-bold transition-colors cursor-pointer ${
+              aria-pressed={direction === "dep"}
+              className={`relative px-4 min-h-[42px] rounded-full text-[13px] font-bold transition-colors duration-150 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#F5D98B] ${
                 direction === "dep" ? "text-[#1A1510]" : "text-[#C2B5A2]"
               }`}
             >
@@ -214,7 +206,8 @@ export default function BorderPage() {
             <button
               type="button"
               onClick={() => setDirection("arr")}
-              className={`relative px-4 py-2 rounded-full text-[13px] font-bold transition-colors cursor-pointer ${
+              aria-pressed={direction === "arr"}
+              className={`relative px-4 min-h-[42px] rounded-full text-[13px] font-bold transition-colors duration-150 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#F5D98B] ${
                 direction === "arr" ? "text-[#1A1510]" : "text-[#C2B5A2]"
               }`}
             >
@@ -232,7 +225,7 @@ export default function BorderPage() {
           </div>
 
           <div className="flex items-center gap-2 text-[12px] text-[#A89B88]">
-            <Clock className="w-3.5 h-3.5 text-[#C5A065]" />
+            <Clock className="w-3.5 h-3.5 text-[#C5A065]" aria-hidden="true" />
             <span>
               {lang === "hk" ? "最後讀取（香港時間）" : "最后读取（香港时间）"}：{hkTime}
               {data?.source === "live"
@@ -242,7 +235,7 @@ export default function BorderPage() {
                 : ""}
             </span>
           </div>
-        </motion.div>
+        </div>
 
         {/* Smart Fastest Recommendation Banner */}
         {!loading && fastPorts.length > 0 ? (

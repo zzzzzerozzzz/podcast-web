@@ -48,6 +48,18 @@
     max-width: 100%;
   }
 
+  /* Universal accessible keyboard focus ring across all interactive elements */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid #F5D98B;
+    outline-offset: 2px;
+  }
+
   ::selection {
     background-color: rgba(232, 201, 138, 0.28);
     color: #FFF9EE;
@@ -59,30 +71,31 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.032'/%3E%3C/svg%3E");
 }
 
-/* Refined dark espresso surface */
+/* Refined dark espresso surface — snappy < 200ms ease-out */
 .creator-card {
-  background: linear-gradient(180deg, rgba(40, 34, 26, 0.86) 0%, rgba(28, 23, 18, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(40, 34, 26, 0.88) 0%, rgba(28, 23, 18, 0.96) 100%);
   border: 1px solid rgba(232, 201, 138, 0.14);
   border-top: 1px solid rgba(245, 217, 139, 0.22);
   box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.72);
-  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s ease;
+  transition:
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .creator-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: rgba(232, 201, 138, 0.34);
-  box-shadow: 0 28px 56px -22px rgba(0, 0, 0, 0.86);
+  box-shadow: 0 24px 48px -22px rgba(0, 0, 0, 0.84);
 }
 
-/* Organic living cinema Ken Burns drift for photography */
+/* Organic living cinema Ken Burns drift (compositor-only, paused off-screen via IO) */
 @keyframes kenBurnsA {
   0% {
     transform: scale(1.02) translate3d(0%, 0%, 0);
   }
   50% {
-    transform: scale(1.09) translate3d(-1.8%, -1.2%, 0);
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
   }
   100% {
     transform: scale(1.02) translate3d(0%, 0%, 0);
@@ -91,24 +104,22 @@
 
 @keyframes kenBurnsB {
   0% {
-    transform: scale(1.07) translate3d(-1.2%, 0.8%, 0);
+    transform: scale(1.06) translate3d(-1%, 0.6%, 0);
   }
   50% {
-    transform: scale(1.01) translate3d(1.4%, -1%, 0);
+    transform: scale(1.01) translate3d(1.2%, -0.8%, 0);
   }
   100% {
-    transform: scale(1.07) translate3d(-1.2%, 0.8%, 0);
+    transform: scale(1.06) translate3d(-1%, 0.6%, 0);
   }
 }
 
 .ken-burns-a {
-  animation: kenBurnsA 18s ease-in-out infinite;
-  will-change: transform;
+  animation: kenBurnsA 20s ease-in-out infinite;
 }
 
 .ken-burns-b {
-  animation: kenBurnsB 21s ease-in-out infinite;
-  will-change: transform;
+  animation: kenBurnsB 22s ease-in-out infinite;
 }
 
 /* Living Reel audio equalizer bars */
@@ -131,7 +142,7 @@
   animation: eqPulse 1.05s ease-in-out 0.34s infinite;
 }
 
-/* Kinetic visual filmstrip & marquee */
+/* Kinetic visual filmstrip (paused on hover or off-screen) */
 @keyframes marqueeScroll {
   0% {
     transform: translate3d(0%, 0, 0);
@@ -143,12 +154,10 @@
 
 .marquee-track {
   animation: marqueeScroll 32s linear infinite;
-  will-change: transform;
 }
 
 .filmstrip-track {
-  animation: marqueeScroll 42s linear infinite;
-  will-change: transform;
+  animation: marqueeScroll 44s linear infinite;
 }
 
 .marquee-track:hover,
@@ -169,11 +178,11 @@
   background: linear-gradient(
     115deg,
     transparent 20%,
-    rgba(245, 217, 139, 0.12) 48%,
+    rgba(245, 217, 139, 0.11) 48%,
     transparent 76%
   );
   transform: translateX(-120%);
-  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 650ms cubic-bezier(0.23, 1, 0.32, 1);
   pointer-events: none;
 }
 
@@ -188,11 +197,30 @@
   background-size: 0% 1.5px;
   background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background-size 180ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .link-underline:hover {
   background-size: 100% 1.5px;
+}
+
+/* FAQ accordion smooth grid-row transition (avoids height: auto layout thrash) */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 200ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 180ms ease-out;
+}
+
+.faq-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-panel > div {
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -204,6 +232,12 @@
   .eq-bar-2,
   .eq-bar-3 {
     animation: none !important;
+  }
+  .creator-card,
+  .faq-panel,
+  .photo-sheen::after,
+  .link-underline {
+    transition: none !important;
   }
   html {
     scroll-behavior: auto;

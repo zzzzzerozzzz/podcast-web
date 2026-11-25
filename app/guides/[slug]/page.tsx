@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, Clock, Gift, MapPin, Radio, TrainFront } from "lucide-react";
 import { SiteFooter, SiteHeader, useSiteLang } from "@/components/SiteShell";
-import { Reveal } from "@/components/MotionPrimitives";
 import { GUIDE_ARTICLES, getGuidesCopy } from "@/lib/guides-data";
 
 export default function GuideDetailPage() {
@@ -21,16 +20,16 @@ export default function GuideDetailPage() {
     <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#161310] text-[#F4ECE0] editorial-grain">
       <SiteHeader lang={lang} switchLang={switchLang} />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6 pt-7 pb-16 md:pt-10 md:pb-24">
+      <main id="main-content" className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6 pt-7 pb-16 md:pt-10 md:pb-24">
         <Link
           href="/guides"
-          className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-[#E8C98A] hover:text-[#F5D98B] mb-6"
+          className="inline-flex items-center gap-1.5 min-h-[44px] text-[13.5px] font-semibold text-[#E8C98A] hover:text-[#F5D98B] mb-4 focus-visible:outline-2 focus-visible:outline-[#F5D98B] rounded-md"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4" aria-hidden="true" />
           {c.backToList}
         </Link>
 
-        <Reveal>
+        <div>
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="text-[11.5px] font-bold bg-[#C5A065]/20 text-[#F5D98B] border border-[#E8C98A]/35 rounded-full px-3 py-0.5">
               {article.cityLabel[lang]}
@@ -39,7 +38,7 @@ export default function GuideDetailPage() {
               {article.category[lang]}
             </span>
             <span className="inline-flex items-center gap-1 text-[12px] text-[#A89B88] ml-1">
-              <Clock className="w-3.5 h-3.5" />
+              <Clock className="w-3.5 h-3.5" aria-hidden="true" />
               {c.updatedLabel} {article.updatedAt} · {article.readTime}
             </span>
           </div>
@@ -52,11 +51,13 @@ export default function GuideDetailPage() {
           </p>
 
           {/* Hero Cover */}
-          <div className="relative aspect-[16/9] rounded-[1.6rem] overflow-hidden border border-[#E8C98A]/20 mb-7 photo-sheen">
+          <div className="relative aspect-[16/9] rounded-3xl overflow-hidden border border-[#E8C98A]/20 mb-7 photo-sheen">
             <img
               src={article.img}
               alt={article.title[lang]}
-              className="w-full h-full object-cover ken-burns-a"
+              loading="eager"
+              decoding="async"
+              className="w-full h-full object-cover"
             />
           </div>
 
@@ -132,7 +133,7 @@ export default function GuideDetailPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-        </Reveal>
+        </div>
       </main>
 
       <SiteFooter lang={lang} />
